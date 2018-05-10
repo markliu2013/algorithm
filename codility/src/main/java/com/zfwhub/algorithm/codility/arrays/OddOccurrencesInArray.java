@@ -3,6 +3,7 @@ package com.zfwhub.algorithm.codility.arrays;
 import java.util.HashSet;
 
 /**
+ * 数组里面的数字都是成对出现, 找唯一一个不能成对的数字。
  * https://app.codility.com/programmers/lessons/2-arrays/odd_occurrences_in_array/
  */
 public class OddOccurrencesInArray {
