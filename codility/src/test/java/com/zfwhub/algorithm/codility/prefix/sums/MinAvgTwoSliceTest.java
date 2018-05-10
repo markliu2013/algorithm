@@ -13,18 +13,6 @@ public class MinAvgTwoSliceTest {
         minAvgTwoSlice = new MinAvgTwoSlice();
     }
 
-    @AfterClass
-    public static void tearDownAfterClass() throws Exception {
-    }
-
-    @Before
-    public void setUp() throws Exception {
-    }
-
-    @After
-    public void tearDown() throws Exception {
-    }
-
     @Test
     public void testSolution() {
         int result = minAvgTwoSlice.solution(new int[] {4,2,2,5,1,5,8});
