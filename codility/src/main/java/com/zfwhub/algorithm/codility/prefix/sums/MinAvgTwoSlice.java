@@ -25,8 +25,8 @@ public class MinAvgTwoSlice {
     }
     
     /*
+     * prefixsumå­˜å‚¨çš„æ˜¯å¹³å‡å€¼
      * https://app.codility.com/demo/results/trainingUXQSX8-U8S/
-     * prefixsum´æ´¢µÄÊÇÆ½¾ùÖµ
      */
     public int solution2(int[] A) {
         float[] prefixSums = new float[A.length];
@@ -49,7 +49,7 @@ public class MinAvgTwoSlice {
     }
     
     /*
-     * ÀûÓÃprefixsumÓÅ»¯
+     * åˆ©ç”¨prefixsumä¼˜åŒ–
      * https://app.codility.com/demo/results/trainingMATP7R-UUT/
      */
     public int solution3(int[] A) {
