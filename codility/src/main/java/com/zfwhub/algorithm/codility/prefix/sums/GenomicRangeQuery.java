@@ -2,6 +2,9 @@ package com.zfwhub.algorithm.codility.prefix.sums;
 
 import java.util.Arrays;
 
+/**
+ * https://app.codility.com/programmers/lessons/5-prefix_sums/genomic_range_query/
+ */
 public class GenomicRangeQuery {
 
     public int[] solution2(String S, int[] P, int[] Q) {

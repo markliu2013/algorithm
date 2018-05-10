@@ -1,8 +1,11 @@
 package com.zfwhub.algorithm.codility.prefix.sums;
 
+/**
+* https://app.codility.com/programmers/lessons/5-prefix_sums/min_avg_two_slice/
+ */
 public class MinAvgTwoSlice {
 
-    /*
+    /**
      * https://app.codility.com/demo/results/trainingX97SBY-RG5/
      */
     public int solution(int[] A) {
@@ -24,7 +27,7 @@ public class MinAvgTwoSlice {
         return minAvgIndex;
     }
     
-    /*
+    /**
      * prefixsum存储的是平均值
      * https://app.codility.com/demo/results/trainingUXQSX8-U8S/
      */
@@ -48,7 +51,7 @@ public class MinAvgTwoSlice {
         return minAvgIndex;
     }
     
-    /*
+    /**
      * 利用prefixsum优化
      * https://app.codility.com/demo/results/trainingMATP7R-UUT/
      */
