@@ -12,6 +12,9 @@
     <modules>
         <module>codility</module>
         <module>leetcode</module>
+        <module>acm</module>
+        <module>math</module>
+        <module>dynamicprogramming</module>
     </modules>
 
     <dependencies>
