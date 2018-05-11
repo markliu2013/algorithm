@@ -1,12 +1,15 @@
 package com.zfwhub.algorithm.codility.prefix.sums;
 
 /**
- * 
-* https://app.codility.com/programmers/lessons/5-prefix_sums/min_avg_two_slice/
- */
+ * 查找某个数组的子数组，找平均值最小。
+ * 类比找某个数组的最大子数组
+ * https://leetcode.com/problems/maximum-subarray/description/
+ * https://app.codility.com/programmers/lessons/5-prefix_sums/min_avg_two_slice/
+*/
 public class MinAvgTwoSlice {
 
     /**
+     * straightforward
      * https://app.codility.com/demo/results/trainingX97SBY-RG5/
      */
     public int solution(int[] A) {
