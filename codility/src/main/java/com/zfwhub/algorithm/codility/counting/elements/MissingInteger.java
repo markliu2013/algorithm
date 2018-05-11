@@ -8,7 +8,7 @@ import java.util.Set;
  * https://app.codility.com/programmers/lessons/4-counting_elements/missing_integer/
  */
 public class MissingInteger {
-    
+
     /**
      * 利用HashSet优化，现将数组转到set，然后从1开始查找。
      */
@@ -24,19 +24,19 @@ public class MissingInteger {
         }
         return A.length + 1;
     }
-    
+
     public int solution2(int[] A) {
         int num = 1;
-        HashSet<Integer> set=new HashSet<Integer>();
-        for (int i=0; i<A.length; i++) {
+        HashSet<Integer> set = new HashSet<Integer>();
+        for (int i = 0; i < A.length; i++) {
             set.add(A[i]);
         }
-        while(set.contains(num)) {
+        while (set.contains(num)) {
             num++;
         }
         return num;
     }
-    
+
     public int solution3(int[] A) {
         int counter[] = new int[A.length];
 
@@ -55,7 +55,7 @@ public class MissingInteger {
         // sequence.
         return A.length + 1;
     }
-    
+
     public static void main(String[] args) {
         MissingInteger mi = new MissingInteger();
         System.out.println(mi.solution(new int[] { 1, 3, 6, 4, 1, 2 }));

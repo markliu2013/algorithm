@@ -7,7 +7,7 @@ package com.zfwhub.algorithm.codility.time.complexity;
 public class PermMissingElem {
 
     /**
-     * 1到n自然数求和, 然后和当前数组的和,相减得到的数字即可。
+     * 1到n自然数求和, 然后和当前数组的和, 相减得到的数字即可。
      */
     public int solution(int[] A) {
         //1到n自然数求和公式
