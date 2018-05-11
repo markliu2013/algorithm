@@ -1,6 +1,5 @@
 package com.zfwhub.algorithm.codility.counting.elements;
 
-import java.util.Arrays;
 import java.util.HashSet;
 /**
  * 判断一个数组是不是permutation, permutation是包含1到n的自然数, 且只有一次。
