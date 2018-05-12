@@ -15,7 +15,7 @@ public class BinaryGapTest {
     }
 
     @Test
-    public void solution() throws Exception {
+    public void testSolution() throws Exception {
         int result = binaryGap.solution(51712);
         assertEquals(2, result);
     }

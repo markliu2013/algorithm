@@ -1,6 +1,7 @@
 package com.zfwhub.algorithm.math.pac;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -28,6 +29,66 @@ public class Combination {
             list.add(list1);
         }
         return list;
+    }
+
+    /**
+     * 求指定个数的list的组合
+     * 动态规划, 利用杨辉三角
+     */
+    public static List<List<Integer>> getCombination(List<Integer> list, int n) {
+        if (list == null || list.size() <=0 || n > list.size()) {
+            throw new RuntimeException("illegal parameters");
+        }
+        List<List<Integer>> combinationList = new LinkedList<List<Integer>>();
+        // fill first row
+        List<List<List<Integer>>> preList = new LinkedList<List<List<Integer>>>();//结构为三维list存储每一行的combinationList
+        List<Integer> list1 = new LinkedList<Integer>();
+        List<List<Integer>> list2 = new LinkedList<List<Integer>>();
+        list2.add(list1);
+        preList.add(list2);
+        List<Integer> list3 = new LinkedList<Integer>();
+        list3.add(list.get(0));
+        List<List<Integer>> list4 = new LinkedList<List<Integer>>();
+        list4.add(list3);
+        preList.add(list4);
+        // fill one by one row
+        for (int i = 1; i < list.size(); i++) {
+            List<List<List<Integer>>> currList = new LinkedList<List<List<Integer>>>();
+            List<Integer> list5 = new LinkedList<Integer>();
+            List<List<Integer>> list6 = new LinkedList<List<Integer>>();
+            list6.add(list5);
+            currList.add(list6);
+            for (int j = 1; j < preList.size(); j++) {
+                List<List<Integer>> list8 = preList.get(j);
+                List<List<Integer>> list10_1 = preList.get(j-1);
+                // deep copy list
+                List<List<Integer>> list10 = new LinkedList<List<Integer>>();
+                for (List<Integer> list10_1_1 : list10_1) {
+                    List<Integer> list10_1_2 = new LinkedList<Integer>();
+                    for (Integer integer : list10_1_1) {
+                        list10_1_2.add(integer);
+                    }
+                    list10.add(list10_1_2);
+                }
+                for (int k = 0; k < list10.size(); k++) {
+                    List<Integer> list12 = list10.get(k);
+                    list12.add(list.get(i));
+                }
+                List<List<Integer>> list11 = new LinkedList<List<Integer>>();
+                list11.addAll(list8);
+                list11.addAll(list10);
+                currList.add(list11);
+            }
+            List<Integer> list7 = new LinkedList<Integer>();
+            for (int j = 0; j <= i; j++) {
+                list7.add(list.get(i));
+            }
+            List<List<Integer>> list8 = new LinkedList<List<Integer>>();
+            list8.add(list7);
+            currList.add(list8);
+            preList = currList;
+        }
+        return preList.get(n);
     }
 
     // TODO
