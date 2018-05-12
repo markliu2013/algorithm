@@ -27,7 +27,7 @@ public class TwoSum {
      * 使用HashMap优化
      */
     public int[] twoSum1(int[] nums, int target) {
-        HashMap<Integer, Integer> map = new HashMap<>();
+        HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
         for (int i = 0; i < nums.length; i++) {
             map.put(nums[i], i);
         }
@@ -44,7 +44,7 @@ public class TwoSum {
      * HashMap一次for循环
      */
     public int[] twoSum2(int[] nums, int target) {
-        HashMap<Integer, Integer> map = new HashMap<>();
+        HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
         for (int i = 0; i < nums.length; i++) {
             int complement = target - nums[i];
             if (map.containsKey(complement)) {
