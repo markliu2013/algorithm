@@ -2,6 +2,10 @@ package com.zfwhub.algorithm.codility.sorting;
 
 import java.util.Arrays;
 
+/**
+ * 从数组中找出三个乘积最大的数
+ * https://leetcode.com/problems/maximum-product-of-three-numbers/description/ 
+ */
 public class MaxProductOfThree {
     
     /**
