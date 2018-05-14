@@ -39,10 +39,16 @@ public class MaxProductOfThree {
         }
         return Math.max(A[0] * A[1] * A[A.length - 1], A[A.length - 1] * A[A.length - 2] * A[A.length - 3]);
     }
-    
+    /**
+     * 情况讨论可以简化 
+     */
+    public static int solution3(int[] A) {
+        Arrays.sort(A);
+        return Math.max(A[0] * A[1] * A[A.length - 1], A[A.length - 1] * A[A.length - 2] * A[A.length - 3]);
+    }
     
     public static void main(String[] args) {
-        System.out.println(MaxProductOfThree.solution2(new int[] {-3,-2,5,10}));
+        System.out.println(MaxProductOfThree.solution3(new int[] {-2,-3,-4}));
     }
     
 }
