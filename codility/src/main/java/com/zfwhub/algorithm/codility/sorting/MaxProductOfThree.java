@@ -4,7 +4,8 @@ import java.util.Arrays;
 
 /**
  * 从数组中找出三个乘积最大的数
- * https://leetcode.com/problems/maximum-product-of-three-numbers/description/ 
+ * https://app.codility.com/programmers/lessons/6-sorting/max_product_of_three/
+ * https://leetcode.com/problems/maximum-product-of-three-numbers/description/
  */
 public class MaxProductOfThree {
     
@@ -43,6 +44,15 @@ public class MaxProductOfThree {
      * 情况讨论可以简化 
      */
     public static int solution3(int[] A) {
+        Arrays.sort(A);
+        return Math.max(A[0] * A[1] * A[A.length - 1], A[A.length - 1] * A[A.length - 2] * A[A.length - 3]);
+    }
+    
+    // TODO
+    /**
+     * https://leetcode.com/problems/maximum-product-of-three-numbers/solution/
+     */
+    public static int solution4(int[] A) {
         Arrays.sort(A);
         return Math.max(A[0] * A[1] * A[A.length - 1], A[A.length - 1] * A[A.length - 2] * A[A.length - 3]);
     }
