@@ -78,5 +78,10 @@ public class MinAvgTwoSlice {
         }
         return minAvgIndex;
     }
+    // TODO
+    // https://www.martinkysel.com/codility-minavgtwoslice-solution/
+    public static int solution4(int[] A) {
+        return 0;
+    }
     
 }
