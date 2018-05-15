@@ -8,6 +8,7 @@
 * [GenomicRangeQuery](https://app.codility.com/programmers/lessons/5-prefix_sums/genomic_range_query/)
 * [MakingTheGrade](http://poj.org/problem?id=3666)
 * [国王的金矿](http://www.sohu.com/a/153858619_466939)
+* [Triangle](https://app.codility.com/programmers/lessons/6-sorting/triangle/)
 ## 值得思考的问题 四星
 * [TapeEquilibrium](https://app.codility.com/programmers/lessons/3-time_complexity/tape_equilibrium/)
 * [MissingInteger](https://app.codility.com/programmers/lessons/4-counting_elements/missing_integer/)
