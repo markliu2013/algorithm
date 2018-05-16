@@ -46,7 +46,7 @@ public class MaximumSubarray {
     }
 
     /**
-     * prefixSum's mind
+     * prefixSum's concept
      */
     public static int maxSubArray2(int[] nums) {
         int maxSubArray = Integer.MIN_VALUE;
