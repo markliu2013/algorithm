@@ -3,7 +3,7 @@ package com.zfwhub.algorithm.leetcode.string;
 import java.util.HashSet;
 
 /**
- * 找最长没有重复的子字符串
+ * Given a string, find the length of the longest substring without repeating characters.
  * https://leetcode.com/problems/longest-substring-without-repeating-characters/description/
  */
 public class LongestSubstring {
@@ -25,9 +25,9 @@ public class LongestSubstring {
     }
 
     /**
-     * 区间检查, 定义startIndex和endIndex的区间
-     * 判断下一个元素是否与区间类的有重复
-     * 有重复则区间变为从重复的索引下一个开始
+     * check a range by range, range from startIndex to endIndex
+     * check if there is a char exists in the range
+     * if exists, startIndex should move to the exists index' next.
      */
     public static int lengthOfLongestSubstring2(String s) {
         if (s == null || s.length() == 0) {
@@ -69,6 +69,5 @@ public class LongestSubstring {
         String s = "bpfbhmipx";
         System.out.println(LongestSubstring.lengthOfLongestSubstring2(s));
     }
-
 
 }
