@@ -3,18 +3,18 @@ package com.zfwhub.algorithm.dynamicprogramming;
 import java.util.HashMap;
 
 /**
- * 爬楼梯有几种爬法?
- * 对应斐波那契数列
+ * Count ways to reach the n’th stair
+ * Fibonacci Concept
  */
 public class ClimbingWays {
 
-    // TODO 暴力解法
+    // TODO Brute Force
     public static int getClimbingWays(int n) {
         return 0;
     }
 
     /**
-     * 自顶向下
+     * Dynamic Programming, top to down, Simple Recursive Solution
      */
     public static int getClimbingWays1(int n) {
         if (n < 1) {
@@ -30,7 +30,7 @@ public class ClimbingWays {
     }
 
     /**
-     * 备忘录
+     * dynamic programming memoization
      */
     public static int getClimbingWays2(int n, HashMap<Integer, Integer> map) {
         if (n < 1) {
@@ -52,7 +52,7 @@ public class ClimbingWays {
     }
 
     /**
-     * 自底向上
+     * dynamic programming, Iterative Bottom-Up Solution
      */
     public static int getClimbingWays3(int n) {
         if (n < 1) {

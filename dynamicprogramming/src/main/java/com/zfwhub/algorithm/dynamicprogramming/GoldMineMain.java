@@ -5,12 +5,13 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * 国王的金矿问题
+ * The problem King's GoldMine
+ * https://www.geeksforgeeks.org/gold-mine-problem/
  */
 public class GoldMineMain {
 
     /**
-     * 暴力解法
+     * brute force, refer math, getAllCombination
      */
     public int getMaxGold3(List<GoldMine> goldMines, int maxPerson) {
         int maxAmount = 0;
@@ -37,7 +38,7 @@ public class GoldMineMain {
     }
 
     /**
-     * 动态规划 - 递归
+     * Dynamic Programming, top to down, Simple Recursive Solution
      */
     public int getMaxGold(List<GoldMine> goldMines, int maxPerson) {
         if (goldMines == null || goldMines.isEmpty()) {
@@ -62,7 +63,7 @@ public class GoldMineMain {
     }
 
     /**
-     * 动态规划 - 自底向上
+     * dynamic programming, Iterative Bottom-Up Solution
      */
     public int getMaxGold2(List<GoldMine> goldMines, int maxPerson) {
         if (goldMines == null || goldMines.isEmpty()) {
@@ -139,21 +140,11 @@ public class GoldMineMain {
             this.amount = amount;
             this.person = person;
         }
-
         public Integer getAmount() {
             return amount;
         }
-
-        public void setAmount(Integer amount) {
-            this.amount = amount;
-        }
-
         public Integer getPerson() {
             return person;
-        }
-
-        public void setPerson(Integer person) {
-            this.person = person;
         }
         @Override
         public String toString() {
