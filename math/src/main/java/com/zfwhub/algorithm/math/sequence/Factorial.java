@@ -1,10 +1,13 @@
 package com.zfwhub.algorithm.math.sequence;
 
 /**
- * 阶乘
+ * get Factorial of number
  */
 public class Factorial {
 
+    /**
+     * recursion, from top to down
+     */
     public int fac(int n) {
         if (n == 1 || n == 0) {
             return 1;
@@ -13,6 +16,9 @@ public class Factorial {
         }
     }
 
+    /**
+     * for loop, from down to top
+     */
     public int fac2(int n) {
         if (n == 1 || n == 0) {
             return 1;

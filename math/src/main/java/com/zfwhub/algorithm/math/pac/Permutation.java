@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 排列
+ * Permutation
  * https://www.quora.com/How-does-recursion-work-inside-a-for-loop-Most-importantly-how-does-it-flow
  */
 
@@ -29,7 +29,7 @@ public class Permutation {
     }
 
     /**
-     * 类似用for循环求阶乘
+     * It is like for loop to get Factorial
      */
     public static List<List<Integer>> permutation(int[] arr) {
         if (arr.length == 1) {
