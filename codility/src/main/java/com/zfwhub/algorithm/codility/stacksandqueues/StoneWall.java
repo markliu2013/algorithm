@@ -12,7 +12,7 @@ public class StoneWall {
         HashSet<Integer> set = new HashSet<Integer>();
         for (int i = 0; i < H.length; i++) {
             if (set.contains(H[i])) {
-                for (int j = 0; j < H[i]; j++) {
+                for (int j = 0; j > H[i]; j++) {
                     set.remove(j);
                 }
             } else {

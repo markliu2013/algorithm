@@ -1,14 +1,14 @@
 package com.zfwhub.algorithm.codility.prefix.sums;
 
 /**
- * 找A, B之前能被K整除的整数的个数。
+ * count the numbers divisible by K between A and B.
  * https://app.codility.com/programmers/lessons/5-prefix_sums/count_div/
  */
 public class CountDiv {
     
     /**
      * count 1 by 1...
-     * 可以知道哪些具体的数字
+     * you can know the numbers exactly.
      */
     public int solution(int A, int B, int K) {
         int count = 0;
@@ -21,8 +21,9 @@ public class CountDiv {
     }
     
     /**
-     * 利用差值直接计算，不能知道具体的数字，优化的方法是否都是丢失了信息？
-     * 先判断第一个数是否符合，后面根据差值累加。
+     * use the difference between A and B to count.
+     * You can't know the numbers, the optimization way will lost information?
+     * You should check the first number before
      */
     public int solution2(int A, int B, int K) {
         int count = 0;

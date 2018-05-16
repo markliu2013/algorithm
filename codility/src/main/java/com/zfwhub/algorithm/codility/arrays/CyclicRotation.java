@@ -3,14 +3,14 @@ package com.zfwhub.algorithm.codility.arrays;
 import java.util.Arrays;
 
 /**
- * 将数组位移指定的位数
+ * shift array K indexes
  * https://app.codility.com/programmers/lessons/2-arrays/cyclic_rotation/start/
  * https://mark.zfwhub.com/java-solution-to-cyclicrotation.html
  */
 public class CyclicRotation {
 
     /*
-     * https://app.codility.com/demo/results/training8FM8NB-JUN/
+     * Shift Array Step by Step
      */
     public int[] solution(int[] A, int K) {
         int times = A.length == 0 ? 0 : K % A.length;
@@ -27,6 +27,9 @@ public class CyclicRotation {
         return A;
     }
 
+    /**
+     * Shift Array all in One
+     */
     public int[] solution2(int[] A, int K) {
         int times = A.length == 0 ? 0 : K % A.length;
         int[] B = new int[A.length];
@@ -39,6 +42,9 @@ public class CyclicRotation {
         return B;
     }
 
+    /**
+     * Simplify The Code 
+     */
     public int[] solution3(int[] A, int K) {
         int times = A.length == 0 ? 0 : K % A.length;
         // int[] B = Arrays.copyOfRange(A, A.length-times, A.length);
