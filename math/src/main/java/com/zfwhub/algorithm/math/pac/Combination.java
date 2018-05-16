@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * 组合
+ * get Combination
  */
 public class Combination {
 
@@ -32,16 +32,16 @@ public class Combination {
     }
 
     /**
-     * 求指定个数的list的组合
-     * 动态规划, 利用杨辉三角
+     * get combinations of n elements from list, 
+     * dynamic programming, pascal's triangle
      */
     public static List<List<Integer>> getCombination(List<Integer> list, int n) {
         if (list == null || list.size() <=0 || n > list.size()) {
             throw new RuntimeException("illegal parameters");
         }
-        List<List<Integer>> combinationList = new LinkedList<List<Integer>>();
+        // preList is 3 dimensionals list, represents a row's all combination list
         // fill first row
-        List<List<List<Integer>>> preList = new LinkedList<List<List<Integer>>>();//结构为三维list存储每一行的combinationList
+        List<List<List<Integer>>> preList = new LinkedList<List<List<Integer>>>();
         List<Integer> list1 = new LinkedList<Integer>();
         List<List<Integer>> list2 = new LinkedList<List<Integer>>();
         list2.add(list1);
@@ -92,6 +92,9 @@ public class Combination {
     }
 
     // TODO
+    /**
+     * dynamic nested for loops
+     */
     public static List<List<Integer>> getCombination(int[] arr, int n) {
         return null;
     }

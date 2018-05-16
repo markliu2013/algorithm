@@ -1,4 +1,4 @@
-## 值得思考的问题 五星
+## Strong Recommended, You should think deeply.  5 stars
 * [TwoSum](https://leetcode.com/problems/two-sum/solution/)
 * [AddTwoNumbers](https://leetcode.com/problems/add-two-numbers/description/)
 * [LongestSubstring](https://leetcode.com/problems/longest-substring-without-repeating-characters/description/)
@@ -10,17 +10,17 @@
 * [国王的金矿](http://www.sohu.com/a/153858619_466939)
 * [Triangle](https://app.codility.com/programmers/lessons/6-sorting/triangle/)
 
-## 值得思考的问题 四星
+## Recommended, 4 stars
 * [TapeEquilibrium](https://app.codility.com/programmers/lessons/3-time_complexity/tape_equilibrium/)
 * [MissingInteger](https://app.codility.com/programmers/lessons/4-counting_elements/missing_integer/)
 
 
-## 值得思考的问题 三星
+## Recommended, 3 stars
 * [OddOccurrencesInArray](https://app.codility.com/programmers/lessons/2-arrays/odd_occurrences_in_array/)
 * [PermMissingElem](https://app.codility.com/programmers/lessons/3-time_complexity/perm_missing_elem/)
 * [MaxCounters](https://app.codility.com/programmers/lessons/4-counting_elements/max_counters/)
 * [MinAvgTwoSlice](https://app.codility.com/programmers/lessons/5-prefix_sums/min_avg_two_slice/)
 
-## Hard UnderStand
+## Life Problem
 * [StoneWall](https://app.codility.com/programmers/lessons/7-stacks_and_queues/stone_wall/)
 
