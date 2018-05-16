@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Arrays;
 
 /**
- * 在一个数组中找两个数的和等于指定的数
+ * Given an array of integers, return indices of the two numbers such that they add up to a specific target.
  * https://leetcode.com/problems/two-sum/solution/
  */
 public class TwoSum {
@@ -24,7 +24,7 @@ public class TwoSum {
     }
 
     /**
-     * 使用HashMap优化
+     * HashMap optimization
      */
     public int[] twoSum1(int[] nums, int target) {
         HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
@@ -41,8 +41,9 @@ public class TwoSum {
     }
 
     /**
-     * HashMap一次for循环
+     * HashMap one loop
      */
+    // TODO understand this code.
     public int[] twoSum2(int[] nums, int target) {
         HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
         for (int i = 0; i < nums.length; i++) {

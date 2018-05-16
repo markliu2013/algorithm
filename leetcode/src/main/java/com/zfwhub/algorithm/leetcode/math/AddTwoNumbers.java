@@ -3,13 +3,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 小学的列竖式模拟加法
+ * http://www.aaamath.com/add27dx1.htm
  * https://leetcode.com/problems/add-two-numbers/description/
  */
 public class AddTwoNumbers {
 
     /**
-     * 都转换为数字, 然后计算。
+     * convert to number, then add。
      */
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         Long i1 = parseNodeToInter(l1);
@@ -19,7 +19,7 @@ public class AddTwoNumbers {
     }
 
     /**
-     * 列竖式模拟
+     * like how you would sum two numbers on a piece of paper
      */
     // TODO
     public ListNode addTwoNumbers2(ListNode l1, ListNode l2) {

@@ -3,7 +3,7 @@ package com.zfwhub.algorithm.leetcode.array;
 import java.util.Arrays;
 
 /**
- * 在一个数组的最大子数组
+ * Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.
  * https://leetcode.com/problems/maximum-subarray/description/
  * https://blog.csdn.net/liu2012huan/article/details/51296635
  */
@@ -27,11 +27,11 @@ public class MaximumSubarray {
     }
 
     /**
-     * prefixSum优化
+     * prefixSum
      */
     public static int maxSubArray1(int[] nums) {
         int[] prefixSums = new int[nums.length];
-        // 计算prefixSum
+        // get prefixSum
         prefixSums[0] = nums[0];
         for (int i = 1; i < nums.length; i++) {
             prefixSums[i] = prefixSums[i-1] + nums[i];
@@ -46,7 +46,7 @@ public class MaximumSubarray {
     }
 
     /**
-     * prefixSum的思想
+     * prefixSum's mind
      */
     public static int maxSubArray2(int[] nums) {
         int maxSubArray = Integer.MIN_VALUE;
@@ -61,17 +61,17 @@ public class MaximumSubarray {
     }
 
     /**
-     * 动态规划, 但是推导效率低, 需要从头推导。
+     * dynamic programming, low efficiency, deduce from start again
      */
     public static int maxSubArray3(int[] nums) {
         if (nums.length == 1) {
             return nums[0];
         }
         int lastNum = nums[nums.length-1];
-        //不选最后一个元素
+        //don't choose the last number
         int[] subArray1 = Arrays.copyOfRange(nums, 0, nums.length-1);
         int max1 = maxSubArray3(subArray1);
-        //选择最后一个元素
+        //choose the last number, deduce from start again
         int max2 = Integer.MIN_VALUE;
         for (int i = 0; i <= subArray1.length; i++) {
             int sum = 0;
@@ -85,7 +85,7 @@ public class MaximumSubarray {
     }
 
     /**
-     * 分治法
+     * divide and conquer
      */
     public static int maxSubArray4(int[] nums) {
         if (nums.length == 1) {
@@ -114,7 +114,7 @@ public class MaximumSubarray {
     }
 
     /**
-     * 动态规划 - 自底向上
+     * dynamic programming - down to top
      */
     public static int maxSubArray5(int[] nums) {
         int[] max = new int[nums.length];
@@ -129,7 +129,7 @@ public class MaximumSubarray {
     }
 
     /**
-     * 动态规划 - 自底向上 - 优化存储空间
+     * dynamic programming - down to top - optimize space
      */
     public static int maxSubArray6(int[] nums) {
         int curSum = nums[0];

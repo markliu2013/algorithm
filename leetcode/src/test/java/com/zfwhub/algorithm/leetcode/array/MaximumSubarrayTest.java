@@ -2,8 +2,6 @@ package com.zfwhub.algorithm.leetcode.array;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 public class MaximumSubarrayTest {
     @Test
     public void testMaxSubArray() throws Exception {
