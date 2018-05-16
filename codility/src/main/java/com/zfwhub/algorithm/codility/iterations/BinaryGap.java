@@ -1,15 +1,18 @@
 package com.zfwhub.algorithm.codility.iterations;
 /**
- * 数字的二进制表示的字符串, 找一个连续的0最多的被1包围的子串。
+ * A binary gap within a positive integer N is any maximal
+ * sequence of consecutive zeros that is surrounded by ones
+ * at both ends in the binary representation of N.
  * https://app.codility.com/programmers/lessons/1-iterations/binary_gap/
  */
 public class BinaryGap {
 
     /**
-     * 1. 第一位肯定不为0
-     * 2. 定义两个变量, 一个记录总的max, 一个记录当前子串的currentMax
-     * 一次for循环, 遇到0 currentMax+1 遇到1 max选择currentMax或max,
-     * 然后currentMax置为0, 开始下一轮找0
+     * 1. The first number can't be 0
+     * 2. two variables, one presents the whole max,
+     *    the other presents current sub loop Max currentMax
+     * 3. for loop, if gets 0, currentMax+1; if 1, max is currentMax or not change.
+     * 4. currentMax is 0, then try next 0.
      */
     public int solution(int N) {
         String binaryString = Integer.toBinaryString(N);
