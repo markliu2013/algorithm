@@ -2,15 +2,16 @@ package com.zfwhub.algorithm.codility.counting.elements;
 import java.util.HashSet;
 
 /**
- * 给定一个长度n的数组和小于n的数字X, 找最早出现1到X之间所有自然数的索引。
+ * give an array and X, find minimum index contains all 1 to X numbers.
  * https://app.codility.com/programmers/lessons/4-counting_elements/frog_river_one/
  */
 public class FrogRiverOne {
 
     /**
-     * 利用set不能添加重复的数字
-     * 循环数组往set中添加, 当set.size()等于X, 返回i
-     * 循环结束返回-1
+     * HashSet can't add duplicated number.
+     * add number to set one by one from array use loop.
+     * when set size is X, return i
+     * return -1 end loop
      */
     public int solution(int X, int[] A) {
         HashSet<Integer> set = new HashSet<Integer>();
@@ -24,8 +25,10 @@ public class FrogRiverOne {
     }
 
     /**
-     * 定义长度为X的boolean数组, 索引对应数组中的数字。
-     * 利用boolean只能改一次值的特点, 每改一次我们将step+1, 直到与X相等, 返回i。
+     * each element of array A is an integer within the range [1..X].
+     * so we can use X size boolean array, index match the number in array.
+     * the boolean only can be changed once,
+     * every change step+1 until X, return i 
      */
     public int solution2(int X, int[] A) {
         int steps = X;

@@ -4,13 +4,14 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * 找一个数组中不存在的最小正整数。
+ * find the missed minimum positive integer in array
  * https://app.codility.com/programmers/lessons/4-counting_elements/missing_integer/
  */
 public class MissingInteger {
 
     /**
-     * 利用HashSet优化，现将数组转到set，然后从1开始查找。
+     * use HashSet optimization.
+     * convert array into set, then check from 1
      */
     public int solution(int[] A) {
         Set<Integer> set = new HashSet<Integer>();

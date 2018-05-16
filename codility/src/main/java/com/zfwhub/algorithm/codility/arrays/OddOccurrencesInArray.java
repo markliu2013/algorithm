@@ -3,13 +3,13 @@ package com.zfwhub.algorithm.codility.arrays;
 import java.util.HashSet;
 
 /**
- * 数组里面的数字都是成对出现, 找唯一一个不能成对的数字。
+ * Find the only one unpaired number in array
  * https://app.codility.com/programmers/lessons/2-arrays/odd_occurrences_in_array/
  */
 public class OddOccurrencesInArray {
 
     /**
-     * 利用HashSet优化
+     * use HashSet, set.contains is O(1)
      */
     public int solution(int[] A) {
         HashSet<Integer> set = new HashSet<Integer>();
@@ -24,11 +24,12 @@ public class OddOccurrencesInArray {
     }
 
     /**
-     * 利用亦或
+     * exclusive OR, xor
      * http://blog.sina.com.cn/s/blog_13c6397540102x0c3.html
      * https://blog.csdn.net/xy913741894/article/details/52145043
      * @return
      */
+    // TODO
     public int solution2(int[] A) {
         int result = 0;
         for (int i = 0; i < A.length; i++) {
