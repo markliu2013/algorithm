@@ -2,6 +2,7 @@ package com.zfwhub.algorithm.acm.array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
 /**
  * http://poj.org/problem?id=3666
  * https://en.wikipedia.org/wiki/Isotonic_regression
@@ -33,14 +34,14 @@ public class MakingTheGrade {
         int lastNum = roads[roads.length-1];
         int[] subRoads = Arrays.copyOfRange(roads, 0, roads.length-1);
         GradeResult gr = makeGrade(subRoads);
-        //走upIntList
-        //list1 重复gr的upIntList的最后一个数
+        //Check upIntList
+        //list1 try to use upIntList last number
         List<Integer> list1 = new ArrayList<Integer>();
         for (int i=0; i<gr.upIntList.size(); i++) {
             list1.add(gr.upIntList.get(i));
         }
         list1.add(gr.upIntList.get(gr.upIntList.size()-1));
-        //list2 像roads的最后一个数靠拢
+        //list2 close to roads last number
         List<Integer> list2 = new ArrayList<Integer>();
         for (int i=0; i<gr.upIntList.size(); i++) {
             if (gr.upIntList.get(i) >= lastNum) {
@@ -55,14 +56,12 @@ public class MakingTheGrade {
         } else {
             gr.upIntList = list1;
         }
-        //走downIntList
-        //list3 重复gr的downIntList的最后一个数
+        //check downIntList
         List<Integer> list3 = new ArrayList<Integer>();
         for (int i=0; i<gr.downIntList.size(); i++) {
             list3.add(gr.downIntList.get(i));
         }
         list3.add(gr.downIntList.get(gr.downIntList.size()-1));
-        //list4 像roads的最后一个数靠拢
         List<Integer> list4 = new ArrayList<Integer>();
         for (int i=0; i<gr.downIntList.size(); i++) {
             if (gr.downIntList.get(i) < lastNum) {
@@ -79,7 +78,7 @@ public class MakingTheGrade {
         }
         return gr;
     }
-
+    
     public static int getGap(int[] roads, List<Integer> grades) {
         int gap = 0;
         for (int i=0; i<grades.size(); i++) {
@@ -87,7 +86,7 @@ public class MakingTheGrade {
         }
         return gap;
     }
-
+    
     public static void main(String[] args) {
         int[] roads = new int[]{95,94,94,95,95,95,95,95,97,97,97,95,97,98,99,95,95,95,95,95};
         GradeResult gr = makeGrade(roads);
@@ -95,7 +94,7 @@ public class MakingTheGrade {
         System.out.println(gr.upIntList);
         System.out.println(Math.min(getGap(roads, gr.downIntList), getGap(roads, gr.upIntList)));
     }
-
+    
     private static class GradeResult {
         public List<Integer> upIntList = new ArrayList<Integer>();//your grading up list
         public List<Integer> downIntList = new ArrayList<Integer>();//your grading down list
