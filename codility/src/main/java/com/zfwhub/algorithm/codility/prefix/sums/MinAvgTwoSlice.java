@@ -1,8 +1,8 @@
 package com.zfwhub.algorithm.codility.prefix.sums;
 
 /**
- * 查找某个数组的子数组，找平均值最小。
- * 类比找某个数组的最大子数组
+ * Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.
+ * it is similar with leetcode MaximumSubarray
  * https://leetcode.com/problems/maximum-subarray/description/
  * https://app.codility.com/programmers/lessons/5-prefix_sums/min_avg_two_slice/
 */
@@ -10,7 +10,6 @@ public class MinAvgTwoSlice {
 
     /**
      * straightforward
-     * https://app.codility.com/demo/results/trainingX97SBY-RG5/
      */
     public int solution(int[] A) {
         float minAvg = Float.MAX_VALUE;
@@ -32,7 +31,7 @@ public class MinAvgTwoSlice {
     }
     
     /**
-     * prefixsum存储的是平均值
+     * prefixsum is avg
      * https://app.codility.com/demo/results/trainingUXQSX8-U8S/
      */
     public int solution2(int[] A) {
@@ -56,8 +55,7 @@ public class MinAvgTwoSlice {
     }
     
     /**
-     * 利用prefixsum优化
-     * https://app.codility.com/demo/results/trainingMATP7R-UUT/
+     * prefixSums optimization
      */
     public int solution3(int[] A) {
         int[] prefixSums = new int[A.length];

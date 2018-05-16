@@ -4,8 +4,9 @@ package com.zfwhub.algorithm.codility.prefix.sums;
  * https://app.codility.com/programmers/lessons/5-prefix_sums/passing_cars/
  */
 public class PassingCars {
+    
     /**
-     * count每个0前面有几个1
+     * count how many 1 before every 0
      */
     public int solution(int[] A) {
         int count = 0;
@@ -20,7 +21,7 @@ public class PassingCars {
     }
 
     /**
-     * 利用prefixSum, 还是计算每个0前面几个1 
+     * prefixSum, count how many 1 before every 0
      */
     public int solution2(int[] A) {
         int[] prefixSum = new int[A.length];
@@ -41,7 +42,7 @@ public class PassingCars {
     }
 
     /**
-     * 计算每个1前面几个0
+     * count how many 0 before every 1
      */
     public int solution3(int[] A) {
         int countOfZeros = 0, count = 0;
