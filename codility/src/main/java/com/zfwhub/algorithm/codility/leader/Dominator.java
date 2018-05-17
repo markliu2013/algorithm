@@ -18,7 +18,7 @@ public class Dominator {
      * HashMap
      */
     public static int solution(int[] A) {
-        if (!hasLeader(A.clone())) {
+        if (!hasLeader(A)) {
             return -1;
         }
         HashMap<Integer, Entry<Integer, Integer>> map = new HashMap<Integer, Map.Entry<Integer, Integer>>();
@@ -56,6 +56,7 @@ public class Dominator {
             return false;
         }
         // sorted, then check from middle
+        A = A.clone();// Don't change original A
         Arrays.sort(A);
         int midNumber =  A[A.length / 2];
         int count = 1;
