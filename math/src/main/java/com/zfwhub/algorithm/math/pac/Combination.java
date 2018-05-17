@@ -62,6 +62,7 @@ public class Combination {
                 List<List<Integer>> list8 = preList.get(j);
                 List<List<Integer>> list10_1 = preList.get(j-1);
                 // deep copy list
+                // TODO simplify deep copy list
                 List<List<Integer>> list10 = new LinkedList<List<Integer>>();
                 for (List<Integer> list10_1_1 : list10_1) {
                     List<Integer> list10_1_2 = new LinkedList<Integer>();
