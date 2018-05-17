@@ -15,6 +15,7 @@
         <module>acm</module>
         <module>math</module>
         <module>dynamicprogramming</module>
+        <module>ml</module>
     </modules>
 
     <dependencies>
