@@ -33,6 +33,24 @@ public class Dominator {
         }
         return -1;
     }
+    /**
+     * straightforward
+     */
+    public static int solution2(int[] A) {
+        for (int i = 0; i < A.length; i++) {
+            int candidate = A[i];
+            int count = 0;
+            for (int j = 0; j < A.length; j++) {
+                if (A[j] == candidate) {
+                    count++;
+                }
+            }
+            if (count > A.length / 2) {
+                return i;
+            }
+        }
+        return -1;
+    }
     
     public static void main(String[] args) {
         System.out.println(Dominator.solution(new int[] { }));

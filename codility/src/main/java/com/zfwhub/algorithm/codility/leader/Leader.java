@@ -2,6 +2,9 @@ package com.zfwhub.algorithm.codility.leader;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.LinkedList;
+
+import org.omg.CORBA.portable.ValueBase;
 
 /**
  * How to find leader?
@@ -12,9 +15,91 @@ import java.util.HashSet;
  */
 public class Leader {
     
-    // TODO find leader
+    /**
+     * count the occurrences of every element:
+     */
+    public static int slowLeader(int[] A) {
+        for (int i = 0; i < A.length; i++) {
+            int candidate = A[i];
+            int count = 0;
+            for (int j = 0; j < A.length; j++) {
+                if (A[j] == candidate) {
+                    count++;
+                }
+            }
+            if (count > A.length / 2) {
+                return candidate;
+            }
+        }
+        return -1;
+    }
+    /**
+     * sort
+     */
+    public static int fastLeader(int[] A) {
+        if (A.length == 0) return -1;
+        A = A.clone();
+        Arrays.sort(A);
+        int candidate = A[A.length / 2];
+        int count = 0;
+        for (int i = 0; i < A.length; i++) {
+            if (A[i] == candidate) {
+                count++;
+            }
+        }
+        if (count > A.length / 2) {
+            return candidate;
+        }
+        return -1;
+    }
+    
+    // TODO goldenLeader
+    public static int goldenLeader(int[] A) {
+        if (A.length == 0) return -1;
+        int size = 0;
+        int value = 0;
+        for (int i = 0; i < A.length; i++) {
+            if (size == 0) {
+                size++;
+                value = A[i];
+            } else {
+                if (value != A[i]) {
+                    size--;
+                } else {
+                    size++;
+                }
+            }
+        }
+        int candidate = -1;
+        if (size > 0) {
+            candidate = value;
+        }
+        int count = 0;
+        for (int i = 0; i < A.length; i++) {
+            if (A[i] == candidate) {
+                count++;
+            }
+        }
+        if (count > A.length / 2) {
+            return candidate;
+        }
+        return -1;
+    }
+    
+    /**
+     * just help test my solution
+     */
     public static int solution(int[] A) {
-        return 0;
+        int leader = goldenLeader(A);
+        if (leader == -1) {
+            return -1;
+        }
+        for (int i = 0; i < A.length; i++) {
+            if (A[i] == leader) {
+                return i;
+            }
+        }
+        return -1;
     }
     
     /**
@@ -53,7 +138,7 @@ public class Leader {
     }
     
     public static void main(String[] args) {
-        
+        System.out.println(Leader.solution(new int[] {2,1,2,1,0}));
     }
 
 }
