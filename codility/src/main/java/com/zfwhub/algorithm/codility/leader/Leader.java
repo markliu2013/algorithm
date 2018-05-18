@@ -2,15 +2,12 @@ package com.zfwhub.algorithm.codility.leader;
 
 import java.util.Arrays;
 import java.util.HashSet;
-import java.util.LinkedList;
-
-import org.omg.CORBA.portable.ValueBase;
 
 /**
  * How to find leader?
  * 1. Count the occurrences of every element
  * 2. Sorted, then check from middle
- * 3. 
+ * 3. Stack
  * https://codility.com/media/train/6-Leader.pdf
  */
 public class Leader {
@@ -53,9 +50,13 @@ public class Leader {
         return -1;
     }
     
-    // TODO goldenLeader
+    /**
+     *  after removing a pair of elements of dierent values,
+     *  the remaining sequence still has the same leader
+     */
     public static int goldenLeader(int[] A) {
         if (A.length == 0) return -1;
+        // find the possible candidate
         int size = 0;
         int value = 0;
         for (int i = 0; i < A.length; i++) {
@@ -74,6 +75,7 @@ public class Leader {
         if (size > 0) {
             candidate = value;
         }
+        // check
         int count = 0;
         for (int i = 0; i < A.length; i++) {
             if (A[i] == candidate) {
