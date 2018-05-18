@@ -9,6 +9,7 @@
 * [MakingTheGrade](http://poj.org/problem?id=3666)
 * [国王的金矿](http://www.sohu.com/a/153858619_466939)
 * [Triangle](https://app.codility.com/programmers/lessons/6-sorting/triangle/)
+* [Leader](https://codility.com/media/train/6-Leader.pdf)
 
 ## Recommended, 4 stars
 * [TapeEquilibrium](https://app.codility.com/programmers/lessons/3-time_complexity/tape_equilibrium/)
