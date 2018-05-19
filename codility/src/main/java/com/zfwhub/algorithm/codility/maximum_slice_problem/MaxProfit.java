@@ -1,9 +1,11 @@
 package com.zfwhub.algorithm.codility.maximum_slice_problem;
-
+/**
+ * https://app.codility.com/programmers/lessons/9-maximum_slice_problem/max_profit/
+ */
 public class MaxProfit {
     
     /**
-     * straightforward, brute force 
+     * straightforward, brute force
      */
     public static int solution(int[] A) {
         int maxProfit = 0;
@@ -13,6 +15,11 @@ public class MaxProfit {
             }
         }
         return maxProfit;
+    }
+    
+    // TODO MaxProfit
+    public static int solution2(int[] A) {
+        return 0;
     }
     
     public static void main(String[] args) {
