@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 
 import org.junit.*;
 
+import com.zfwhub.algorithm.codility.prefix_sums.MinAvgTwoSlice;
+
 public class MinAvgTwoSliceTest {
 
     private static MinAvgTwoSlice minAvgTwoSlice;

@@ -1,4 +1,4 @@
-package com.zfwhub.algorithm.codility.stacksandqueues;
+package com.zfwhub.algorithm.codility.stacks_and_queues;
 
 import java.util.HashSet;
 

@@ -1,4 +1,4 @@
-package com.zfwhub.algorithm.codility.prefix.sums;
+package com.zfwhub.algorithm.codility.prefix_sums;
 
 /**
  * Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.
