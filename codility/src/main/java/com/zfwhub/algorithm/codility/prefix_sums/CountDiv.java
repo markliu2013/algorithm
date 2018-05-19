@@ -1,4 +1,4 @@
-package com.zfwhub.algorithm.codility.prefix.sums;
+package com.zfwhub.algorithm.codility.prefix_sums;
 
 /**
  * count the numbers divisible by K between A and B.
