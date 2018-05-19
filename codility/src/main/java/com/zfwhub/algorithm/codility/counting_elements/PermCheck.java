@@ -1,4 +1,4 @@
-package com.zfwhub.algorithm.codility.counting.elements;
+package com.zfwhub.algorithm.codility.counting_elements;
 
 import java.util.HashSet;
 /**
