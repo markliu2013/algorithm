@@ -101,7 +101,10 @@ public class Flags {
         return maxFlags;
     }
     
-    
+    // TODO Flags
+    public static int solution4(int[] A) {
+        return 0;
+    }
     public static void main(String[] args) {
         System.out.println(Flags.solution3(new int[] {1,5,3,4,3,4,1,2,3,4,6,2}));
     }
