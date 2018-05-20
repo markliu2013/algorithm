@@ -19,7 +19,7 @@ public class StoneWall {
                 Iterator<Integer> iterator = set.iterator();
                 while (iterator.hasNext()) {
                     Integer element = iterator.next();
-                    if (element >  H[i]) {
+                    if (element > H[i]) {
                         iterator.remove();
                     }
                 }
