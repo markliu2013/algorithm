@@ -3,14 +3,14 @@ package com.zfwhub.algorithm.codility.sorting;
 import java.util.Arrays;
 
 /**
- * 数组是否能组成三角形
+ * Array can combine triangle?
  * https://app.codility.com/programmers/lessons/6-sorting/triangle/
  */
 public class Triangle {
     
     /**
-     * brute force, 选出所有的组合, 判断。
-     * 当int过大时会越界。
+     * brute force, get all combinations, then check.
+     * int maybe overflow
      */
     public static int solution(int[] A) {
         for (int i = 0; i < A.length; i++) {
@@ -26,7 +26,7 @@ public class Triangle {
     }
     
     /**
-     * 解决越界, 灵活变换不等式, 灵活运用知识, 思路要开阔。
+     * fix overflow, use subtract instead of addition
      */
     public static int solution2(int[] A) {
         for (int i = 0; i < A.length; i++) {
@@ -42,8 +42,8 @@ public class Triangle {
     }
     
     /**
-     * 如果最有可能的条件下不成立，则其他条件不用判断。
-     * 先排序，则只需要判断相邻的三个数。 
+     * check the most possible condition, then no need check others.
+     * sorted then check every 3 adjacents
      */
     public static int solution3(int[] A) {
         Arrays.sort(A);
