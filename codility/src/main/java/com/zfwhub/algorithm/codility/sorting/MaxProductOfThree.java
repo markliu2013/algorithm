@@ -48,13 +48,12 @@ public class MaxProductOfThree {
         return Math.max(A[0] * A[1] * A[A.length - 1], A[A.length - 1] * A[A.length - 2] * A[A.length - 3]);
     }
     
-    // TODO
+    // TODO MaxProductOfThree
     /**
      * https://leetcode.com/problems/maximum-product-of-three-numbers/solution/
      */
     public static int solution4(int[] A) {
-        Arrays.sort(A);
-        return Math.max(A[0] * A[1] * A[A.length - 1], A[A.length - 1] * A[A.length - 2] * A[A.length - 3]);
+        return 0;
     }
     
     public static void main(String[] args) {
