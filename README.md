@@ -10,12 +10,12 @@
 * [国王的金矿](http://www.sohu.com/a/153858619_466939)
 * [Triangle](https://app.codility.com/programmers/lessons/6-sorting/triangle/)
 * [Leader](https://codility.com/media/train/6-Leader.pdf)
-* [Flags](https://app.codility.com/programmers/lessons/10-prime_and_composite_numbers/flags/)
+* [MaxDoubleSliceSum](https://app.codility.com/programmers/lessons/9-maximum_slice_problem/max_double_slice_sum/)
 
 ## Recommended, 4 stars
 * [TapeEquilibrium](https://app.codility.com/programmers/lessons/3-time_complexity/tape_equilibrium/)
 * [MissingInteger](https://app.codility.com/programmers/lessons/4-counting_elements/missing_integer/)
-
+* [Flags](https://app.codility.com/programmers/lessons/10-prime_and_composite_numbers/flags/)
 
 ## Recommended, 3 stars
 * [OddOccurrencesInArray](https://app.codility.com/programmers/lessons/2-arrays/odd_occurrences_in_array/)
