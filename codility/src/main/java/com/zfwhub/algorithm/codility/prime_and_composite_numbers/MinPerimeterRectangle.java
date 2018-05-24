@@ -21,15 +21,46 @@ public class MinPerimeterRectangle {
         return minPerimeter;
     }
     
-    // TODO MinPerimeterRectangle
+    /**
+     * just need from 1 to n's square root
+     */
     public static int solution2(int N) {
-        int count = 0;
-        
-        return count;
+    	int minPerimeter = Integer.MAX_VALUE;
+        int i = 1;
+        while (i < Math.sqrt(N)) {
+			if (N % i == 0) {
+				int a = i;
+                int b = N / i;
+                int perimeter = 2 * (a + b);
+                minPerimeter = Math.min(minPerimeter, perimeter);
+			}
+        	i++;
+		}
+        if (i == Math.sqrt(N)) {
+        	int perimeter = 2 * (i + i);
+            minPerimeter = Math.min(minPerimeter, perimeter);
+		}
+        return minPerimeter;
+    }
+    
+    /**
+     * the most close a and b, is the answer.
+     */
+    public static int solution3(int N) {
+        int i = (int) Math.ceil(Math.sqrt(N));
+        while (i > 1) {
+        	if (N % i == 0) {
+        		return 2 * (i + N / i);
+        	}
+        	i--;
+		}
+        return 2 * (1 + N);
     }
     
     public static void main(String[] args) {
-        System.out.println(MinPerimeterRectangle.solution(30));
+        System.out.println(MinPerimeterRectangle.solution(5));
+        System.out.println(MinPerimeterRectangle.solution2(5));
+        System.out.println(MinPerimeterRectangle.solution3(5));
     }
     
 }
