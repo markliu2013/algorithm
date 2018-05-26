@@ -65,6 +65,12 @@ public class CountNonDivisible {
         return result;
     }
     
+    // TODO CountNonDivisible use sieve_of_eratosthenes
+    public static int[] solution3(int[] A) {
+        return null;
+    }
+    
+    
     public static void main(String[] args) {
         System.out.println(Arrays.toString(CountNonDivisible.solution(new int[]{3,1,2,3,6})));
         System.out.println(Arrays.toString(CountNonDivisible.solution2(new int[]{3,1,2,3,6})));
