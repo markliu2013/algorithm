@@ -1,7 +1,9 @@
 package com.zfwhub.algorithm.codility.sieve_of_eratosthenes;
-
 import java.util.Arrays;
 
+/**
+ * https://app.codility.com/programmers/lessons/11-sieve_of_eratosthenes/count_semiprimes/
+ */
 public class CountSemiprimes {
 	
 	/**
@@ -40,7 +42,9 @@ public class CountSemiprimes {
 		return result;
 	}
 	
-	// TODO CountSemiprimes
+	/**
+	 * Sieve of Eratosthenes and prefix sums
+	 */
 	public static int[] solution2(int N, int[] P, int[] Q) {
 		// get smallest prime from 1 to N
 		int[] F = new int[N + 1];
