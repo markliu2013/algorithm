@@ -2,7 +2,10 @@ package com.zfwhub.algorithm.codility.euclidean_algorithm;
 
 public class GreatestCommonDivisor {
     
-    public static int solution(int a, int b) {
+    /**
+     * My solution, from small number's biggest Divisor, check if it is large number's
+     */
+    public static int gcd(int a, int b) {
         //a < b
         if (a <= b) {
             if (b % a == 0) {
@@ -23,12 +26,40 @@ public class GreatestCommonDivisor {
             }
             return max;
         } else {
-            return solution(b, a);
+            return gcd(b, a);
         }
     }
     
+    /**
+     * euclidean algorithm by subtraction
+     */
+    public static int gcd2(int a, int b) {
+        if (a == b) {
+            return a;
+        }
+        if (a > b) {
+            return gcd2(a-b, b);
+        } else {
+           return gcd2(a, b-a);
+        }
+    }
+    
+    /**
+     * euclidean algorithm by dividing
+     */
+    public static int gcd3(int a, int b) {
+        if (a % b == 0) {
+            return b;
+        } else {
+            return gcd3(b, a % b);
+        }
+        
+    }
+    
     public static void main(String[] args) {
-        System.out.println(GreatestCommonDivisor.solution(319, 377));
+        System.out.println(GreatestCommonDivisor.gcd(123121212, 1231234234));
+        System.out.println(GreatestCommonDivisor.gcd3(123121212, 1231234234));
+        //System.out.println(GreatestCommonDivisor.gcd2(12312, 1231234234));
     }
 
 }

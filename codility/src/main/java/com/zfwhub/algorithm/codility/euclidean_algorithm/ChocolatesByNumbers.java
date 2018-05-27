@@ -18,8 +18,16 @@ public class ChocolatesByNumbers {
         return count;
     }
     
+    
+    public static int solution2(int N, int M) {
+        int gcd = GreatestCommonDivisor.gcd3(N, M);
+        return N / gcd;        
+    }
+    
+    
     public static void main(String[] args) {
-        System.out.println(ChocolatesByNumbers.solution(10, 4));
+        System.out.println(ChocolatesByNumbers.solution(10, 5));
+        System.out.println(ChocolatesByNumbers.solution2(10, 5));
     }
 
 }
