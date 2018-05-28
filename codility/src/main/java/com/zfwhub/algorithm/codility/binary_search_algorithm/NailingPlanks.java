@@ -26,6 +26,37 @@ public class NailingPlanks {
     }
     
     /**
+     * brute force, remove early
+     */
+    // TODO wrong NailingPlanks
+    public static int solution4(int[] A, int[] B, int[] C) {
+        ArrayList<Integer> list1 = new ArrayList<Integer>();
+        for (int i = 0; i < A.length; i++) {
+            list1.add(A[i]);
+        }
+        ArrayList<Integer> list2 = new ArrayList<Integer>();
+        for (int i = 0; i < B.length; i++) {
+            list2.add(B[i]);
+        }
+        ArrayList<Integer> list3 = new ArrayList<Integer>();
+        for (int i = 0; i < C.length; i++) {
+            for (int j = 0; j < list1.size(); j++) {
+                if (C[i] >= list1.get(j) && C[i] <= list2.get(j)) {
+                    list3.add(j);
+                }
+            }
+            if (list3.size() == A.length) {
+                return i + 1;
+            }
+            for (Integer integer : list3) {
+                list1.remove(integer);
+                list2.remove(integer);
+            }
+        }
+        return -1;
+    }
+    
+    /**
      * binary search
      */
     // TODO wrong.
