@@ -8,6 +8,9 @@ import java.util.Arrays;
  */
 public class Ladder {
     
+	/**
+	 * brute force, use BigInteger fix overflow.
+	 */
     public static int[] solution(int[] A, int[] B) {
         int[] result = new int[A.length];
         for (int i = 0; i < A.length; i++) {
