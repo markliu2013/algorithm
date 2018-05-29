@@ -14,7 +14,7 @@ public class LongestSubstring {
     public static int lengthOfLongestSubstring(String s) {
         int maxLength = 0;
         for (int i = 0; i < s.length(); i++) {
-            for (int j = i+1; j <= s.length(); j++) {
+            for (int j = i + 1; j <= s.length(); j++) {
                 String subStr = s.substring(i, j);
                 if (isAllUnique(subStr)) {
                     maxLength = Math.max(maxLength, subStr.length());
@@ -31,7 +31,7 @@ public class LongestSubstring {
      */
     public static int lengthOfLongestSubstring2(String s) {
         if (s == null || s.length() == 0) {
-            return  0;
+            return 0;
         }
         int startIndex = 0;
         int endIndex = 0;
@@ -42,7 +42,7 @@ public class LongestSubstring {
             char next = s.charAt(endIndex);
             int nextIndex = subStr.indexOf(next);
             if (nextIndex >= 0) {
-                subStr = subStr.substring(nextIndex+1) + next;
+                subStr = subStr.substring(nextIndex + 1) + next;
             } else {
                 subStr = subStr + next;
                 if (maxLength < subStr.length()) {

@@ -1,4 +1,5 @@
 package com.zfwhub.algorithm.leetcode.math;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,12 +33,13 @@ public class AddTwoNumbers {
         String integerString = linkedStringBuilder.reverse().toString();
         return new Long(integerString);
     }
+
     public ListNode parseLongToNode(Long number) {
         String str = String.valueOf(number);
-        ListNode current = new ListNode(Character.getNumericValue(str.charAt(str.length()-1)));
+        ListNode current = new ListNode(Character.getNumericValue(str.charAt(str.length() - 1)));
         ListNode node = current;
         for (int i = 1; i < str.length(); i++) {
-            current.next = new ListNode(Character.getNumericValue(str.charAt(str.length()-1-i)));
+            current.next = new ListNode(Character.getNumericValue(str.charAt(str.length() - 1 - i)));
             current = current.next;
         }
         return node;
@@ -56,7 +58,10 @@ public class AddTwoNumbers {
     private static class ListNode {
         int val;
         ListNode next;
-        ListNode(int x) { val = x; }
+
+        ListNode(int x) {
+            val = x;
+        }
     }
 
 }
