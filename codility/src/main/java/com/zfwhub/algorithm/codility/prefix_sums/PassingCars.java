@@ -4,7 +4,7 @@ package com.zfwhub.algorithm.codility.prefix_sums;
  * https://app.codility.com/programmers/lessons/5-prefix_sums/passing_cars/
  */
 public class PassingCars {
-    
+
     /**
      * count how many 1 before every 0
      */

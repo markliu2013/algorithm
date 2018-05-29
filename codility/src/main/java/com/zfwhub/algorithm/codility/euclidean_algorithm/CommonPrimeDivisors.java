@@ -9,7 +9,7 @@ import com.zfwhub.algorithm.codility.sieve_of_eratosthenes.Eratosthenes;
  * https://app.codility.com/programmers/lessons/12-euclidean_algorithm/common_prime_divisors/
  */
 public class CommonPrimeDivisors {
-    
+
     /**
      * If they have the same numbers in factorization?
      */
@@ -30,12 +30,12 @@ public class CommonPrimeDivisors {
         }
         return count;
     }
-    
+
     // TODO CommonPrimeDivisors
     public static int solution2(int[] A, int[] B) {
         return 0;
     }
-    
+
     // TODO 
     public static boolean checkNums(int N, int M) {
         if (N < M) {
@@ -46,10 +46,10 @@ public class CommonPrimeDivisors {
             return true;
         }
     }
-    
+
     public static void main(String[] args) {
-        int[] A = new int[]{15, 10, 3};
-        int[] B = new int[]{75, 30, 5};
+        int[] A = new int[] { 15, 10, 3 };
+        int[] B = new int[] { 75, 30, 5 };
         System.out.println(CommonPrimeDivisors.solution(A, B));
     }
 }

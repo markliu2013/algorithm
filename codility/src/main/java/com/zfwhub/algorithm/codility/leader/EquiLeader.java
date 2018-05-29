@@ -1,11 +1,12 @@
 package com.zfwhub.algorithm.codility.leader;
 
 import java.util.Arrays;
+
 /**
  * https://app.codility.com/programmers/lessons/8-leader/equi_leader/
  */
 public class EquiLeader {
-    
+
     /**
      * count all index
      */
@@ -22,7 +23,7 @@ public class EquiLeader {
         }
         return count;
     }
-    
+
     /**
      * similar TapeEquilibrium
      */
@@ -60,7 +61,7 @@ public class EquiLeader {
                     leftLeaderCount++;
                     rightLeaderCount--;
                 }
-                if (leftLeaderCount > (i+1)/2 && rightLeaderCount > ( A.length - (i+1))/2) {
+                if (leftLeaderCount > (i + 1) / 2 && rightLeaderCount > (A.length - (i + 1)) / 2) {
                     countEquiLeader++;
                 }
             }
@@ -69,9 +70,9 @@ public class EquiLeader {
             return 0;
         }
     }
-    
+
     public static void main(String[] args) {
-        System.out.println(EquiLeader.solution2(new int[]{2,2,2,2,1}));
+        System.out.println(EquiLeader.solution2(new int[] { 2, 2, 2, 2, 1 }));
     }
-    
+
 }

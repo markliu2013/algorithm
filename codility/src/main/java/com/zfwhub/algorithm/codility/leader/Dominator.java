@@ -33,6 +33,7 @@ public class Dominator {
         }
         return -1;
     }
+
     /**
      * straightforward
      */
@@ -51,9 +52,9 @@ public class Dominator {
         }
         return -1;
     }
-    
+
     public static void main(String[] args) {
-        System.out.println(Dominator.solution(new int[] { }));
+        System.out.println(Dominator.solution(new int[] {}));
     }
 
 }

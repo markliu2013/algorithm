@@ -11,7 +11,7 @@ public class PermMissingElem {
      */
     public int solution(int[] A) {
         //1到n自然数求和公式
-        int sum1 = ((A.length+1)*(A.length+1+1)) / 2;
+        int sum1 = ((A.length + 1) * (A.length + 1 + 1)) / 2;
         int sum2 = 0;//数组的和
         for (int i = 0; i < A.length; i++) {
             sum2 += A[i];
@@ -21,7 +21,7 @@ public class PermMissingElem {
 
     public static void main(String[] args) {
         PermMissingElem pse = new PermMissingElem();
-        System.out.println(pse.solution(new int[] {2,3,1,5}));
+        System.out.println(pse.solution(new int[] { 2, 3, 1, 5 }));
     }
 
 }

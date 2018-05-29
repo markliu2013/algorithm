@@ -7,7 +7,7 @@ import java.util.HashSet;
  * https://app.codility.com/programmers/lessons/6-sorting/distinct/
  */
 public class Distinct {
-    
+
     /**
      * HashSet
      */
@@ -18,13 +18,13 @@ public class Distinct {
         }
         return set.size();
     }
-    
+
     // TODO no built in, need sort?
     public static int solution2(int[] A) {
         return 0;
     }
-    
+
     public static void main(String[] args) {
-        System.out.println(Distinct.solution2(new int[] {-2,1,1,2,3,1}));
+        System.out.println(Distinct.solution2(new int[] { -2, 1, 1, 2, 3, 1 }));
     }
 }

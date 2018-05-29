@@ -2,11 +2,12 @@ package com.zfwhub.algorithm.codility.sieve_of_eratosthenes;
 
 import java.util.Arrays;
 import java.util.HashMap;
+
 /**
  * https://app.codility.com/programmers/lessons/11-sieve_of_eratosthenes/count_non_divisible/
  */
 public class CountNonDivisible {
-    
+
     /**
      * brute force
      */
@@ -21,7 +22,7 @@ public class CountNonDivisible {
         }
         return result;
     }
-    
+
     /**
      * Firstly use map to store every element's count
      * Then we count every element's divisors
@@ -31,7 +32,7 @@ public class CountNonDivisible {
         HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
         for (int i = 0; i < A.length; i++) {
             if (map.containsKey(A[i])) {
-                map.put(A[i], map.get(A[i])+1);
+                map.put(A[i], map.get(A[i]) + 1);
             } else {
                 map.put(A[i], 1);
             }
@@ -64,16 +65,15 @@ public class CountNonDivisible {
         }
         return result;
     }
-    
+
     // TODO CountNonDivisible use sieve_of_eratosthenes
     public static int[] solution3(int[] A) {
         return null;
     }
-    
-    
+
     public static void main(String[] args) {
-        System.out.println(Arrays.toString(CountNonDivisible.solution(new int[]{3,1,2,3,6})));
-        System.out.println(Arrays.toString(CountNonDivisible.solution2(new int[]{3,1,2,3,6})));
+        System.out.println(Arrays.toString(CountNonDivisible.solution(new int[] { 3, 1, 2, 3, 6 })));
+        System.out.println(Arrays.toString(CountNonDivisible.solution2(new int[] { 3, 1, 2, 3, 6 })));
     }
 
 }

@@ -1,4 +1,5 @@
 package com.zfwhub.algorithm.codility.counting_elements;
+
 import java.util.HashSet;
 
 /**
@@ -32,13 +33,14 @@ public class FrogRiverOne {
      */
     public int solution2(int X, int[] A) {
         int steps = X;
-        boolean[] bitmap = new boolean[steps+1];
-        for(int i = 0; i < A.length; i++){
-            if(!bitmap[A[i]]){
+        boolean[] bitmap = new boolean[steps + 1];
+        for (int i = 0; i < A.length; i++) {
+            if (!bitmap[A[i]]) {
                 bitmap[A[i]] = true;
                 steps--;
             }
-            if(steps == 0) return i;
+            if (steps == 0)
+                return i;
         }
         return -1;
     }
@@ -46,7 +48,7 @@ public class FrogRiverOne {
     public static void main(String[] args) {
         FrogRiverOne fro = new FrogRiverOne();
         int X = 5;
-        int[] A = new int[] {1, 3, 1, 4, 2, 3, 5, 4};
+        int[] A = new int[] { 1, 3, 1, 4, 2, 3, 5, 4 };
         System.out.println(fro.solution(X, A));
     }
 

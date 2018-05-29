@@ -38,10 +38,9 @@ public class OddOccurrencesInArray {
         return result;
     }
 
-
     public static void main(String[] args) {
         OddOccurrencesInArray odd = new OddOccurrencesInArray();
-        int[] arr = new int[]{9,3,9,3,9,7,9};
+        int[] arr = new int[] { 9, 3, 9, 3, 9, 7, 9 };
         System.out.println(odd.solution2(arr));
     }
 
