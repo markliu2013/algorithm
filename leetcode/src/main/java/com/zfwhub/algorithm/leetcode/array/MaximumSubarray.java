@@ -34,12 +34,12 @@ public class MaximumSubarray {
         // get prefixSum
         prefixSums[0] = nums[0];
         for (int i = 1; i < nums.length; i++) {
-            prefixSums[i] = prefixSums[i-1] + nums[i];
+            prefixSums[i] = prefixSums[i - 1] + nums[i];
         }
         int max = Integer.MIN_VALUE;
         for (int i = 0; i < prefixSums.length; i++) {
             for (int j = i; j < prefixSums.length; j++) {
-                max = Math.max(prefixSums[j] - (i >= 1 ? prefixSums[i-1] : 0), max);
+                max = Math.max(prefixSums[j] - (i >= 1 ? prefixSums[i - 1] : 0), max);
             }
         }
         return max;
@@ -67,9 +67,9 @@ public class MaximumSubarray {
         if (nums.length == 1) {
             return nums[0];
         }
-        int lastNum = nums[nums.length-1];
+        int lastNum = nums[nums.length - 1];
         //don't choose the last number
-        int[] subArray1 = Arrays.copyOfRange(nums, 0, nums.length-1);
+        int[] subArray1 = Arrays.copyOfRange(nums, 0, nums.length - 1);
         int max1 = maxSubArray3(subArray1);
         //choose the last number, deduce from start again
         int max2 = Integer.MIN_VALUE;
@@ -122,10 +122,10 @@ public class MaximumSubarray {
         sum[0] = nums[0];
         max[0] = nums[0];
         for (int i = 1; i < nums.length; i++) {
-            sum[i] = Math.max(sum[i-1]+nums[i], nums[i]);
-            max[i] = Math.max(sum[i], max[i-1]);
+            sum[i] = Math.max(sum[i - 1] + nums[i], nums[i]);
+            max[i] = Math.max(sum[i], max[i - 1]);
         }
-        return max[nums.length-1];
+        return max[nums.length - 1];
     }
 
     /**
@@ -135,13 +135,13 @@ public class MaximumSubarray {
         int curSum = nums[0];
         int maxSum = nums[0];
         for (int i = 1; i < nums.length; i++) {
-			/* end by nums[i]'s maximum */
+            /* end by nums[i]'s maximum */
             if (curSum < 0) {
                 curSum = nums[i];
             } else {
                 curSum += nums[i];
             }
-			/* to i's maximum */
+            /* to i's maximum */
             maxSum = Math.max(maxSum, curSum);
         }
         return maxSum;
