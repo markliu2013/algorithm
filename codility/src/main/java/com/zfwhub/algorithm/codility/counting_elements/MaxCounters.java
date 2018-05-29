@@ -6,7 +6,7 @@ import java.util.Arrays;
  * https://app.codility.com/programmers/lessons/4-counting_elements/max_counters/
  */
 public class MaxCounters {
-    
+
     /**
      * straightforward
      */
@@ -20,13 +20,13 @@ public class MaxCounters {
                     result[j] = max;
                 }
             } else {
-                result[A[i]-1] = result[A[i]-1] + 1;
-                max = Math.max(max, result[A[i]-1]);
+                result[A[i] - 1] = result[A[i] - 1] + 1;
+                max = Math.max(max, result[A[i] - 1]);
             }
         }
         return result;
     }
-    
+
     /**
      * remember the max number, then max operation at last.
      */
@@ -56,11 +56,11 @@ public class MaxCounters {
         }
         return result;
     }
-    
+
     public static void main(String[] args) {
         MaxCounters mc = new MaxCounters();
         int N = 5;
-        int[] A = new int[] {3, 4, 4, 6, 1, 4, 4};
+        int[] A = new int[] { 3, 4, 4, 6, 1, 4, 4 };
         int[] result = mc.solution(N, A);
         System.out.println(Arrays.toString(result));
     }

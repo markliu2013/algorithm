@@ -6,7 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 
 public class NailingPlanks {
-    
+
     /**
      * brute force
      */
@@ -24,7 +24,7 @@ public class NailingPlanks {
         }
         return -1;
     }
-    
+
     /**
      * brute force, remove early
      */
@@ -55,7 +55,7 @@ public class NailingPlanks {
         }
         return -1;
     }
-    
+
     /**
      * binary search
      */
@@ -68,7 +68,7 @@ public class NailingPlanks {
             while (begin1 <= end1) {
                 int mid = (begin1 + end1) / 2;
                 if (A[mid] < C[i]) {
-                    begin1 = mid+1;
+                    begin1 = mid + 1;
                 } else if (A[mid] > C[i]) {
                     end1 = mid - 1;
                 } else {
@@ -81,7 +81,7 @@ public class NailingPlanks {
             while (begin2 <= end2) {
                 int mid = (begin2 + end2) / 2;
                 if (B[mid] < C[i]) {
-                    begin2 = mid+1;
+                    begin2 = mid + 1;
                 } else if (B[mid] > C[i]) {
                     end2 = mid - 1;
                 } else {
@@ -101,7 +101,7 @@ public class NailingPlanks {
         }
         return -1;
     }
-    
+
     // TODO list, check and remove
     public static int solution3(int[] A, int[] B, int[] C) {
         ArrayList<Integer> list1 = new ArrayList<Integer>();
@@ -119,7 +119,7 @@ public class NailingPlanks {
             while (begin1 <= end1) {
                 int mid = (begin1 + end1) / 2;
                 if (list1.get(mid) < C[i]) {
-                    begin1 = mid+1;
+                    begin1 = mid + 1;
                 } else if (list1.get(mid) > C[i]) {
                     end1 = mid - 1;
                 } else {
@@ -132,7 +132,7 @@ public class NailingPlanks {
             while (begin2 <= end2) {
                 int mid = (begin2 + end2) / 2;
                 if (list2.get(mid) < C[i]) {
-                    begin2 = mid+1;
+                    begin2 = mid + 1;
                 } else if (list2.get(mid) > C[i]) {
                     end2 = mid - 1;
                 } else {
@@ -152,16 +152,16 @@ public class NailingPlanks {
                 }
             }
         }
-        return -1;    
+        return -1;
     }
-    
+
     public static void main(String[] args) {
-//        int[] A = new int[]{1,4,5,8};
-//        int[] B = new int[]{4,5,9,10};
-//        int[] C = new int[]{4,5,5,5};
-        int[] A = new int[]{3,4,5,6,9};
-        int[] B = new int[]{16,17,18,19,20};
-        int[] C = new int[]{19,17,7};
+        //        int[] A = new int[]{1,4,5,8};
+        //        int[] B = new int[]{4,5,9,10};
+        //        int[] C = new int[]{4,5,5,5};
+        int[] A = new int[] { 3, 4, 5, 6, 9 };
+        int[] B = new int[] { 16, 17, 18, 19, 20 };
+        int[] C = new int[] { 19, 17, 7 };
         System.out.println(NailingPlanks.solution(A, B, C));
         System.out.println(NailingPlanks.solution2(A, B, C));
     }

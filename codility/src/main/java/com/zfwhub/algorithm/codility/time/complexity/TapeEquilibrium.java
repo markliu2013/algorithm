@@ -20,17 +20,17 @@ public class TapeEquilibrium {
         int leftSum = 0;
         int rightSum = sum;
         int gap = Integer.MAX_VALUE;
-        for (int i = 0; i < A.length-1; i++) {
+        for (int i = 0; i < A.length - 1; i++) {
             leftSum += A[i];
             rightSum -= A[i];
-            gap = Math.min(Math.abs(leftSum-rightSum), gap);
+            gap = Math.min(Math.abs(leftSum - rightSum), gap);
         }
         return gap;
     }
 
     public static void main(String[] args) {
         TapeEquilibrium te = new TapeEquilibrium();
-        int[] A = new int[] {0, 2000};
+        int[] A = new int[] { 0, 2000 };
         System.out.println(te.solution(A));
     }
 

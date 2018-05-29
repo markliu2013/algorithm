@@ -8,22 +8,22 @@ import java.util.Arrays;
  * https://leetcode.com/problems/maximum-product-of-three-numbers/description/
  */
 public class MaxProductOfThree {
-    
+
     /**
      * brute force, count every combination.
      */
     public static int solution(int[] A) {
         int maxProduct = Integer.MIN_VALUE;
         for (int i = 0; i < A.length; i++) {
-            for (int j = i+1; j < A.length; j++) {
-                for (int k = j+1; k < A.length; k++) {
-                    maxProduct = Math.max(maxProduct, A[i]*A[j]*A[k]);
+            for (int j = i + 1; j < A.length; j++) {
+                for (int k = j + 1; k < A.length; k++) {
+                    maxProduct = Math.max(maxProduct, A[i] * A[j] * A[k]);
                 }
             }
         }
         return maxProduct;
     }
-    
+
     /**
      * sorted, then in condition to figure 
      */
@@ -33,13 +33,14 @@ public class MaxProductOfThree {
         }
         Arrays.sort(A);
         if (A[1] >= 0 || A[A.length - 1] <= 0) {//少于两个负数或没有正数, 则肯定是最后面三个数。
-           return A[A.length - 1] * A[A.length - 2] * A[A.length - 3];
+            return A[A.length - 1] * A[A.length - 2] * A[A.length - 3];
         }
         if (A[A.length - 3] <= 0) {//少于两个正数
             return A[0] * A[1] * A[A.length - 1];
         }
         return Math.max(A[0] * A[1] * A[A.length - 1], A[A.length - 1] * A[A.length - 2] * A[A.length - 3]);
     }
+
     /**
      * simplify
      */
@@ -47,7 +48,7 @@ public class MaxProductOfThree {
         Arrays.sort(A);
         return Math.max(A[0] * A[1] * A[A.length - 1], A[A.length - 1] * A[A.length - 2] * A[A.length - 3]);
     }
-    
+
     // TODO MaxProductOfThree
     /**
      * https://leetcode.com/problems/maximum-product-of-three-numbers/solution/
@@ -55,9 +56,9 @@ public class MaxProductOfThree {
     public static int solution4(int[] A) {
         return 0;
     }
-    
+
     public static void main(String[] args) {
-        System.out.println(MaxProductOfThree.solution3(new int[] {-2,-3,-4}));
+        System.out.println(MaxProductOfThree.solution3(new int[] { -2, -3, -4 }));
     }
-    
+
 }

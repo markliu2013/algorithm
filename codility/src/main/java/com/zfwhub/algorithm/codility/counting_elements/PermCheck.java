@@ -1,6 +1,7 @@
 package com.zfwhub.algorithm.codility.counting_elements;
 
 import java.util.HashSet;
+
 /**
  * check array is permutation or not.
  * A permutation is a sequence containing each element from 1 to N once, and only once.

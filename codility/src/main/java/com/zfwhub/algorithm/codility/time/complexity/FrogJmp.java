@@ -9,7 +9,7 @@ public class FrogJmp {
      * 两个整数相除, 要找结果的向上取整。
      */
     public int solution(int X, int Y, int D) {
-        return (int) Math.ceil((Y - X) / (float)D);
+        return (int) Math.ceil((Y - X) / (float) D);
     }
 
     public static void main(String[] args) {

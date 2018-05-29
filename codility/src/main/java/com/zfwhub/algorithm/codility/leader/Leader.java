@@ -11,7 +11,7 @@ import java.util.HashSet;
  * https://codility.com/media/train/6-Leader.pdf
  */
 public class Leader {
-    
+
     /**
      * count the occurrences of every element:
      */
@@ -30,11 +30,13 @@ public class Leader {
         }
         return -1;
     }
+
     /**
      * sort
      */
     public static int fastLeader(int[] A) {
-        if (A.length == 0) return -1;
+        if (A.length == 0)
+            return -1;
         A = A.clone();
         Arrays.sort(A);
         int candidate = A[A.length / 2];
@@ -49,13 +51,14 @@ public class Leader {
         }
         return -1;
     }
-    
+
     /**
      *  after removing a pair of elements of dierent values,
      *  the remaining sequence still has the same leader
      */
     public static int goldenLeader(int[] A) {
-        if (A.length == 0) return -1;
+        if (A.length == 0)
+            return -1;
         // find the possible candidate
         int size = 0;
         int value = 0;
@@ -87,7 +90,7 @@ public class Leader {
         }
         return -1;
     }
-    
+
     /**
      * just help test my solution
      */
@@ -103,7 +106,7 @@ public class Leader {
         }
         return -1;
     }
-    
+
     /**
      * if hasLeader
      */
@@ -125,22 +128,28 @@ public class Leader {
         // sorted, then check from middle
         A = A.clone();// Don't change original A
         Arrays.sort(A);
-        int midNumber =  A[A.length / 2];
+        int midNumber = A[A.length / 2];
         int count = 1;
         for (int i = A.length / 2 - 1; i >= 0; i--) {
-            if (A[i] == midNumber) count++;
-            else break;
+            if (A[i] == midNumber)
+                count++;
+            else
+                break;
         }
         for (int i = A.length / 2 + 1; i < A.length; i++) {
-            if (A[i] == midNumber) count++;
-            else break;
+            if (A[i] == midNumber)
+                count++;
+            else
+                break;
         }
-        if (count > A.length / 2) return true;
-        else return false;
+        if (count > A.length / 2)
+            return true;
+        else
+            return false;
     }
-    
+
     public static void main(String[] args) {
-        System.out.println(Leader.solution(new int[] {2,1,2,1,0}));
+        System.out.println(Leader.solution(new int[] { 2, 1, 2, 1, 0 }));
     }
 
 }

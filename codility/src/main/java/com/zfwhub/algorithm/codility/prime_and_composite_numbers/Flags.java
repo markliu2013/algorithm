@@ -1,12 +1,13 @@
 package com.zfwhub.algorithm.codility.prime_and_composite_numbers;
 
 import java.util.ArrayList;
+
 /**
  * https://app.codility.com/programmers/lessons/10-prime_and_composite_numbers/flags/
  * https://codility.com/media/train/solution-flags.pdf
  */
 public class Flags {
-    
+
     /**
      * wrong answer.
      * https://app.codility.com/demo/results/training2Z5C4Z-DDC/
@@ -14,7 +15,7 @@ public class Flags {
     public static int solution(int[] A) {
         ArrayList<Integer> peakIndexes = new ArrayList<Integer>();
         for (int i = 1; i < A.length - 1; i++) {
-            if (A[i] > A[i-1] && A[i] > A[i+1]) {
+            if (A[i] > A[i - 1] && A[i] > A[i + 1]) {
                 peakIndexes.add(i);
             }
         }
@@ -35,14 +36,14 @@ public class Flags {
         }
         return maxFlags;
     }
-    
+
     /**
      * brute force
      */
     public static int solution2(int[] A) {
         ArrayList<Integer> peakIndexes = new ArrayList<Integer>();
         for (int i = 1; i < A.length - 1; i++) {
-            if (A[i] > A[i-1] && A[i] > A[i+1]) {
+            if (A[i] > A[i - 1] && A[i] > A[i + 1]) {
                 peakIndexes.add(i);
             }
         }
@@ -66,14 +67,14 @@ public class Flags {
         }
         return maxFlags;
     }
-    
+
     /**
      * brute force, return early
      */
     public static int solution3(int[] A) {
         ArrayList<Integer> peakIndexes = new ArrayList<Integer>();
         for (int i = 1; i < A.length - 1; i++) {
-            if (A[i] > A[i-1] && A[i] > A[i+1]) {
+            if (A[i] > A[i - 1] && A[i] > A[i + 1]) {
                 peakIndexes.add(i);
             }
         }
@@ -100,13 +101,14 @@ public class Flags {
         }
         return maxFlags;
     }
-    
+
     // TODO Flags
     public static int solution4(int[] A) {
         return 0;
     }
+
     public static void main(String[] args) {
-        System.out.println(Flags.solution3(new int[] {1,5,3,4,3,4,1,2,3,4,6,2}));
+        System.out.println(Flags.solution3(new int[] { 1, 5, 3, 4, 3, 4, 1, 2, 3, 4, 6, 2 }));
     }
 
 }
