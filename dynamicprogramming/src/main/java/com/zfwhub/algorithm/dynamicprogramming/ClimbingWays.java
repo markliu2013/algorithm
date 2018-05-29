@@ -26,7 +26,7 @@ public class ClimbingWays {
         if (n == 2) {
             return 2;
         }
-        return getClimbingWays1(n-1) + getClimbingWays1(n-2);
+        return getClimbingWays1(n - 1) + getClimbingWays1(n - 2);
     }
 
     /**
@@ -45,7 +45,7 @@ public class ClimbingWays {
         if (map.containsKey(n)) {
             return map.get(n);
         } else {
-            int value = getClimbingWays2(n-1, map) + getClimbingWays2(n-2, map);
+            int value = getClimbingWays2(n - 1, map) + getClimbingWays2(n - 2, map);
             map.put(n, value);
             return value;
         }
@@ -75,10 +75,8 @@ public class ClimbingWays {
         return temp;
     }
 
-
     public static void main(String[] args) {
         System.out.println(ClimbingWays.getClimbingWays1(10));
     }
-
 
 }
