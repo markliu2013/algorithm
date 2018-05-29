@@ -10,7 +10,7 @@ public class GaussianElimination {
     }
 
     public static void main(String[] args) {
-        int[] result = gaussianElimination(new int[][]{{3, 2}, {4, -1}});
+        int[] result = gaussianElimination(new int[][] { { 3, 2 }, { 4, -1 } });
         System.out.println(Arrays.toString(result));
     }
 
