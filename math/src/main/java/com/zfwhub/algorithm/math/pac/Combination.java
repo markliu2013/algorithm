@@ -36,7 +36,7 @@ public class Combination {
      * dynamic programming, pascal's triangle
      */
     public static List<List<Integer>> getCombination(List<Integer> list, int n) {
-        if (list == null || list.size() <=0 || n > list.size()) {
+        if (list == null || list.size() <= 0 || n > list.size()) {
             throw new RuntimeException("illegal parameters");
         }
         // preList is 3 dimensionals list, represents a row's all combination list
@@ -60,7 +60,7 @@ public class Combination {
             currList.add(list6);
             for (int j = 1; j < preList.size(); j++) {
                 List<List<Integer>> list8 = preList.get(j);
-                List<List<Integer>> list10_1 = preList.get(j-1);
+                List<List<Integer>> list10_1 = preList.get(j - 1);
                 // deep copy list
                 // TODO simplify deep copy list
                 List<List<Integer>> list10 = new LinkedList<List<Integer>>();

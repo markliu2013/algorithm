@@ -22,8 +22,7 @@ public class Permutation {
         }
         for (int i = 0; i < rest.length(); i++) {
             String next = soFar + rest.charAt(i);
-            String remaining = rest.substring(0, i)
-                    + rest.substring(i + 1, rest.length());
+            String remaining = rest.substring(0, i) + rest.substring(i + 1, rest.length());
             permute(next, remaining);
         }
     }
@@ -40,12 +39,12 @@ public class Permutation {
             return list;
         } else {
             List<List<Integer>> list3 = new ArrayList<List<Integer>>();
-            for (int i=0; i < arr.length; i++) {
-                int[] dest = new int[arr.length-1];
+            for (int i = 0; i < arr.length; i++) {
+                int[] dest = new int[arr.length - 1];
                 System.arraycopy(arr, 0, dest, 0, i);
-                System.arraycopy(arr, i+1, dest, i, arr.length-1-i);
+                System.arraycopy(arr, i + 1, dest, i, arr.length - 1 - i);
                 List<List<Integer>> list4 = permutation(dest);
-                for (int k=0; k<list4.size(); k++) {
+                for (int k = 0; k < list4.size(); k++) {
                     List<Integer> list5 = list4.get(k);
                     list5.add(arr[i]);
                     list3.add(list5);
