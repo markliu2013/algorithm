@@ -51,14 +51,14 @@ public class GoldMineMain {
                 return goldMines.get(0).getAmount();
             }
         }
-        GoldMine gm = goldMines.get(goldMines.size()-1);
-        List<GoldMine> subList = goldMines.subList(0, goldMines.size()-1);
+        GoldMine gm = goldMines.get(goldMines.size() - 1);
+        List<GoldMine> subList = goldMines.subList(0, goldMines.size() - 1);
         int lastPerson = gm.getPerson();
         int lastAmount = gm.getAmount();
         if (maxPerson < lastPerson) {
             return getMaxGold(subList, maxPerson);
         } else {
-            return Math.max(getMaxGold(subList, maxPerson), getMaxGold(subList, maxPerson-lastPerson)+lastAmount);
+            return Math.max(getMaxGold(subList, maxPerson), getMaxGold(subList, maxPerson - lastPerson) + lastAmount);
         }
     }
 
@@ -73,7 +73,7 @@ public class GoldMineMain {
         GoldMine firstGoldMine = goldMines.get(0);
         int[] preResult = new int[maxPerson];
         for (int i = 0; i < preResult.length; i++) {
-            if (i+1 < firstGoldMine.getPerson()) {
+            if (i + 1 < firstGoldMine.getPerson()) {
                 preResult[i] = 0;
             } else {
                 preResult[i] = firstGoldMine.getAmount();
@@ -85,16 +85,16 @@ public class GoldMineMain {
             currentResult = new int[maxPerson];
             for (int j = 1; j <= maxPerson; j++) {
                 if (j > goldMine.getPerson()) {
-                    currentResult[j-1] = Math.max(preResult[j-1], goldMine.getAmount()+preResult[j-goldMine.getPerson()-1]);
-                } else if(j == goldMine.getPerson()) {
-                    currentResult[j-1] = Math.max(preResult[j-1], goldMine.getAmount());
+                    currentResult[j - 1] = Math.max(preResult[j - 1], goldMine.getAmount() + preResult[j - goldMine.getPerson() - 1]);
+                } else if (j == goldMine.getPerson()) {
+                    currentResult[j - 1] = Math.max(preResult[j - 1], goldMine.getAmount());
                 } else {
-                    currentResult[j-1] = preResult[j-1];
+                    currentResult[j - 1] = preResult[j - 1];
                 }
             }
             preResult = currentResult;
         }
-        return currentResult[maxPerson-1];
+        return currentResult[maxPerson - 1];
     }
 
     public List<List<GoldMine>> getAllCombination(List<GoldMine> goldMines) {
@@ -140,15 +140,18 @@ public class GoldMineMain {
             this.amount = amount;
             this.person = person;
         }
+
         public Integer getAmount() {
             return amount;
         }
+
         public Integer getPerson() {
             return person;
         }
+
         @Override
         public String toString() {
-            return "amount:"+amount+", person:"+person;
+            return "amount:" + amount + ", person:" + person;
         }
     }
 }
