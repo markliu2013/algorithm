@@ -95,12 +95,56 @@ public class Combination {
     // TODO
     /**
      * dynamic nested for loops
+     * @see DynamicFor
      */
-    public static List<List<Integer>> getCombination(int[] arr, int n) {
+    static int count = 0;
+    public static List<List<Integer>> getCombination2(List<Integer> list, int n) {
+        if (n == 0) {
+            System.out.println(list);
+            count++;
+            return null;
+        }
+        n--;
+        for (int i = 0; i < list.size(); i++) {
+            List<Integer> list2 = new ArrayList<Integer>(list);
+            list2.remove(i);
+            getCombination2(list2, n);
+        }
         return null;
     }
     
+    public static List<List<Integer>> getCombination3(Integer[] arr, int n) {
+        LinkedList<Integer> stack = new LinkedList<Integer>();
+        List<List<Integer>> list = new ArrayList<List<Integer>>();
+        getCombination3Helper(arr, 1, n, stack, list);
+        return list;
+    }
     
+    private static void getCombination3Helper(Integer[] arr, int x, int n, LinkedList<Integer> stack, List<List<Integer>> list) {
+        if (n == 0) {
+            ArrayList<Integer> list2 = new ArrayList<Integer>();
+            ArrayList<Integer> tempStack = new ArrayList<Integer>(stack);
+            for (int i = tempStack.size()-1; i >= 0; i--) {
+                list2.add(arr[tempStack.get(i)-1]);
+            }
+            list.add(list2);
+            return;
+        }
+        for (int i = x; i <= arr.length; i++) {
+            n--;
+            stack.push(i);
+            getCombination3Helper(arr, i+1, n, stack, list);
+            stack.pop();
+            n++;
+        }
+    }
+    
+    public static void main(String[] args) {
+        //System.out.println(Combination.getAllCombination(new int[] {2,3,4}));
+        Integer[] arr = new Integer[] {2,3,4,5};
+//        System.out.println(Combination.getCombination(Arrays.asList(arr), 2));
+        System.out.println(Combination.getCombination3(arr, 2));
+    }
     
     
 
