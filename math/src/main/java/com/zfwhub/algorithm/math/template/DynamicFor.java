@@ -39,7 +39,6 @@ public class DynamicFor {
         n--;
         for (int j = 0; j < i; j++) {
             cycle(i, n);
-            
         }
     }
     
