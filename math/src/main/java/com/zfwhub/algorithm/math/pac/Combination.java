@@ -113,6 +113,10 @@ public class Combination {
         return null;
     }
     
+    /**
+     * dynamic nested for loops
+     * @see DynamicFor
+     */
     public static List<List<Integer>> getCombination3(Integer[] arr, int n) {
         LinkedList<Integer> stack = new LinkedList<Integer>();
         List<List<Integer>> list = new ArrayList<List<Integer>>();
