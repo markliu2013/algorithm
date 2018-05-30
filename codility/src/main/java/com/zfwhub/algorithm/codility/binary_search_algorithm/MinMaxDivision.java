@@ -10,9 +10,13 @@ import java.util.List;
  */
 public class MinMaxDivision {
 
-    // TODO MinMaxDivision
-    // https://app.codility.com/demo/results/training546JVA-XR6/
+    /**
+     * brute force
+     */
     public static int solution(int K, int M, int[] A) {
+        if (K == 1) {
+            return Arrays.stream(A).sum();
+        }
         List<List<List<Integer>>> blocks = splitArray(A, K);
         int minLargeSum = Integer.MAX_VALUE;
         for (int i = 0; i < blocks.size(); i++) {
@@ -55,12 +59,14 @@ public class MinMaxDivision {
                 list4.add(list3);
                 start = list2.get(j);
             }
-            start = list2.get(list2.size() - 1);
-            List<Integer> list3 = new ArrayList<Integer>();
-            for (int j2 = start; j2 < arr.length; j2++) {
-                list3.add(arr[j2]);
+            if (list2.size() > 0) {
+                start = list2.get(list2.size() - 1);
+                List<Integer> list3 = new ArrayList<Integer>();
+                for (int j2 = start; j2 < arr.length; j2++) {
+                    list3.add(arr[j2]);
+                }
+                list4.add(list3);
             }
-            list4.add(list3);
             result.add(list4);
         }
         return result;
@@ -111,9 +117,9 @@ public class MinMaxDivision {
     }
 
     public static void main(String[] args) {
-        int K = 3;
-        int M = 5;
-        int[] A = new int[] { 2, 1, 5, 1, 2, 2, 2 };
+        int K = 1;
+        int M = 2;
+        int[] A = new int[] { 3, 8};
         System.out.println(MinMaxDivision.solution(K, M, A));
 //        System.out.println(MinMaxDivision.solution2(K, M, A));
     }
