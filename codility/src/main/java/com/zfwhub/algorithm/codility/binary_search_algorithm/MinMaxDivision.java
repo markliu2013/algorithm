@@ -115,13 +115,18 @@ public class MinMaxDivision {
         }
         return 0;
     }
+    
+    // TODO MinMaxDivision
+    public static int solution2(int K, int M, int[] A) {
+        return 0;
+    }
 
     public static void main(String[] args) {
-        int K = 1;
-        int M = 2;
-        int[] A = new int[] { 3, 8};
-        System.out.println(MinMaxDivision.solution(K, M, A));
-//        System.out.println(MinMaxDivision.solution2(K, M, A));
+        int K = 3;
+        int M = 5;
+        int[] A = new int[] {2,1,5,1,2,2,2};
+        //System.out.println(MinMaxDivision.solution(K, M, A));
+        System.out.println(Arrays.stream(A).sum());
     }
 
 }
