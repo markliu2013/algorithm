@@ -1,10 +1,12 @@
 package com.zfwhub.algorithm.codility.caterpillar_method;
 
+import java.util.Arrays;
+
 /**
  * https://app.codility.com/programmers/lessons/15-caterpillar_method/count_triangles/
  */
 public class CountTriangles {
-    
+
     /**
      * brute force
      */
@@ -22,4 +24,15 @@ public class CountTriangles {
         return count;
     }
 
+    // TODO CountTriangles https://www.cnblogs.com/grandyang/p/7053730.html
+    public static int solution2(int[] A) {
+        Arrays.sort(A);
+        
+        return 0;
+    }
+
+    public static void main(String[] args) {
+        int[] A = new int[] {10,2,5,1,8,12};
+        System.out.println(CountTriangles.solution2(A));
+    }
 }
