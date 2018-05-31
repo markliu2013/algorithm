@@ -13,6 +13,7 @@
 * [MaxDoubleSliceSum](https://app.codility.com/programmers/lessons/9-maximum_slice_problem/max_double_slice_sum/)
 * [MedianOfTwoSortedArrays](https://leetcode.com/problems/median-of-two-sorted-arrays/description/)
 * [Ladder](https://app.codility.com/programmers/lessons/13-fibonacci_numbers/ladder/)
+* [MinMaxDivision](https://app.codility.com/programmers/lessons/14-binary_search_algorithm/min_max_division/)
 
 ## Recommended, 4 stars
 * [TapeEquilibrium](https://app.codility.com/programmers/lessons/3-time_complexity/tape_equilibrium/)
