@@ -24,13 +24,7 @@ public class AbsDistinct {
      * in place algorithm
      */
     public static int solution2(int[] A) {
-        HashSet<Integer> set = new HashSet<Integer>();
-        for (int i = 0; i < A.length; i++) {
-            if (!set.contains(Math.abs(A[i]))) {
-                set.add(Math.abs(A[i]));
-            }
-        }
-        return set.size();
+        return 0;
     }
     
     public static void main(String[] args) {
