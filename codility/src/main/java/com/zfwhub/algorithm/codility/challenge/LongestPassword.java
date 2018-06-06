@@ -30,9 +30,25 @@ public class LongestPassword {
         return maxLength;
     }
     
+    /**
+     * https://github.com/RIP21/Playground/blob/master/java/src/main/java/com/los/codility/LongestPassword.java
+     */
+    public static int solution2(String S) {
+        String[] words = S.replaceAll("\\s+", " ").split(" ");
+        int maxLength = -1;
+        for (String word : words) {
+            if (word.matches("^[0-9a-zA-Z]*$") &&
+                    word.replaceAll("[0-9]+", "").length() % 2 == 0 &&
+                    word.replaceAll("[a-zA-Z]+", "").length() % 2 == 1) {
+                maxLength = Math.max(maxLength, word.length());
+            }
+        }
+        return maxLength;
+    }
+    
     public static void main(String[] args) {
         String S = "test 5 a0A pass007 ?xy1";
-        System.out.println(LongestPassword.solution(S));
+        System.out.println(LongestPassword.solution2(S));
     }
 
 }
