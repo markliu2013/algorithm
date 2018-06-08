@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * http://www.aaamath.com/add27dx1.htm
  * https://leetcode.com/problems/add-two-numbers/description/
  */
 public class AddTwoNumbers {
@@ -22,6 +21,7 @@ public class AddTwoNumbers {
 
     /**
      * like how you would sum two numbers on a piece of paper
+     * http://www.aaamath.com/add27dx1.htm
      */
     // TODO
     public ListNode addTwoNumbers2(ListNode l1, ListNode l2) {
