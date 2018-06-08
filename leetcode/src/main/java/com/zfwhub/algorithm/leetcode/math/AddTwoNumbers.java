@@ -1,5 +1,6 @@
 package com.zfwhub.algorithm.leetcode.math;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,10 +14,10 @@ public class AddTwoNumbers {
      * convert to number, then add。
      */
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        Long i1 = parseNodeToInter(l1);
-        Long i2 = parseNodeToInter(l2);
-        Long i3 = i1 + i2;
-        return parseLongToNode(i3);
+        BigInteger i1 = parseNodeToInter(l1);
+        BigInteger i2 = parseNodeToInter(l2);
+        BigInteger i3 = i1.add(i2);
+        return parseIntegerToNode(i3);
     }
 
     /**
@@ -27,14 +28,14 @@ public class AddTwoNumbers {
         return null;
     }
 
-    public Long parseNodeToInter(ListNode node) {
+    public BigInteger parseNodeToInter(ListNode node) {
         String linkedString = parseNodetoLinkedString(node);
         StringBuilder linkedStringBuilder = new StringBuilder(linkedString.replaceAll(",", ""));
         String integerString = linkedStringBuilder.reverse().toString();
-        return new Long(integerString);
+        return new BigInteger(integerString);
     }
 
-    public ListNode parseLongToNode(Long number) {
+    public ListNode parseIntegerToNode(BigInteger number) {
         String str = String.valueOf(number);
         ListNode current = new ListNode(Character.getNumericValue(str.charAt(str.length() - 1)));
         ListNode node = current;
@@ -58,10 +59,16 @@ public class AddTwoNumbers {
     private static class ListNode {
         int val;
         ListNode next;
-
         ListNode(int x) {
             val = x;
         }
+    }
+    
+    public static void main(String[] args) {
+        AddTwoNumbers addTwoNumbers = new AddTwoNumbers();
+        ListNode l1 = addTwoNumbers.parseIntegerToNode(new BigInteger("243"));
+        ListNode l2 = addTwoNumbers.parseIntegerToNode(new BigInteger("564"));
+        System.out.println(addTwoNumbers.parseNodeToInter(addTwoNumbers.addTwoNumbers(l1, l2)));
     }
 
 }
