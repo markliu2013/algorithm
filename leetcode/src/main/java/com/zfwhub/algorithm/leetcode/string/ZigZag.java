@@ -37,6 +37,11 @@ public class ZigZag {
         }
         return sb.toString();
     }
+    // TODO ZigZag
+    // https://blog.csdn.net/tonywearme/article/details/47719841
+    public static String convert2(String s, int numRows) {
+        return "";
+    }
 
     public static void main(String[] args) {
         String s = "A";
