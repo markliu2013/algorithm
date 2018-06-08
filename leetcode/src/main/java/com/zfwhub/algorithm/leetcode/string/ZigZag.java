@@ -1,40 +1,46 @@
 package com.zfwhub.algorithm.leetcode.string;
 
-import java.util.Arrays;
 /**
- * 
+ * https://leetcode.com/problems/zigzag-conversion/description/
  */
 public class ZigZag {
     
     public static String convert(String s, int numRows) {
-        int colsNum = (int)Math.floor(s.length() / (double)numRows);
-        char[][] charMatrix = new char[s.length()][numRows];
+        if (numRows == 1) {
+            return s;
+        }
+        // TODO ZigZag save space
+        Character[][] charMatrix = new Character[s.length()][numRows];
         char[] chars = s.toCharArray();
         int x = 0;
         int y = 0;
-        boolean direFlag = true; //true is down, false is up.
-//        charMatrix[x][y] = chars[0];
-        System.out.println(Arrays.deepToString(charMatrix));
+        boolean direFlag = false; //true is down, false is up.
         for (int i = 0; i < chars.length; i++) {
             charMatrix[x][y] = chars[i];
+            if (i % (numRows-1) == 0) {
+                direFlag = !direFlag;
+            }
             if (direFlag) {
                 y++;
             } else {
                 x++;
                 y--;
             }
-            if (i % (numRows-1) == 0) {
-                direFlag = !direFlag;
-            }
-            charMatrix[x][y] = chars[i];
         }
-        System.out.println(Arrays.deepToString(charMatrix));
-        return "";
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < numRows; i++) {
+            for (int j = 0; j < chars.length; j++) {
+                if (charMatrix[j][i] != null) {
+                    sb.append(charMatrix[j][i]);
+                }
+            }
+        }
+        return sb.toString();
     }
 
     public static void main(String[] args) {
-        String s = "PAYPALISHIRING";
-        int numRows = 4;
+        String s = "A";
+        int numRows = 1;
         System.out.println(ZigZag.convert(s, numRows));
     }
 
