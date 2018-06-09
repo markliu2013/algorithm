@@ -25,7 +25,43 @@ public class AddTwoNumbers {
      */
     // TODO
     public ListNode addTwoNumbers2(ListNode l1, ListNode l2) {
-        return null;
+        ListNode result = null;
+        ListNode currentNode1 = l1;
+        ListNode currentNode2 = l2;
+        int remainVal = 0;
+        int currentVal = currentNode1.val + currentNode2.val;
+        if (currentVal > 9) {
+            currentVal = 10 - currentVal;
+            remainVal = 1;
+        }
+        result = new ListNode(currentVal);
+        ListNode l3 = null;
+        if (remainVal != 0) {
+            l3 = new ListNode(remainVal);
+            result.next = l3;
+        }
+        while (l1.next != null || l2.next != null) {
+            int currentVal1 = 0;
+            int currentVal2 = 0;
+            if (l1.next != null) {
+                currentNode1 = l1.next;
+                currentVal1 = currentNode1.val;
+            }
+            if (l2.next != null) {
+                currentNode2 = l2.next;
+                currentVal2 = currentNode2.val;
+            }
+            currentVal = currentNode1.val + currentNode2.val;
+            if (currentVal > 9) {
+                currentVal = 10 - currentVal;
+                remainVal = 1;
+            } else {
+                remainVal = 0;
+            }
+            ListNode l4 = new ListNode(currentVal);
+            
+        }
+        return result;
     }
 
     public BigInteger parseNodeToInter(ListNode node) {
@@ -68,7 +104,7 @@ public class AddTwoNumbers {
         AddTwoNumbers addTwoNumbers = new AddTwoNumbers();
         ListNode l1 = addTwoNumbers.parseIntegerToNode(new BigInteger("243"));
         ListNode l2 = addTwoNumbers.parseIntegerToNode(new BigInteger("564"));
-        System.out.println(addTwoNumbers.parseNodeToInter(addTwoNumbers.addTwoNumbers(l1, l2)));
+        System.out.println(addTwoNumbers.parseNodeToInter(addTwoNumbers.addTwoNumbers2(l1, l2)));
     }
 
 }
