@@ -1,5 +1,7 @@
 package com.zfwhub.algorithm.leetcode.array;
-
+/**
+ * https://leetcode.com/contest/weekly-contest-88/problems/maximize-distance-to-closest-person/
+ */
 public class MaximizeDistanceToClosestPerson {
     
     public static int solution(int[] seats) {
@@ -53,7 +55,4 @@ public class MaximizeDistanceToClosestPerson {
         System.out.println(MaximizeDistanceToClosestPerson.solution(seats1));
         System.out.println(MaximizeDistanceToClosestPerson.solution(seats2));
     }
-    
-    
-
 }

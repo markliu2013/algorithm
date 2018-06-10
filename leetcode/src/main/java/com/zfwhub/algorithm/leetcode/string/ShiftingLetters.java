@@ -1,8 +1,5 @@
 package com.zfwhub.algorithm.leetcode.string;
 
-import java.lang.reflect.Array;
-import java.util.Arrays;
-
 /**
  * https://leetcode.com/contest/weekly-contest-88/problems/shifting-letters/
  */
@@ -14,7 +11,6 @@ public class ShiftingLetters {
         for (int i = shifts.length-2; i >= 0; i--) {
             suffixSums[i] = suffixSums[i+1] + shifts[i];
         }
-        System.out.println(Arrays.toString(suffixSums));
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < suffixSums.length; i++) {
             char c = increaseChar(S.charAt(i), suffixSums[i]);
