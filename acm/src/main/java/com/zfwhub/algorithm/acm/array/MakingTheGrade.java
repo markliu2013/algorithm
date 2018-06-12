@@ -1,14 +1,18 @@
 package com.zfwhub.algorithm.acm.array;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 /**
  * http://poj.org/problem?id=3666
  * https://en.wikipedia.org/wiki/Isotonic_regression
  */
 public class MakingTheGrade {
+    
+    // TODO MakingTheGrade
+    public static int solution(int[] roads) {
+        GradeResult gr = makeGrade(roads);
+        return Math.min(getGap(roads, gr.downIntList), getGap(roads, gr.upIntList));
+    }
 
     public static GradeResult makeGrade(int[] roads) {
         if (roads.length == 1) {
@@ -88,12 +92,21 @@ public class MakingTheGrade {
         return gap;
     }
 
-    public static void main(String[] args) {
-        int[] roads = new int[] { 95, 94, 94, 95, 95, 95, 95, 95, 97, 97, 97, 95, 97, 98, 99, 95, 95, 95, 95, 95 };
+    /*public static void main(String[] args) {
+        int[] roads = new int[] { 95, 96, 97, 2, 1000 };
         GradeResult gr = makeGrade(roads);
         System.out.println(gr.downIntList);
         System.out.println(gr.upIntList);
         System.out.println(Math.min(getGap(roads, gr.downIntList), getGap(roads, gr.upIntList)));
+    }*/
+    
+    public static void main(String args[]) throws Exception {
+        Scanner cin = new Scanner(System.in);
+        int[] roads = new int[cin.nextInt()];
+        for (int i = 0; i < roads.length; i++) {
+            roads[i] = cin.nextInt();
+        }
+        System.out.println(solution(roads));
     }
 
     private static class GradeResult {
