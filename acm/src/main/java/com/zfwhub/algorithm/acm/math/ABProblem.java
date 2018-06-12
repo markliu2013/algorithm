@@ -3,6 +3,9 @@ package com.zfwhub.algorithm.acm.math;
 import java.io.*;
 import java.util.*;
 
+/**
+ * http://poj.org/problem?id=1000
+ */
 public class ABProblem {
 
     public static void main(String args[]) throws Exception {
