@@ -7,44 +7,32 @@ import java.util.Arrays;
  */
 public class MinimumSwapsToMakeSequencesIncreasing {
     
-    private static int[] newA = null;
-    private static int[] newB = null;
-    
-    private static int swapCount = 0;
-    private static boolean lastSwaped = false;
-    
-    public static void solution(int[] A, int[] B) {
-        if (A.length == 1) {
-            lastSwaped = false;
-            return;
-        }
-        if (A[A.length-1] <= newA[A.length-2] || B[B.length-1] <= newB[B.length-2]) {
-            if (lastSwaped == false) {
-                int temp = A[A.length-1];
-                newA[A.length-1] = B[B.length-1];
-                newB[B.length-1] = temp;
-                swapCount++;
-            } else {
-                int temp1 = A[A.length-1];
-                newA[A.length-1] = B[B.length-1];
-                newB[B.length-1] = temp1;
-                // reverse back
-                int temp2 = A[A.length-2];
-                newA[A.length] = B[B.length];
-                newB[B.length] = temp2;
-            }
-            lastSwaped = true;
-        }
-        int[] subA = Arrays.copyOfRange(A, 0, A.length-1);
-        int[] subB = Arrays.copyOfRange(B, 0, B.length-1);
-        solution(subA, subB);
-    }
-    
     public static int minSwap(int[] A, int[] B) {
-        newA = Arrays.copyOfRange(A, 0, A.length);
-        newB = Arrays.copyOfRange(B, 0, B.length);
-        solution(A, B);
-        return swapCount;
+        int count = 0;
+        int[] newA = new int[A.length];
+        int[] newB = new int[B.length];
+        newA[0] = A[0];
+        newB[0] = B[0];
+        boolean lastSwaped = false;
+        if (A.length == 1) {
+            return count;
+        }
+        for (int i = 1; i < A.length; i++) {
+            if (A[i] <= newA[i-1] || B[i] <= newB[i-1]) {
+                if (lastSwaped) {
+                    
+                }
+                newA[i] = B[i];
+                newB[i] = A[i];
+                lastSwaped = true;
+            } else {
+                newA[i] = A[i];
+                newB[i] = B[i];
+            }
+        }
+        System.out.println(Arrays.toString(newA));
+        System.out.println(Arrays.toString(newB));
+        return count;
     }
     
     public static void main(String[] args) {
@@ -52,8 +40,8 @@ public class MinimumSwapsToMakeSequencesIncreasing {
         int[] B2 = new int[] {1,7,4,6,8};
         
         System.out.println(MinimumSwapsToMakeSequencesIncreasing.minSwap(A2, B2));
-        System.out.println(Arrays.toString(newA));
-        System.out.println(Arrays.toString(newB));
+        //System.out.println(Arrays.toString(newA));
+        //System.out.println(Arrays.toString(newB));
     }
 
 }
