@@ -9,7 +9,7 @@ public class LoudAndRich {
 
     // TODO LoudAndRich
     public static int[] solution(int[][] richer, int[] quiet) {
-        
+
         return null;
     }
 
