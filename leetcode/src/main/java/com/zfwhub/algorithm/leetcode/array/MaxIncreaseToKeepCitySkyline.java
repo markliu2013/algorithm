@@ -1,11 +1,10 @@
 package com.zfwhub.algorithm.leetcode.array;
 
-
 /**
  * https://leetcode.com/problems/max-increase-to-keep-city-skyline/description/
  */
 public class MaxIncreaseToKeepCitySkyline {
-    
+
     public static int solution(int[][] grid) {
         int[] skyline1 = new int[grid.length];
         int[] skyline2 = new int[grid.length];
@@ -31,12 +30,7 @@ public class MaxIncreaseToKeepCitySkyline {
     }
 
     public static void main(String[] args) {
-        int[][] grid = new int[][] {
-                {3,0,8,4},
-                {2,4,5,7},
-                {9,2,6,3},
-                {0,3,1,0}
-        };
+        int[][] grid = new int[][] { { 3, 0, 8, 4 }, { 2, 4, 5, 7 }, { 9, 2, 6, 3 }, { 0, 3, 1, 0 } };
         System.out.println(MaxIncreaseToKeepCitySkyline.solution(grid));
     }
 

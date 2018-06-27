@@ -1,9 +1,10 @@
 package com.zfwhub.algorithm.leetcode.array;
+
 /**
  * https://leetcode.com/contest/weekly-contest-88/problems/maximize-distance-to-closest-person/
  */
 public class MaximizeDistanceToClosestPerson {
-    
+
     public static int solution(int[] seats) {
         int maxDistToClosest = 0;
         for (int i = 0; i < seats.length; i++) {
@@ -11,7 +12,7 @@ public class MaximizeDistanceToClosestPerson {
                 // check left
                 int leftDistToClosest = 0;
                 boolean hasLeft = false;
-                for (int j = i-1; j >= 0; j--) {
+                for (int j = i - 1; j >= 0; j--) {
                     if (seats[j] == 0) {
                         leftDistToClosest++;
                     } else if (seats[j] == 1) {
@@ -23,7 +24,7 @@ public class MaximizeDistanceToClosestPerson {
                 // check right
                 int rightDistToClosest = 0;
                 boolean hasRight = false;
-                for (int j = i+1; j < seats.length; j++) {
+                for (int j = i + 1; j < seats.length; j++) {
                     if (seats[j] == 0) {
                         rightDistToClosest++;
                     } else if (seats[j] == 1) {
@@ -48,10 +49,10 @@ public class MaximizeDistanceToClosestPerson {
         }
         return maxDistToClosest;
     }
-    
+
     public static void main(String[] args) {
-        int[] seats1 = new int[] {1,0,0,0,1,0,1};
-        int[] seats2 = new int[] {1,0,0,0};
+        int[] seats1 = new int[] { 1, 0, 0, 0, 1, 0, 1 };
+        int[] seats2 = new int[] { 1, 0, 0, 0 };
         System.out.println(MaximizeDistanceToClosestPerson.solution(seats1));
         System.out.println(MaximizeDistanceToClosestPerson.solution(seats2));
     }
