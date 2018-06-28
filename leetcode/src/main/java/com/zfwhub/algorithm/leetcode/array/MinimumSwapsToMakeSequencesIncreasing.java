@@ -20,10 +20,14 @@ public class MinimumSwapsToMakeSequencesIncreasing {
         for (int i = 1; i < A.length; i++) {
             if (A[i] <= newA[i-1] || B[i] <= newB[i-1]) {
                 if (lastSwaped) {
-                    
+                    newA[i] = B[i];
+                    newB[i] = A[i];
+                    count++;
+                } else {
+                    newA[i] = B[i];
+                    newB[i] = A[i];
+                    count++;
                 }
-                newA[i] = B[i];
-                newB[i] = A[i];
                 lastSwaped = true;
             } else {
                 newA[i] = A[i];
@@ -36,10 +40,10 @@ public class MinimumSwapsToMakeSequencesIncreasing {
     }
     
     public static void main(String[] args) {
-        int[] A2 = new int[] {3,3,8,9,10};
-        int[] B2 = new int[] {1,7,4,6,8};
+        int[] A5 = new int[] {0,4,4,5,9};
+        int[] B5 = new int[] {0,1,6,8,10};
         
-        System.out.println(MinimumSwapsToMakeSequencesIncreasing.minSwap(A2, B2));
+        System.out.println(MinimumSwapsToMakeSequencesIncreasing.minSwap(A5, B5));
         //System.out.println(Arrays.toString(newA));
         //System.out.println(Arrays.toString(newB));
     }
