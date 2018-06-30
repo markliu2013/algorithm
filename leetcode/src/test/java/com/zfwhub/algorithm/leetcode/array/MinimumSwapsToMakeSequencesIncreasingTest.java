@@ -18,7 +18,7 @@ public class MinimumSwapsToMakeSequencesIncreasingTest {
         int[] B3 = new int[] {2,1,4,6,9};
         int result3 = 1;
         int[] A4 = new int[] {0,7,8,10,10,11,12,13,19,18};
-        int[] B4 = new int[] {4,4,5,7,11,14,15,16,17,20};
+        int[] B4 = new int[] {4,4,5, 7,11,14,15,16,17,20};
         int result4 = 4;
         int[] A5 = new int[] {0,4,4,5,9};
         int[] B5 = new int[] {0,1,6,8,10};
