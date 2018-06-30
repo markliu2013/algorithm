@@ -13,7 +13,7 @@ public class SimilarRGBColor {
         String b=color.substring(5, 7);
         return "#"+findSim(r)+findSim(g)+findSim(b);
     }
-    // SimilarRGBColor Leetcode simple
+    // TODO SimilarRGBColor Leetcode simple
     public static String solution2(String color) {
         return "";
     }
