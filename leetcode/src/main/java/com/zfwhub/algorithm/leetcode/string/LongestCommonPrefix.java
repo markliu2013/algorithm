@@ -29,6 +29,12 @@ public class LongestCommonPrefix {
         return result;
     }
     
+    //https://www.geeksforgeeks.org/longest-common-prefix-using-binary-search/
+    // TODO LongestCommonPrefix
+    public static String solution2(String[] strs) {
+        return "";
+    }
+    
     public static void main(String[] args) {
         String[] strs = new String[] {"aa","a"};
         System.out.println(LongestCommonPrefix.solution(strs));
