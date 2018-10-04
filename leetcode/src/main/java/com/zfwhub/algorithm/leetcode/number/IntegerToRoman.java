@@ -21,7 +21,7 @@ public class IntegerToRoman {
     }
 
     public static void main(String[] args) {
-        System.out.println(IntegerToRoman.solution(1994));
+        System.out.println(IntegerToRoman.solution(900));
     }
 
 }
