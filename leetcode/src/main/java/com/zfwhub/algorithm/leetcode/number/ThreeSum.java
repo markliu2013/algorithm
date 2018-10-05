@@ -1,6 +1,7 @@
 package com.zfwhub.algorithm.leetcode.number;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -8,11 +9,12 @@ import java.util.List;
  */
 public class ThreeSum {
     
+    // too slow
     public static List<List<Integer>> solution(int[] nums) {
+        List<List<Integer>> lists = new ArrayList<List<Integer>>();
         if (nums == null || nums.length < 3) {
-            return null;
+            return lists;
         }
-        List<List<Integer>> lists = new ArrayList<List<Integer>>();  
         for (int i = 0; i < nums.length; i++) {
             for (int j = i+1; j < nums.length; j++) {
                 for (int k = j+1; k < nums.length; k++) {
@@ -21,8 +23,9 @@ public class ThreeSum {
                         list1.add(nums[i]);
                         list1.add(nums[j]);
                         list1.add(nums[k]);
+                        Collections.sort(list1);
                         if (!lists.contains(list1)) {
-                            lists.add(list1);    
+                            lists.add(list1);
                         }
                     }
                 }
