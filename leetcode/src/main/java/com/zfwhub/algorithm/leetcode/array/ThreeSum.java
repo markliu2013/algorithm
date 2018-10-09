@@ -6,7 +6,7 @@ import java.util.*;
  * https://leetcode.com/problems/3sum/description/
  */
 public class ThreeSum {
-    
+
     // too slow
     public static List<List<Integer>> solution(int[] nums) {
         List<List<Integer>> lists = new ArrayList<List<Integer>>();
@@ -14,8 +14,8 @@ public class ThreeSum {
             return lists;
         }
         for (int i = 0; i < nums.length; i++) {
-            for (int j = i+1; j < nums.length; j++) {
-                for (int k = j+1; k < nums.length; k++) {
+            for (int j = i + 1; j < nums.length; j++) {
+                for (int k = j + 1; k < nums.length; k++) {
                     if (nums[i] + nums[j] + nums[k] == 0) {
                         List<Integer> list1 = new ArrayList<Integer>();
                         list1.add(nums[i]);
@@ -31,28 +31,27 @@ public class ThreeSum {
         }
         return lists;
     }
-    
-    
-    
+
+    // too slow
     public static List<List<Integer>> solution2(int[] nums) {
         List<List<Integer>> lists = new ArrayList<List<Integer>>();
         if (nums == null || nums.length < 3) {
             return lists;
         }
         // check [0,0,0]
-//        int countZero = 0;
-//        for (int i = 0; i < nums.length; i++) {
-//            if (nums[i] == 0) {
-//                countZero++;
-//            }
-//        }
-//        if (countZero >= 3) {
-//            List<Integer> list1 = new ArrayList<Integer>();
-//            list1.add(0);
-//            list1.add(0);
-//            list1.add(0);
-//            lists.add(list1);
-//        }
+        int countZero = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] == 0) {
+                countZero++;
+            }
+        }
+        if (countZero >= 3) {
+            List<Integer> list1 = new ArrayList<Integer>();
+            list1.add(0);
+            list1.add(0);
+            list1.add(0);
+            lists.add(list1);
+        }
         HashSet<Integer> set1 = new HashSet<Integer>();
         HashSet<Integer> set2 = new HashSet<Integer>();
         for (int i = 0; i < nums.length; i++) {
@@ -63,16 +62,15 @@ public class ThreeSum {
             }
         }
         Integer[] nums1 = set1.toArray(new Integer[0]);
-        System.out.println(set1);
-        System.out.println(set2);
         for (int i = 0; i < nums1.length; i++) {
-            for (int j = i+1; j < nums1.length; j++) {
-                for (int k = j+1; k < nums1.length; k++) {
+            for (int j = i + 1; j < nums1.length; j++) {
+                for (int k = j + 1; k < nums1.length; k++) {
                     if (nums1[i] + nums1[j] + nums1[k] == 0) {
                         List<Integer> list1 = new ArrayList<Integer>();
                         list1.add(nums1[i]);
                         list1.add(nums1[j]);
                         list1.add(nums1[k]);
+                        Collections.sort(list1);
                         lists.add(list1);
                     }
                 }
@@ -81,20 +79,24 @@ public class ThreeSum {
         Iterator<Integer> iter2 = set2.iterator();
         while (iter2.hasNext()) {
             Integer num1 = iter2.next();
-            nums1 = set1.toArray(new Integer[0]);
             for (int i = 0; i < nums1.length; i++) {
-                if (nums1[i] + num1 + num1 == 0) {
-                    List<Integer> list1 = new ArrayList<Integer>();
-                    list1.add(num1);
-                    list1.add(num1);
-                    list1.add(nums1[i]);
-                    lists.add(list1);
+                for (int j = i + 1; j < nums1.length; j++) {
+                    if (nums1[i] + nums1[j] + num1 == 0) {
+                        List<Integer> list1 = new ArrayList<Integer>();
+                        list1.add(num1);
+                        list1.add(nums1[j]);
+                        list1.add(nums1[i]);
+                        Collections.sort(list1);
+                        if (!lists.contains(list1)) {
+                            lists.add(list1);
+                        }
+                    }
                 }
             }
         }
         return lists;
     }
-    
+
     public static List<List<Integer>> solution3(int[] nums) {
         List<List<Integer>> lists = new ArrayList<List<Integer>>();
         if (nums == null || nums.length < 3) {
@@ -111,7 +113,7 @@ public class ThreeSum {
         }
         Integer[] nums1 = set1.toArray(new Integer[0]);
         for (int i = 0; i < nums1.length; i++) {
-            for (int j = i+1; j < nums1.length; j++) {
+            for (int j = i + 1; j < nums1.length; j++) {
                 int target = 0 - (nums1[i] + nums1[j]);
                 if (set1.contains(target) && target != nums[i] && target != nums[j]) {
                     List<Integer> list1 = new ArrayList<Integer>();
@@ -139,9 +141,9 @@ public class ThreeSum {
         }*/
         return lists;
     }
-    
+
     public static void main(String[] args) {
-        int[] nums = new int[] {-4,-2,1,-5,-4,-4,4,-2,0,4,0,-2,3,1,-5,0};
+        int[] nums = new int[] { -2,0,0,2,2 };
         System.out.println(ThreeSum.solution(nums));
         System.out.println(ThreeSum.solution2(nums));
     }
