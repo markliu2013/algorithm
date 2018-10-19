@@ -381,8 +381,25 @@ public class ThreeSum {
         lists = new ArrayList<List<Integer>>(sets);
         return lists;
     }
-   
-    // https://www.cnblogs.com/-wang-cheng/p/4856282.html
+    // 分组，正数一组，负数一组。
+    public static List<List<Integer>> solution10(int[] nums) {
+        List<List<Integer>> lists = new ArrayList<List<Integer>>();
+        if (nums == null || nums.length < 3) {
+            return lists;
+        }
+        
+        return lists;
+    }
+    
+    // dynamic programming
+    public static List<List<Integer>> solution11(int[] nums) {
+        List<List<Integer>> lists = new ArrayList<List<Integer>>();
+        if (nums == null || nums.length < 3) {
+            return lists;
+        }
+        
+        return lists;
+    }
     
     public static void main(String[] args) {
         int[] nums = new int[] {-4,-2,1,-5,-4,-4,4,-2,0,4,0,-2,3,1,-5,0};
