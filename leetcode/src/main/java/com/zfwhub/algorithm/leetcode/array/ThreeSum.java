@@ -460,7 +460,39 @@ public class ThreeSum {
         if (nums == null || nums.length < 3) {
             return lists;
         }
+        HashSet<List<Integer>> sets = new HashSet<List<Integer>>();
+        // 优化数组，删除超过出现两次的元素
+        HashMap<Integer, Integer> map = new HashMap<>();
+        int countZero = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (map.containsKey(nums[i])) {
+                map.put(nums[i], map.get(nums[i])+1);
+            } else {
+                map.put(nums[i], 1);
+            }
+            if (countZero < 3 && nums[i] == 0) {
+                countZero++;
+            }
+        }
+        List<Integer> list2 = new ArrayList<Integer>(); //nums 优化后的list, 删除超过两次的元素。
+        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+            list2.add(entry.getKey());
+            if (entry.getValue() > 1) {
+                list2.add(entry.getKey());
+            }
+        }
+        //dynamic programming, down to top
         
+        
+        if (countZero >= 3) {
+            List<Integer> list1 = new ArrayList<Integer>();
+            list1.add(0);
+            list1.add(0);
+            list1.add(0);
+            lists.add(list1);
+            sets.add(list1);
+        }
+        lists = new ArrayList<List<Integer>>(sets);
         return lists;
     }
     
