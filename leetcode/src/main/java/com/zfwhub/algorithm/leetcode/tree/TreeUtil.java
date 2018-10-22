@@ -7,10 +7,18 @@ public class TreeUtil {
     
     /**
      * https://www.geeksforgeeks.org/construct-complete-binary-tree-given-array/
-     * insert nodes in level order 
+     * create binary tree in level order
+     * 完全二叉树, n的左子树2n, 右子树2n+1 
      */
-    public static TreeNode insertLevelOrder(int[] arr) {
-        
+    public static TreeNode createLevelOrder(int[] arr) {
+        if (arr == null || arr.length == 0) {
+            return null;
+        }
+        TreeNode root = new TreeNode(arr[0]);
+        TreeNode currentNode = root;
+        for (int i = 1; i < arr.length; i++) {
+            
+        }
         return null;
     }
 
