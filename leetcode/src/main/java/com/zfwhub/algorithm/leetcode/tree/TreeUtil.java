@@ -15,11 +15,25 @@ public class TreeUtil {
             return null;
         }
         TreeNode root = new TreeNode(arr[0]);
-        TreeNode currentNode = root;
+        List<TreeNode> lastTreeNodes = new ArrayList<>();//满二叉树最后一层
+        lastTreeNodes.add(root);
+        List<TreeNode> currentTreeNodes = new ArrayList<>();//最后一层
         for (int i = 1; i < arr.length; i++) {
-            
+            int countUpNodes = lastTreeNodes.size() * 2 - 1; //满二叉树节点数
+            int index = (i + 1) - countUpNodes;
+            TreeNode node = new TreeNode(arr[i]);
+            currentTreeNodes.add(node);
+            if (index % 2 != 0) {
+                lastTreeNodes.get((index+1) / 2 - 1).left = node;
+            } else {
+                lastTreeNodes.get(index / 2 - 1).right = node;
+                if (lastTreeNodes.size() == index / 2) {
+                    lastTreeNodes = currentTreeNodes;
+                    currentTreeNodes = new ArrayList<>();
+                }
+            }
         }
-        return null;
+        return root;
     }
 
     public static boolean isSameTree(TreeNode p, TreeNode q) {
@@ -55,18 +69,37 @@ public class TreeUtil {
         return TreeUtil.isSameTree(root, mirrorTree);
     }
 
-    public static List<Integer> preOrderTraverse(TreeNode t) {
-        List<Integer> list = new ArrayList<>();
-        if (t != null) {
-            list.add(t.val);
+    public static void preOrderTraverse(TreeNode t) {
+            if (t == null) {
+                return;
+            }
+            System.out.print(t.val+">");
             preOrderTraverse(t.left);
             preOrderTraverse(t.right);
-        }
-        return list;
     }
     
     public static void main(String[] args) {
-        
+        TreeNode t1 = new TreeNode(1);
+        TreeNode t2 = new TreeNode(2);
+        TreeNode t3 = new TreeNode(3);
+        TreeNode t4 = new TreeNode(4);
+        TreeNode t5 = new TreeNode(5);
+        TreeNode t6 = new TreeNode(6);
+        TreeNode t7 = new TreeNode(7);
+        TreeNode t8 = new TreeNode(8);
+        TreeNode t9 = new TreeNode(9);
+        t1.left = t2;
+        t1.right = t3;
+        t2.left = t4;
+        t2.right = t5;
+        t3.left = t6;
+        t3.right = t7;
+        t4.left = t8;
+        t4.right = t9;
+        TreeNode node = createLevelOrder(new int[] {1,2,3,4,5,6,7,8,9});
+        preOrderTraverse(t1);
+        System.out.println();
+        preOrderTraverse(node);
     }
 
 }
