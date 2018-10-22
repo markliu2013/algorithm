@@ -6,6 +6,7 @@ import java.util.List;
 
 /**
  * The problem King's GoldMine
+ * https://www.jianshu.com/p/e200805306db
  * https://www.geeksforgeeks.org/gold-mine-problem/
  */
 public class GoldMineMain {

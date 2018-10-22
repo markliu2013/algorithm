@@ -8,11 +8,6 @@ import java.util.HashMap;
  */
 public class ClimbingWays {
 
-    // TODO Brute Force
-    public static int getClimbingWays(int n) {
-        return 0;
-    }
-
     /**
      * Dynamic Programming, top to down, Simple Recursive Solution
      */

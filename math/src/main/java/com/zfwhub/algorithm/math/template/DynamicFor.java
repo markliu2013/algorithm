@@ -44,7 +44,8 @@ public class DynamicFor {
     
     public static void main(String[] args) {
         cycle(3, 4);//3*3*3*3
-        System.out.println(count);
+        //System.out.println(count);
+        x(3);
     }
 
 }

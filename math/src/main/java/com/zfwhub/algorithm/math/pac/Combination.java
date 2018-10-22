@@ -92,7 +92,6 @@ public class Combination {
         return preList.get(n);
     }
 
-    // TODO
     /**
      * dynamic nested for loops
      * @see DynamicFor
