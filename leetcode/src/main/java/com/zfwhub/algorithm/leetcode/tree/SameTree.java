@@ -4,7 +4,8 @@ package com.zfwhub.algorithm.leetcode.tree;
  * https://leetcode.com/problems/same-tree/
  */
 public class SameTree {
-    public boolean isSameTree(TreeNode p, TreeNode q) {
+    
+    public static boolean isSameTree(TreeNode p, TreeNode q) {
         if (p == null && q == null)
             return true;
         if (p == null || q == null)
@@ -13,4 +14,5 @@ public class SameTree {
             return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
         return false;
     }
+    
 }
