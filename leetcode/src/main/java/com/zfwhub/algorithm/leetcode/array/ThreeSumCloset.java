@@ -57,20 +57,13 @@ public class ThreeSumCloset {
             int j = 0;//左端指针
             int k = i - 1;//右端指针
             int temp = list2.get(j) + list2.get(k);
-            if (temp < closeTarget) {
-                while (j < k) {
-                    j++;
-                    temp = list2.get(j) + list2.get(k);
-                }
-            }
-            
             while (j < k) {
                 if (temp < closeTarget) {
-                    j++;
+                    temp = Math.min(list2.get(j++) + list2.get(k), temp);
                 } else if (temp == closeTarget) {
                     break;
                 } else {
-                    k--;
+                    temp = Math.min(list2.get(j) + list2.get(k--), temp);
                 }
             }
             int gap = Math.abs(list2.get(i) + temp - target);
@@ -79,7 +72,7 @@ public class ThreeSumCloset {
                 result = list2.get(i) + temp;
             }
             
-            /*closeTarget = closeTarget * -1;
+           /* closeTarget = closeTarget * (-1);
             j = 0;//左端指针
             k = i - 1;//右端指针
             temp = list2.get(j) + list2.get(k);
@@ -92,9 +85,9 @@ public class ThreeSumCloset {
                     temp = Math.min(list2.get(j) + list2.get(k--), temp);
                 }
             }
-            int gap1 = Math.abs(list2.get(i) + temp - target);
-            if (gap1 < min) {
-                min = gap1;
+            gap = Math.abs(list2.get(i) + temp - target);
+            if (gap < min) {
+                min = gap;
                 result = list2.get(i) + temp;
             }*/
             
@@ -103,18 +96,18 @@ public class ThreeSumCloset {
     }
     
     public static void main(String[] args) {
-        int[] nums = new int[] {1, 1, 1, 0};
-        int target = -100;
+//        int[] nums = new int[] {1, 1, 1, 0};
+//        int target = -100;
         int[] nums1 = new int[] {-1, 2, 1, -4};
         int target1 = 1;
-        int[] nums2 = new int[] {0, 2, 1, -3};
-        int target2 = 1;
-        System.out.println(solution(nums, target));
-        System.out.println(solution2(nums, target));
+//        int[] nums2 = new int[] {0, 2, 1, -3};
+//        int target2 = 1;
+//        System.out.println(solution(nums, target));
+//        System.out.println(solution2(nums, target));
         System.out.println(solution(nums1, target1));
         System.out.println(solution2(nums1, target1));
-        System.out.println(solution(nums2, target2));
-        System.out.println(solution2(nums2, target2));
+//        System.out.println(solution(nums2, target2));
+//        System.out.println(solution2(nums2, target2));
     }
 
 }
