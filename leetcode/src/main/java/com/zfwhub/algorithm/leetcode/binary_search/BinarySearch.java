@@ -31,6 +31,18 @@ public class BinarySearch {
         return -1;
     }
     
+    // https://www.zhihu.com/question/36132386/answer/155438728
+    public int solution3(int[] nums, int target) {
+        int low = 0, high = nums.length-1;
+        while (low <= high) { 
+            int mid = low + (high - low) / 2;
+            if (nums[mid] < target) { low = mid + 1; }
+            if (nums[mid] > target) { high = mid - 1; }
+            if (nums[mid] == target) { return mid; }
+        }
+        return -1;
+    }
+    
     public static void main(String[] args) {
         int[] nums = new int[] {-1,0,3,5,9,12};
         int target = 9;
