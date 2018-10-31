@@ -2,8 +2,8 @@ package com.zfwhub.algorithm.math.template;
 
 /**
  * http://blog.sina.com.cn/s/blog_8960ba110100txng.html
- * https://www.zhihu.com/question/32128504
  * https://blog.csdn.net/opencpu/article/details/48391417
+ * https://www.zhihu.com/question/32128504
  * https://blog.csdn.net/mikayong/article/details/51706508
  * For循环拍平
  */
