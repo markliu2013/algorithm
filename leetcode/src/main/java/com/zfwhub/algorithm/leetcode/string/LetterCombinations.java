@@ -79,6 +79,10 @@ public class LetterCombinations {
         }
     }
     
+    // TODO LetterCombinations
+    // https://www.cnblogs.com/grandyang/p/4452220.html
+    // https://www.cnblogs.com/kepuCS/p/5271654.html
+    
     public static void main(String[] args) {
         System.out.println(solution0("27"));
         System.out.println(solution("27"));
