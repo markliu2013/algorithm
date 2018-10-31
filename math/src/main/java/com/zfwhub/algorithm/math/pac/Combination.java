@@ -150,7 +150,7 @@ public class Combination {
         getCombination4Helper(arr, 0, n, stack, list);
         return list;
     }
-    
+    // x 控制循环起始的i，n控制循环层数
     private static void getCombination4Helper(Integer[] arr, int x, int n, LinkedList<Integer> stack, List<List<Integer>> list) {
         if (n == 0) {
             ArrayList<Integer> list2 = new ArrayList<Integer>();
