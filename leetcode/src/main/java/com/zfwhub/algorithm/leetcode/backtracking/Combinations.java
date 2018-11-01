@@ -8,6 +8,7 @@ import java.util.*;
 public class Combinations {
 
     // Backtracking Solution Java
+    // https://blog.csdn.net/u010500263/article/details/18435495
     public static List<List<Integer>> combine(int n, int k) {
         List<List<Integer>> combs = new ArrayList<List<Integer>>();
         combine(combs, new ArrayList<Integer>(), 1, n, k);
@@ -39,6 +40,10 @@ public class Combinations {
         result.forEach(e -> e.add(n));
         result.addAll(this.combine2(n - 1, k));
         return result;
+    }
+    
+    public static void main(String[] args) {
+        System.out.println(combine(4, 2));
     }
 
 }
