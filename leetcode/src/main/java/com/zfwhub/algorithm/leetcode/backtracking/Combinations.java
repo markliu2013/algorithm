@@ -44,6 +44,7 @@ public class Combinations {
     
     public static void main(String[] args) {
         System.out.println(combine(4, 2));
+        System.out.println(new Combinations().combine2(4, 2));
     }
 
 }
