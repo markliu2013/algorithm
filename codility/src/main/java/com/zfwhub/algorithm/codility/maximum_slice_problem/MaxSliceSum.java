@@ -1,7 +1,5 @@
 package com.zfwhub.algorithm.codility.maximum_slice_problem;
 
-import java.util.Arrays;
-
 /**
  * https://app.codility.com/programmers/lessons/9-maximum_slice_problem/max_slice_sum/
  * exactly the same with MaximumSubarray LeetCode 
