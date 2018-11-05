@@ -11,18 +11,14 @@ public class MajorityElement {
         if (nums.length == 1) {
             return nums[0];
         }
-        if (nums.length == 2) {
-            if (nums[0] == nums[1]) {
-                return nums[0];
-            } else {
-                return Integer.MIN_VALUE;
-            }
-        }
         int mid = nums.length / 2;
         int[] leftNums = Arrays.copyOfRange(nums, 0, mid);
         int[] rightNums = Arrays.copyOfRange(nums, mid, nums.length);
         int majorityLeft = majorityElement(leftNums);
         int majorityRight = majorityElement(rightNums);
+        if (majorityLeft == majorityRight) {
+            return majorityLeft;
+        }
         int leftCount1 = 0;//左边不等于majorityLeft的个数
         int leftCount2 = 0;//左边等于majorityRight的个数
         int rightCount1 = 0;//右边不等于majorityRight的个数
@@ -43,25 +39,19 @@ public class MajorityElement {
                 rightCount2++;
             }
         }
-        
-        
-        if (leftNums.length > rightNums.length) {
-            if (majorityLeft != Integer.MIN_VALUE) {
-                return majorityLeft;
-            } else {
-                return majorityRight;
-            }
+        int majorityLeftCount = leftNums.length - leftCount1 + rightCount2;
+        int majorityRightCount = rightNums.length - rightCount1 + leftCount2;
+        if (majorityLeftCount > majorityRightCount) {
+            return majorityLeft;
+        } else if (majorityLeftCount < majorityRightCount) {
+            return majorityRight;
         } else {
-            if (majorityRight != Integer.MIN_VALUE) {
-                return majorityRight;
-            } else {
-                return majorityLeft;
-            }
+            return -1;
         }
     }
     
     public static void main(String[] args) {
-        int[] nums1 = new int[] {6,6,6,7,7};
+        int[] nums1 = new int[] {2,2};
         int[] nums2 = new int[] {2, 2, 1, 1, 1, 2, 2};
         System.out.println(majorityElement(nums1));
         System.out.println(majorityElement(nums2));
