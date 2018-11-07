@@ -12,7 +12,6 @@ public class Combinations {
     public ArrayList<ArrayList<Integer>> combine(int n, int k) {
         ArrayList<ArrayList<Integer>> combSet = new ArrayList<ArrayList<Integer>>();
         ArrayList<Integer> comb = new ArrayList<Integer>();
-
         if (n < k) {
             return combSet;
         }
@@ -50,7 +49,7 @@ public class Combinations {
     }
 
     public static void main(String[] args) {
-        System.out.println(new Combinations().combine(4, 2));
+        System.out.println(new Combinations().combine(3, 2));
         System.out.println(new Combinations().combine2(4, 2));
     }
 
