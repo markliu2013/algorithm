@@ -6,6 +6,7 @@ import java.util.Arrays;
  * Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.
  * https://leetcode.com/problems/maximum-subarray/description/
  * https://blog.csdn.net/liu2012huan/article/details/51296635
+ * https://zhuanlan.zhihu.com/p/37570405
  */
 public class MaximumSubarray {
 
