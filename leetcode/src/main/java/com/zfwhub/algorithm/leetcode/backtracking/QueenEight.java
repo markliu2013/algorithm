@@ -1,14 +1,11 @@
 package com.zfwhub.algorithm.leetcode.backtracking;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class QueenEight {
     
-    /**
-             *  暴力解法，列出所有的组合，然后判断每一列，每一条斜线。
-     * https://www.cnblogs.com/houkai/p/3480940.html
-     */
+    // 暴力解法，列出所有的组合，然后判断每一列，每一条斜线。
+    // https://www.cnblogs.com/houkai/p/3480940.html
     public static int solution() {
         int count = 0;
         //不在同一行上, 所有可能。
@@ -143,7 +140,7 @@ public class QueenEight {
     }
     
     //检查是否满足
-    public static boolean check(int[][] arr) {
+    private static boolean check(int[][] arr) {
         // 不在同一列上
         for (int i = 0; i < 8; i++) {
             int count = 0;
@@ -201,23 +198,22 @@ public class QueenEight {
         return true;
     }
     
-    
     public static int solution3() {
-        List<List<Integer>> list = new ArrayList<>();
-        List<Integer> cols = new ArrayList<>();
+        List<List<Integer>> list = new ArrayList<>();//存放解，存储cols
+        List<Integer> cols = new ArrayList<>();//每一列第几行放置皇后
         solution3_backtrack(list, cols);
         return list.size();
     }
     
     private static void solution3_backtrack(List<List<Integer>> list, List<Integer> cols) {
-        if (cols.size() == 8) {
-            list.add(new ArrayList<Integer>(cols));
+        if (cols.size() == 8) { //8列都放好了，表示找到解了。
+            list.add(new ArrayList<Integer>(cols));//注意cols是引用类型，必须clone一份。
         } else {
             for (int i = 0; i < 8; i++) {//每一列都一行一行的尝试
-                if (!solution3_backtrack_check(cols, i)) {
+                if (!solution3_backtrack_check(cols, i)) {//不符合，继续当前列下一行
                     continue;
                 }
-                cols.add(i);//make_move
+                cols.add(i);//make_move，移动到下一列。
                 solution3_backtrack(list, cols);
                 cols.remove(cols.size()-1);//unmake_move
             }
