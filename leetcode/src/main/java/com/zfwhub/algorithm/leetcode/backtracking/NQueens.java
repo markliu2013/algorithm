@@ -8,7 +8,6 @@ public class NQueens {
         List<List<String>> list = new ArrayList<>();
         List<Integer> rows = new ArrayList<>();
         solveNQueens_backtrack(list, rows, n);
-        System.out.println(list.size());
         return list;
     }
     private void solveNQueens_backtrack(List<List<String>> list, List<Integer> rows, int n) {
