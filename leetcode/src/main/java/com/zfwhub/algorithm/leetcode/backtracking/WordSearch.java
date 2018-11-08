@@ -24,14 +24,26 @@ public class WordSearch {
     public static boolean dfs(char[][] board, String word, int i, int j, int k) {
         if (k == word.length()) {
             return true;
-        }
-        // 四个方向
-        for (int l = 0; l < 3; l++) {
-            if (dfs(board, word, i, j, k)) {
-                
+        } else {
+            if (i > 0) {
+                return dfs(board, word, i-1, j, k+1);
+            }
+            if (i < board.length - 1) {
+                return dfs(board, word, i+1, j, k+1);
+            }
+            if (j > 0) {
+                return dfs(board, word, i, j-1, k+1);
+            }
+            if (j < board[i].length - 1) {
+                return dfs(board, word, i, j+1, k+1);
             }
         }
         return false;
+    }
+    
+    // 上下左右检查
+    public static void dfs_go(char[][] board, String word, int i, int j, int k) {
+        
     }
     
     public static void main(String[] args) {
@@ -40,7 +52,7 @@ public class WordSearch {
                     {'S','F','C','S'},
                     {'A','D','E','E'}
                 };
-        String word1 = "";
+        String word1 = "ABCBH";
         String word2 = "";
         String word3 = "";
         System.out.println(exist(board, word1));
