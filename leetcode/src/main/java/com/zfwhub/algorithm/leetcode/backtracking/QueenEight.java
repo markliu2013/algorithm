@@ -1,5 +1,8 @@
 package com.zfwhub.algorithm.leetcode.backtracking;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class QueenEight {
     
     /**
@@ -198,8 +201,37 @@ public class QueenEight {
         return true;
     }
     
+    
+    public static int solution3() {
+        List<List<Integer>> list = new ArrayList<>();
+        List<Integer> cols = new ArrayList<>();
+        solution3_backtrack(list, cols);
+        return list.size();
+    }
+    
+    private static void solution3_backtrack(List<List<Integer>> list, List<Integer> cols) {
+        if (cols.size() == 8) {
+            list.add(cols);
+        } else {
+            for (int i = 0; i < 7; i++) {
+                if (solution3_backtrack_check(cols)) {
+                    
+                }
+            }
+        }
+    }
+    
+    private static boolean solution3_backtrack_check(List<Integer> cols) {
+        for (int i = 0; i < 7; i++) {
+            if (!cols.contains(i)) {
+                
+            }
+        }
+        return false;
+    }
+    
     public static void main(String[] args) {
-        System.out.println(solution2());
+        System.out.println(solution3());
     }
 
 }
