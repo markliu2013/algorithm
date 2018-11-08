@@ -211,23 +211,34 @@ public class QueenEight {
     
     private static void solution3_backtrack(List<List<Integer>> list, List<Integer> cols) {
         if (cols.size() == 8) {
-            list.add(cols);
+            list.add(new ArrayList<Integer>(cols));
         } else {
-            for (int i = 0; i < 7; i++) {
-                if (solution3_backtrack_check(cols)) {
-                    
+            for (int i = 0; i < 8; i++) {//每一列都一行一行的尝试
+                if (!solution3_backtrack_check(cols, i)) {
+                    continue;
                 }
+                cols.add(i);//make_move
+                solution3_backtrack(list, cols);
+                cols.remove(cols.size()-1);//unmake_move
             }
         }
     }
     
-    private static boolean solution3_backtrack_check(List<Integer> cols) {
-        for (int i = 0; i < 7; i++) {
-            if (!cols.contains(i)) {
-                
+    //i是行数，在第cols.size列，尝试第i行
+    private static boolean solution3_backtrack_check(List<Integer> cols, int i) {
+        if (cols.contains(i)) {//同一行
+            return false;
+        } else {//不在同一行，检查对角线
+            for (int j = 0; j < cols.size(); j++) {
+                if (i == cols.get(j)+(cols.size()-j)) {
+                    return false;
+                }
+                if (i == cols.get(j)-(cols.size()-j)) {
+                    return false;
+                }
             }
+            return true;
         }
-        return false;
     }
     
     public static void main(String[] args) {
