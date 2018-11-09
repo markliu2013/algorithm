@@ -13,11 +13,11 @@ public class WordSearch {
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[i].length; j++) {
                 if (board[i][j] == word.charAt(0)) {//入口
+                    makeMove(solution, i, j);
                     dfs(result, solution, board, word, i, j, 0);
                 }
             }
         }
-        System.out.println(result);
         return result.size() > 0;
     }
     
@@ -32,23 +32,51 @@ public class WordSearch {
             //上
             if (i > 0) {
                 i = i - 1;
+                if (isValid(board, word, i, j, k, solution)) {
+                    makeMove(solution, i, j);
+                    dfs(result, solution, board, word, i, j, k);
+                    unmakeMove(solution);
+                    continue;
+                } else {
+                    i = i + 1;
+                }
+                
             }
             //下
             if (i < board.length - 1) {
                 i = i + 1;
+                if (isValid(board, word, i, j, k, solution)) {
+                    makeMove(solution, i, j);
+                    dfs(result, solution, board, word, i, j, k);
+                    unmakeMove(solution);
+                    continue;
+                } else {
+                    i = i - 1;
+                }
             }
             //左
             if (j > 0) {
                 j = j - 1;
+                if (isValid(board, word, i, j, k, solution)) {
+                    makeMove(solution, i, j);
+                    dfs(result, solution, board, word, i, j, k);
+                    unmakeMove(solution);
+                    continue;
+                } else {
+                    j = j + 1;
+                }
             }
             //右
             if (j < board[i].length - 1) {
                 j = j + 1;
-            }
-            if (isValid(board, word, i, j, k, solution)) {
-                makeMove(solution, i, j);
-                dfs(result, solution, board, word, i, j, k);
-                unmakeMove(solution);
+                if (isValid(board, word, i, j, k, solution)) {
+                    makeMove(solution, i, j);
+                    dfs(result, solution, board, word, i, j, k);
+                    unmakeMove(solution);
+                    continue;
+                } else {
+                    j = j - 1;
+                }
             }
         }
     }
@@ -88,10 +116,16 @@ public class WordSearch {
         String word1 = "ABCCED";
         String word2 = "SEE";
         String word3 = "ABCB";
-        System.out.println(exist(board, word1));
+//        System.out.println(exist(board, word1));
 //        System.out.println(exist(board, word2));
 //        System.out.println(exist(board, word3));
-        
+        char[][] board1 = {
+                {'A','B','C','E'},
+                {'S','F','E','S'},
+                {'A','D','E','E'}
+            };
+        String word4 = "ABCESEEEFS";
+        System.out.println(exist(board1, word4));
     }
 
 }
