@@ -1,5 +1,9 @@
 package com.zfwhub.algorithm.leetcode.backtracking;
 import java.util.*;
+
+// Backtrack template
+// https://www.geeksforgeeks.org/backtracking-introduction/
+// https://medium.com/@andreaiacono/backtracking-explained-7450d6ef9e1a
 public class Backtrack {
     public static List<List<Object>> backtrack(int[] A) {
         // Set up a list of list to hold all possible solutions
