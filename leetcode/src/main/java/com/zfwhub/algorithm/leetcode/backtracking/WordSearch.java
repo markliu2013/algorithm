@@ -11,11 +11,11 @@ public class WordSearch {
     
     public static boolean exist(char[][] board, String word) {
         List<List<List<Integer>>> result = new ArrayList<>();
-        List<List<Integer>> solution = new ArrayList<>();
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[i].length; j++) {
                 if (board[i][j] == word.charAt(0)) {//入口
                     k = 0;
+                    List<List<Integer>> solution = new ArrayList<>();
                     makeMove(solution, i, j);
                     dfs(result, solution, board, word, i, j);
                 }
@@ -32,6 +32,8 @@ public class WordSearch {
         }
         
         // 每一个位置，都上下左右尝试。
+        i = solution.get(solution.size()-1).get(0);
+        j = solution.get(solution.size()-1).get(1);
             //上
             if (i > 0) {
                 i = i - 1;
@@ -45,6 +47,8 @@ public class WordSearch {
                 }
                 
             }
+            i = solution.get(solution.size()-1).get(0);
+            j = solution.get(solution.size()-1).get(1);
             //下
             if (i < board.length - 1) {
                 i = i + 1;
@@ -58,6 +62,8 @@ public class WordSearch {
                 }
             }
             //左
+            i = solution.get(solution.size()-1).get(0);
+            j = solution.get(solution.size()-1).get(1);
             if (j > 0) {
                 j = j - 1;
                 if (isValid(board, word, i, j, solution)) {
@@ -70,6 +76,8 @@ public class WordSearch {
                 }
             }
             //右
+            i = solution.get(solution.size()-1).get(0);
+            j = solution.get(solution.size()-1).get(1);
             if (j < board[i].length - 1) {
                 j = j + 1;
                 if (isValid(board, word, i, j, solution)) {
@@ -121,16 +129,23 @@ public class WordSearch {
         String word1 = "ABCCED";
         String word2 = "SEE";
         String word3 = "ABCB";
-//        System.out.println(exist(board, word1));
-//        System.out.println(exist(board, word2));
-//        System.out.println(exist(board, word3));
-        char[][] board1 = {
+        System.out.println(exist(board, word1));
+        System.out.println(exist(board, word2));
+        System.out.println(exist(board, word3));
+        char[][] board4 = {
                 {'A','B','C','E'},
                 {'S','F','E','S'},
                 {'A','D','E','E'}
             };
         String word4 = "ABCESEE";
-        System.out.println(exist(board1, word4));
+        System.out.println(exist(board4, word4));
+        char[][] board5 = {
+                {'b','b'},
+                {'a','b'},
+                {'b','a'}
+            };
+        String word5 = "a";
+        System.out.println(exist(board5, word5));
     }
 
 }
