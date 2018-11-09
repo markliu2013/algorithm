@@ -77,11 +77,11 @@ public class Backtrack {
     }
 
     private static boolean isASolution(int[] a, int pos) {
-        return pos == a.length;
+        return pos == a.length;//输出的是最后一个元素必须选择的子集。
     }
     
     public static void main(String[] args) {
-        int[] A = new int[] {1,2,3};
+        int[] A = new int[] {1,2,3,4};
         System.out.println(backtrack(A));
     }
 }
