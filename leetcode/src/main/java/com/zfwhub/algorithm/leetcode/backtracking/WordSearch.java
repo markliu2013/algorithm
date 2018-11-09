@@ -8,91 +8,77 @@ import java.util.*;
 public class WordSearch {
     
     public static boolean exist(char[][] board, String word) {
+        List<List<List<Integer>>> result = new ArrayList<>();
+        List<List<Integer>> solution = new ArrayList<>();
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[i].length; j++) {
                 if (board[i][j] == word.charAt(0)) {//入口
-                    List<List<Integer>> visited = new ArrayList<>();
-                    List<Integer> list1 = new ArrayList<>();
-                    list1.add(i);
-                    list1.add(j);
-                    visited.add(list1);
-                    if (dfs(board, word, i, j, 1, visited)) {
-                        return true;
-                    } else {
-                        continue;
-                    }
+                    dfs(result, solution, board, word, i, j, 0);
                 }
             }
         }
-        return false;
+        System.out.println(result);
+        return result.size() > 0;
     }
     
     // i,j 二维数组搜索入口，k是word的索引。
-    public static boolean dfs(char[][] board, String word, int i, int j, int k, List<List<Integer>> visited) {
-        if (k == word.length()) {
-            return true;
-        } else {
+    public static void dfs(List<List<List<Integer>>> result, List<List<Integer>> solution, char[][] board, String word, int i, int j, int k) {
+        if (isASolution(solution, word)) {
+            processSolution(result, solution);
+            return;
+        }
+        while (k < word.length()-1) {
+            k = k + 1;
+            //上
             if (i > 0) {
-                List<Integer> list1 = new ArrayList<>();
-                list1.add(i-1);
-                list1.add(j);
-                if (visited.contains(list1)) {
-                    
-                } else {
-                    if (board[i-1][j] == word.charAt(k)) {
-                        visited.add(list1);
-                        return dfs(board, word, i-1, j, k+1, visited);
-                    }
-                }
+                i = i - 1;
             }
+            //下
             if (i < board.length - 1) {
-                List<Integer> list1 = new ArrayList<>();
-                list1.add(i+1);
-                list1.add(j);
-                if (visited.contains(list1)) {
-                    
-                } else {
-                    if (board[i+1][j] == word.charAt(k)) {
-                        visited.add(list1);
-                        return dfs(board, word, i+1, j, k+1, visited);
-                    }
-                }
+                i = i + 1;
             }
+            //左
             if (j > 0) {
-                List<Integer> list1 = new ArrayList<>();
-                list1.add(i);
-                list1.add(j-1);
-                if (visited.contains(list1)) {
-                    
-                } else {
-                    if (board[i][j-1] == word.charAt(k)) {
-                        visited.add(list1);
-                        return dfs(board, word, i, j-1, k+1, visited);
-                    }
-                }
+                j = j - 1;
             }
+            //右
             if (j < board[i].length - 1) {
-                List<Integer> list1 = new ArrayList<>();
-                list1.add(i);
-                list1.add(j+1);
-                if (visited.contains(list1)) {
-                    
-                } else {
-                    if (board[i][j+1] == word.charAt(k)) {
-                        visited.add(list1);
-                        return dfs(board, word, i, j+1, k+1, visited);
-                    }
-                }
+                j = j + 1;
+            }
+            if (isValid(board, word, i, j, k, solution)) {
+                makeMove(solution, i, j);
+                dfs(result, solution, board, word, i, j, k);
+                unmakeMove(solution);
             }
         }
-        return false;
     }
     
-    // 上下左右检查
-    public static void dfs_go(char[][] board, String word, int i, int j, int k) {
-        
+    public static boolean isASolution(List<List<Integer>> solution, String word) {
+        return solution.size() == word.length();
     }
     
+    public static void processSolution(List<List<List<Integer>>> result, List<List<Integer>> solution) {
+        result.add(new ArrayList<>(solution));
+    }
+    // 检查是否相等，且不能重复走
+    public static boolean isValid(char[][] board, String word, int i, int j, int k, List<List<Integer>> solution) {
+        List<Integer> step = new ArrayList<>();
+        step.add(i);
+        step.add(j);
+        if (solution.contains(step)) {
+            return false;
+        }
+        return board[i][j] == word.charAt(k);
+    }
+    public static void makeMove(List<List<Integer>> solution, int i, int j) {
+        List<Integer> step = new ArrayList<>();
+        step.add(i);
+        step.add(j);
+        solution.add(step);
+    }
+    public static void unmakeMove(List<List<Integer>> solution) {
+        solution.remove(solution.size()-1);
+    }
     public static void main(String[] args) {
         char[][] board = {
                     {'A','B','C','E'},
@@ -102,8 +88,8 @@ public class WordSearch {
         String word1 = "ABCCED";
         String word2 = "SEE";
         String word3 = "ABCB";
-//        System.out.println(exist(board, word1));
-        System.out.println(exist(board, word2));
+        System.out.println(exist(board, word1));
+//        System.out.println(exist(board, word2));
 //        System.out.println(exist(board, word3));
         
     }
