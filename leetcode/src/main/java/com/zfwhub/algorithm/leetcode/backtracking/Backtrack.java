@@ -60,17 +60,28 @@ public class Backtrack {
     
     
     
-    private static void unmakeMove(List<Object> solution, int i) {}
-
-    private static void makeMove(List<Object> solution, int i) {}
-
-    private static boolean isValid(int i) {
-        return false;
+    private static void unmakeMove(List<Object> solution, int i) {
+        solution.remove(solution.size()-1);
     }
 
-    private static void processSolution(List<List<Object>> result, List<Object> solution) {}
+    private static void makeMove(List<Object> solution, int i) {
+        solution.add(i);
+    }
+
+    private static boolean isValid(int i) {
+        return true;
+    }
+
+    private static void processSolution(List<List<Object>> result, List<Object> solution) {
+        result.add(new ArrayList<>(solution));
+    }
 
     private static boolean isASolution(int[] a, int pos) {
-        return false;
+        return pos == a.length;
+    }
+    
+    public static void main(String[] args) {
+        int[] A = new int[] {1,2,3};
+        System.out.println(backtrack(A));
     }
 }
