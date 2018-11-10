@@ -24,10 +24,10 @@ public class WordSearch {
         return result.size() > 0;
     }
 
-    public static void dfs(List<List<List<Integer>>> result, List<List<Integer>> solution, char[][] board, String word) {
+    public static boolean dfs(List<List<List<Integer>>> result, List<List<Integer>> solution, char[][] board, String word) {
         if (isASolution(solution, word)) {
             processSolution(result, solution);
-            return;
+            return true;
         }
         // i,j 二维数组搜索入口，k是word的索引。
         // 每一个位置，都上下左右尝试。
@@ -38,7 +38,9 @@ public class WordSearch {
             i = i - 1;
             if (isValid(board, word, i, j, solution)) {
                 makeMove(solution, i, j);
-                dfs(result, solution, board, word);
+                if (dfs(result, solution, board, word)) {
+                    return true;
+                }
                 unmakeMove(solution);
             } else {
                 i = i + 1;
@@ -52,7 +54,9 @@ public class WordSearch {
             i = i + 1;
             if (isValid(board, word, i, j, solution)) {
                 makeMove(solution, i, j);
-                dfs(result, solution, board, word);
+                if (dfs(result, solution, board, word)) {
+                    return true;
+                }
                 unmakeMove(solution);
             } else {
                 i = i - 1;
@@ -65,7 +69,9 @@ public class WordSearch {
             j = j - 1;
             if (isValid(board, word, i, j, solution)) {
                 makeMove(solution, i, j);
-                dfs(result, solution, board, word);
+                if (dfs(result, solution, board, word)) {
+                    return true;
+                }
                 unmakeMove(solution);
             } else {
                 j = j + 1;
@@ -78,12 +84,15 @@ public class WordSearch {
             j = j + 1;
             if (isValid(board, word, i, j, solution)) {
                 makeMove(solution, i, j);
-                dfs(result, solution, board, word);
+                if (dfs(result, solution, board, word)) {
+                    return true;
+                }
                 unmakeMove(solution);
             } else {
                 j = j - 1;
             }
         }
+        return false;
     }
 
     public static boolean isASolution(List<List<Integer>> solution, String word) {
