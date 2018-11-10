@@ -12,18 +12,22 @@ public class SudokuSolver {
         List<Character> solution = new ArrayList<>();//每一个格子都是数字几
         dfs(board, solution);
     }
-    public static void dfs(char[][] board, List<Character> solution) {
+    public static boolean dfs(char[][] board, List<Character> solution) {
         if (isASolution(solution)) {
             processSolution(board, solution);
+            return true;
         } else {
             // 每一个格子都尝试1-9
             for (int i = 1; i <= RANK; i++) {
                 if (isValid(board, solution, i)) {
                     makeMove(solution, i);
-                    dfs(board, solution);
+                    if (dfs(board, solution)) {
+                        return true;
+                    }
                     unMakeMove(solution);
                 }
             }
+            return false;
         }
         
     }
