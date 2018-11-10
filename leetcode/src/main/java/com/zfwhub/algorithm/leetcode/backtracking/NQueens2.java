@@ -6,7 +6,7 @@ import java.util.*;
 public class NQueens2 {
     public static List<List<String>> solveNQueens(int n) {
         List<List<String>> solutionList = new ArrayList<>();
-        List<Integer> solution = new ArrayList<>();
+        List<Integer> solution = new ArrayList<>();//每一行都是第几个放皇后
         dfs(solutionList, solution, n);
         return solutionList;
     }
