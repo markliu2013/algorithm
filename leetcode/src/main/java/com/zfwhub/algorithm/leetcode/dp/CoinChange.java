@@ -8,7 +8,8 @@ public class CoinChange {
     
     public static int coinChange(int[] coins, int amount) {
         Arrays.sort(coins);
-        return dp(coins, amount);
+        int count = dp(coins, amount);
+        return count == Integer.MAX_VALUE ? -1 : count;
     }
     
     public static int dp(int[] coins, int amount) {
@@ -16,14 +17,17 @@ public class CoinChange {
             return 0;
         }
         if (coins.length == 0) {
-            return -1;
+            return Integer.MAX_VALUE;
         }
         if (coins.length == 1) {
             if (amount % coins[0] == 0) {
                 return amount / coins[0];
             } else {
-                return -1;
+                return Integer.MAX_VALUE;
             }
+        }
+        if (coins[0] > amount) {
+            return Integer.MAX_VALUE;
         }
         int lastCoin = coins[coins.length-1];
         int[] subCoins = Arrays.copyOfRange(coins, 0, coins.length-1);
@@ -31,38 +35,37 @@ public class CoinChange {
         if (amount < lastCoin) {
             return dp(subCoins, amount);
         }
-        
-        int maxHighestCount = amount / lastCoin;//最多用多少次
         int minCount = Integer.MAX_VALUE;
-        for (int i = maxHighestCount; i >= 1; i--) {
-            int count1 = dp(subCoins, ((amount % lastCoin) + (lastCoin*(maxHighestCount-i)))) + i;
-            int count2 = dp(subCoins, amount-(lastCoin*(maxHighestCount-i)))+(maxHighestCount-i);
-            int count = -1;
-            if (Math.min(count1, count2) == -1) {
-                if (count1 == count2 && count1 == -1) {
-                    count = -1;
-                } else {
-                    count = Math.max(count1, count2);
-                }
-            } else {
-                count = Math.min(count1, count2);
+        int maxHighestCount = amount / lastCoin;//最多用多少次
+        for (int i = maxHighestCount; i >= 0; i--) {
+            int count1 = dp(subCoins, ((amount % lastCoin) + (lastCoin*(maxHighestCount-i))));
+            if (count1 != Integer.MAX_VALUE) {
+                count1 += i;
             }
-            minCount = Math.min(minCount, count);
+            int count2 = dp(subCoins, amount-(lastCoin*(maxHighestCount-i)));
+            if (count2 != Integer.MAX_VALUE) {
+                count2 += maxHighestCount-i;
+            }
+            minCount = Math.min(minCount, Math.min(count1, count2));
         }
         return minCount;
     }
     public static void main(String[] args) {
-//        int[] coins1 = new int[] { 1, 2, 5 };
-//        int amount1 = 11;
-//        System.out.println(coinChange(coins1, amount1));
-//        int[] coins2 = new int[] { 2 };
-//        int amount2 = 3;
-//        System.out.println(coinChange(coins2, amount2));
-//        int[] coins3 = new int[] {  2, 5, 10 , 1 };
-//        int amount3 = 27;
-//        System.out.println(coinChange(coins3, amount3));
-        int[] coins4 = new int[] { 83, 186, 408, 419 };
+        int[] coins1 = new int[] { 1, 2, 5 };
+        int amount1 = 11;
+        System.out.println(coinChange(coins1, amount1));
+        int[] coins2 = new int[] { 2 };
+        int amount2 = 3;
+        System.out.println(coinChange(coins2, amount2));
+        int[] coins3 = new int[] {  2, 5, 10 , 1 };
+        int amount3 = 27;
+        System.out.println(coinChange(coins3, amount3));
+        int[] coins4 = new int[] { 186,419,83,408 };
         int amount4 = 6249;
         System.out.println(coinChange(coins4, amount4));
+        int[] coins5 = new int[] { 58,92,387,421,194,208,231 };
+        int amount5 = 7798;
+        System.out.println(coinChange(coins5, amount5));   
     }
+    
 }
