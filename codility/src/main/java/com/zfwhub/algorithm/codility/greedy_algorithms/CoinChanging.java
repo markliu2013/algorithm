@@ -1,6 +1,8 @@
 package com.zfwhub.algorithm.codility.greedy_algorithms;
 
+import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.Map;
 
 /**
  * https://codility.com/media/train/14-GreedyAlgorithms.pdf
@@ -20,8 +22,11 @@ public class CoinChanging {
     }
 
     // TODO CoinChanging
+    // https://codility.com/media/train/15-DynamicProgramming.pdf
     public static LinkedHashMap<Integer, Integer> solution2(int[] M, int k) {
-        return null;
+        LinkedHashMap<Integer, Integer> map = new LinkedHashMap<Integer, Integer>();
+        Map<Integer, Integer> dp = new HashMap<>();
+        return map;
     }
 
     public static void main(String[] args) {
