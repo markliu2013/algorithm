@@ -19,7 +19,7 @@ public class SudokuSolver {
         } else {
             // 每一个格子都尝试1-9
             for (int i = 1; i <= RANK; i++) {
-                if (isValid2(board, solution, i)) {
+                if (isValid(board, solution, i)) {
                     makeMove(solution, i);
                     if (dfs(board, solution)) {
                         return true;
@@ -50,13 +50,18 @@ public class SudokuSolver {
         for (int i = 0; i < solution.size(); i++) {
             board[i/9][i%9] = solution.get(i);
         }
-        if (board[solution.size()/9][solution.size()%9] != EMPTY_CHAR && board[solution.size()/9][solution.size()%9] != Character.forDigit(k, 10)) {
-            return false;
+        if (board[solution.size()/9][solution.size()%9] != EMPTY_CHAR) {
+            if (board[solution.size()/9][solution.size()%9] == Character.forDigit(k, 10)) {
+                return true;
+            } else {
+                return false;
+            }
+            
         }
         board[solution.size()/9][solution.size()%9] = Character.forDigit(k, 10);
         
         // Each of the digits 1-9 must occur exactly once in each row.
-        for (int i = 0; i < RANK; i++) {
+       for (int i = 0; i < RANK; i++) {
             Set<Character> set = new HashSet<>();
             for (int j = 0; j < RANK; j++) {
                 if (board[i][j] != EMPTY_CHAR && set.contains(board[i][j])) {
@@ -78,9 +83,9 @@ public class SudokuSolver {
             }
         }
         // Each of the the digits 1-9 must occur exactly once in each of the 9 3x3 sub-boxes of the grid.
-        for (int i = 0; i < RANK; i++) {
+        for (int i = 0; i < RANK; i++) { //循环9个宫
             Set<Character> set = new HashSet<>();
-            for (int j = 0; j < RANK; j++) {
+            for (int j = 0; j < RANK; j++) {//具体的宫，需要推断出宫的索引
                 int row = closestNumber(i,3)+j/3;
                 int col = j%3+(i%3)*3;
                 if (board[row][col] != EMPTY_CHAR && set.contains(board[row][col])) {
@@ -98,15 +103,25 @@ public class SudokuSolver {
         int nextRow = solution.size()/9;
         int nextCol = solution.size()%9;
         // 如果下一个格子不为空，则k必须与格子的数字一样
-        if (board[nextRow][nextCol] != EMPTY_CHAR && board[nextRow][nextCol] != Character.forDigit(k, 10)) {
-            return false;
+        if (board[nextRow][nextCol] != EMPTY_CHAR) {
+            if (board[nextRow][nextCol] == Character.forDigit(k, 10)) {
+                return true;
+            } else {
+                return false;
+            }
         }
         
         // 有坑，不能只检查solution前面的数，必须向后检查board里面非空的数。否则会陷入死循环。
         // 第二种思路，可以把solution按照board初始化，在isASolution中判断solution中不存在空点
         
         // 检查行
+        int row = solution.size() / RANK;
         if (solution.size() % RANK == 0) {//一行的第一个
+            for (int i = 1; i < RANK; i++) {
+                if (board[row][i] == Character.forDigit(k, 10)) {
+                    return false;
+                }
+            }
             return true;
         }
         for (int i = closestNumber(solution.size()-1, RANK); i < solution.size(); i++) {
@@ -114,18 +129,26 @@ public class SudokuSolver {
                 return false;
             }
         }
-        // 检查列
-        for (int i = 0; i < (solution.size()-1)/9; i++) {
-            if (solution.size() == 61) {
-                if (solution.get(i*9+(solution.size())%9) == Character.forDigit(k, 10)) {
-                    return false;
-                }
-            } else {
-                if (solution.get(i*9+(solution.size())%9) == Character.forDigit(k, 10)) {
-                    return false;
-                }
+        for (int i = (solution.size())%9+1; i < RANK; i++) {
+            if (board[row][i] == Character.forDigit(k, 10)) {
+                return false;
             }
         }
+        // 检查列
+        int col = solution.size() % RANK;
+        for (int i = 0; i < (solution.size()-1)/9; i++) {
+            if (solution.get(i*9+col) == Character.forDigit(k, 10)) {
+                return false;
+            }
+        }
+        for (int i = (solution.size()-1)/9+1; i < RANK; i++) {
+            if (board[i][col] == Character.forDigit(k, 10)) {
+                return false;
+            }
+        }
+        // TODO SudokuSolver 检查宫 要算出当前宫，里面夹杂了solution和board的数据。
+        
+        
         return true;
     }
     
