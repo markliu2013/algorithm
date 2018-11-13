@@ -19,7 +19,7 @@ public class SudokuSolver {
         } else {
             // 每一个格子都尝试1-9
             for (int i = 1; i <= RANK; i++) {
-                if (isValid(board, solution, i)) {
+                if (isValid2(board, solution, i)) {
                     makeMove(solution, i);
                     if (dfs(board, solution)) {
                         return true;
@@ -39,6 +39,7 @@ public class SudokuSolver {
             board[i/9][i%9] = solution.get(i);
         }
     }
+    
     public static boolean isValid(char[][] oriBoard, List<Character> solution, int k) {
         // init the board to check
         char[][] board = new char[9][9];
@@ -92,6 +93,30 @@ public class SudokuSolver {
         }
         return true;
     }
+    
+    // 代码还可以优化，不需要每次都全部检查一遍，只需要检查一下当前准备在哪个格子放的数字k
+    public static boolean isValid2(char[][] board, List<Character> solution, int k) {
+        int nextRow = solution.size()/9;
+        int nextCol = solution.size()%9;
+        // 如果下一个格子不为空，则k必须与格子的数字一样
+        if (board[nextRow][nextCol] != EMPTY_CHAR && board[nextRow][nextCol] != Character.forDigit(k, 10)) {
+            return false;
+        }
+        // 检查行
+        for (int i = closestNumber(solution.size(), 9); i < solution.size(); i++) {
+            if (solution.get(i) == k) {
+                return false;
+            }
+        }
+        // 检查列
+        for (int i = 0; i < solution.size()/9; i++) {
+            if (solution.get(i*9+solution.size()%9) == k) {
+                return false;
+            }
+        }
+        return true;
+    }
+    
     public static void unMakeMove(List<Character> solution) {
         solution.remove(solution.size()-1);
     }
@@ -108,6 +133,7 @@ public class SudokuSolver {
         return n1; 
     }
     public static void main(String[] args) {
+        System.out.println(closestNumber(25, 9));
         char[][] board = {
                 {'5','3','.','.','7','.','.','.','.'},
                 {'6','.','.','1','9','5','.','.','.'},
