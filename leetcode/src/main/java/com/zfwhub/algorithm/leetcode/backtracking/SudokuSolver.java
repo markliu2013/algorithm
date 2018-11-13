@@ -101,8 +101,12 @@ public class SudokuSolver {
         if (board[nextRow][nextCol] != EMPTY_CHAR && board[nextRow][nextCol] != Character.forDigit(k, 10)) {
             return false;
         }
+        
+        // 有坑，不能只检查solution前面的数，必须向后检查board里面非空的数。否则会陷入死循环。
+        // 第二种思路，可以把solution按照board初始化，在isASolution中判断solution中不存在空点
+        
         // 检查行
-        if (solution.size() % RANK == 0) {
+        if (solution.size() % RANK == 0) {//一行的第一个
             return true;
         }
         for (int i = closestNumber(solution.size()-1, RANK); i < solution.size(); i++) {
@@ -112,12 +116,12 @@ public class SudokuSolver {
         }
         // 检查列
         for (int i = 0; i < (solution.size()-1)/9; i++) {
-            if (solution.size() == 20) {
-                if (solution.get(i*9+(solution.size()-1)%9+1) == Character.forDigit(k, 10)) {
+            if (solution.size() == 61) {
+                if (solution.get(i*9+(solution.size())%9) == Character.forDigit(k, 10)) {
                     return false;
                 }
             } else {
-                if (solution.get(i*9+(solution.size()-1)%9) == Character.forDigit(k, 10)) {
+                if (solution.get(i*9+(solution.size())%9) == Character.forDigit(k, 10)) {
                     return false;
                 }
             }
