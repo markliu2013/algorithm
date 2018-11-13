@@ -26,12 +26,13 @@ public class SudokuSolver2 {
         } else {
             // 每一个格子都尝试1-9
             for (int i = 1; i <= RANK; i++) {
-                if (isValid(solution, i, index)) {
+                Character validResult = isValid(solution, i, index);
+                if (validResult == '0') {
                     makeMove(solution, i, index);
                     if (dfs(board, solution, index+1)) {
                         return true;
                     }
-                    unMakeMove(solution, index);
+                    unMakeMove(solution, index, validResult);
                 }
             }
             return false;
@@ -52,26 +53,28 @@ public class SudokuSolver2 {
             board[i/9][i%9] = solution.get(i);
         }
     }
-    public static boolean isValid(List<Character> solution, int k, int index) {
+    // isValid 需要标识出失败了，solution之前的数字，不能改变了solution的初始值。
+    // 如何合法返回0，否则返回solution之前的字符。
+    public static Character isValid(List<Character> solution, int k, int index) {
         // 如果下一个格子不为空，则k必须与格子的数字一样
         if (solution.get(index) != EMPTY_CHAR) {
             if (solution.get(index) == Character.forDigit(k, 10)) {
-                return true;
+                return '0';
             } else {
-                return false;
+                return solution.get(index);
             }
         }
         // 检查行
         int rowStart = closestNumber(index, RANK);
         for (int i = rowStart; i <= rowStart+8; i++) {
             if (solution.get(i) == Character.forDigit(k, 10)) {
-                return false;
+                return solution.get(index);
             }
         }
         // 检查列
         for (int i = 0; i < RANK; i++) {
             if (solution.get(index % 9 + i*9) == Character.forDigit(k, 10)) {
-                return false;
+                return solution.get(index);
             }
         }
         // 检查宫
@@ -79,14 +82,14 @@ public class SudokuSolver2 {
         for (int i = 0; i < RANK; i++) {
             int subBoxIndex = subBoxStartIndex + i % 3 + (i / 3) * 9;
             if (solution.get(subBoxIndex) == Character.forDigit(k, 10)) {
-                return false;
+                return solution.get(index);
             }
         }
-        return true;
+        return '0';
     }
     
     
-    public static void unMakeMove(List<Character> solution, int index) {
+    public static void unMakeMove(List<Character> solution, int index, Character c) {
         // 此处有坑，solution之前不一定是 空 的，因为尝试的数字和之前不一致也会不合法。
         // 注意isValid不合法的所有情况都需要考虑
         solution.set(index, '.');
