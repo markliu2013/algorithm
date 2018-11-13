@@ -39,7 +39,6 @@ public class SudokuSolver {
             board[i/9][i%9] = solution.get(i);
         }
     }
-    
     public static boolean isValid(char[][] oriBoard, List<Character> solution, int k) {
         // init the board to check
         char[][] board = new char[9][9];
@@ -103,15 +102,24 @@ public class SudokuSolver {
             return false;
         }
         // 检查行
-        for (int i = closestNumber(solution.size(), 9); i < solution.size(); i++) {
-            if (solution.get(i) == k) {
+        if (solution.size() % RANK == 0) {
+            return true;
+        }
+        for (int i = closestNumber(solution.size()-1, RANK); i < solution.size(); i++) {
+            if (solution.get(i) == Character.forDigit(k, 10)) {
                 return false;
             }
         }
         // 检查列
-        for (int i = 0; i < solution.size()/9; i++) {
-            if (solution.get(i*9+solution.size()%9) == k) {
-                return false;
+        for (int i = 0; i < (solution.size()-1)/9; i++) {
+            if (solution.size() == 20) {
+                if (solution.get(i*9+(solution.size()-1)%9+1) == Character.forDigit(k, 10)) {
+                    return false;
+                }
+            } else {
+                if (solution.get(i*9+(solution.size()-1)%9) == Character.forDigit(k, 10)) {
+                    return false;
+                }
             }
         }
         return true;
@@ -133,7 +141,6 @@ public class SudokuSolver {
         return n1; 
     }
     public static void main(String[] args) {
-        System.out.println(closestNumber(25, 9));
         char[][] board = {
                 {'5','3','.','.','7','.','.','.','.'},
                 {'6','.','.','1','9','5','.','.','.'},
