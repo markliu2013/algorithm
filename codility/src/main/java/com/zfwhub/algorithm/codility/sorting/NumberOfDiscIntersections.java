@@ -1,7 +1,7 @@
 package com.zfwhub.algorithm.codility.sorting;
 
 /**
- * https://app.codility.com/programmers/lessons/6-sorting/number_of_disc_intersections/ 
+ * https://app.codility.com/programmers/lessons/6-sorting/number_of_disc_intersections/
  */
 public class NumberOfDiscIntersections {
 
