@@ -3,6 +3,7 @@
 * [背包问题九讲](https://github.com/tianyicui/pack)
 * [MaximumSubarray](https://blog.csdn.net/liu2012huan/article/details/51296635)
 * [MakingTheGrade](http://poj.org/problem?id=3666)
+* [RegularExpressionMatching](https://leetcode.com/problems/regular-expression-matching/)
 
 ## Backtracking
 * [NQueens](https://leetcode.com/problems/n-queens/)
@@ -13,6 +14,7 @@
 
 ## Divide And Conquer
 * [MajorityElement](https://leetcode.com/problems/majority-element/)
+* [MedianOfTwoSortedArrays](https://leetcode.com/problems/median-of-two-sorted-arrays/)
 
 ## Greedy
 * [MaxNonoverlappingSegments](https://app.codility.com/programmers/lessons/16-greedy_algorithms/max_nonoverlapping_segments/)
@@ -20,7 +22,7 @@
 
 ## Sorting
 * [Triangle](https://app.codility.com/programmers/lessons/6-sorting/triangle/)
-* [MaxProductOfThree](https://leetcode.com/problems/maximum-product-of-three-numbers/description/)
+* [MaxProductOfThree](https://leetcode.com/problems/maximum-product-of-three-numbers/)
 * [NumberOfDiscIntersections](https://app.codility.com/programmers/lessons/6-sorting/number_of_disc_intersections/)
 
 ## Binary Search
@@ -28,7 +30,7 @@
 * [MinMaxDivision](https://app.codility.com/programmers/lessons/14-binary_search_algorithm/min_max_division/)
 
 ## Sliding Window
-* [LongestSubstring](https://leetcode.com/problems/longest-substring-without-repeating-characters/description/)
+* [LongestSubstring](https://leetcode.com/problems/longest-substring-without-repeating-characters/)
 
 ## Prefix Sums
 * [GenomicRangeQuery](https://app.codility.com/programmers/lessons/5-prefix_sums/genomic_range_query/)
@@ -38,29 +40,28 @@
 * [Two-pointer Technique](https://leetcode.com/articles/two-pointer-technique/)
 
 ## Elementary Math
-* [AddTwoNumbers](https://leetcode.com/problems/add-two-numbers/description/)
+* [AddTwoNumbers](https://leetcode.com/problems/add-two-numbers/)
 
 ## optimization
 * [TwoSum](https://leetcode.com/problems/two-sum/solution/)
-* [ThreeSum](https://leetcode.com/problems/3sum/description/)
+* [ThreeSum](https://leetcode.com/problems/3sum/)
 * [ThreeSumCloset](https://leetcode.com/problems/3sum-closest/)
-* [FourSum](https://leetcode.com/problems/4sum/description/)
+* [FourSum](https://leetcode.com/problems/4sum/)
 * [PermCheck](https://app.codility.com/programmers/lessons/4-counting_elements/perm_check/)
 * [Leader](https://codility.com/media/train/6-Leader.pdf)
 * [MaxDoubleSliceSum](https://app.codility.com/programmers/lessons/9-maximum_slice_problem/max_double_slice_sum/)
-* [MedianOfTwoSortedArrays](https://leetcode.com/problems/median-of-two-sorted-arrays/description/)
 * [Ladder](https://app.codility.com/programmers/lessons/13-fibonacci_numbers/ladder/)
-
-
-## Recommended, 4 stars
 * [TapeEquilibrium](https://app.codility.com/programmers/lessons/3-time_complexity/tape_equilibrium/)
 * [MissingInteger](https://app.codility.com/programmers/lessons/4-counting_elements/missing_integer/)
-* [Flags](https://app.codility.com/programmers/lessons/10-prime_and_composite_numbers/flags/)
-
-## Recommended, 3 stars
 * [OddOccurrencesInArray](https://app.codility.com/programmers/lessons/2-arrays/odd_occurrences_in_array/)
 * [PermMissingElem](https://app.codility.com/programmers/lessons/3-time_complexity/perm_missing_elem/)
 * [MaxCounters](https://app.codility.com/programmers/lessons/4-counting_elements/max_counters/)
 
-## Life Problem
+## Algorithm Modeling Application
 * [StoneWall](https://app.codility.com/programmers/lessons/7-stacks_and_queues/stone_wall/)
+* [Flags](https://app.codility.com/programmers/lessons/10-prime_and_composite_numbers/flags/)
+
+
+
+
+
