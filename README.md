@@ -1,13 +1,32 @@
+## Dynamic programming
+* [GoldMine](https://www.jianshu.com/p/e200805306db)
+* [背包问题九讲](https://github.com/markliu2013/pack)
+* [MaximumSubarray](https://blog.csdn.net/liu2012huan/article/details/51296635)
+* [MakingTheGrade](http://poj.org/problem?id=3666)
+
+## Backtracking
+* [NQueens](https://leetcode.com/problems/n-queens/)
+* [Combinations](https://leetcode.com/problems/combinations/)
+* [SubSets](https://leetcode.com/problems/subsets/)
+* [SudokuSolver](https://leetcode.com/problems/sudoku-solver/)
+* [WordSearch](https://leetcode.com/problems/word-search/)
+
+## Divide And Conquer
+* [MajorityElement](https://leetcode.com/problems/majority-element/)
+
+## Greedy
+
 ## Strong Recommended, You should think deeply.  5 stars
 * [TwoSum](https://leetcode.com/problems/two-sum/solution/)
+* [ThreeSum](https://leetcode.com/problems/3sum/description/)
+* [ThreeSumCloset](https://leetcode.com/problems/3sum-closest/)
+* [FourSum](https://leetcode.com/problems/4sum/description/)
 * [AddTwoNumbers](https://leetcode.com/problems/add-two-numbers/description/)
 * [LongestSubstring](https://leetcode.com/problems/longest-substring-without-repeating-characters/description/)
-* [MaximumSubarray](https://blog.csdn.net/liu2012huan/article/details/51296635)
 * [PermCheck](https://app.codility.com/programmers/lessons/4-counting_elements/perm_check/)
 * [MaxProductOfThree](https://leetcode.com/problems/maximum-product-of-three-numbers/description/)
 * [GenomicRangeQuery](https://app.codility.com/programmers/lessons/5-prefix_sums/genomic_range_query/)
-* [MakingTheGrade](http://poj.org/problem?id=3666)
-* [国王的金矿](http://www.sohu.com/a/153858619_466939)
+
 * [Triangle](https://app.codility.com/programmers/lessons/6-sorting/triangle/)
 * [Leader](https://codility.com/media/train/6-Leader.pdf)
 * [MaxDoubleSliceSum](https://app.codility.com/programmers/lessons/9-maximum_slice_problem/max_double_slice_sum/)
