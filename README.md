@@ -1,6 +1,6 @@
 ## Dynamic programming
 * [GoldMine](https://www.jianshu.com/p/e200805306db)
-* [背包问题九讲](https://github.com/markliu2013/pack)
+* [背包问题九讲](https://github.com/tianyicui/pack)
 * [MaximumSubarray](https://blog.csdn.net/liu2012huan/article/details/51296635)
 * [MakingTheGrade](http://poj.org/problem?id=3666)
 
@@ -16,16 +16,32 @@
 
 ## Greedy
 
-## Strong Recommended, You should think deeply.  5 stars
+## Sliding Window
+* [LongestSubstring](https://leetcode.com/problems/longest-substring-without-repeating-characters/description/)
+
+## [Prefix Sums](https://app.codility.com/programmers/lessons/5-prefix_sums/)
+* [GenomicRangeQuery](https://app.codility.com/programmers/lessons/5-prefix_sums/genomic_range_query/)
+* [MinAvgTwoSlice](https://app.codility.com/programmers/lessons/5-prefix_sums/min_avg_two_slice/)
+
+## Binary Search
+
+## In-Place Algorithm
+* [Two-pointer Technique](https://leetcode.com/articles/two-pointer-technique/)
+
+## Elementary Math
+* [AddTwoNumbers](https://leetcode.com/problems/add-two-numbers/description/)
+
+
+
+## optimization
 * [TwoSum](https://leetcode.com/problems/two-sum/solution/)
 * [ThreeSum](https://leetcode.com/problems/3sum/description/)
 * [ThreeSumCloset](https://leetcode.com/problems/3sum-closest/)
 * [FourSum](https://leetcode.com/problems/4sum/description/)
-* [AddTwoNumbers](https://leetcode.com/problems/add-two-numbers/description/)
-* [LongestSubstring](https://leetcode.com/problems/longest-substring-without-repeating-characters/description/)
+
 * [PermCheck](https://app.codility.com/programmers/lessons/4-counting_elements/perm_check/)
 * [MaxProductOfThree](https://leetcode.com/problems/maximum-product-of-three-numbers/description/)
-* [GenomicRangeQuery](https://app.codility.com/programmers/lessons/5-prefix_sums/genomic_range_query/)
+
 
 * [Triangle](https://app.codility.com/programmers/lessons/6-sorting/triangle/)
 * [Leader](https://codility.com/media/train/6-Leader.pdf)
@@ -43,7 +59,7 @@
 * [OddOccurrencesInArray](https://app.codility.com/programmers/lessons/2-arrays/odd_occurrences_in_array/)
 * [PermMissingElem](https://app.codility.com/programmers/lessons/3-time_complexity/perm_missing_elem/)
 * [MaxCounters](https://app.codility.com/programmers/lessons/4-counting_elements/max_counters/)
-* [MinAvgTwoSlice](https://app.codility.com/programmers/lessons/5-prefix_sums/min_avg_two_slice/)
+
 
 ## Life Problem
 * [StoneWall](https://app.codility.com/programmers/lessons/7-stacks_and_queues/stone_wall/)
