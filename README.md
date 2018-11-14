@@ -19,7 +19,7 @@
 ## Sliding Window
 * [LongestSubstring](https://leetcode.com/problems/longest-substring-without-repeating-characters/description/)
 
-## [Prefix Sums](https://app.codility.com/programmers/lessons/5-prefix_sums/)
+## Prefix Sums
 * [GenomicRangeQuery](https://app.codility.com/programmers/lessons/5-prefix_sums/genomic_range_query/)
 * [MinAvgTwoSlice](https://app.codility.com/programmers/lessons/5-prefix_sums/min_avg_two_slice/)
 
@@ -31,18 +31,13 @@
 ## Elementary Math
 * [AddTwoNumbers](https://leetcode.com/problems/add-two-numbers/description/)
 
-
-
 ## optimization
 * [TwoSum](https://leetcode.com/problems/two-sum/solution/)
 * [ThreeSum](https://leetcode.com/problems/3sum/description/)
 * [ThreeSumCloset](https://leetcode.com/problems/3sum-closest/)
 * [FourSum](https://leetcode.com/problems/4sum/description/)
-
 * [PermCheck](https://app.codility.com/programmers/lessons/4-counting_elements/perm_check/)
 * [MaxProductOfThree](https://leetcode.com/problems/maximum-product-of-three-numbers/description/)
-
-
 * [Triangle](https://app.codility.com/programmers/lessons/6-sorting/triangle/)
 * [Leader](https://codility.com/media/train/6-Leader.pdf)
 * [MaxDoubleSliceSum](https://app.codility.com/programmers/lessons/9-maximum_slice_problem/max_double_slice_sum/)
@@ -60,7 +55,5 @@
 * [PermMissingElem](https://app.codility.com/programmers/lessons/3-time_complexity/perm_missing_elem/)
 * [MaxCounters](https://app.codility.com/programmers/lessons/4-counting_elements/max_counters/)
 
-
 ## Life Problem
 * [StoneWall](https://app.codility.com/programmers/lessons/7-stacks_and_queues/stone_wall/)
-
