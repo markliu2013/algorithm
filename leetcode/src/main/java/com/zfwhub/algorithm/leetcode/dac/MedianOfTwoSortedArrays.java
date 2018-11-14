@@ -1,6 +1,6 @@
-package com.zfwhub.algorithm.leetcode.array;
+package com.zfwhub.algorithm.leetcode.dac;
 
-import java.util.Arrays;
+import java.util.*;
 
 /**
  * Find the median of the two sorted arrays.
