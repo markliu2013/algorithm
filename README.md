@@ -18,16 +18,21 @@
 * [MaxNonoverlappingSegments](https://app.codility.com/programmers/lessons/16-greedy_algorithms/max_nonoverlapping_segments/)
 * [TieRopes](https://app.codility.com/programmers/lessons/16-greedy_algorithms/tie_ropes/)
 
+## Sorting
+* [Triangle](https://app.codility.com/programmers/lessons/6-sorting/triangle/)
+* [MaxProductOfThree](https://leetcode.com/problems/maximum-product-of-three-numbers/description/)
+* [NumberOfDiscIntersections](https://app.codility.com/programmers/lessons/6-sorting/number_of_disc_intersections/)
+
+## Binary Search
+* [BinarySearch](https://leetcode.com/problems/binary-search/)
+* [MinMaxDivision](https://app.codility.com/programmers/lessons/14-binary_search_algorithm/min_max_division/)
+
 ## Sliding Window
 * [LongestSubstring](https://leetcode.com/problems/longest-substring-without-repeating-characters/description/)
 
 ## Prefix Sums
 * [GenomicRangeQuery](https://app.codility.com/programmers/lessons/5-prefix_sums/genomic_range_query/)
 * [MinAvgTwoSlice](https://app.codility.com/programmers/lessons/5-prefix_sums/min_avg_two_slice/)
-
-## Binary Search
-* [BinarySearch](https://leetcode.com/problems/binary-search/)
-* [MinMaxDivision](https://app.codility.com/programmers/lessons/14-binary_search_algorithm/min_max_division/)
 
 ## In-Place Algorithm
 * [Two-pointer Technique](https://leetcode.com/articles/two-pointer-technique/)
@@ -41,8 +46,6 @@
 * [ThreeSumCloset](https://leetcode.com/problems/3sum-closest/)
 * [FourSum](https://leetcode.com/problems/4sum/description/)
 * [PermCheck](https://app.codility.com/programmers/lessons/4-counting_elements/perm_check/)
-* [MaxProductOfThree](https://leetcode.com/problems/maximum-product-of-three-numbers/description/)
-* [Triangle](https://app.codility.com/programmers/lessons/6-sorting/triangle/)
 * [Leader](https://codility.com/media/train/6-Leader.pdf)
 * [MaxDoubleSliceSum](https://app.codility.com/programmers/lessons/9-maximum_slice_problem/max_double_slice_sum/)
 * [MedianOfTwoSortedArrays](https://leetcode.com/problems/median-of-two-sorted-arrays/description/)
