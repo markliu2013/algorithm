@@ -15,6 +15,7 @@
 /instance/org.eclipse.debug.ui/preferredDetailPanes=DefaultDetailPane\:DefaultDetailPane|
 /instance/org.eclipse.debug.ui/preferredTargets=default\:default|
 /instance/org.eclipse.egit.ui/commit_dialog_history_messages=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<messages>\r\n<message>Format</message>\r\n<message>MinMaxDivision</message>\r\n<message>greedy</message>\r\n<message>Eratosthenes</message>\r\n<message>MinPerimeterRectangle</message>\r\n<message>CountFactors</message>\r\n</messages>
+/instance/org.eclipse.egit.ui/show_push_success_dialog=false
 /instance/org.eclipse.epp.logging.aeri.ide/resetSendMode=KEEP
 /instance/org.eclipse.epp.logging.aeri.ide/resetSendModeOn=0
 /instance/org.eclipse.epp.logging.aeri.ide/sendMode=NOTIFY
