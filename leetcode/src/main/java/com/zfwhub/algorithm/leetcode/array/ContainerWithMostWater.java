@@ -1,7 +1,7 @@
 package com.zfwhub.algorithm.leetcode.array;
 
 /**
- * https://leetcode.com/problems/container-with-most-water/description/ 
+ * https://leetcode.com/problems/container-with-most-water/
  */
 public class ContainerWithMostWater {
     
