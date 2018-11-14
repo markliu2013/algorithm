@@ -39,6 +39,9 @@
 ## In-Place Algorithm
 * [Two-pointer Technique](https://leetcode.com/articles/two-pointer-technique/)
 
+## Two-Pointer Algorithm
+* [ContainerWithMostWater](https://leetcode.com/problems/container-with-most-water/)
+
 ## Elementary Math
 * [AddTwoNumbers](https://leetcode.com/problems/add-two-numbers/)
 
