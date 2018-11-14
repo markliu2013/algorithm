@@ -15,7 +15,6 @@
 		<module>acm</module>
 		<module>datastructure</module>
 		<module>math</module>
-		<module>dynamicprogramming</module>
 		<module>ml</module>
 	</modules>
 
