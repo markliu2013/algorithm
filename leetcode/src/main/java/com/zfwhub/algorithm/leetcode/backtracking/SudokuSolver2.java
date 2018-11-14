@@ -39,13 +39,13 @@ public class SudokuSolver2 {
         
     }
     public static boolean isASolution(List<Character> solution, int index) {
-        for (int i = 0; i < solution.size(); i++) {
+        /*for (int i = 0; i < solution.size(); i++) {
             if (solution.get(i) == EMPTY_CHAR) {
                 return false;
             }
         }
-        return true;
-//        return index == RANK * RANK;
+        return true;*/
+        return index == RANK * RANK;
     }
     public static void processSolution(char[][] board, List<Character> solution) {
         for (int i = 0; i < solution.size(); i++) {
