@@ -8,6 +8,7 @@ import java.util.*;
  */
 public class FourSum {
     
+    // 暴力解法
     public static List<List<Integer>> solution(int[] nums, int target) {
         List<List<Integer>> lists = new ArrayList<List<Integer>>();
         if (nums == null || nums.length < 4) {
