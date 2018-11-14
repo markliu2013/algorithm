@@ -15,6 +15,8 @@
 * [MajorityElement](https://leetcode.com/problems/majority-element/)
 
 ## Greedy
+* [MaxNonoverlappingSegments](https://app.codility.com/programmers/lessons/16-greedy_algorithms/max_nonoverlapping_segments/)
+* [TieRopes](https://app.codility.com/programmers/lessons/16-greedy_algorithms/tie_ropes/)
 
 ## Sliding Window
 * [LongestSubstring](https://leetcode.com/problems/longest-substring-without-repeating-characters/description/)
@@ -24,6 +26,8 @@
 * [MinAvgTwoSlice](https://app.codility.com/programmers/lessons/5-prefix_sums/min_avg_two_slice/)
 
 ## Binary Search
+* [BinarySearch](https://leetcode.com/problems/binary-search/)
+* [MinMaxDivision](https://app.codility.com/programmers/lessons/14-binary_search_algorithm/min_max_division/)
 
 ## In-Place Algorithm
 * [Two-pointer Technique](https://leetcode.com/articles/two-pointer-technique/)
@@ -43,7 +47,7 @@
 * [MaxDoubleSliceSum](https://app.codility.com/programmers/lessons/9-maximum_slice_problem/max_double_slice_sum/)
 * [MedianOfTwoSortedArrays](https://leetcode.com/problems/median-of-two-sorted-arrays/description/)
 * [Ladder](https://app.codility.com/programmers/lessons/13-fibonacci_numbers/ladder/)
-* [MinMaxDivision](https://app.codility.com/programmers/lessons/14-binary_search_algorithm/min_max_division/)
+
 
 ## Recommended, 4 stars
 * [TapeEquilibrium](https://app.codility.com/programmers/lessons/3-time_complexity/tape_equilibrium/)
