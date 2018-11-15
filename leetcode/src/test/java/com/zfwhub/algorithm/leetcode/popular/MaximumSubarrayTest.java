@@ -1,4 +1,4 @@
-package com.zfwhub.algorithm.leetcode.array;
+package com.zfwhub.algorithm.leetcode.popular;
 
 import org.junit.Test;
 
