@@ -1,7 +1,9 @@
-## Dynamic programming
+## Popular Problems
+* [MaximumSubarray](https://blog.csdn.net/liu2012huan/article/details/51296635)
+
+## Dynamic Programming
 * [GoldMine](https://www.jianshu.com/p/e200805306db)
 * [背包问题九讲](https://github.com/tianyicui/pack)
-* [MaximumSubarray](https://blog.csdn.net/liu2012huan/article/details/51296635)
 * [MakingTheGrade](http://poj.org/problem?id=3666)
 * [RegularExpressionMatching](https://leetcode.com/problems/regular-expression-matching/)
 
