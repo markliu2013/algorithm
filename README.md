@@ -8,9 +8,9 @@
 * [RegularExpressionMatching](https://leetcode.com/problems/regular-expression-matching/)
 
 ## Backtracking
-* [NQueens](https://leetcode.com/problems/n-queens/)
 * [Combinations](https://leetcode.com/problems/combinations/)
 * [SubSets](https://leetcode.com/problems/subsets/)
+* [NQueens](https://leetcode.com/problems/n-queens/)
 * [SudokuSolver](https://leetcode.com/problems/sudoku-solver/)
 * [WordSearch](https://leetcode.com/problems/word-search/)
 
