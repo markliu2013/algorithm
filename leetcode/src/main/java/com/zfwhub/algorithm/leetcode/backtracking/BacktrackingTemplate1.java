@@ -6,7 +6,7 @@ import java.util.*;
 // Combinations, 从数组中选出指定数目的所有组合
 public class BacktrackingTemplate1 {
     public static List<List<Integer>> combine(int[] arr, int n) {
-        // 检查输入参数
+        // TODO BacktrackingTemplate1 检查输入参数
         List<List<Integer>> solutionList = new ArrayList<>();
         List<Integer> solution = new ArrayList<>();
         dfs(solutionList, solution, arr, n);
@@ -18,8 +18,8 @@ public class BacktrackingTemplate1 {
             processSolution(solutionList, solution);
         } else {
             for (int i = 0; i < arr.length; i++) {
-                if (isValid(solution, i)) {
-                    makeMove(solution, i);
+                if (isValid(solution, arr[i])) {
+                    makeMove(solution, arr[i]);
                     dfs(solutionList, solution, arr, n);
                     unMakeMove(solution);
                 }
@@ -35,15 +35,15 @@ public class BacktrackingTemplate1 {
         solutionList.add(new ArrayList<>(solution));
     }
     
-    public static boolean isValid(List<Integer> solution, int i) {
+    public static boolean isValid(List<Integer> solution, int n) {
         if (solution.size() == 0) {
             return true;
         }
-        return solution.get(solution.size()-1) < i;
+        return solution.get(solution.size()-1) < n;
     }
     
-    public static void makeMove(List<Integer> solution, int i) {
-        solution.add(i);
+    public static void makeMove(List<Integer> solution, int n) {
+        solution.add(n);
     }
     
     public static void unMakeMove(List<Integer> solution) {
@@ -51,7 +51,7 @@ public class BacktrackingTemplate1 {
     }
     
     public static void main(String[] args) {
-        int[] arr = new int[] {1,2,3,4};
+        int[] arr = new int[] {1,2,3};
         System.out.println(BacktrackingTemplate1.combine(arr, 3));
     }
 }
