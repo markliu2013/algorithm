@@ -4,6 +4,7 @@ import java.util.*;
 
 // 回溯模板 - 找到所有解
 // Combinations, 从数组中选出指定数目的所有组合
+// https://blog.csdn.net/u010500263/article/details/18435495
 // SubSets
 public class BacktrackingTemplate1 {
     public static List<List<Integer>> combine(int[] arr, int n) {
@@ -40,6 +41,7 @@ public class BacktrackingTemplate1 {
         if (solution.size() == 0) {
             return true;
         }
+//      if (solution.contains(n)) return false;
         return solution.get(solution.size()-1) < n;
     }
     
