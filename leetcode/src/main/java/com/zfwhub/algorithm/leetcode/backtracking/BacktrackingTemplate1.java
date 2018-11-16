@@ -17,13 +17,13 @@ public class BacktrackingTemplate1 {
     public static void dfs(List<List<Integer>> solutionList, List<Integer> solution, int[] arr, int n) {
         if (isASolution(solution, n)) {
             processSolution(solutionList, solution);
-        } else {
-            for (int i = 0; i < arr.length; i++) {
-                if (isValid(solution, arr[i])) {
-                    makeMove(solution, arr[i]);
-                    dfs(solutionList, solution, arr, n);
-                    unMakeMove(solution);
-                }
+            return;// TODO 需不需要return，得看情况。SubSets为什么不需要？
+        }
+        for (int i = 0; i < arr.length; i++) {
+            if (isValid(solution, arr[i])) {
+                makeMove(solution, arr[i]);
+                dfs(solutionList, solution, arr, n);
+                unMakeMove(solution);
             }
         }
     }
@@ -52,7 +52,7 @@ public class BacktrackingTemplate1 {
     }
     
     public static void main(String[] args) {
-        int[] arr = new int[] {1,2,3};
+        int[] arr = new int[] {1,2,3,4};
         System.out.println(BacktrackingTemplate1.combine(arr, 3));
     }
 }
