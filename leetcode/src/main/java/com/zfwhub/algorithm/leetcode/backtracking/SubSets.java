@@ -3,19 +3,54 @@ import java.util.*;
 // https://leetcode.com/problems/subsets/
 // https://leetcode.com/problems/subsets/discuss/27281/A-general-approach-to-backtracking-questions-in-Java-(Subsets-Permutations-Combination-Sum-Palindrome-Partitioning)
 public class SubSets {
-    public List<List<Integer>> subsets(int[] nums) {
-        List<List<Integer>> list = new ArrayList<>();
-        Arrays.sort(nums);
-        backtrack(list, new ArrayList<>(), nums, 0);
-        return list;
+
+    public static List<List<Integer>> subsets(int[] arr) {
+        List<List<Integer>> solutionList = new ArrayList<>();
+        List<Integer> solution = new ArrayList<>();
+        dfs(solutionList, solution, arr);
+        return solutionList;
+    }
+    
+    public static void dfs(List<List<Integer>> solutionList, List<Integer> solution, int[] arr) {
+        if (isASolution(solutionList, solution)) {
+            processSolution(solutionList, solution);
+        }
+        for (int i = 0; i < arr.length; i++) {
+            if (isValid(solution, arr[i])) {
+                makeMove(solution, arr[i]);
+                dfs(solutionList, solution, arr);
+                unMakeMove(solution);
+            }
+        }
+        
+    }
+    
+    public static boolean isASolution(List<List<Integer>> solutionList, List<Integer> solution) {
+//      return !solutionList.contains(solution);
+        return true;
     }
 
-    private void backtrack(List<List<Integer>> list , List<Integer> tempList, int [] nums, int start){
-        list.add(new ArrayList<>(tempList));
-        for(int i = start; i < nums.length; i++){
-            tempList.add(nums[i]);
-            backtrack(list, tempList, nums, i + 1);
-            tempList.remove(tempList.size() - 1);
+    public static void processSolution(List<List<Integer>> solutionList, List<Integer> solution) {
+        solutionList.add(new ArrayList<>(solution));
+    }
+    
+    public static boolean isValid(List<Integer> solution, int n) {
+        if (solution.size() == 0) {
+            return true;
         }
+        return solution.get(solution.size()-1) < n;
+    }
+    
+    public static void makeMove(List<Integer> solution, int n) {
+        solution.add(n);
+    }
+    
+    public static void unMakeMove(List<Integer> solution) {
+        solution.remove(solution.size()-1);
+    }
+    
+    public static void main(String[] args) {
+        int[] arr = new int[] {1,2,3};
+        System.out.println(SubSets.subsets(arr));
     }
 }
