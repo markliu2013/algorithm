@@ -1,4 +1,4 @@
-package com.zfwhub.algorithm.math.template;
+package com.zfwhub.algorithm.leetcode.backtracking;
 
 /**
  * http://blog.sina.com.cn/s/blog_8960ba110100txng.html
