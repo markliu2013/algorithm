@@ -26,6 +26,7 @@ public class SubSets {
     }
     
     public static boolean isASolution(List<List<Integer>> solutionList, List<Integer> solution) {
+        // TODO SubSets 为什么不需要判断。
 //      return !solutionList.contains(solution);
         return true;
     }

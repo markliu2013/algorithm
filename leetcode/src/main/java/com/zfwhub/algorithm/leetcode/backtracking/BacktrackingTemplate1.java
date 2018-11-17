@@ -24,6 +24,9 @@ public class BacktrackingTemplate1 {
             if (isValid(solution, arr[i])) {
                 makeMove(solution, arr[i]);
                 dfs(solutionList, solution, arr, n);
+                // unMakeMove在下面两种情况执行：
+                // 1. isASolution 成功找到一个解
+                // 2. for循环结束
                 unMakeMove(solution);
             }
         }
