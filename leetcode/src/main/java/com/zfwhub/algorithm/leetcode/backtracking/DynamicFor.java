@@ -12,20 +12,20 @@ public class DynamicFor {
     /**
      * https://coderanch.com/t/629359/java/java-recursion
      */
-    public static void x(int n) {
+    public static void x2(int n) {
         for (int i = 0; i < n; i++) {
             System.out.print("   " + n);
-            x(n - 1);
+            x2(n - 1);
         }
     }
     
-    public static void x2(int n) {
+    public static void x(int n) {
         System.out.println("Enter x(" + n + ")");
         for (int i = 0; i < n; i++) {
             System.out.println("Enter for loop. i = " + i + ", n = " + n);
-            System.out.println("Before recursive call");
-            x2(n - 1);
-            System.out.println("After recursive call");
+            System.out.println("Before recursive call x(" + (n-1) + ")");
+            x(n - 1);
+            System.out.println("After recursive call x(" + (n-1) + ")");
         }
         System.out.println("Exit x(" + n + ")");
     }
@@ -43,9 +43,9 @@ public class DynamicFor {
     }
     
     public static void main(String[] args) {
-        cycle(3, 4);//3*3*3*3
+        //cycle(3, 4);//3*3*3*3
         //System.out.println(count);
-        x(3);
+        x(2);
     }
 
 }
