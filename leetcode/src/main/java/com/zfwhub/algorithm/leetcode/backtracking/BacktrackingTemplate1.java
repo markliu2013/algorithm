@@ -54,7 +54,7 @@ public class BacktrackingTemplate1 {
     }
     
     public static void main(String[] args) {
-        int[] arr = new int[] {1,2,3,4};
-        System.out.println(BacktrackingTemplate1.combine(arr, 3));
+        int[] arr = new int[] {1,2,3};
+        System.out.println(BacktrackingTemplate1.combine(arr, 2));
     }
 }
