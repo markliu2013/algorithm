@@ -27,6 +27,7 @@ public class BacktrackingTemplate1 {
                 // unMakeMove在下面两种情况执行：
                 // 1. isASolution 成功找到一个解
                 // 2. for循环结束
+                // 也就是找到解或者整个for结束都没找到解
                 unMakeMove(solution);
             }
         }
