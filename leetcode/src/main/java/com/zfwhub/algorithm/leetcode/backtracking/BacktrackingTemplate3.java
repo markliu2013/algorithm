@@ -6,7 +6,7 @@ import java.util.*;
 // Combinations, 从数组中选出指定数目的一个组合
 public class BacktrackingTemplate3 {
     
-    public static List<Integer> combine(int[] nums, int n) {
+    public static List<Integer> combineOne(int[] nums, int n) {
         List<Integer> result = new ArrayList<>();
         List<Integer> solution = new ArrayList<>();
         dfs(result, solution, nums, n);
@@ -58,6 +58,6 @@ public class BacktrackingTemplate3 {
     
     public static void main(String[] args) {
         int[] arr = new int[] {1,2,3};
-        System.out.println(BacktrackingTemplate3.combine(arr, 2));
+        System.out.println(BacktrackingTemplate3.combineOne(arr, 2));
     }
 }

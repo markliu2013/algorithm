@@ -7,7 +7,8 @@ import java.util.*;
 // https://blog.csdn.net/u010500263/article/details/18435495
 // SubSets
 public class BacktrackingTemplate1 {
-    public static List<List<Integer>> combine(int[] nums, int n) {
+    
+    public static List<List<Integer>> combineAll(int[] nums, int n) {
         // 检查输入参数
         if (nums == null) {
             throw new IllegalArgumentException("nums is null");
@@ -78,6 +79,6 @@ public class BacktrackingTemplate1 {
     
     public static void main(String[] args) {
         int[] arr = new int[] {1,2,3};
-        System.out.println(BacktrackingTemplate1.combine(arr, 2));
+        System.out.println(BacktrackingTemplate1.combineAll(arr, 2));
     }
 }
