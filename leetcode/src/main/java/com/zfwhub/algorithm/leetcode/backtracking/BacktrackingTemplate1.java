@@ -7,13 +7,29 @@ import java.util.*;
 // https://blog.csdn.net/u010500263/article/details/18435495
 // SubSets
 public class BacktrackingTemplate1 {
-    public static List<List<Integer>> combine(int[] arr, int n) {
-        // TODO BacktrackingTemplate1 检查输入参数
+    public static List<List<Integer>> combine(int[] nums, int n) {
+        // 检查输入参数
+        if (nums == null) {
+            throw new IllegalArgumentException("nums is null");
+        }
+        if (n < 0) {
+            throw new IllegalArgumentException("n < 0");
+        }
+        if (nums.length < n) {
+            throw new IllegalArgumentException("nums.length < n");
+        }
+        
         // 存放所有解的集合
         List<List<Integer>> solutionList = new ArrayList<>();
         // 存放单个解的集合
         List<Integer> solution = new ArrayList<>();
-        dfs(solutionList, solution, arr, n);
+        
+        if (n == 0) {// 0! = 1
+            solutionList.add(solution);
+            return solutionList;
+        }
+        
+        dfs(solutionList, solution, nums, n);
         return solutionList;
     }
     
