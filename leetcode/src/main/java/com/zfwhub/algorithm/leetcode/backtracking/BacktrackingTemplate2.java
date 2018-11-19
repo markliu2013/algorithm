@@ -6,7 +6,7 @@ import java.util.*;
 // Combinations, 从数组中选出指定数目的组合的个数
 public class BacktrackingTemplate2 {
     
-    public static int combine(int[] arr, int n) {
+    public static int countCombinations(int[] arr, int n) {
         List<Integer> solution = new ArrayList<>();
         return dfs(solution, arr, n, 0);
     }
@@ -47,7 +47,7 @@ public class BacktrackingTemplate2 {
     
     public static void main(String[] args) {
         int[] arr = new int[] {1,2,3};
-        System.out.println(BacktrackingTemplate2.combine(arr, 1));
+        System.out.println(BacktrackingTemplate2.countCombinations(arr, 1));
     }
     
 }
