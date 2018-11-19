@@ -5,6 +5,7 @@ import java.util.*;
 // https://leetcode.com/problems/n-queens-ii/
 public class NQueensII {
     
+    // 运用 BacktrackingTemplate2
     public static int totalNQueens(int n) {
         List<Integer> solution = new ArrayList<>();//每一行都是第几个放皇后
         return dfs(solution, n, 0);

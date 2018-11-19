@@ -2,11 +2,12 @@ package com.zfwhub.algorithm.leetcode.backtracking;
 
 import java.util.*;
 
+// 8皇后问题
 public class QueenEight {
     
     // 暴力解法，列出所有的组合，然后判断每一列，每一条斜线。
     // https://www.cnblogs.com/houkai/p/3480940.html
-    public static int solution() {
+    public static int solution1() {
         int count = 0;
         //不在同一行上, 所有可能。
         for (int i = 0; i < 8; i++) {
@@ -47,7 +48,7 @@ public class QueenEight {
         return count;
     }
     
-    // 提前排除那些没有前途的状态，会节约时间——回溯法，体现了“回溯”
+    // solution1改进，提前排除那些没有前途的状态，会节约时间——回溯法，体现了“回溯”
     public static int solution2() {
         int count = 0;
         for (int i = 0; i < 8; i++) {
@@ -198,6 +199,7 @@ public class QueenEight {
         return true;
     }
     
+    // 回溯算法
     public static int solution3() {
         List<List<Integer>> list = new ArrayList<>();//存放解，存储cols
         List<Integer> cols = new ArrayList<>();//每一列第几行放置皇后
