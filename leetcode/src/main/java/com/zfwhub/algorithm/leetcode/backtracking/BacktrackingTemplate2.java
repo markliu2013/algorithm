@@ -4,27 +4,27 @@ import java.util.*;
 
 // 回溯模板 - 找到所有解的数量
 // https://leetcode.com/problems/n-queens-ii/
+// https://leetcode.com/problems/n-queens-ii/discuss/20058/Accepted-Java-Solution
 public class BacktrackingTemplate2 {
-    
-    static int count = 0;
     
     public static int combine(int[] arr, int n) {
         List<Integer> solution = new ArrayList<>();
-        dfs(solution, arr, n);
-        return count;
+        return dfs(solution, arr, n, 0);
     }
-    public static void dfs(List<Integer> solution, int[] arr, int n) {
+    
+    public static int dfs(List<Integer> solution, int[] arr, int n, int count) {
         if (isASolution(solution, n)) {
             count++;
-            return;
-        }
-        for (int i = 0; i < arr.length; i++) {
-            if (isValid(solution, arr[i])) {
-                makeMove(solution, arr[i]);
-                dfs(solution, arr, n);
-                unMakeMove(solution);
+        } else {
+            for (int i = 0; i < arr.length; i++) {
+                if (isValid(solution, arr[i])) {
+                    makeMove(solution, arr[i]);
+                    count = dfs(solution, arr, n, count);
+                    unMakeMove(solution);
+                }
             }
         }
+        return count;
     }
     
     public static boolean isASolution(List<Integer> solution, int n) {
