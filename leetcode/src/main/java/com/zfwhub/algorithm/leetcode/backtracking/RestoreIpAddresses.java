@@ -2,14 +2,18 @@ package com.zfwhub.algorithm.leetcode.backtracking;
 import java.util.*;
 
 // https://leetcode.com/problems/restore-ip-addresses/
+// https://leetcode.com/problems/restore-ip-addresses/discuss/30949/My-code-in-Java
+// https://leetcode.com/problems/restore-ip-addresses/discuss/30944/Very-simple-DFS-solution
 public class RestoreIpAddresses {
     
     public static List<String> restoreIpAddresses(String s) {
-        List<String> solutionList = new ArrayList<>();
-        if (s.length() > 12) {
+        List<String> solutionList = new ArrayList<>();//存储s打上正确的点的string
+        if (s.length() > 12) {//大于12，那么有一个肯定超过三位数，所以绝对无解。
             return solutionList;
         }
-        List<Integer> solution = new ArrayList<>();//每一个点都在第几个
+        // 在s的每个位置都可以选择打点，solution记录每个点都在第几个位置。solution从后面开始，逆序存储位置。
+        // 总共的位置数为s的长度+1
+        List<Integer> solution = new ArrayList<>();
         dfs(solutionList, solution, s);
         return solutionList;
     }
@@ -28,10 +32,12 @@ public class RestoreIpAddresses {
         }
     }
     public static boolean isASolution(List<Integer> solution) {
+        // 3个点都打在了正确的位置
         return solution.size() == 3;
     }
     public static void processSolution(List<String> solutionList, List<Integer> solution, String s) {
         StringBuilder sb = new StringBuilder(s);
+        //solution是逆序，所以可以在s中按索引从后面开始加点，不影响前面的索引。
         for (int i = 0; i < solution.size(); i++) {
             sb.insert(solution.get(i), ".");
         }
@@ -39,19 +45,21 @@ public class RestoreIpAddresses {
     }
     public static boolean isValid(List<Integer> solution, int i, String s) {
         // 验证，将字符串分割成4个部分
-        if (solution.contains(i)) {//两个点不能同一个位置
-            return false;
-        }
         if (i == 0) {//不能在起始位置
             return false;
         }
         if (i == s.length()) {// 不能在末尾
             return false;
         }
-        // 是组合数，不是排列，去重的思想
+        // 是组合数，不是排列，去重的思想。
+        // solution逆序存储位置，所以下一个位置小于前一个
         if (solution.size() > 0 && i >= solution.get(solution.size()-1)) {
             return false;
         }
+        // 两个点不能同一个位置，如果下一个位置小于前一个，则可省略。
+        /*if (solution.contains(i)) {
+            return false;
+        }*/
         for (int j = 0; j < solution.size(); j++) {
             String str = "";
             if (j > 0) {
@@ -85,10 +93,12 @@ public class RestoreIpAddresses {
         solution.add(i);
     }
     
+    // 判断单个的ip位，单个的ip位必须小于255
     public static boolean validateIPBit(String str) {
         if (str.length() > 3) {
             return false;
         }
+        // 0开头是不合法的
         if (str.startsWith("0") && str.length() > 1) {
             return false;
         }
@@ -98,50 +108,8 @@ public class RestoreIpAddresses {
         return true;
     }
     
-    // https://leetcode.com/problems/restore-ip-addresses/discuss/30949/My-code-in-Java
-    public static List<String> restoreIpAddresses2(String s) {
-        List<String> res = new ArrayList<String>();
-        int len = s.length();
-        for(int i = 0; i<4 && i<len-2; i++){
-            for(int j = i+1; j<i+4 && j<len-1; j++){
-                for(int k = j+1; k<j+4 && k<len; k++){
-                    String s1 = s.substring(0,i), s2 = s.substring(i,j), s3 = s.substring(j,k), s4 = s.substring(k,len);
-                    if(isValid(s1) && isValid(s2) && isValid(s3) && isValid(s4)){
-                        res.add(s1+"."+s2+"."+s3+"."+s4);
-                   }
-                }
-            }
-        }
-        return res;
-    }
-    public static boolean isValid(String s){
-        if(s.length()>3 || s.length()==0 || (s.charAt(0)=='0' && s.length()>1) || Integer.parseInt(s)>255)
-            return false;
-        return true;
-    }
-    
-    // https://leetcode.com/problems/restore-ip-addresses/discuss/30944/Very-simple-DFS-solution
-    public List<String> restoreIpAddresses3(String s) {
-        List<String> solutions = new ArrayList<String>();
-        restoreIp(s, solutions, 0, "", 0);
-        return solutions;
-    }
-
-    private void restoreIp(String ip, List<String> solutions, int idx, String restored, int count) {
-        if (count > 4) return;
-        if (count == 4 && idx == ip.length()) solutions.add(restored);
-        
-        for (int i=1; i<4; i++) {
-            if (idx+i > ip.length()) break;
-            String s = ip.substring(idx,idx+i);
-            if ((s.startsWith("0") && s.length()>1) || (i==3 && Integer.parseInt(s) >= 256)) continue;
-            restoreIp(ip, solutions, idx+i, restored+s+(count==3?"" : "."), count+1);
-        }
-    }
-    
     public static void main(String[] args) {
-        System.out.println(restoreIpAddresses("121232121"));
+        System.out.println(restoreIpAddresses("123456"));
     }
-    
     
 }
