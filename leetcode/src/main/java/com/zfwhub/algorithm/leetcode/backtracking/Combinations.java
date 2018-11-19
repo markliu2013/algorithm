@@ -2,9 +2,7 @@ package com.zfwhub.algorithm.leetcode.backtracking;
 
 import java.util.*;
 
-/**
- * https://leetcode.com/problems/combinations/
- */
+// https://leetcode.com/problems/combinations/
 public class Combinations {
 
     // Backtracking Solution Java
@@ -33,6 +31,7 @@ public class Combinations {
         }
     }
 
+    // dynamic programming
     // A short recursive Java solution based on C(n,k)=C(n-1,k-1)+C(n-1,k)
     public List<List<Integer>> combine2(int n, int k) {
         if (k == n || k == 0) {
