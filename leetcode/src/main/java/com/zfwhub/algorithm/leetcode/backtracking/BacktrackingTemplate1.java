@@ -9,7 +9,9 @@ import java.util.*;
 public class BacktrackingTemplate1 {
     public static List<List<Integer>> combine(int[] arr, int n) {
         // TODO BacktrackingTemplate1 检查输入参数
+        // 存放所有解的集合
         List<List<Integer>> solutionList = new ArrayList<>();
+        // 存放单个解的集合
         List<Integer> solution = new ArrayList<>();
         dfs(solutionList, solution, arr, n);
         return solutionList;
@@ -20,6 +22,7 @@ public class BacktrackingTemplate1 {
             processSolution(solutionList, solution);
             return;// TODO 需不需要return，得看情况。SubSets为什么不需要？
         }
+        // 每个solution有两个位置放不同的数，在每个位置都尝试arr中的每一个数。
         for (int i = 0; i < arr.length; i++) {
             if (isValid(solution, arr[i])) {
                 makeMove(solution, arr[i]);
