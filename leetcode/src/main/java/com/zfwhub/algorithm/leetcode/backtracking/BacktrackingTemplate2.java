@@ -3,8 +3,7 @@ package com.zfwhub.algorithm.leetcode.backtracking;
 import java.util.*;
 
 // 回溯模板 - 找到所有解的数量
-// https://leetcode.com/problems/n-queens-ii/
-// https://leetcode.com/problems/n-queens-ii/discuss/20058/Accepted-Java-Solution
+// Combinations, 从数组中选出指定数目的组合的个数
 public class BacktrackingTemplate2 {
     
     public static int combine(int[] arr, int n) {
