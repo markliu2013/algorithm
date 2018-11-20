@@ -2,16 +2,20 @@ package com.zfwhub.algorithm.leetcode.backtracking;
 
 import java.util.*;
 
-// 用这个模板思想
-// https://medium.com/@andreaiacono/backtracking-explained-7450d6ef9e1a
-// https://leetcode.com/problems/word-search/discuss/27658/Accepted-very-short-Java-solution.-No-additional-space.
+// 运用 BacktrackingTemplate4
 public class WordSearch2 {
-    
+
     public static boolean exist(char[][] board, String word) {
         for (int x = 0; x < board.length; x++) {
             for (int y = 0; y < board[x].length; y++) {
                 if (board[x][y] == word.charAt(0)) {//入口
-                    if (backtrack(board, word, x, y, 0)) {
+                    // 每个solution包含x，y两个索引
+                    List<List<Integer>> solution = new ArrayList<>();
+                    List<Integer> coordinate = new ArrayList<>();
+                    coordinate.add(x);
+                    coordinate.add(y);
+                    solution.add(coordinate);
+                    if (dfs(board, word, x, y, solution)) {
                         return true;
                     }
                 }
@@ -20,44 +24,75 @@ public class WordSearch2 {
         return false;
     }
 
-    // x和y是当前board的索引，i是当前word的索引
-    public static boolean backtrack(char[][] board, String word, int x, int y, int i) {
-        if (isExit(board, word, x, y, i)) {
+    // x和y是当前board的索引
+    public static boolean dfs(char[][] board, String word, int x, int y, List<List<Integer>> solution) {
+        if (isASolution(board, word, x, y, solution)) {
             return true;
         }
         // 每一个位置，都上下左右尝试。只要有一个位置合法
-        if (isValid(board, word, x, y+1, i+1) ||
-            isValid(board, word, x, y-1, i+1) ||
-            isValid(board, word, x+1, y, i+1) ||
-            isValid(board, word, x-1, y, i+1)) {
-            makeMove(board, word, x, y, i);
-            if (backtrack(board, word, x, y, i)) {
-                return true;
+        for (int i = 1; i <= 4; i++) { //1,2,3,4 分别代表上下左右
+            if (isValid(board, word, solution, i)) {
+                makeMove(board, word, solution, i);
+                if (dfs(board, word, x, y, solution)) {
+                    return true;
+                }
+                unMakeMove(board, word, solution, i);
             }
-            unMakeMove(board, word, x, y, i);
         }
-        
         return false;
     }
-    
-    public static boolean isExit(char[][] board, String word, int x, int y, int i) {
-        return i == word.length();
+
+    public static boolean isASolution(char[][] board, String word, int x, int y, List<List<Integer>> solution) {
+        return solution.size() == word.length();
     }
-    
-    public static boolean isValid(char[][] board, String word, int x, int y, int i) {
+
+    // direction 1,2,3,4 分别代表上下左右
+    public static boolean isValid(char[][] board, String word, List<List<Integer>> solution, int direction) {
+        List<Integer> coordinate = getXYByDirection(solution, direction);
+        int x = coordinate.get(0);
+        int y = coordinate.get(1);
         if (x < 0 || y < 0 || x >= board.length || y >= board[x].length) {
             return false;
         }
-        // 只需要判断是否相等，因为用了board[x][y] ^= 256记录是否已访问。
-        return board[x][y] == word.charAt(i);
+        if (solution.contains(coordinate)) {
+            return false;
+        }
+        return board[x][y] == word.charAt(solution.size());
+    }
+
+    public static void makeMove(char[][] board, String word, List<List<Integer>> solution, int direction) {
+        List<Integer> coordinate = getXYByDirection(solution, direction);
+        solution.add(coordinate);
+    }
+
+    public static void unMakeMove(char[][] board, String word, List<List<Integer>> solution, int direction) {
+        solution.remove(solution.size()-1);
     }
     
-    public static void makeMove(char[][] board, String word, int x, int y, int i) {
-        board[x][y] ^= 256;
-    }
-    
-    public static void unMakeMove(char[][] board, String word, int x, int y, int i) {
-        board[x][y] ^= 256;
+    // 根据方向，找到下一步的坐标。direction 1,2,3,4 分别代表上下左右
+    public static List<Integer> getXYByDirection(List<List<Integer>> solution, int direction) {
+        List<Integer> coordinate = new ArrayList<>(2);
+        int x = solution.get(solution.size() - 1).get(0);
+        int y = solution.get(solution.size() - 1).get(1);
+        switch (direction) {
+            case 1:
+                x--;
+                break;
+            case 2:
+                x++;
+                break;
+            case 3:
+                y--;
+                break;
+            case 4:
+                y++;
+                break;
+            default:
+                throw new IllegalArgumentException("direction is " + direction);
+        }
+        coordinate.add(x);
+        coordinate.add(y);
+        return coordinate;
     }
 
     public static void main(String[] args) {

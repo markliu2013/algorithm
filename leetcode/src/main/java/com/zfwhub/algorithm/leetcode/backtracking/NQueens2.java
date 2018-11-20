@@ -3,6 +3,7 @@ package com.zfwhub.algorithm.leetcode.backtracking;
 import java.util.*;
 
 // NQueens 按模板改造
+// TODO NQueens 另外一种解法，每一个格子都进行放或者不放两种尝试。
 public class NQueens2 {
     public static List<List<String>> solveNQueens(int n) {
         List<List<String>> solutionList = new ArrayList<>();

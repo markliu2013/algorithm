@@ -3,6 +3,8 @@ package com.zfwhub.algorithm.leetcode.backtracking;
 import java.util.*;
 
 // https://leetcode.com/problems/word-search/
+// https://leetcode.com/problems/word-search/discuss/27658/Accepted-very-short-Java-solution.-No-additional-space.
+// https://leetcode.com/submissions/detail/188489526/
 public class WordSearch {
 
     public static int k = 0; // k 代表当前word的index
