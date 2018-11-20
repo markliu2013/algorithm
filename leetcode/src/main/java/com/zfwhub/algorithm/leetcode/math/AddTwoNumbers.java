@@ -4,9 +4,7 @@ import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/add-two-numbers/description/
- */
+// https://leetcode.com/problems/add-two-numbers/description/
 public class AddTwoNumbers {
 
     /**

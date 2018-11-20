@@ -1,10 +1,8 @@
 package com.zfwhub.algorithm.leetcode.dac;
 
-import java.util.Arrays;
+import java.util.*;
 
-/**
- * https://leetcode.com/problems/majority-element/
- */
+// https://leetcode.com/problems/majority-element/
 public class MajorityElement {
     
     // Divide And Conquer
