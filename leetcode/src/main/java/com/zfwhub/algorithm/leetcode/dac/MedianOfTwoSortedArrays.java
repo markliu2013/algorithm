@@ -2,10 +2,7 @@ package com.zfwhub.algorithm.leetcode.dac;
 
 import java.util.*;
 
-/**
- * Find the median of the two sorted arrays.
- * https://leetcode.com/problems/median-of-two-sorted-arrays/description/
- */
+// https://leetcode.com/problems/median-of-two-sorted-arrays/description/
 public class MedianOfTwoSortedArrays {
 
     public static double findMedianSortedArrays(int[] nums1, int[] nums2) {

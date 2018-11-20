@@ -1,11 +1,11 @@
 package com.zfwhub.algorithm.leetcode.binary_search;
 
-/**
- * https://leetcode.com/problems/binary-search/
- */
+// https://leetcode.com/problems/binary-search/
+// https://www.zhihu.com/question/36132386/answer/155438728
 public class BinarySearch {
     
-    public static int solution(int[] nums, int target) {
+    // 不需要nums排好序
+    public static int solution0(int[] nums, int target) {
         for (int i = 0; i < nums.length; i++) {
             if (target == nums[i]) {
                 return i;
@@ -14,7 +14,7 @@ public class BinarySearch {
         return -1;
     }
     
-    public static int solution2(int[] nums, int target) {
+    public static int solution1(int[] nums, int target) {
         int startIndex = 0;
         int endIndex = nums.length-1;
         int mid = (startIndex + endIndex) / 2;
@@ -30,19 +30,7 @@ public class BinarySearch {
         }
         return -1;
     }
-    
-    // https://www.zhihu.com/question/36132386/answer/155438728
-    public int solution3(int[] nums, int target) {
-        int low = 0, high = nums.length-1;
-        while (low <= high) { 
-            int mid = low + (high - low) / 2;
-            if (nums[mid] < target) { low = mid + 1; }
-            if (nums[mid] > target) { high = mid - 1; }
-            if (nums[mid] == target) { return mid; }
-        }
-        return -1;
-    }
-    
+
     public static void main(String[] args) {
         int[] nums = new int[] {-1,0,3,5,9,12};
         int target = 9;
@@ -50,12 +38,12 @@ public class BinarySearch {
         int target1 = 2;
         int[] nums2 = new int[] {5};
         int target2 = 5;
-        System.out.println(solution(nums, target));
-        System.out.println(solution2(nums, target));
-        System.out.println(solution(nums1, target1));
-        System.out.println(solution2(nums1, target1));
-        System.out.println(solution(nums2, target2));
-        System.out.println(solution2(nums2, target2));
+        System.out.println(solution0(nums, target));
+        System.out.println(solution1(nums, target));
+        System.out.println(solution0(nums1, target1));
+        System.out.println(solution1(nums1, target1));
+        System.out.println(solution0(nums2, target2));
+        System.out.println(solution1(nums2, target2));
     }
 
 }
