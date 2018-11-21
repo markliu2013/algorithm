@@ -39,7 +39,7 @@ public class BacktrackingTemplate1 {
             processSolution(solutionList, solution);
             return;// TODO 需不需要return，得看情况。SubSets为什么不需要？
         }
-        // 每个solution有两个位置放不同的数，在每个位置都尝试arr中的每一个数。
+        // 每个solution有n个位置放不同的数，在每个位置都尝试arr中的每一个数。
         for (int i = 0; i < arr.length; i++) {
             if (isValid(solution, arr[i])) {
                 makeMove(solution, arr[i]);
