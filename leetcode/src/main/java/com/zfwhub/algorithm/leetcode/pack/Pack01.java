@@ -1,7 +1,9 @@
 package com.zfwhub.algorithm.leetcode.pack;
 
 // 01背包
+// 贼，夜入豪宅，可偷之物甚多，而负重能力有限，偷哪些才更加不枉此行？
 // https://zhuanlan.zhihu.com/p/35278858
+// https://zhuanlan.zhihu.com/p/30959069
 public class Pack01 {
     
     public static int solution1(int[] volumns, int[] values, int capacity) {
