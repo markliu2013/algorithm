@@ -3,9 +3,8 @@ package com.zfwhub.algorithm.leetcode.dp;
 import java.util.*;
 
 /**
- * The problem King's GoldMine
  * https://www.jianshu.com/p/e200805306db
- * https://www.geeksforgeeks.org/gold-mine-problem/
+ * https://www.jianshu.com/p/9f0b3ff4fb9c
  */
 public class GoldMineMain {
 
