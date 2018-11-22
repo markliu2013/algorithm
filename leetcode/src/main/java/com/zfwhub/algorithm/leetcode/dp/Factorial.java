@@ -1,4 +1,4 @@
-package com.zfwhub.algorithm.math.sequence;
+package com.zfwhub.algorithm.leetcode.dp;
 
 /**
  * get Factorial of number
