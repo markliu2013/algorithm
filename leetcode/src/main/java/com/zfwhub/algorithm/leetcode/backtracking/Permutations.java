@@ -3,9 +3,35 @@ package com.zfwhub.algorithm.leetcode.backtracking;
 import java.util.*;
 
 // https://leetcode.com/problems/permutations/
+// https://www.quora.com/How-does-recursion-work-inside-a-for-loop-Most-importantly-how-does-it-flow
 public class Permutations {
     
+    //想一下for循环算阶层的办法。
     public static List<List<Integer>> permute(int[] nums) {
+        if (nums.length == 1) {
+            List<List<Integer>> list = new ArrayList<List<Integer>>();
+            List<Integer> list2 = new ArrayList<Integer>();
+            list2.add(nums[0]);
+            list.add(list2);
+            return list;
+        } else {
+            List<List<Integer>> list3 = new ArrayList<List<Integer>>();
+            for (int i = 0; i < nums.length; i++) {
+                int[] dest = new int[nums.length - 1];
+                System.arraycopy(nums, 0, dest, 0, i);
+                System.arraycopy(nums, i + 1, dest, i, nums.length - 1 - i);
+                List<List<Integer>> list4 = permute(dest);
+                for (int k = 0; k < list4.size(); k++) {
+                    List<Integer> list5 = list4.get(k);
+                    list5.add(nums[i]);
+                    list3.add(list5);
+                }
+            }
+            return list3;
+        }
+    }
+    
+    public static List<List<Integer>> permute2(int[] nums) {
         List<List<Integer>> solutionList = new ArrayList<>();
         List<Integer> solution = new ArrayList<>();
         dfs(solutionList, solution, nums);
