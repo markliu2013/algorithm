@@ -56,6 +56,24 @@ public class Pack01 {
         return F[N][capacity];
     }
     
+    // 优化存储空间
+    public static int solution3(int[] volumns, int[] values, int capacity) {
+        int N = values.length;
+        int[] results = new int[capacity+1];
+        int[] preResults = new int[capacity+1];
+        for (int i = 1; i <= N; i++) {
+            for (int j = 1; j <= capacity; j++) {
+                if (volumns[i-1] > j) {
+                    results[j] = preResults[j];
+                } else {
+                    results[j] = Math.max(preResults[j], preResults[j-volumns[i-1]]+values[i-1]);
+                }
+            }
+            preResults = results;
+        }
+        return results[capacity];
+    }
+    
     public static void main(String[] args) {
         /*int[] volumns = new int[] {5,5,3,4,3};
         int[] values = new int[] {400,500,200,300,350};
@@ -64,6 +82,7 @@ public class Pack01 {
         int[] values = new int[] {3,4,5,6};
         int capacity = 8;
         System.out.println(solution2(volumns, values, capacity));
+        System.out.println(solution3(volumns, values, capacity));
     }
 
 }
