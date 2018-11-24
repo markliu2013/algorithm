@@ -90,6 +90,7 @@ public class GoldMineMain {
                     currentResult[j - 1] = preResult[j - 1];
                 }
             }
+            // TODO 为什么这里不用深度复制。
             preResult = currentResult;
         }
         return currentResult[maxPerson - 1];
@@ -125,7 +126,7 @@ public class GoldMineMain {
         goldMines.add(goldMine4);
         goldMines.add(goldMine5);
         GoldMineMain gm = new GoldMineMain();
-        int result = gm.getMaxGold(goldMines, 10);
+        int result = gm.getMaxGold2(goldMines, 10);
         System.out.println(result);
     }
 

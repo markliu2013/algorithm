@@ -55,34 +55,34 @@ public class Main {
     
     public static int solution2(int[] volumns, int[] values, int capacity) {
         // 初始化表格，默认第一行全部是 0
-        int[][] result = new int[volumns.length + 1][capacity + 1];
+        int[][] results = new int[volumns.length + 1][capacity + 1];
         for (int i = 0; i < volumns.length; i++) {
             // j必须从0开始，因为容量为0的包可以装体积为0的物品
             for (int j = 0; j <= capacity; j++) {
                 if (volumns[i] > j) {//如果物品放不进背包
-                    result[i+1][j] = result[i][j];
+                    results[i+1][j] = results[i][j];
                 } else {
-                    result[i+1][j] = Math.max(result[i][j], result[i][j-volumns[i]] + values[i]);
+                    results[i+1][j] = Math.max(results[i][j], results[i][j-volumns[i]] + values[i]);
                 }
             }
         }
-        return result[volumns.length][capacity];
+        return results[volumns.length][capacity];
     }
-    
+
     // 优化存储空间
     public static int solution3(int[] volumns, int[] values, int capacity) {
-        int N = values.length;
-        int[] results = new int[capacity+1];
-        int[] preResults = new int[capacity+1];
-        for (int i = 1; i <= N; i++) {
-            for (int j = 1; j <= capacity; j++) {
-                if (volumns[i-1] > j) {
+        int[] results = new int[capacity + 1];
+        int[] preResults = new int[capacity + 1];
+        for (int i = 0; i < volumns.length; i++) {
+            for (int j = 0; j <= capacity; j++) {
+                if (volumns[i] > j) {
                     results[j] = preResults[j];
                 } else {
-                    results[j] = Math.max(preResults[j], preResults[j-volumns[i-1]]+values[i-1]);
+                    results[j] = Math.max(preResults[j], preResults[j-volumns[i]] + values[i]);
                 }
             }
-            preResults = results;
+            // 注意必须是复制
+            preResults = results.clone();
         }
         return results[capacity];
     }
