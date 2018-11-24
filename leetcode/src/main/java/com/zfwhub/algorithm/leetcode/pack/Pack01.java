@@ -10,22 +10,29 @@ import java.util.Arrays;
 public class Pack01 {
     
     public static int solution1(int[] volumns, int[] values, int capacity) {
+        // 注意边界
         if (values == null || values.length == 0) {
             return 0;
         }
         int N = values.length;
-        if (N == 1) {
+        // N == 1 的边界可以省略。
+        /**if (N == 1) {
             if (capacity < volumns[0]) {
                 return 0;
             } else {
                 return values[0];
             }
-        }
+        }*/
         int[] subVolumns = Arrays.copyOf(volumns, N-1);
         int[] subValues = Arrays.copyOf(values, N-1);
-        if (capacity < volumns[N-1]) {
+        if (capacity < volumns[N-1]) {//最后一个物品装不下
             return solution1(subVolumns, subValues, capacity);
         } else {
+            /** 
+               1. 放弃最后一个物品
+               2. 选择最后一个物品
+                                      取其中的较大值
+            */
             return Math.max(
                     solution1(subVolumns, subValues, capacity),
                     solution1(subVolumns, subValues, capacity-volumns[N-1]) + values[N-1]
@@ -35,6 +42,7 @@ public class Pack01 {
     
     public static int solution2(int[] volumns, int[] values, int capacity) {
         int N = values.length;
+        // 初始化表格，默认第一行第一列全部是 0
         int[][] F = new int[N+1][capacity+1];
         for (int i = 1; i <= N; i++) {
             for (int j = 1; j <= capacity; j++) {
