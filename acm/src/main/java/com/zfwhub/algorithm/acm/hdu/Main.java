@@ -1,15 +1,26 @@
-package com.zfwhub.algorithm.leetcode.pack;
+package com.zfwhub.algorithm.acm.hdu;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Scanner;
 
-/**
- 01背包
-  跑代码：http://acm.hdu.edu.cn/showproblem.php?pid=2602
- https://zhuanlan.zhihu.com/p/35278858
- https://zhuanlan.zhihu.com/p/30959069
- https://www.cnblogs.com/bahcelor/p/6836695.html
-*/
-public class Pack01 {
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int nums = sc.nextInt();
+        for (int i = 0; i < nums; i++) {
+            int count = sc.nextInt();
+            int weight = sc.nextInt();
+            int[] weigh = new int[count];
+            int[] value = new int[count];
+            for (int j = 0; j < count; j++) {
+                value[j] = sc.nextInt();
+            }
+            for (int j = 0; j < count; j++) {
+                weigh[j] = sc.nextInt();
+            }
+            System.out.println(solution2(weigh, value, weight));
+        }
+    }
 
     public static int solution1(int[] volumns, int[] values, int capacity) {
         // 注意边界
@@ -25,9 +36,9 @@ public class Pack01 {
                 return values[0];
             }
         }*/
-        int[] subVolumns = Arrays.copyOf(volumns, N - 1);
-        int[] subValues = Arrays.copyOf(values, N - 1);
-        if (capacity < volumns[N - 1]) {//最后一个物品装不下
+        int[] subVolumns = Arrays.copyOf(volumns, N-1);
+        int[] subValues = Arrays.copyOf(values, N-1);
+        if (capacity < volumns[N-1]) {//最后一个物品装不下
             return solution1(subVolumns, subValues, capacity);
         } else {
             /** 
@@ -35,10 +46,13 @@ public class Pack01 {
                2. 选择最后一个物品
                                       取其中的较大值
             */
-            return Math.max(solution1(subVolumns, subValues, capacity), solution1(subVolumns, subValues, capacity - volumns[N - 1]) + values[N - 1]);
+            return Math.max(
+                    solution1(subVolumns, subValues, capacity),
+                    solution1(subVolumns, subValues, capacity-volumns[N-1]) + values[N-1]
+            );
         }
     }
-
+    
     public static int solution2(int[] volumns, int[] values, int capacity) {
         // 初始化表格，默认第一行全部是 0
         int[][] result = new int[volumns.length + 1][capacity + 1];
@@ -54,26 +68,25 @@ public class Pack01 {
         }
         return result[volumns.length][capacity];
     }
-
+    
     // 优化存储空间
     public static int solution3(int[] volumns, int[] values, int capacity) {
         int N = values.length;
-        int[] results = new int[capacity + 1];
-        int[] preResults = new int[capacity + 1];
+        int[] results = new int[capacity+1];
+        int[] preResults = new int[capacity+1];
         for (int i = 1; i <= N; i++) {
             for (int j = 1; j <= capacity; j++) {
-                if (volumns[i - 1] > j) {
+                if (volumns[i-1] > j) {
                     results[j] = preResults[j];
                 } else {
-                    results[j] = Math.max(preResults[j], preResults[j - volumns[i - 1]] + values[i - 1]);
+                    results[j] = Math.max(preResults[j], preResults[j-volumns[i-1]]+values[i-1]);
                 }
             }
             preResults = results;
         }
         return results[capacity];
     }
-
-    // https://blog.csdn.net/luming_xml/article/details/71922365
+    
     public static int solution4(int[] weigh, int[] value, int weight) {
         int[] dp = new int[weight + 1];
         for (int i = 0; i < weigh.length; i++) {
@@ -83,16 +96,4 @@ public class Pack01 {
         }
         return dp[weight];
     }
-
-    public static void main(String[] args) {
-        int[] volumns = new int[] {0};
-        int[] values = new int[] {2};
-        int capacity = 0;
-        int expected = 12;
-        
-        System.out.println(solution1(volumns, values, capacity));
-        System.out.println(solution2(volumns, values, capacity));
-        System.out.println(solution4(volumns, values, capacity));
-    }
-
 }
