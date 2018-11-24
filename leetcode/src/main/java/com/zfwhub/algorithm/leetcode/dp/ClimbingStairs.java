@@ -3,15 +3,15 @@ package com.zfwhub.algorithm.leetcode.dp;
 import java.util.*;
 
 /**
- * Count ways to reach the n’th stair
+ * https://leetcode.com/problems/climbing-stairs/
  * Fibonacci Concept
  */
-public class ClimbingWays {
+public class ClimbingStairs {
 
     /**
      * Dynamic Programming, top to down, Simple Recursive Solution
      */
-    public static int getClimbingWays1(int n) {
+    public static int climbStairs(int n) {
         if (n < 1) {
             return 0;
         }
@@ -21,13 +21,13 @@ public class ClimbingWays {
         if (n == 2) {
             return 2;
         }
-        return getClimbingWays1(n - 1) + getClimbingWays1(n - 2);
+        return climbStairs(n - 1) + climbStairs(n - 2);
     }
 
     /**
      * dynamic programming memoization
      */
-    public static int getClimbingWays2(int n, HashMap<Integer, Integer> map) {
+    public static int climbStairs2(int n, HashMap<Integer, Integer> map) {
         if (n < 1) {
             return 0;
         }
@@ -40,7 +40,7 @@ public class ClimbingWays {
         if (map.containsKey(n)) {
             return map.get(n);
         } else {
-            int value = getClimbingWays2(n - 1, map) + getClimbingWays2(n - 2, map);
+            int value = climbStairs2(n - 1, map) + climbStairs2(n - 2, map);
             map.put(n, value);
             return value;
         }
@@ -49,7 +49,7 @@ public class ClimbingWays {
     /**
      * dynamic programming, Iterative Bottom-Up Solution
      */
-    public static int getClimbingWays3(int n) {
+    public static int climbStairs3(int n) {
         if (n < 1) {
             return 0;
         }
@@ -70,7 +70,7 @@ public class ClimbingWays {
         return temp;
     }
     
-    public static List<List<Integer>> getClimbingWays4(int n) {
+    public static List<List<Integer>> climbStairs4(int n) {
         List<List<Integer>> solutionList = new ArrayList<>();
         // 存储1和2，代表每次走多少步。
         List<Integer> solution = new ArrayList<>();
@@ -116,9 +116,9 @@ public class ClimbingWays {
     }
     
     public static void main(String[] args) {
-        System.out.println(ClimbingWays.getClimbingWays1(5));
-        System.out.println(ClimbingWays.getClimbingWays4(5).size());
-        System.out.println(ClimbingWays.getClimbingWays4(5));
+        System.out.println(ClimbingStairs.climbStairs(5));
+        System.out.println(ClimbingStairs.climbStairs4(5).size());
+        System.out.println(ClimbingStairs.climbStairs4(5));
     }
 
 }
