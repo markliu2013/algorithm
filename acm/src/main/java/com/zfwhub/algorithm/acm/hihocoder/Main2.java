@@ -1,10 +1,9 @@
-package com.zfwhub.algorithm.leetcode.pack;
+package com.zfwhub.algorithm.acm.hihocoder;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Scanner;
 
-// 完全背包问题
-// 跑代码：https://hihocoder.com/problemset/problem/1043
-public class Pack02 {
+public class Main2 {
     
     public static int solution1(int[] volumns, int[] values, int capacity) {
         if (values.length == 0) {
@@ -20,11 +19,23 @@ public class Pack02 {
             int maxValue = 0;
             int maxCount = capacity / lastVolumn;//最多选多少次
             for (int i = maxCount; i >= 0; i--) {
-                int value = solution1(subVolumns, subValues, capacity-(lastVolumn*i)) + lastValue*i;
-                maxValue = Math.max(value, maxValue);
+                int value1 = solution1(subVolumns, subValues, capacity-(lastVolumn*i)) + lastValue*i;
+                maxValue = Math.max(value1, maxValue);
             }
             return maxValue;
         }
     }
-    
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+        int[] costs = new int[n];
+        int[] values = new int[n];
+        for (int i = 0; i < n; i++) {
+            costs[i] = sc.nextInt();
+            values[i] = sc.nextInt();
+        }
+        System.out.println(solution1(costs, values, m));
+    }
 }
