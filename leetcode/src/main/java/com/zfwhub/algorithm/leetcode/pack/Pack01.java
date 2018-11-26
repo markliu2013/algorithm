@@ -72,14 +72,30 @@ public class Pack01 {
         }
         return results[capacity];
     }
+    
+    // 递减顺序推算
+    public static int solution4(int[] volumns, int[] values, int capacity) {
+        int[] results = new int[capacity + 1];
+        for (int i = 0; i < volumns.length; i++) {
+            for (int j = capacity; j >= 0; j--) {
+                if (volumns[i] > j) {
+                    results[j] = results[j];
+                } else {
+                    results[j] = Math.max(results[j], results[j-volumns[i]] + values[i]);
+                }
+            }
+        }
+        return results[capacity];
+    }
 
     // https://blog.csdn.net/luming_xml/article/details/71922365
-    public static int solution4(int[] weigh, int[] value, int weight) {
+    public static int solution9(int[] weigh, int[] value, int weight) {
         int[] dp = new int[weight + 1];
         for (int i = 0; i < weigh.length; i++) {
             for (int j = weight; j >= weigh[i]; j--) {
                 dp[j] = Math.max(dp[j], dp[j - weigh[i]] + value[i]);
             }
+            System.out.println(Arrays.toString(dp));
         }
         return dp[weight];
     }
@@ -90,8 +106,8 @@ public class Pack01 {
         int capacity = 8;
         
 //        System.out.println(solution1(volumns, values, capacity));
-        System.out.println(solution2(volumns, values, capacity));
-        System.out.println(solution3(volumns, values, capacity));
+//        System.out.println(solution2(volumns, values, capacity));
+        System.out.println(solution4(volumns, values, capacity));
     }
 
 }

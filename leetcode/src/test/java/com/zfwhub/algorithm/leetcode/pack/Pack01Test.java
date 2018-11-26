@@ -57,4 +57,13 @@ public class Pack01Test {
         assertEquals(Pack01.solution3(volumns4, values4, capacity4), expected4);
         assertEquals(Pack01.solution3(volumns5, values5, capacity5), expected5);
     }
+    
+    @Test
+    public void testSolution4() {
+        assertEquals(Pack01.solution4(volumns1, values1, capacity1), expected1);
+        assertEquals(Pack01.solution4(volumns2, values2, capacity2), expected2);
+        assertEquals(Pack01.solution4(volumns3, values3, capacity3), expected3);
+        assertEquals(Pack01.solution4(volumns4, values4, capacity4), expected4);
+        assertEquals(Pack01.solution4(volumns5, values5, capacity5), expected5);
+    }
 }
