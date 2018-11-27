@@ -2,8 +2,10 @@ package com.zfwhub.algorithm.leetcode.pack;
 
 import java.util.*;
 
-// 完全背包问题
-// 跑代码：https://hihocoder.com/problemset/problem/1043
+/**
+ * 完全背包问题
+ * 跑代码：https://hihocoder.com/problemset/problem/1043
+ */
 public class Pack02 {
     
     public static int solution1(int[] volumns, int[] values, int capacity) {

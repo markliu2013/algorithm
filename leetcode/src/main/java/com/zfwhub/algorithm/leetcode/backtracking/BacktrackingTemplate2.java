@@ -2,8 +2,10 @@ package com.zfwhub.algorithm.leetcode.backtracking;
 
 import java.util.*;
 
-// 回溯模板 - 找到所有解的数量
-// Combinations, 从数组中选出指定数目的组合的个数
+/**
+ * 回溯模板 - 找到所有解的数量
+ * Combinations, 从数组中选出指定数目的组合的个数
+ */
 public class BacktrackingTemplate2 {
     
     public static int countCombinations(int[] arr, int n) {
