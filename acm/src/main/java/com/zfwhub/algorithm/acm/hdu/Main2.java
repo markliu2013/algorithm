@@ -8,18 +8,14 @@ public class Main2 {
         Scanner sc = new Scanner(System.in);
         int nums = sc.nextInt();
         for (int i = 0; i < nums; i++) {
-            int count = sc.nextInt();
             int weight = sc.nextInt();
+            int count = sc.nextInt();
             int[] weigh = new int[count];
             int[] value = new int[count];
             int[] quantities = new int[count];
             for (int j = 0; j < count; j++) {
-                value[j] = sc.nextInt();
-            }
-            for (int j = 0; j < count; j++) {
                 weigh[j] = sc.nextInt();
-            }
-            for (int j = 0; j < count; j++) {
+                value[j] = sc.nextInt();
                 quantities[j] = sc.nextInt();
             }
             System.out.println(solution1(weigh, value, quantities, weight));
