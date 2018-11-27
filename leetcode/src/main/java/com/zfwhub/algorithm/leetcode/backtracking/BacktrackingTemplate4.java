@@ -2,8 +2,10 @@ package com.zfwhub.algorithm.leetcode.backtracking;
 
 import java.util.*;
 
-// 回溯模板 - 判断是否有解
-// Combinations, 数组中选出指定数目的组合是否存在
+/**
+ * 回溯模板 - 判断是否有解
+ * Combinations, 数组中选出指定数目的组合是否存在
+ */
 public class BacktrackingTemplate4 {
     
     public static boolean existsCombinations(int[] nums, int n) {

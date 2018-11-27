@@ -2,8 +2,10 @@ package com.zfwhub.algorithm.leetcode.pack;
 
 import java.util.Arrays;
 
-//多重背包问题
-//跑代码：http://acm.hdu.edu.cn/showproblem.php?pid=2191
+/**
+ * 多重背包问题
+ * 跑代码：http://acm.hdu.edu.cn/showproblem.php?pid=2191
+ */
 public class Pack03 {
     
     public static int solution1(int[] volumns, int[] values, int[] quantities, int capacity) {

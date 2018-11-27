@@ -2,11 +2,13 @@ package com.zfwhub.algorithm.leetcode.backtracking;
 
 import java.util.*;
 
-// 回溯模板 - 找到所有解
-// Combinations, 从数组中选出指定数目的所有组合
-// https://blog.csdn.net/u010500263/article/details/18435495
-// https://leetcode.com/problems/combinations/discuss/27019/A-short-recursive-Java-solution-based-on-C(nk)C(n-1k-1)%2BC(n-1k)
-// SubSets
+/**
+ * 回溯模板 - 找到所有解
+ * Combinations, 从数组中选出指定数目的所有组合
+ * https://blog.csdn.net/u010500263/article/details/18435495
+ * https://leetcode.com/problems/combinations/discuss/27019/A-short-recursive-Java-solution-based-on-C(nk)C(n-1k-1)%2BC(n-1k)
+ * @SubSets
+ */
 public class BacktrackingTemplate1 {
     
     public static List<List<Integer>> combineAll(int[] nums, int n) {

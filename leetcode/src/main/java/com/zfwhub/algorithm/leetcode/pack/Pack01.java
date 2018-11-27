@@ -3,12 +3,12 @@ package com.zfwhub.algorithm.leetcode.pack;
 import java.util.*;
 
 /**
- 01背包
- 跑代码：http://acm.hdu.edu.cn/showproblem.php?pid=2602
- https://zhuanlan.zhihu.com/p/35278858
- https://zhuanlan.zhihu.com/p/30959069
- https://www.cnblogs.com/bahcelor/p/6836695.html
-*/
+ * 01背包
+ * 跑代码：http://acm.hdu.edu.cn/showproblem.php?pid=2602
+ * https://zhuanlan.zhihu.com/p/35278858
+ * https://zhuanlan.zhihu.com/p/30959069
+ * https://www.cnblogs.com/bahcelor/p/6836695.html
+ */
 public class Pack01 {
 
     public static int solution1(int[] volumns, int[] values, int capacity) {
@@ -30,11 +30,9 @@ public class Pack01 {
         if (capacity < volumns[N - 1]) {//最后一个物品装不下
             return solution1(subVolumns, subValues, capacity);
         } else {
-            /** 
-               1. 放弃最后一个物品
-               2. 选择最后一个物品
-               取其中的较大值
-            */
+//               1. 放弃最后一个物品
+//               2. 选择最后一个物品
+//               取其中的较大值
             return Math.max(solution1(subVolumns, subValues, capacity), solution1(subVolumns, subValues, capacity - volumns[N - 1]) + values[N - 1]);
         }
     }

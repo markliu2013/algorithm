@@ -2,8 +2,10 @@ package com.zfwhub.algorithm.leetcode.backtracking;
 
 import java.util.*;
 
-// 回溯模板 - 找到一个解
-// Combinations, 从数组中选出指定数目的一个组合
+/**
+ * 回溯模板 - 找到一个解
+ * Combinations, 从数组中选出指定数目的一个组合
+ */
 public class BacktrackingTemplate3 {
     
     public static List<Integer> combineOne(int[] nums, int n) {
