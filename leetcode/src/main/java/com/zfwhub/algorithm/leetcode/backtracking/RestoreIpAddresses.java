@@ -23,7 +23,8 @@ public class RestoreIpAddresses {
         if (isASolution(solution, s)) {
             processSolution(solutionList, solution, s);
         } else {
-            for (int i = 1; i < s.length(); i++) {//每一个点都一个位置一个位置的尝试，不包含开头和起始位置。
+            // 每一个点都一个位置一个位置的尝试，不包含开头和起始位置。
+            for (int i = 1; i < s.length(); i++) {
                 if (isValid(solution, i, s)) {
                     makeMove(solution, i);
                     dfs(solutionList, solution, s);
