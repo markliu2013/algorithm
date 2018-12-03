@@ -60,38 +60,18 @@ public class AdditiveNumber {
         return solution.size() == num.length() - 1;
     }
 
-    public static boolean isValid(List<Boolean> solution, String num, int i) {
-        boolean isValid = true;
-        if (i == 1) {
-            // numList是solution分割的
-            List<Integer> numList = splitNums(solution, num);
-            if (numList.size()-1 >= 2) {
-                int target = Integer.valueOf(num.substring(numList.get(numList.size()-1), solution.size()+2));
-                boolean checkTargetFlag = false;
-                checkTarget:
-                for (int j = 0; j < numList.size(); j++) {
-                    for (int k = j+1; k < numList.size(); k++) {
-                        if (numList.get(j) + numList.get(k) == target) {
-                            checkTargetFlag = true;
-                            break checkTarget;
-                        }
-                    }
-                }
-                isValid = checkTargetFlag;
+    public static boolean isValid(List<Boolean> solution, String num, int flag) {
+        List<Integer> list = new ArrayList<>();
+        for (int i = 0; i < solution.size(); i++) {
+            if (solution.get(i)) {
+                list.add(i);
             }
         }
-        if (solution.size() == num.length()-2) {
-            int trueCount = 0;
-            for (int j = 0; j < solution.size(); j++) {
-                if (solution.get(j)) {
-                    trueCount++;
-                }
-            }
-            if (trueCount <= 1) {
-                isValid = false;
-            }
-        }
-        return isValid;
+        // 第一个点必须打在前半部分，
+        // 前面两个点位数相加不能大于后面
+        int mid = num.length() / 2;
+        
+        return true;
     }
     
     public static void makeMove(List<Boolean> solution, int i) {
