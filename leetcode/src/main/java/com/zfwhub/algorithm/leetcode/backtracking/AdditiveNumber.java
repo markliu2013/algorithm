@@ -3,6 +3,7 @@ package com.zfwhub.algorithm.leetcode.backtracking;
 import java.util.*;
 
 // https://leetcode.com/problems/additive-number/
+// 题目的意思: 必须是前面两个数相加
 public class AdditiveNumber {
     
     // Wrong Answer
@@ -30,11 +31,12 @@ public class AdditiveNumber {
     }
     
     public static boolean isAdditiveNumber(String num) {
-        // TODO 考虑num的length是3的情况
+        if (num.length() < 3) {
+            return false;
+        }
         // num的每个位置是否分割点（包括最后一个分割点，必须是分的）
         List<Boolean> solution = new ArrayList<>();
         boolean result = dfs(solution, num);
-        System.out.println(solution);
         System.out.println(splitNums(solution, num));
         return result;
     }
@@ -75,6 +77,13 @@ public class AdditiveNumber {
             if (solution.size()+1 >= mid && flag == 0) {
                 return false;
             }
+            // 不能这样 "02"
+            if (flag == 1) {
+                String targetStr = num.substring(0, solution.size()+1);
+                if (targetStr.startsWith("0") && targetStr.length() > 1) {
+                    return false;
+                }
+            }
         }
         // 前面两个点位数相加不能大于后面
         if (list.size() == 1) {
@@ -88,6 +97,13 @@ public class AdditiveNumber {
             if (maxShift > remainShift) {
                 return false;
             }
+            // 不能这样 "001"
+            if (flag == 1) {
+                String targetStr = num.substring(list.get(0)+1, solution.size()+1);
+                if (targetStr.startsWith("0") && targetStr.length() > 1) {
+                    return false;
+                }
+            }
         }
         // 最后一个点必须分
         if (solution.size() == num.length()-1 && flag == 0) {
@@ -95,7 +111,23 @@ public class AdditiveNumber {
         }
         // 前面已经有两个以上分割点了
         if (list.size() >= 2 && flag == 1) {
-            
+            List<Long> numList = splitNums(solution, num);
+            String targetStr = num.substring(list.get(list.size()-1)+1, solution.size()+1);
+            if (targetStr.startsWith("0") && targetStr.length() > 1) {
+                return false;
+            }
+            Long target = Long.valueOf(targetStr);
+            boolean checkTargetFlag = false;
+            checkTarget:
+            for (int j = 0; j < numList.size(); j++) {
+                for (int k = j+1; k < numList.size(); k++) {
+                    if (numList.get(j) + numList.get(k) == target) {
+                        checkTargetFlag = true;
+                        break checkTarget;
+                    }
+                }
+            }
+            return checkTargetFlag;
         }
         return true;
     }
@@ -108,22 +140,21 @@ public class AdditiveNumber {
         solution.remove(solution.size()-1);
     }
     
-    public static List<Integer> splitNums(List<Boolean> solution, String num) {
-        List<Integer> list = new ArrayList<>();
+    public static List<Long> splitNums(List<Boolean> solution, String num) {
+        List<Long> list = new ArrayList<>();
         int preTrueIndex = 0;
         for (int j = 0; j < solution.size(); j++) {
             if (solution.get(j) == true) {
-                list.add(Integer.valueOf(num.substring(preTrueIndex, j+1)));
+                list.add(Long.valueOf(num.substring(preTrueIndex, j+1)));
                 preTrueIndex = j+1;
             }
         }
-//        list.add(preTrueIndex);
         return list;
     }
     
     public static void main(String[] args) {
-//        System.out.println(isAdditiveNumber("112358"));
-        System.out.println(isAdditiveNumber("12345"));
+//        System.out.println(isAdditiveNumber("000"));
+        System.out.println(isAdditiveNumber("120122436"));
     }
     
 }
