@@ -33,11 +33,11 @@ public class Pack01Test {
 
     @Test
     public void testSolution1() {
-        assertEquals(Pack01.solution1(volumns1, values1, capacity1), expected1);
-        assertEquals(Pack01.solution1(volumns2, values2, capacity2), expected2);
-        assertEquals(Pack01.solution1(volumns3, values3, capacity3), expected3);
-        assertEquals(Pack01.solution1(volumns4, values4, capacity4), expected4);
-        assertEquals(Pack01.solution1(volumns5, values5, capacity5), expected5);
+        assertEquals(expected1, Pack01.solution1(volumns1, values1, capacity1));
+        assertEquals(expected2, Pack01.solution1(volumns2, values2, capacity2));
+        assertEquals(expected3, Pack01.solution1(volumns3, values3, capacity3));
+        assertEquals(expected4, Pack01.solution1(volumns4, values4, capacity4));
+        assertEquals(expected5, Pack01.solution1(volumns5, values5, capacity5));
     }
     
     @Test

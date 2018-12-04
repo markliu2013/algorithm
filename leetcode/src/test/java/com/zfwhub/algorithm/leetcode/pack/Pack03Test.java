@@ -14,7 +14,7 @@ public class Pack03Test {
 
     @Test
     public void testSolution1() {
-        assertEquals(Pack03.solution1(volumns1, values1, quantities1, capacity1), expected1);
+        assertEquals(expected1, Pack03.solution1(volumns1, values1, quantities1, capacity1));
     }
 
 }
