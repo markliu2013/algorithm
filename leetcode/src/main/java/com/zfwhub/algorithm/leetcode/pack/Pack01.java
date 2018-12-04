@@ -12,29 +12,17 @@ import java.util.*;
 public class Pack01 {
 
     public static int solution1(int[] volumns, int[] values, int capacity) {
+        if (capacity < 0) {
+            return Integer.MIN_VALUE;
+        }
         // 注意边界
         if (values == null || values.length == 0) {
             return 0;
         }
         int N = values.length;
-        // N == 1 的边界可以省略。
-        /**if (N == 1) {
-            if (capacity < volumns[0]) {
-                return 0;
-            } else {
-                return values[0];
-            }
-        }*/
         int[] subVolumns = Arrays.copyOf(volumns, N - 1);
         int[] subValues = Arrays.copyOf(values, N - 1);
-        if (capacity < volumns[N - 1]) {//最后一个物品装不下
-            return solution1(subVolumns, subValues, capacity);
-        } else {
-//               1. 放弃最后一个物品
-//               2. 选择最后一个物品
-//               取其中的较大值
-            return Math.max(solution1(subVolumns, subValues, capacity), solution1(subVolumns, subValues, capacity - volumns[N - 1]) + values[N - 1]);
-        }
+        return Math.max(solution1(subVolumns, subValues, capacity), solution1(subVolumns, subValues, capacity - volumns[N - 1]) + values[N - 1]);
     }
 
     public static int solution2(int[] volumns, int[] values, int capacity) {
