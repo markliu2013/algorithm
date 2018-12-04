@@ -30,10 +30,12 @@ public class AdditiveNumber {
     }
     
     public static boolean isAdditiveNumber(String num) {
-        // num的每个位置是否分割点
+        // TODO 考虑num的length是3的情况
+        // num的每个位置是否分割点（包括最后一个分割点，必须是分的）
         List<Boolean> solution = new ArrayList<>();
         boolean result = dfs(solution, num);
         System.out.println(solution);
+        System.out.println(splitNums(solution, num));
         return result;
     }
     
@@ -57,7 +59,7 @@ public class AdditiveNumber {
     }
     
     public static boolean isASolution(List<Boolean> solution, String num) {
-        return solution.size() == num.length() - 1;
+        return solution.size() == num.length();
     }
 
     public static boolean isValid(List<Boolean> solution, String num, int flag) {
@@ -67,10 +69,34 @@ public class AdditiveNumber {
                 list.add(i);
             }
         }
-        // 第一个点必须打在前半部分，
-        // 前面两个点位数相加不能大于后面
+        // 第一个点必须打在前半部分。
         int mid = num.length() / 2;
-        
+        if (list.size() == 0) {
+            if (solution.size()+1 >= mid && flag == 0) {
+                return false;
+            }
+        }
+        // 前面两个点位数相加不能大于后面
+        if (list.size() == 1) {
+            // 第一个分割的数是几位数
+            int shift1 = list.get(0)+1;
+            int shift2 = (solution.size()+1)-shift1;
+            // 前面两个数相加的最多位数
+            int maxShift = Math.max(shift1, shift2);
+            // 后面剩余的位数
+            int remainShift = num.length()-(solution.size()+1);
+            if (maxShift > remainShift) {
+                return false;
+            }
+        }
+        // 最后一个点必须分
+        if (solution.size() == num.length()-1 && flag == 0) {
+            return false;
+        }
+        // 前面已经有两个以上分割点了
+        if (list.size() >= 2 && flag == 1) {
+            
+        }
         return true;
     }
     
@@ -88,16 +114,16 @@ public class AdditiveNumber {
         for (int j = 0; j < solution.size(); j++) {
             if (solution.get(j) == true) {
                 list.add(Integer.valueOf(num.substring(preTrueIndex, j+1)));
-                preTrueIndex = j;
+                preTrueIndex = j+1;
             }
         }
-        list.add(preTrueIndex);
+//        list.add(preTrueIndex);
         return list;
     }
     
     public static void main(String[] args) {
 //        System.out.println(isAdditiveNumber("112358"));
-        System.out.println(isAdditiveNumber("199100199"));
+        System.out.println(isAdditiveNumber("12345"));
     }
     
 }
