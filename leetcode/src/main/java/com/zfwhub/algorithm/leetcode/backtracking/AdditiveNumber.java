@@ -117,17 +117,9 @@ public class AdditiveNumber {
                 return false;
             }
             Long target = Long.valueOf(targetStr);
-            boolean checkTargetFlag = false;
-            checkTarget:
-            for (int j = 0; j < numList.size(); j++) {
-                for (int k = j+1; k < numList.size(); k++) {
-                    if (numList.get(j) + numList.get(k) == target) {
-                        checkTargetFlag = true;
-                        break checkTarget;
-                    }
-                }
-            }
-            return checkTargetFlag;
+            Long pre1 = numList.get(numList.size()-1);
+            Long pre2 = numList.get(numList.size()-2);
+            return target == pre1 + pre2;
         }
         return true;
     }
