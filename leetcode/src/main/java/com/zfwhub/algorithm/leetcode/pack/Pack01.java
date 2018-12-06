@@ -81,7 +81,6 @@ public class Pack01 {
             for (int j = weight; j >= weigh[i]; j--) {
                 dp[j] = Math.max(dp[j], dp[j - weigh[i]] + value[i]);
             }
-            System.out.println(Arrays.toString(dp));
         }
         return dp[weight];
     }
