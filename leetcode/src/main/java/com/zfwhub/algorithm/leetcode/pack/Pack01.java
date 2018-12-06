@@ -73,6 +73,21 @@ public class Pack01 {
         }
         return results[capacity];
     }
+    
+    // TODO test solution5 run it
+    public static int solution5(int[] volumns, int[] values, int capacity) {
+        int[][] results = new int[volumns.length + 1][capacity + 1];
+        for (int i = 0; i < volumns.length; i++) {
+            for (int j = 0; j < volumns[i]; j++) {
+                results[i+1][j] = results[i][j];
+            }
+            for (int j = volumns[i]; j <= capacity; j++) {
+                results[i+1][j] = Math.max(results[i][j], results[i][j-volumns[i]] + values[i]);
+            }
+        }
+        return results[volumns.length][capacity];
+    }
+    
 
     // https://blog.csdn.net/luming_xml/article/details/71922365
     public static int solution9(int[] weigh, int[] value, int weight) {
