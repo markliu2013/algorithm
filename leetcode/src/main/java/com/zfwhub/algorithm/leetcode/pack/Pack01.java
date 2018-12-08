@@ -74,7 +74,7 @@ public class Pack01 {
         return results[capacity];
     }
     
-    // TODO test solution5 run it
+    // TODO solution5 Why wrong?
     public static int solution5(int[] volumns, int[] values, int capacity) {
         int[][] results = new int[volumns.length + 1][capacity + 1];
         for (int i = 0; i < volumns.length; i++) {
