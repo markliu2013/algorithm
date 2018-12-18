@@ -16,5 +16,10 @@ public class Pack03Test {
     public void testSolution1() {
         assertEquals(expected1, Pack03.solution1(volumns1, values1, quantities1, capacity1));
     }
+    
+    @Test
+    public void testSolution2() {
+        assertEquals(expected1, Pack03.solution2(volumns1, values1, quantities1, capacity1));
+    }
 
 }

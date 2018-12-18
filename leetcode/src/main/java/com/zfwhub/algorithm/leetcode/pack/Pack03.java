@@ -1,6 +1,8 @@
 package com.zfwhub.algorithm.leetcode.pack;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * 多重背包问题
@@ -30,6 +32,29 @@ public class Pack03 {
             }
             return maxValue;
         }
+    }
+    
+    public static int solution2(int[] volumns, int[] values, int[] quantities, int capacity) {
+        List<Integer> volumnList = new ArrayList<>();
+        List<Integer> valueList = new ArrayList<>();
+        for (int i = 0; i < volumns.length; i++) {
+            int count = Math.min(capacity / volumns[i], quantities[i]);
+            for (int j = 0; j < count; j++) {
+                volumnList.add(volumns[i]);
+                valueList.add(values[i]);
+            }
+        }
+        return solution2Helper(volumnList.toArray(new Integer[0]), valueList.toArray(new Integer[0]), capacity);
+    }
+    
+    public static int solution2Helper(Integer[] weigh, Integer[] value, int weight) {
+        int[] dp = new int[weight + 1];
+        for (int i = 0; i < weigh.length; i++) {
+            for (int j = weight; j >= weigh[i]; j--) {
+                dp[j] = Math.max(dp[j], dp[j - weigh[i]] + value[i]);
+            }
+        }
+        return dp[weight];
     }
     
 }

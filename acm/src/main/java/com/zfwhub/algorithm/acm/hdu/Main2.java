@@ -1,8 +1,6 @@
 package com.zfwhub.algorithm.acm.hdu;
 
-import java.util.Arrays;
-import java.util.Scanner;
-
+import java.util.*;
 public class Main2 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -18,9 +16,33 @@ public class Main2 {
                 value[j] = sc.nextInt();
                 quantities[j] = sc.nextInt();
             }
-            System.out.println(solution1(weigh, value, quantities, weight));
+            System.out.println(solution2(weigh, value, quantities, weight));
         }
     }
+    
+    public static int solution2(int[] volumns, int[] values, int[] quantities, int capacity) {
+        List<Integer> volumnList = new ArrayList<>();
+        List<Integer> valueList = new ArrayList<>();
+        for (int i = 0; i < volumns.length; i++) {
+            int count = Math.min(capacity / volumns[i], quantities[i]);
+            for (int j = 0; j < count; j++) {
+                volumnList.add(volumns[i]);
+                valueList.add(values[i]);
+            }
+        }
+        return solution2Helper(volumnList.toArray(new Integer[0]), valueList.toArray(new Integer[0]), capacity);
+    }
+    
+    public static int solution2Helper(Integer[] weigh, Integer[] value, int weight) {
+        int[] dp = new int[weight + 1];
+        for (int i = 0; i < weigh.length; i++) {
+            for (int j = weight; j >= weigh[i]; j--) {
+                dp[j] = Math.max(dp[j], dp[j - weigh[i]] + value[i]);
+            }
+        }
+        return dp[weight];
+    }
+    
     public static int solution1(int[] volumns, int[] values, int[] quantities, int capacity) {
         if (values.length == 0) {
             return 0;
