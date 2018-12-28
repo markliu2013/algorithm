@@ -30,7 +30,7 @@ public class StickersToSpellWord {
     
     public static int dp(String[] stickers, List<Character> target) {
         if (stickers.length == 0) {
-            return -1;
+            return 0;
         }
         if (target.size() == 1) {
             Set<Character> set2 = new HashSet<>();
@@ -65,7 +65,7 @@ public class StickersToSpellWord {
     // sticker是否包含target中的某个字符
     public static boolean contains(String sticker, List<Character> target) {
         for (int i = 0; i < target.size(); i++) {
-            if (sticker.indexOf(target.get(i)) < 0) {
+            if (sticker.indexOf(target.get(i)) >= 0) {
                 return true;
             }
         }
@@ -83,7 +83,7 @@ public class StickersToSpellWord {
             if (list3.size() == target.size()) {
                 flag = false;
             } else {
-                StickerResult stickerResult = new StickerResult(count, list3);
+                StickerResult stickerResult = new StickersToSpellWord.StickerResult(count, list3);
                 list.add(stickerResult);
                 target = list3;
             }
@@ -111,6 +111,17 @@ public class StickersToSpellWord {
         return result;
     }
     
+    static class StickerResult {
+        public int count;
+        public List<Character> target;
+        public StickerResult() {
+        }
+        public StickerResult(int count, List<Character> target) {
+            this.count = count;
+            this.target = target;
+        }
+    }
+    
     public static void main(String[] args) {
         String[] stickers = new String[] {"with", "example", "science"};
         String target = "thehat";
@@ -119,14 +130,5 @@ public class StickersToSpellWord {
     
 }
 
-class StickerResult {
-    public int count;
-    public List<Character> target;
-    public StickerResult() {
-    }
-    public StickerResult(int count, List<Character> target) {
-        this.count = count;
-        this.target = target;
-    }
-}
+
 
