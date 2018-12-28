@@ -1,8 +1,6 @@
 package com.zfwhub.algorithm.leetcode.dp;
 
-/**
- * https://leetcode.com/problems/regular-expression-matching/
- */
+// https://leetcode.com/problems/regular-expression-matching/
 public class RegularExpressionMatching {
     
     // TODO RegularExpressionMatching
