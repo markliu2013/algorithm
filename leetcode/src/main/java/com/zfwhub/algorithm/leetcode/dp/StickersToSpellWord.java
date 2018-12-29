@@ -29,9 +29,6 @@ public class StickersToSpellWord {
     }
     
     public static int dp(String[] stickers, List<Character> target) {
-        if (stickers.length == 0) {
-            return 0;
-        }
         if (target.size() == 1) {
             Set<Character> set2 = new HashSet<>();
             for (int i = 0; i < stickers.length; i++) {
@@ -44,6 +41,13 @@ public class StickersToSpellWord {
             } else {
                 return -1;
             }
+        }
+        if (stickers.length == 1) {
+            List<StickerResult> stickerResults = go(stickers[0], target);
+            if (stickerResults.size() == 0) {
+                return -1;
+            }
+            return stickerResults.get(stickerResults.size()-1).count;
         }
         String[] subStickers = Arrays.copyOf(stickers, stickers.length-1);
         String lastSticker = stickers[stickers.length-1];
@@ -58,14 +62,14 @@ public class StickersToSpellWord {
                 int value = dp(subStickers, stickerResult.target) + stickerResult.count;
                 minValue = Math.min(minValue, value);
             }
-            return minValue;
+            return Math.min(dp(subStickers, target), minValue);
         }
     }
     
     // sticker是否包含target中的某个字符
     public static boolean contains(String sticker, List<Character> target) {
-        for (int i = 0; i < target.size(); i++) {
-            if (sticker.indexOf(target.get(i)) >= 0) {
+        for (int i = 0; i < sticker.length(); i++) {
+            if (target.contains(sticker.charAt(i))) {
                 return true;
             }
         }
@@ -123,8 +127,8 @@ public class StickersToSpellWord {
     }
     
     public static void main(String[] args) {
-        String[] stickers = new String[] {"with", "example", "science"};
-        String target = "thehat";
+        String[] stickers = new String[] {"a", "b"};
+        String target = "ab";
         System.out.println(minStickers(stickers, target));
     }
     
