@@ -24,6 +24,7 @@ public class StickersToSpellWord {
             for (int i = 0; i < target.length(); i++) {
                 list1.add(target.charAt(i));
             }
+            // TODO 去掉没有作用的
             return dp(stickers, list1);
         }
     }
@@ -69,6 +70,9 @@ public class StickersToSpellWord {
                     int value = value1 + stickerResult.count;
                     minValue = Math.min(minValue, value);                    
                 }
+            }
+            if (minValue == Integer.MAX_VALUE - 5) {
+                
             }
             return minValue;
         }
@@ -140,7 +144,7 @@ public class StickersToSpellWord {
     }
     
     public static void main(String[] args) {
-        String[] stickers = new String[] {"soil","since","lift","are","lot","twenty","put"};
+        String[] stickers = new String[] {"so","are","en","p"};
         String target = "appearreason";
         System.out.println(minStickers(stickers, target));
     }
