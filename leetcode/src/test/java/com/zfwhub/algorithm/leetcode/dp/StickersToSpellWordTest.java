@@ -22,9 +22,9 @@ public class StickersToSpellWordTest {
     String target4 = "ab";
     int expected4 = 1;
     
-    String[] stickers5 = new String[] {"aa", "baa", "ca"};
-    String target5 = "aa";
-    int expected5 = 1;
+    String[] stickers5 = new String[] {"a","b","bc"};
+    String target5 = "abc";
+    int expected5 = 2;
     
     String[] stickers21 = new String[] {"with", "example", "science"};
     String target21 = "thehat";
@@ -38,6 +38,10 @@ public class StickersToSpellWordTest {
     String target23 = "centorder";
     int expected23 = 4;
     
+    String[] stickers24 = new String[] {"soil","since","lift","are","lot","twenty","put"};
+    String target24 = "appearreason";
+    int expected24 = 7;
+    
     @Test
     public void testMinStickers() {
         assertEquals(expected1, StickersToSpellWord.minStickers(stickers1, target1));
@@ -48,6 +52,7 @@ public class StickersToSpellWordTest {
         assertEquals(expected21, StickersToSpellWord.minStickers(stickers21, target21));
         assertEquals(expected22, StickersToSpellWord.minStickers(stickers22, target22));
         assertEquals(expected23, StickersToSpellWord.minStickers(stickers23, target23));
+        assertEquals(expected24, StickersToSpellWord.minStickers(stickers24, target24));
     }
 
 }

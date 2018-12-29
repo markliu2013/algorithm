@@ -29,6 +29,9 @@ public class StickersToSpellWord {
     }
     
     public static int dp(String[] stickers, List<Character> target) {
+        if (target.size() == 0) {
+            return 0;
+        }
         if (target.size() == 1) {
             Set<Character> set2 = new HashSet<>();
             for (int i = 0; i < stickers.length; i++) {
@@ -44,10 +47,12 @@ public class StickersToSpellWord {
         }
         if (stickers.length == 1) {
             List<StickerResult> stickerResults = go(stickers[0], target);
-            if (stickerResults.size() == 0) {
+            StickerResult stickerResult = stickerResults.get(stickerResults.size()-1);
+            if (stickerResult.target.size() == 0) {
+                return stickerResult.count;
+            } else {
                 return -1;
             }
-            return stickerResults.get(stickerResults.size()-1).count;
         }
         String[] subStickers = Arrays.copyOf(stickers, stickers.length-1);
         String lastSticker = stickers[stickers.length-1];
@@ -56,13 +61,16 @@ public class StickersToSpellWord {
             return dp(subStickers, target);
         } else { // lastSticker可以选多少个？一个个的尝试最优解
             List<StickerResult> stickerResults = go(lastSticker, target);
-            int minValue = Integer.MAX_VALUE;
+            int minValue = Integer.MAX_VALUE-5;
             for (int i = 0; i < stickerResults.size(); i++) {
                 StickerResult stickerResult = stickerResults.get(i);
-                int value = dp(subStickers, stickerResult.target) + stickerResult.count;
-                minValue = Math.min(minValue, value);
+                int value1 = dp(subStickers, stickerResult.target);
+                if (value1 != -1) {
+                    int value = value1 + stickerResult.count;
+                    minValue = Math.min(minValue, value);                    
+                }
             }
-            return Math.min(dp(subStickers, target), minValue);
+            return minValue;
         }
     }
     
@@ -78,19 +86,24 @@ public class StickersToSpellWord {
     
     public static List<StickerResult> go(String sticker, List<Character> target) {
         List<StickerResult> list = new ArrayList<>();
+        List<Character> targetList = new ArrayList<>(target);
+        // 0个
+        StickerResult stickerResult0 = new StickersToSpellWord.StickerResult(0, new ArrayList<>(target));
+        list.add(stickerResult0);
         boolean flag = true;
         int count = 0;
         while (flag) {
             count++;
             List<Character> list2 = getList(sticker, count);
-            List<Character> list3 = remove(target, list2);
-            if (list3.size() == target.size()) {
+            List<Character> list3 = remove(targetList, list2);
+            StickerResult stickerResult = new StickersToSpellWord.StickerResult(count, new ArrayList<>(list3));
+            list.add(stickerResult);
+            if (list3.size() == 0 || list3.size() == targetList.size()) {
                 flag = false;
             } else {
-                StickerResult stickerResult = new StickersToSpellWord.StickerResult(count, list3);
-                list.add(stickerResult);
-                target = list3;
+                targetList = new ArrayList<>(list3);
             }
+            
         }
         return list;
     }
@@ -127,8 +140,8 @@ public class StickersToSpellWord {
     }
     
     public static void main(String[] args) {
-        String[] stickers = new String[] {"a", "b"};
-        String target = "ab";
+        String[] stickers = new String[] {"soil","since","lift","are","lot","twenty","put"};
+        String target = "appearreason";
         System.out.println(minStickers(stickers, target));
     }
     
