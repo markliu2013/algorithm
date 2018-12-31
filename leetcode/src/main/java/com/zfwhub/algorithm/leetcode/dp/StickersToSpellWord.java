@@ -96,38 +96,36 @@ public class StickersToSpellWord {
         list.add(stickerResult0);
         boolean flag = true;
         int count = 0;
+        List<Character> list2 = new ArrayList<>();
         while (flag) {
             count++;
-            List<Character> list2 = getList(sticker, count);
-            List<Character> list3 = remove(targetList, list2);
-            StickerResult stickerResult = new StickersToSpellWord.StickerResult(count, new ArrayList<>(list3));
+            list2 = getList(sticker, list2);
+            List<Character> list3 = new ArrayList<>(targetList);
+            remove(targetList, list2);
+            StickerResult stickerResult = new StickersToSpellWord.StickerResult(count, new ArrayList<>(targetList));
             list.add(stickerResult);
-            if (list3.size() == 0 || list3.size() == targetList.size()) {
+            if (targetList.size() == 0 || targetList.size() == list3.size()) {
                 flag = false;
-            } else {
-                targetList = new ArrayList<>(list3);
             }
-            
         }
         return list;
     }
     
-    public static List<Character> remove(List<Character> target, List<Character> list) {
-        List<Character> result = new ArrayList<>(target);
-        for (int i = 0; i < list.size(); i++) {
-            result.remove(list.get(i));
+    public static void remove(List<Character> target, List<Character> list) {
+        Iterator<Character> it = list.iterator();
+        while (it.hasNext()) {
+            Character c = it.next();
+            if (target.contains(c)) {
+                target.remove(c);
+                it.remove();
+            }
         }
-        return result;
     }
     
-    public static List<Character> getList(String sticker, int count) {
-        List<Character> result = new ArrayList<>();
-        if (count > 0) {
-            for (int i = 0; i < count; i++) {
-                for (int j = 0; j < sticker.length(); j++) {
-                    result.add(sticker.charAt(j));
-                }
-            }
+    public static List<Character> getList(String sticker, List<Character> list) {
+        List<Character> result = new ArrayList<>(list);
+        for (int j = 0; j < sticker.length(); j++) {
+            result.add(sticker.charAt(j));
         }
         return result;
     }
@@ -144,8 +142,13 @@ public class StickersToSpellWord {
     }
     
     public static void main(String[] args) {
-        String[] stickers = new String[] {"so","are","en","p"};
-        String target = "appearreason";
+        String[] stickers = new String[] {"control","heart","interest","stream","sentence",
+                "soil","wonder","them","month","slip","table","miss","boat","speak",
+                "figure","no","perhaps","twenty","throw","rich","capital","save","method",
+                "store","meant","life","oil","string","song","food","am","who","fat","if",
+                "put","path","come","grow","box","great","word","object","stead","common",
+                "fresh","the","operate","where","road","mean"};
+        String target = "stoodcrease";
         System.out.println(minStickers(stickers, target));
     }
     
