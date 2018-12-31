@@ -26,6 +26,10 @@ public class StickersToSpellWordTest {
     String target5 = "abc";
     int expected5 = 2;
     
+    String[] stickers6 = new String[] {"ab"};
+    String target6 = "aabba";
+    int expected6 = 3;
+    
     String[] stickers21 = new String[] {"with", "example", "science"};
     String target21 = "thehat";
     int expected21 = 3;
@@ -42,6 +46,15 @@ public class StickersToSpellWordTest {
     String target24 = "appearreason";
     int expected24 = 7;
     
+    String[] stickers25 = new String[] {"control","heart","interest","stream","sentence",
+            "soil","wonder","them","month","slip","table","miss","boat","speak",
+            "figure","no","perhaps","twenty","throw","rich","capital","save","method",
+            "store","meant","life","oil","string","song","food","am","who","fat","if",
+            "put","path","come","grow","box","great","word","object","stead","common",
+            "fresh","the","operate","where","road","mean"};
+    String target25 = "stoodcrease";
+    int expected25 = 7;
+    
     @Test
     public void testMinStickers() {
         assertEquals(expected1, StickersToSpellWord.minStickers(stickers1, target1));
@@ -49,6 +62,7 @@ public class StickersToSpellWordTest {
         assertEquals(expected3, StickersToSpellWord.minStickers(stickers3, target3));
         assertEquals(expected4, StickersToSpellWord.minStickers(stickers4, target4));
         assertEquals(expected5, StickersToSpellWord.minStickers(stickers5, target5));
+        assertEquals(expected6, StickersToSpellWord.minStickers(stickers6, target6));
         assertEquals(expected21, StickersToSpellWord.minStickers(stickers21, target21));
         assertEquals(expected22, StickersToSpellWord.minStickers(stickers22, target22));
         assertEquals(expected23, StickersToSpellWord.minStickers(stickers23, target23));
