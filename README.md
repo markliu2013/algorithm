@@ -5,6 +5,7 @@
 * [GoldMine](https://www.jianshu.com/p/e200805306db)
 * [背包问题九讲](https://github.com/tianyicui/pack)
 * [CoinChange](https://leetcode.com/problems/coin-change/)
+* [StickersToSpellWord](https://leetcode.com/problems/stickers-to-spell-word/)
 * [MakingTheGrade](http://poj.org/problem?id=3666)
 * [RegularExpressionMatching](https://leetcode.com/problems/regular-expression-matching/)
 
