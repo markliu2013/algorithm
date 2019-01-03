@@ -7,88 +7,79 @@ public class StickersToSpellWord {
     
     public static int minStickers(String[] stickers, String target) {
         // 先检查是否存在解
-        Set<Character> set1 = new HashSet<>();
-        for (int i = 0; i < target.length(); i++) {
-            set1.add(target.charAt(i));
-        }
-        Set<Character> set2 = new HashSet<>();
-        for (int i = 0; i < stickers.length; i++) {
-            for (int j = 0; j < stickers[i].length(); j++) {
-                set2.add(stickers[i].charAt(j));
-            }
-        }
-        if (!set2.containsAll(set1)) {
+        if (!hasSolution(stickers, target)) {
             return -1;
         } else {
-            List<Character> list1 = new ArrayList<>();
-            for (int i = 0; i < target.length(); i++) {
-                list1.add(target.charAt(i));
-            }
-            // TODO 去掉没有作用的
-            return dp(stickers, list1);
+            return dp(parseStickers(stickers, target), targetToList(target));
         }
     }
     
-    public static int dp(String[] stickers, List<Character> target) {
+    private static boolean hasSolution(String[] stickers, String target) {
+        Set<Character> targetSet = new HashSet<>();
+        for (int i = 0; i < target.length(); i++) {
+            targetSet.add(target.charAt(i));
+        }
+        Set<Character> stickerSet = new HashSet<>();
+        for (int i = 0; i < stickers.length; i++) {
+            for (int j = 0; j < stickers[i].length(); j++) {
+                stickerSet.add(stickers[i].charAt(j));
+            }
+        }
+        return stickerSet.containsAll(targetSet);
+    }
+    
+    private static List<List<Character>> parseStickers(String[] stickers, String target) {
+        List<List<Character>> list = new ArrayList<>();
+        Set<Character> targetSet = new HashSet<>();
+        for (int i = 0; i < target.length(); i++) {
+            targetSet.add(target.charAt(i));
+        }
+        for (int i = 0; i < stickers.length; i++) {
+            List<Character> list2 = new ArrayList<>();
+            for (int j = 0; j < stickers[i].length(); j++) {
+                if (targetSet.contains(stickers[i].charAt(j))) {
+                    list2.add(stickers[i].charAt(j));
+                }
+            }
+            Collections.sort(list2);//必须排序之后再添加，以保证唯一。
+            if (list2.size() > 0 && !list.contains(list2)) {
+                list.add(list2);
+            }
+        }
+        return list;
+    }
+    
+    private static List<Character> targetToList(String target) {
+        List<Character> list = new ArrayList<>();
+        for (int i = 0; i < target.length(); i++) {
+            list.add(target.charAt(i));
+        }
+        return list;
+    }
+    
+    private static int dp(List<List<Character>> stickers, List<Character> target) {
         if (target.size() == 0) {
             return 0;
         }
-        if (target.size() == 1) {
-            Set<Character> set2 = new HashSet<>();
-            for (int i = 0; i < stickers.length; i++) {
-                for (int j = 0; j < stickers[i].length(); j++) {
-                    set2.add(stickers[i].charAt(j));
-                }
-            }
-            if (set2.contains(target.get(0))) {
-                return 1;
-            } else {
-                return -1;
+        if (stickers.size() == 0) {
+            return -1;
+        }
+        List<List<Character>> subStickers = stickers.subList(0, stickers.size()-1);
+        List<Character> lastSticker = stickers.get(stickers.size()-1);
+        List<StickerResult> stickerResults = go(lastSticker, target);
+        int minValue = Integer.MAX_VALUE-5;
+        for (int i = 0; i < stickerResults.size(); i++) {
+            StickerResult stickerResult = stickerResults.get(i);
+            int value1 = dp(subStickers, stickerResult.target);
+            if (value1 != -1) {
+                int value = value1 + stickerResult.count;
+                minValue = Math.min(minValue, value);                    
             }
         }
-        if (stickers.length == 1) {
-            List<StickerResult> stickerResults = go(stickers[0], target);
-            StickerResult stickerResult = stickerResults.get(stickerResults.size()-1);
-            if (stickerResult.target.size() == 0) {
-                return stickerResult.count;
-            } else {
-                return -1;
-            }
-        }
-        String[] subStickers = Arrays.copyOf(stickers, stickers.length-1);
-        String lastSticker = stickers[stickers.length-1];
-        // lastSticker不包含target中任何一个
-        if (!contains(lastSticker, target)) {
-            return dp(subStickers, target);
-        } else { // lastSticker可以选多少个？一个个的尝试最优解
-            List<StickerResult> stickerResults = go(lastSticker, target);
-            int minValue = Integer.MAX_VALUE-5;
-            for (int i = 0; i < stickerResults.size(); i++) {
-                StickerResult stickerResult = stickerResults.get(i);
-                int value1 = dp(subStickers, stickerResult.target);
-                if (value1 != -1) {
-                    int value = value1 + stickerResult.count;
-                    minValue = Math.min(minValue, value);                    
-                }
-            }
-            if (minValue == Integer.MAX_VALUE - 5) {
-                
-            }
-            return minValue;
-        }
+        return minValue;
     }
     
-    // sticker是否包含target中的某个字符
-    public static boolean contains(String sticker, List<Character> target) {
-        for (int i = 0; i < sticker.length(); i++) {
-            if (target.contains(sticker.charAt(i))) {
-                return true;
-            }
-        }
-        return false;
-    }
-    
-    public static List<StickerResult> go(String sticker, List<Character> target) {
+    private static List<StickerResult> go(List<Character> sticker, List<Character> target) {
         List<StickerResult> list = new ArrayList<>();
         List<Character> targetList = new ArrayList<>(target);
         // 0个
@@ -99,7 +90,7 @@ public class StickersToSpellWord {
         List<Character> list2 = new ArrayList<>();
         while (flag) {
             count++;
-            list2 = getList(sticker, list2);
+            appendList(list2, sticker);
             List<Character> list3 = new ArrayList<>(targetList);
             remove(targetList, list2);
             StickerResult stickerResult = new StickersToSpellWord.StickerResult(count, new ArrayList<>(targetList));
@@ -111,7 +102,7 @@ public class StickersToSpellWord {
         return list;
     }
     
-    public static void remove(List<Character> target, List<Character> list) {
+    private static void remove(List<Character> target, List<Character> list) {
         Iterator<Character> it = list.iterator();
         while (it.hasNext()) {
             Character c = it.next();
@@ -122,12 +113,10 @@ public class StickersToSpellWord {
         }
     }
     
-    public static List<Character> getList(String sticker, List<Character> list) {
-        List<Character> result = new ArrayList<>(list);
-        for (int j = 0; j < sticker.length(); j++) {
-            result.add(sticker.charAt(j));
+    private static void appendList(List<Character> list, List<Character> sticker) {
+        for (int j = 0; j < sticker.size(); j++) {
+            list.add(sticker.get(j));
         }
-        return result;
     }
     
     static class StickerResult {
@@ -142,13 +131,8 @@ public class StickersToSpellWord {
     }
     
     public static void main(String[] args) {
-        String[] stickers = new String[] {"control","heart","interest","stream","sentence",
-                "soil","wonder","them","month","slip","table","miss","boat","speak",
-                "figure","no","perhaps","twenty","throw","rich","capital","save","method",
-                "store","meant","life","oil","string","song","food","am","who","fat","if",
-                "put","path","come","grow","box","great","word","object","stead","common",
-                "fresh","the","operate","where","road","mean"};
-        String target = "stoodcrease";
+        String[] stickers = new String[] {"soil","since","lift","are","lot","twenty","put"};
+        String target = "appearreason";
         System.out.println(minStickers(stickers, target));
     }
     

@@ -67,6 +67,7 @@ public class StickersToSpellWordTest {
         assertEquals(expected22, StickersToSpellWord.minStickers(stickers22, target22));
         assertEquals(expected23, StickersToSpellWord.minStickers(stickers23, target23));
         assertEquals(expected24, StickersToSpellWord.minStickers(stickers24, target24));
+//        assertEquals(expected25, StickersToSpellWord.minStickers(stickers25, target25));
     }
 
 }
