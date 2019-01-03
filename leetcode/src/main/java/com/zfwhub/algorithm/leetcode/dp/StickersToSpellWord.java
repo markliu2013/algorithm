@@ -10,7 +10,7 @@ public class StickersToSpellWord {
         if (!hasSolution(stickers, target)) {
             return -1;
         } else {
-            return dp(parseStickers(stickers, target), targetToList(target));
+            return dp(parseStickers(stickers, target), targetToList(target), new HashMap<>());
         }
     }
     
@@ -57,7 +57,7 @@ public class StickersToSpellWord {
         return list;
     }
     
-    private static int dp(List<List<Character>> stickers, List<Character> target) {
+    private static int dp(List<List<Character>> stickers, List<Character> target, HashMap<StickersToSpellWord.DpMapKey, Integer> map) {
         if (target.size() == 0) {
             return 0;
         }
@@ -70,7 +70,14 @@ public class StickersToSpellWord {
         int minValue = Integer.MAX_VALUE-5;
         for (int i = 0; i < stickerResults.size(); i++) {
             StickerResult stickerResult = stickerResults.get(i);
-            int value1 = dp(subStickers, stickerResult.target);
+            DpMapKey dpMapKey = new StickersToSpellWord.DpMapKey(subStickers, stickerResult.target);
+            int value1 = -1;
+            if (map.containsKey(dpMapKey)) {
+                value1 = map.get(dpMapKey);
+            } else {
+                value1 = dp(subStickers, stickerResult.target, map);
+                map.put(dpMapKey, value1);
+            }
             if (value1 != -1) {
                 int value = value1 + stickerResult.count;
                 minValue = Math.min(minValue, value);                    
@@ -130,9 +137,48 @@ public class StickersToSpellWord {
         }
     }
     
+    static class DpMapKey {
+        public List<List<Character>> stickers;
+        public List<Character> target;
+        
+        public DpMapKey(List<List<Character>> stickers, List<Character> target) {
+            this.stickers = stickers;
+            this.target = target;
+        }
+        @Override
+        public int hashCode() {
+            final int prime = 31;
+            int result = 1;
+            result = prime * result + ((stickers == null) ? 0 : stickers.hashCode());
+            result = prime * result + ((target == null) ? 0 : target.hashCode());
+            return result;
+        }
+        @Override
+        public boolean equals(Object obj) {
+            if (this == obj)
+                return true;
+            if (obj == null)
+                return false;
+            if (getClass() != obj.getClass())
+                return false;
+            DpMapKey other = (DpMapKey) obj;
+            if (stickers == null) {
+                if (other.stickers != null)
+                    return false;
+            } else if (!stickers.equals(other.stickers))
+                return false;
+            if (target == null) {
+                if (other.target != null)
+                    return false;
+            } else if (!target.equals(other.target))
+                return false;
+            return true;
+        }
+    }
+    
     public static void main(String[] args) {
-        String[] stickers = new String[] {"soil","since","lift","are","lot","twenty","put"};
-        String target = "appearreason";
+        String[] stickers = new String[] {"own","tone","feel","there","invent","trade","follow","home","still","check","market","cotton","blow","use","afraid","indicate","support","sail","charge","been","children","how","behind","size","hat","match","count","notice","food","excite","felt","serve","guess","else","quick","student","consonant","strong","wait","ago","enemy","oh","industry","cover","cat","while","nose","wild","quite","shine"};
+        String target = "donepower";
         System.out.println(minStickers(stickers, target));
     }
     
