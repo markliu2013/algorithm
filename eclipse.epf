@@ -2,7 +2,6 @@
 \!/=
 /configuration/org.eclipse.core.net/org.eclipse.core.net.hasMigrated=true
 /configuration/org.eclipse.ui.ide/MAX_RECENT_WORKSPACES=10
-/configuration/org.eclipse.ui.ide/RECENT_WORKSPACES=P\:\\Users\\Mooch.L\\Downloads\\work\nC\:\\Users\\mark\\eclipse-workspace
 /configuration/org.eclipse.ui.ide/RECENT_WORKSPACES_PROTOCOL=3
 /configuration/org.eclipse.ui.ide/SHOW_RECENT_WORKSPACES=true
 /configuration/org.eclipse.ui.ide/SHOW_WORKSPACE_SELECTION_DIALOG=true
@@ -22,9 +21,6 @@
 /instance/org.eclipse.debug.ui/pref_state_memento.org.eclipse.debug.ui.VariableView=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<VariablesViewMemento org.eclipse.debug.ui.SASH_DETAILS_PART\="315" org.eclipse.debug.ui.SASH_VIEW_PART\="684">\r\n<PRESENTATION_CONTEXT_PROPERTIES IMemento.internal.id\="org.eclipse.debug.ui.VariableView">\r\n<BOOLEAN BOOLEAN\="true" IMemento.internal.id\="PRESENTATION_SHOW_LOGICAL_STRUCTURES"/>\r\n</PRESENTATION_CONTEXT_PROPERTIES>\r\n</VariablesViewMemento>
 /instance/org.eclipse.debug.ui/preferredDetailPanes=org.eclipse.jdt.debug.ui.DETAIL_PANE_LINE_BREAKPOINT\:org.eclipse.jdt.debug.ui.DETAIL_PANE_LINE_BREAKPOINT|DefaultDetailPane\:DefaultDetailPane|
 /instance/org.eclipse.debug.ui/preferredTargets=default\:default|
-/instance/org.eclipse.egit.core/GitRepositoriesView.GitDirectories=P\:\\Users\\Mooch.L\\algorithm\\.git;
-/instance/org.eclipse.egit.core/GitRepositoriesView.GitDirectories.relative=P\:\\Users\\Mooch.L\\algorithm\\.git;
-/instance/org.eclipse.egit.ui/BranchProjectTracker__P\:\\Users\\Mooch.L\\algorithm\\.git_develop=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<projects branch\="develop">\r\n<project>\\acm</project>\r\n<project>\\codility</project>\r\n<project>\\datastructure</project>\r\n<project>\\leetcode</project>\r\n<project>\\math</project>\r\n<project>/</project>\r\n</projects>
 /instance/org.eclipse.egit.ui/commit_dialog_history_messages=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<messages>\r\n<message>save</message>\r\n<message>StickersToSpellWord DP Memoization Time Limit Exceeded</message>\r\n<message>save work</message>\r\n<message>StickersToSpellWord Optimizez Code</message>\r\n<message>StickersToSpellWord</message>\r\n<message>StickersToSpellWord Time Limit Exceeded</message>\r\n<message>README</message>\r\n<message>StickersToSpellWord Not Finished</message>\r\n<message>StickersToSpellWord Not Finish</message>\r\n<message>Comment</message>\r\n</messages>
 /instance/org.eclipse.egit.ui/resourcehistory_graph_split=500,500
 /instance/org.eclipse.egit.ui/resourcehistory_rev_split=700,300
