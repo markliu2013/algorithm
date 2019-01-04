@@ -1,16 +1,15 @@
-#Sun Dec 16 22:31:25 CST 2018
+#Fri Jan 04 14:55:06 CST 2019
 \!/=
 /configuration/org.eclipse.core.net/org.eclipse.core.net.hasMigrated=true
 /configuration/org.eclipse.ui.ide/MAX_RECENT_WORKSPACES=10
-/configuration/org.eclipse.ui.ide/RECENT_WORKSPACES=C\:\\Users\\mark\\eclipse-workspace
+/configuration/org.eclipse.ui.ide/RECENT_WORKSPACES=P\:\\Users\\Mooch.L\\Downloads\\work\nC\:\\Users\\mark\\eclipse-workspace
 /configuration/org.eclipse.ui.ide/RECENT_WORKSPACES_PROTOCOL=3
-/configuration/org.eclipse.ui.ide/SHOW_RECENT_WORKSPACES=false
+/configuration/org.eclipse.ui.ide/SHOW_RECENT_WORKSPACES=true
 /configuration/org.eclipse.ui.ide/SHOW_WORKSPACE_SELECTION_DIALOG=true
 /instance/org.eclipse.buildship.core/auto.sync=false
 /instance/org.eclipse.buildship.core/gradle.build.scans=false
 /instance/org.eclipse.buildship.core/gradle.distribution=GRADLE_DISTRIBUTION(WRAPPER)
 /instance/org.eclipse.buildship.core/gradle.offline.mode=false
-/instance/org.eclipse.core.net/org.eclipse.core.net.hasMigrated=true
 /instance/org.eclipse.core.resources/encoding=UTF-8
 /instance/org.eclipse.core.resources/version=1
 /instance/org.eclipse.core.runtime/line.separator=\n
@@ -23,9 +22,12 @@
 /instance/org.eclipse.debug.ui/pref_state_memento.org.eclipse.debug.ui.VariableView=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<VariablesViewMemento org.eclipse.debug.ui.SASH_DETAILS_PART\="315" org.eclipse.debug.ui.SASH_VIEW_PART\="684">\r\n<PRESENTATION_CONTEXT_PROPERTIES IMemento.internal.id\="org.eclipse.debug.ui.VariableView">\r\n<BOOLEAN BOOLEAN\="true" IMemento.internal.id\="PRESENTATION_SHOW_LOGICAL_STRUCTURES"/>\r\n</PRESENTATION_CONTEXT_PROPERTIES>\r\n</VariablesViewMemento>
 /instance/org.eclipse.debug.ui/preferredDetailPanes=org.eclipse.jdt.debug.ui.DETAIL_PANE_LINE_BREAKPOINT\:org.eclipse.jdt.debug.ui.DETAIL_PANE_LINE_BREAKPOINT|DefaultDetailPane\:DefaultDetailPane|
 /instance/org.eclipse.debug.ui/preferredTargets=default\:default|
-/instance/org.eclipse.egit.core/GitRepositoriesView.GitDirectories=C\:\\Users\\mark\\git\\algorithm\\.git;
-/instance/org.eclipse.egit.core/GitRepositoriesView.GitDirectories.relative=C\:\\Users\\mark\\git\\algorithm\\.git;
-/instance/org.eclipse.egit.ui/commit_dialog_history_messages=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<messages>\r\n<message>Remove ml</message>\r\n<message>backtrack template</message>\r\n<message>BacktrackingTemplate1</message>\r\n<message>BacktrackingTemplate</message>\r\n<message>Move</message>\r\n<message>MaxIncreaseToKeepCitySkyline</message>\r\n<message>README</message>\r\n<message>MedianOfTwoSortedArrays</message>\r\n<message>MajorityElement</message>\r\n<message>ContainerWithMostWater</message>\r\n</messages>
+/instance/org.eclipse.egit.core/GitRepositoriesView.GitDirectories=P\:\\Users\\Mooch.L\\algorithm\\.git;
+/instance/org.eclipse.egit.core/GitRepositoriesView.GitDirectories.relative=P\:\\Users\\Mooch.L\\algorithm\\.git;
+/instance/org.eclipse.egit.ui/BranchProjectTracker__P\:\\Users\\Mooch.L\\algorithm\\.git_develop=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<projects branch\="develop">\r\n<project>\\acm</project>\r\n<project>\\codility</project>\r\n<project>\\datastructure</project>\r\n<project>\\leetcode</project>\r\n<project>\\math</project>\r\n<project>/</project>\r\n</projects>
+/instance/org.eclipse.egit.ui/commit_dialog_history_messages=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<messages>\r\n<message>save</message>\r\n<message>StickersToSpellWord DP Memoization Time Limit Exceeded</message>\r\n<message>save work</message>\r\n<message>StickersToSpellWord Optimizez Code</message>\r\n<message>StickersToSpellWord</message>\r\n<message>StickersToSpellWord Time Limit Exceeded</message>\r\n<message>README</message>\r\n<message>StickersToSpellWord Not Finished</message>\r\n<message>StickersToSpellWord Not Finish</message>\r\n<message>Comment</message>\r\n</messages>
+/instance/org.eclipse.egit.ui/resourcehistory_graph_split=500,500
+/instance/org.eclipse.egit.ui/resourcehistory_rev_split=700,300
 /instance/org.eclipse.egit.ui/show_push_success_dialog=false
 /instance/org.eclipse.epp.logging.aeri.ide/resetSendMode=KEEP
 /instance/org.eclipse.epp.logging.aeri.ide/resetSendModeOn=0
@@ -362,11 +364,11 @@
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.wrap_outer_expressions_when_nested=true
 /instance/org.eclipse.jdt.debug.ui/org.eclipse.debug.ui.VariableView.org.eclipse.jdt.debug.ui.show_null_entries=true
 /instance/org.eclipse.jdt.junit/org.eclipse.jdt.junit.content_assist_favorite_static_members_migrated=true
-/instance/org.eclipse.jdt.launching/org.eclipse.jdt.launching.PREF_VM_XML=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<vmSettings defaultVM\="57,org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType13,1544968651023" defaultVMConnector\="">\r\n<vmType id\="org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType">\r\n<vm id\="1544968651023" name\="Java" path\="D\:\\Software\\Java"/>\r\n</vmType>\r\n</vmSettings>\r\n
+/instance/org.eclipse.jdt.launching/org.eclipse.jdt.launching.PREF_VM_XML=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<vmSettings defaultVM\="57,org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType13,1545906350846" defaultVMConnector\="">\r\n<vmType id\="org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType">\r\n<vm id\="1545906350846" name\="jre1.8.0_191" path\="C\:\\Program Files\\Java\\jdk1.8.0_152"/>\r\n</vmType>\r\n</vmSettings>\r\n
 /instance/org.eclipse.jdt.ui/content_assist_autoactivation_delay=20
 /instance/org.eclipse.jdt.ui/content_assist_autoactivation_triggers_java=.abcdefghijklmnoparwstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ
 /instance/org.eclipse.jdt.ui/content_assist_disabled_computers=org.eclipse.jdt.ui.textProposalCategory\u0000org.eclipse.recommenders.calls.rcp.proposalCategory.templates\u0000org.eclipse.mylyn.java.ui.javaAllProposalCategory\u0000org.eclipse.jdt.ui.javaAllProposalCategory\u0000org.eclipse.jdt.ui.javaTypeProposalCategory\u0000org.eclipse.jdt.ui.javaNoTypeProposalCategory\u0000org.eclipse.recommenders.chain.rcp.proposalCategory.chain\u0000
-/instance/org.eclipse.jdt.ui/content_assist_lru_history=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><history maxLHS\="100" maxRHS\="10"><lhs name\="AB"><rhs name\="AB"/></lhs><lhs name\="java.util.Set"><rhs name\="java.util.HashSet"/></lhs><lhs name\="java.util.Collection"><rhs name\="java.util.HashSet"/></lhs><lhs name\="java.lang.Iterable"><rhs name\="java.util.HashSet"/></lhs><lhs name\="java.lang.Cloneable"><rhs name\="java.util.HashSet"/></lhs><lhs name\="java.util.AbstractSet"><rhs name\="java.util.HashSet"/></lhs><lhs name\="java.util.AbstractCollection"><rhs name\="java.util.HashSet"/></lhs><lhs name\="java.util.HashSet"><rhs name\="java.util.HashSet"/></lhs></history>
+/instance/org.eclipse.jdt.ui/content_assist_lru_history=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><history maxLHS\="100" maxRHS\="10"><lhs name\="AB"><rhs name\="AB"/></lhs><lhs name\="java.util.Set"><rhs name\="java.util.HashSet"/><rhs name\="java.util.LinkedHashSet"/></lhs><lhs name\="java.util.Collection"><rhs name\="java.util.HashSet"/><rhs name\="java.util.LinkedHashSet"/><rhs name\="java.util.ArrayList"/></lhs><lhs name\="java.lang.Iterable"><rhs name\="java.util.HashSet"/><rhs name\="java.util.LinkedHashSet"/><rhs name\="java.util.ArrayList"/></lhs><lhs name\="java.lang.Cloneable"><rhs name\="java.util.HashSet"/><rhs name\="java.util.LinkedHashSet"/><rhs name\="java.util.HashMap"/></lhs><lhs name\="java.util.AbstractSet"><rhs name\="java.util.HashSet"/><rhs name\="java.util.LinkedHashSet"/></lhs><lhs name\="java.util.AbstractCollection"><rhs name\="java.util.HashSet"/><rhs name\="java.util.LinkedHashSet"/></lhs><lhs name\="java.util.HashSet"><rhs name\="java.util.HashSet"/><rhs name\="java.util.LinkedHashSet"/></lhs><lhs name\="java.util.List"><rhs name\="java.util.ArrayList"/></lhs><lhs name\="com.zfwhub.algorithm.leetcode.dp.StickersToSpellWord$StickerResult"><rhs name\="com.zfwhub.algorithm.leetcode.dp.StickersToSpellWord$StickerResult"/></lhs><lhs name\="java.util.LinkedHashSet"><rhs name\="java.util.LinkedHashSet"/></lhs><lhs name\="java.util.Map"><rhs name\="java.util.HashMap"/></lhs><lhs name\="java.util.AbstractMap"><rhs name\="java.util.HashMap"/></lhs><lhs name\="java.util.HashMap"><rhs name\="java.util.HashMap"/></lhs><lhs name\="com.zfwhub.algorithm.leetcode.dp.StickersToSpellWord$DpMapKey"><rhs name\="com.zfwhub.algorithm.leetcode.dp.StickersToSpellWord$DpMapKey"/></lhs></history>
 /instance/org.eclipse.jdt.ui/content_assist_number_of_computers=19
 /instance/org.eclipse.jdt.ui/content_assist_proposals_background=255,255,255
 /instance/org.eclipse.jdt.ui/content_assist_proposals_foreground=0,0,0
@@ -418,13 +420,14 @@
 /instance/org.eclipse.ui.ide/EXIT_PROMPT_ON_CLOSE_LAST_WINDOW=false
 /instance/org.eclipse.ui.ide/PROBLEMS_FILTERS_MIGRATE=true
 /instance/org.eclipse.ui.ide/SAVE_ALL_BEFORE_BUILD=true
-/instance/org.eclipse.ui.ide/platformState=1540777826589
+/instance/org.eclipse.ui.ide/platformState=1545824486490
 /instance/org.eclipse.ui.ide/quickStart=false
 /instance/org.eclipse.ui.ide/tipsAndTricks=true
 /instance/org.eclipse.ui.workbench//org.eclipse.ui.commands/state/org.eclipse.ui.navigator.resources.nested.changeProjectPresentation/org.eclipse.ui.commands.radioState=false
 /instance/org.eclipse.ui.workbench/ColorsAndFontsPreferencePage.expandedCategories=Torg.eclipse.ui.workbenchMisc
 /instance/org.eclipse.ui.workbench/ColorsAndFontsPreferencePage.selectedElement=Forg.eclipse.jface.textfont
 /instance/org.eclipse.ui.workbench/PLUGINS_NOT_ACTIVATED_ON_STARTUP=org.eclipse.buildship.stsmigration;org.eclipse.egit.ui;org.eclipse.epp.logging.aeri.ide;org.eclipse.epp.mpc.ui;org.eclipse.equinox.p2.ui.sdk.scheduler;org.eclipse.m2e.discovery;org.eclipse.mylyn.builds.ui;org.eclipse.mylyn.tasks.ui;org.eclipse.mylyn.team.ui;org.eclipse.oomph.setup.ui;org.eclipse.oomph.workingsets.editor;org.eclipse.ui.monitoring;
+/instance/org.eclipse.ui.workbench/editors=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<editors>\r\n<descriptor id\="org.eclipse.jdt.ui.JARDescEditor" image\="$nl$/icons/full/obj16/jar_desc_obj.png" internal\="false" label\="JAR Export Wizard" launcher\="org.eclipse.jdt.internal.ui.jarpackager.OpenJarExportWizardEditorLauncher" openMode\="4" open_in_place\="false" plugin\="org.eclipse.jdt.ui"/>\r\n<descriptor class\="org.eclipse.ui.editors.text.TextEditor" id\="org.eclipse.ui.DefaultTextEditor" image\="$nl$/icons/full/obj16/file_obj.png" internal\="true" label\="Text Editor" openMode\="1" open_in_place\="false" plugin\="org.eclipse.ui.editors"/>\r\n<descriptor id\="org.eclipse.ui.browser.editorSupport" image\="$nl$/icons/obj16/internal_browser.png" internal\="false" label\="Web Browser" launcher\="org.eclipse.ui.internal.browser.BrowserLauncher" openMode\="4" open_in_place\="false" plugin\="org.eclipse.ui.browser"/>\r\n<descriptor class\="org.eclipse.jdt.internal.ui.javaeditor.CompilationUnitEditor" id\="org.eclipse.jdt.ui.ModuleInfoEditor" image\="$nl$/icons/full/obj16/jcu_obj.png" internal\="true" label\="Module-Info Editor" openMode\="1" open_in_place\="false" plugin\="org.eclipse.jdt.ui"/>\r\n<descriptor class\="org.eclipse.ui.editors.text.TextEditor" id\="org.eclipse.buildship.ui.gradlebuildscripteditor" image\="icons/full/obj16/gradle_file.png" internal\="true" label\="Gradle Build Script Editor" openMode\="1" open_in_place\="false" plugin\="org.eclipse.buildship.ui"/>\r\n<descriptor class\="org.eclipse.m2e.editor.pom.MavenPomEditor" id\="org.eclipse.m2e.editor.MavenPomEditor" image\="icons/editor-pom.gif" internal\="true" label\="Maven POM Editor" openMode\="1" open_in_place\="false" plugin\="org.eclipse.m2e.editor"/>\r\n<descriptor class\="org.eclipse.oomph.setup.presentation.SetupEditor" id\="org.eclipse.oomph.setup.presentation.SetupEditorID" image\="icons/full/obj16/SetupModelFile.gif" internal\="true" label\="Setup Editor" openMode\="1" open_in_place\="false" plugin\="org.eclipse.oomph.setup.editor"/>\r\n<descriptor class\="org.eclipse.oomph.workingsets.presentation.WorkingSetsEditor" id\="org.eclipse.oomph.workingsets.presentation.WorkingSetsEditorID" image\="icons/full/obj16/WorkingSetsModelFile.gif" internal\="true" label\="Working Sets Editor" openMode\="1" open_in_place\="false" plugin\="org.eclipse.oomph.workingsets.editor"/>\r\n<descriptor class\="org.eclipse.jdt.internal.ui.javaeditor.ClassFileEditor" id\="org.eclipse.jdt.ui.ModuleInfoClassFileEditor" image\="$nl$/icons/full/obj16/classf_obj.png" internal\="true" label\="Module-Info Class File Viewer" openMode\="1" open_in_place\="false" plugin\="org.eclipse.jdt.ui"/>\r\n<descriptor class\="org.eclipse.jdt.internal.ui.javaeditor.ClassFileEditor" id\="org.eclipse.jdt.ui.ClassFileEditorNoSource" image\="$nl$/icons/full/obj16/classf_obj.png" internal\="true" label\="Class File Viewer" openMode\="1" open_in_place\="false" plugin\="org.eclipse.jdt.ui"/>\r\n<descriptor class\="org.eclipse.eclemma.internal.ui.editors.ExecutionDataEditor" id\="org.eclipse.eclemma.ui.editors.executiondata" image\="icons/full/eview16/exec.png" internal\="true" label\="JaCoCo Execution Data Editor" openMode\="1" open_in_place\="false" plugin\="org.eclipse.eclemma.ui"/>\r\n<descriptor class\="org.eclipse.jdt.internal.ui.javaeditor.ClassFileEditor" id\="org.eclipse.jdt.ui.ModuleInfoClassFileEditorNoSource" image\="$nl$/icons/full/obj16/classf_obj.png" internal\="true" label\="Module-Info Class File Viewer" openMode\="1" open_in_place\="false" plugin\="org.eclipse.jdt.ui"/>\r\n<descriptor class\="org.eclipse.jdt.internal.debug.ui.snippeteditor.JavaSnippetEditor" id\="org.eclipse.jdt.debug.ui.SnippetEditor" image\="$nl$/icons/full/obj16/jsbook_obj.png" internal\="true" label\="Scrapbook" openMode\="1" open_in_place\="false" plugin\="org.eclipse.jdt.debug.ui"/>\r\n</editors>
 /instance/org.eclipse.ui.workbench/org.eclipse.compare.contentmergeviewer.TextMergeViewer=1|Consolas|14.25|0|WINDOWS|1|-19|0|0|0|400|0|0|0|0|3|2|1|49|Consolas;
 /instance/org.eclipse.ui.workbench/org.eclipse.debug.ui.DetailPaneFont=1|Consolas|14.25|0|WINDOWS|1|-19|0|0|0|400|0|0|0|0|3|2|1|49|Consolas;
 /instance/org.eclipse.ui.workbench/org.eclipse.debug.ui.MemoryViewTableFont=1|Consolas|14.25|0|WINDOWS|1|-19|0|0|0|400|0|0|0|0|3|2|1|49|Consolas;
@@ -441,6 +444,7 @@
 /instance/org.eclipse.ui.workbench/org.eclipse.recommenders.snipmatch.rcp.searchTextFont=1|Consolas|14.25|0|WINDOWS|1|-19|0|0|0|400|0|0|0|0|3|2|1|49|Consolas;
 /instance/org.eclipse.ui.workbench/org.eclipse.ui.commands=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<org.eclipse.ui.commands>\r\n<keyBinding commandId\="org.eclipse.jdt.debug.ui.localJavaShortcut.run" contextId\="org.eclipse.ui.contexts.window" keyConfigurationId\="org.eclipse.ui.defaultAcceleratorConfiguration" keySequence\="CTRL+R"/>\r\n<keyBinding contextId\="org.eclipse.ui.contexts.window" keyConfigurationId\="org.eclipse.ui.defaultAcceleratorConfiguration" keySequence\="ALT+SHIFT+X J"/>\r\n</org.eclipse.ui.commands>
 /instance/org.eclipse.ui.workbench/org.eclipse.wst.sse.ui.textfont=1|Consolas|14.25|0|WINDOWS|1|-19|0|0|0|400|0|0|0|0|3|2|1|49|Consolas;
+/instance/org.eclipse.ui.workbench/resourcetypes=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<editors version\="3.1">\r\n<info extension\="jardesc" name\="*">\r\n<editor id\="org.eclipse.jdt.ui.JARDescEditor"/>\r\n<defaultEditor id\="org.eclipse.jdt.ui.JARDescEditor"/>\r\n</info>\r\n<info extension\="html" name\="*">\r\n<editor id\="org.eclipse.ui.DefaultTextEditor"/>\r\n<editor id\="org.eclipse.ui.browser.editorSupport"/>\r\n<defaultEditor id\="org.eclipse.ui.DefaultTextEditor"/>\r\n</info>\r\n<info extension\="java" name\="module-info">\r\n<editor id\="org.eclipse.jdt.ui.ModuleInfoEditor"/>\r\n<defaultEditor id\="org.eclipse.jdt.ui.ModuleInfoEditor"/>\r\n</info>\r\n<info extension\="gradle" name\="*">\r\n<editor id\="org.eclipse.buildship.ui.gradlebuildscripteditor"/>\r\n</info>\r\n<info extension\="pom" name\="*">\r\n<editor id\="org.eclipse.ui.DefaultTextEditor"/>\r\n<editor id\="org.eclipse.m2e.editor.MavenPomEditor"/>\r\n<defaultEditor id\="org.eclipse.ui.DefaultTextEditor"/>\r\n<defaultEditor id\="org.eclipse.m2e.editor.MavenPomEditor"/>\r\n</info>\r\n<info extension\="xml" name\="pom">\r\n<editor id\="org.eclipse.ui.DefaultTextEditor"/>\r\n<editor id\="org.eclipse.m2e.editor.MavenPomEditor"/>\r\n<defaultEditor id\="org.eclipse.ui.DefaultTextEditor"/>\r\n<defaultEditor id\="org.eclipse.m2e.editor.MavenPomEditor"/>\r\n</info>\r\n<info extension\="shtml" name\="*">\r\n<editor id\="org.eclipse.ui.browser.editorSupport"/>\r\n</info>\r\n<info extension\="setup" name\="*">\r\n<editor id\="org.eclipse.oomph.setup.presentation.SetupEditorID"/>\r\n</info>\r\n<info extension\="workingsets" name\="*">\r\n<editor id\="org.eclipse.oomph.workingsets.presentation.WorkingSetsEditorID"/>\r\n</info>\r\n<info extension\="class" name\="module-info">\r\n<editor id\="org.eclipse.jdt.ui.ModuleInfoClassFileEditor"/>\r\n<defaultEditor id\="org.eclipse.jdt.ui.ModuleInfoClassFileEditor"/>\r\n</info>\r\n<info extension\="class without source" name\="*">\r\n<editor id\="org.eclipse.jdt.ui.ClassFileEditorNoSource"/>\r\n</info>\r\n<info extension\="exec" name\="*">\r\n<editor id\="org.eclipse.eclemma.ui.editors.executiondata"/>\r\n</info>\r\n<info extension\="class without source" name\="module-info">\r\n<editor id\="org.eclipse.jdt.ui.ModuleInfoClassFileEditorNoSource"/>\r\n<defaultEditor id\="org.eclipse.jdt.ui.ModuleInfoClassFileEditorNoSource"/>\r\n</info>\r\n<info extension\="htm" name\="*">\r\n<editor id\="org.eclipse.ui.DefaultTextEditor"/>\r\n<editor id\="org.eclipse.ui.browser.editorSupport"/>\r\n<defaultEditor id\="org.eclipse.ui.DefaultTextEditor"/>\r\n</info>\r\n<info extension\="jpage" name\="*">\r\n<editor id\="org.eclipse.jdt.debug.ui.SnippetEditor"/>\r\n</info>\r\n</editors>
 /instance/org.eclipse.ui/showIntro=false
 /instance/org.eclipse.wst.sse.ui/content_assist_number_of_computers=3
 /instance/org.eclipse.wst.sse.ui/useAnnotationsPrefPage=true
@@ -458,36 +462,37 @@
 /instance/org.eclipse.wst.validation/vals/org.eclipse.wst.xml.core.xml/global=FF03
 /instance/org.eclipse.wst.validation/vals/org.eclipse.wst.xsd.core.xsd/global=FF02162org.eclipse.wst.xsd.core.internal.validation.eclipse.Validator
 /instance/org.eclipse.wst.validation/vf.version=3
-@org.eclipse.buildship.core=2.2.1.v20180125-1441
-@org.eclipse.core.net=1.3.300.v20180827-1041
-@org.eclipse.core.resources=3.13.100.v20180828-0158
-@org.eclipse.core.runtime=3.15.0.v20180817-1401
-@org.eclipse.debug.core=3.13.0.v20180821-1744
-@org.eclipse.debug.ui=3.13.100.v20180827-0649
-@org.eclipse.egit.core=5.1.0.201809111528-r
-@org.eclipse.egit.ui=5.1.0.201809111528-r
-@org.eclipse.epp.logging.aeri.ide=2.0.7.v20180504-0806
-@org.eclipse.jdt.core=3.15.0.v20180905-0317
-@org.eclipse.jdt.debug.ui=3.10.0.v20180827-1040
-@org.eclipse.jdt.junit=3.11.100.v20180829-0645
-@org.eclipse.jdt.launching=3.11.0.v20180827-1040
-@org.eclipse.jdt.ui=3.15.0.v20180829-2215
-@org.eclipse.m2e.core=1.9.1.20180912-1601
-@org.eclipse.m2e.discovery=1.9.1.20180912-1601
-@org.eclipse.m2e.editor.xml=1.9.1.20180912-1601
-@org.eclipse.mylyn.context.core=3.24.2.v20180905-0014
-@org.eclipse.mylyn.java.ui=3.24.2.v20180905-0014
-@org.eclipse.mylyn.monitor.ui=3.24.2.v20180904-2231
-@org.eclipse.mylyn.tasks.ui=3.24.2.v20180905-0003
-@org.eclipse.oomph.workingsets=1.10.0.v20180706-1242
-@org.eclipse.recommenders.completion.rcp=2.5.4.v20180909-1132
-@org.eclipse.search=3.11.300.v20180822-1339
-@org.eclipse.team.ui=3.8.200.v20180827-1338
-@org.eclipse.ui=3.110.0.v20180828-1350
-@org.eclipse.ui.browser=3.6.300.v20180828-0837
-@org.eclipse.ui.editors=3.11.200.v20180822-1511
-@org.eclipse.ui.ide=3.14.100.v20180828-1350
-@org.eclipse.ui.workbench=3.112.0.v20180906-1121
-@org.eclipse.wst.sse.ui=1.5.0.v201807252207
+/instance/org.eclipse.wst.xml.ui/org.eclipse.wst.xml.ui.internal.tabletree.XMLMultiPageEditorPart.lastActivePage=1
+@org.eclipse.buildship.core=2.1.2.v20170807-1324
+@org.eclipse.core.resources=3.12.0.v20170417-1558
+@org.eclipse.core.runtime=3.13.0.v20170207-1030
+@org.eclipse.debug.core=3.11.0.v20170605-1534
+@org.eclipse.debug.ui=3.12.50.v20170920-1329
+@org.eclipse.egit.core=4.9.2.201712150930-r
+@org.eclipse.egit.ui=4.9.2.201712150930-r
+@org.eclipse.epp.logging.aeri.ide=2.0.6.v20170906-1226
+@org.eclipse.jdt.core=3.13.100.v20171123-1049
+@org.eclipse.jdt.debug.ui=3.8.51.v20171031-0416
+@org.eclipse.jdt.junit=3.10.51.v20171107-1248
+@org.eclipse.jdt.launching=3.9.51.v20171114-1018
+@org.eclipse.jdt.ui=3.13.51.v20171122-0652
+@org.eclipse.m2e.core=1.8.2.20171007-0217
+@org.eclipse.m2e.discovery=1.8.2.20171007-0217
+@org.eclipse.m2e.editor.xml=1.8.2.20171007-0217
+@org.eclipse.mylyn.context.core=3.23.0.v20170411-2108
+@org.eclipse.mylyn.java.ui=3.23.0.v20170411-2108
+@org.eclipse.mylyn.monitor.ui=3.23.0.v20170411-1844
+@org.eclipse.mylyn.tasks.ui=3.23.1.v20170623-0008
+@org.eclipse.oomph.workingsets=1.8.0.v20170318-0419
+@org.eclipse.recommenders.completion.rcp=2.5.0.v20171201-1623
+@org.eclipse.search=3.11.100.v20170515-1603
+@org.eclipse.team.ui=3.8.1.v20170515-1133
+@org.eclipse.ui=3.109.0.v20170411-1742
+@org.eclipse.ui.browser=3.6.100.v20170418-1342
+@org.eclipse.ui.editors=3.11.0.v20170202-1823
+@org.eclipse.ui.ide=3.13.1.v20170822-1526
+@org.eclipse.ui.workbench=3.110.1.v20170704-1208
+@org.eclipse.wst.sse.ui=1.3.600.v201707042340
 @org.eclipse.wst.validation=1.2.701.v201707142105
+@org.eclipse.wst.xml.ui=1.1.800.v201704102213
 file_export_version=3.0
