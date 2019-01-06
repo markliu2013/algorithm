@@ -33,46 +33,55 @@ public class Pack01Test {
 
     @Test
     public void testSolution1() {
-        assertEquals(expected1, Pack01.solution1(volumns1, values1, capacity1));
-        assertEquals(expected2, Pack01.solution1(volumns2, values2, capacity2));
-        assertEquals(expected3, Pack01.solution1(volumns3, values3, capacity3));
-        assertEquals(expected4, Pack01.solution1(volumns4, values4, capacity4));
-        assertEquals(expected5, Pack01.solution1(volumns5, values5, capacity5));
+        assertEquals(expected1, Pack01.solution1(Pack.arrayToPackList(volumns1, values1), capacity1));
+        assertEquals(expected2, Pack01.solution1(Pack.arrayToPackList(volumns2, values2), capacity2));
+        assertEquals(expected3, Pack01.solution1(Pack.arrayToPackList(volumns3, values3), capacity3));
+        assertEquals(expected4, Pack01.solution1(Pack.arrayToPackList(volumns4, values4), capacity4));
+        assertEquals(expected5, Pack01.solution1(Pack.arrayToPackList(volumns5, values5), capacity5));
     }
     
     @Test
     public void testSolution2() {
-        assertEquals(expected1, Pack01.solution2(volumns1, values1, capacity1));
-        assertEquals(expected2, Pack01.solution2(volumns2, values2, capacity2));
-        assertEquals(expected3, Pack01.solution2(volumns3, values3, capacity3));
-        assertEquals(expected4, Pack01.solution2(volumns4, values4, capacity4));
-        assertEquals(expected5, Pack01.solution2(volumns5, values5, capacity5));
+        assertEquals(expected1, Pack01.solution2(Pack.arrayToPackList(volumns1, values1), capacity1));
+        assertEquals(expected2, Pack01.solution2(Pack.arrayToPackList(volumns2, values2), capacity2));
+        assertEquals(expected3, Pack01.solution2(Pack.arrayToPackList(volumns3, values3), capacity3));
+        assertEquals(expected4, Pack01.solution2(Pack.arrayToPackList(volumns4, values4), capacity4));
+        assertEquals(expected5, Pack01.solution2(Pack.arrayToPackList(volumns5, values5), capacity5));
     }
 
     @Test
     public void testSolution3() {
-        assertEquals(expected1, Pack01.solution3(volumns1, values1, capacity1));
-        assertEquals(expected2, Pack01.solution3(volumns2, values2, capacity2));
-        assertEquals(expected3, Pack01.solution3(volumns3, values3, capacity3));
-        assertEquals(expected4, Pack01.solution3(volumns4, values4, capacity4));
-        assertEquals(expected5, Pack01.solution3(volumns5, values5, capacity5));
+        assertEquals(expected1, Pack01.solution3(Pack.arrayToPackList(volumns1, values1), capacity1));
+        assertEquals(expected2, Pack01.solution3(Pack.arrayToPackList(volumns2, values2), capacity2));
+        assertEquals(expected3, Pack01.solution3(Pack.arrayToPackList(volumns3, values3), capacity3));
+        assertEquals(expected4, Pack01.solution3(Pack.arrayToPackList(volumns4, values4), capacity4));
+        assertEquals(expected5, Pack01.solution3(Pack.arrayToPackList(volumns5, values5), capacity5));
     }
     
     @Test
     public void testSolution4() {
-        assertEquals(expected1, Pack01.solution4(volumns1, values1, capacity1));
-        assertEquals(expected2, Pack01.solution4(volumns2, values2, capacity2));
-        assertEquals(expected3, Pack01.solution4(volumns3, values3, capacity3));
-        assertEquals(expected4, Pack01.solution4(volumns4, values4, capacity4));
-        assertEquals(expected5, Pack01.solution4(volumns5, values5, capacity5));
+        assertEquals(expected1, Pack01.solution4(Pack.arrayToPackList(volumns1, values1), capacity1));
+        assertEquals(expected2, Pack01.solution4(Pack.arrayToPackList(volumns2, values2), capacity2));
+        assertEquals(expected3, Pack01.solution4(Pack.arrayToPackList(volumns3, values3), capacity3));
+        assertEquals(expected4, Pack01.solution4(Pack.arrayToPackList(volumns4, values4), capacity4));
+        assertEquals(expected5, Pack01.solution4(Pack.arrayToPackList(volumns5, values5), capacity5));
     }
     
     @Test
     public void testSolution5() {
-        assertEquals(expected1, Pack01.solution5(volumns1, values1, capacity1));
-        assertEquals(expected2, Pack01.solution5(volumns2, values2, capacity2));
-        assertEquals(expected3, Pack01.solution5(volumns3, values3, capacity3));
-        assertEquals(expected4, Pack01.solution5(volumns4, values4, capacity4));
-        assertEquals(expected5, Pack01.solution5(volumns5, values5, capacity5));
+        assertEquals(expected1, Pack01.solution5(Pack.arrayToPackList(volumns1, values1), capacity1));
+        assertEquals(expected2, Pack01.solution5(Pack.arrayToPackList(volumns2, values2), capacity2));
+        assertEquals(expected3, Pack01.solution5(Pack.arrayToPackList(volumns3, values3), capacity3));
+        assertEquals(expected4, Pack01.solution5(Pack.arrayToPackList(volumns4, values4), capacity4));
+        assertEquals(expected5, Pack01.solution5(Pack.arrayToPackList(volumns5, values5), capacity5));
+    }
+    
+    @Test
+    public void testSolution6() {
+        assertEquals(expected1, Pack01.solution6(Pack.arrayToPackList(volumns1, values1), capacity1));
+        assertEquals(expected2, Pack01.solution6(Pack.arrayToPackList(volumns2, values2), capacity2));
+        assertEquals(expected3, Pack01.solution6(Pack.arrayToPackList(volumns3, values3), capacity3));
+        assertEquals(expected4, Pack01.solution6(Pack.arrayToPackList(volumns4, values4), capacity4));
+        assertEquals(expected5, Pack01.solution6(Pack.arrayToPackList(volumns5, values5), capacity5));
     }
 }
