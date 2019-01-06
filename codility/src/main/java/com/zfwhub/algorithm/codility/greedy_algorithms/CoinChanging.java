@@ -1,13 +1,8 @@
 package com.zfwhub.algorithm.codility.greedy_algorithms;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 
-/**
- * https://codility.com/media/train/14-GreedyAlgorithms.pdf
- */
+// https://codility.com/media/train/14-GreedyAlgorithms.pdf
 public class CoinChanging {
 
     /**

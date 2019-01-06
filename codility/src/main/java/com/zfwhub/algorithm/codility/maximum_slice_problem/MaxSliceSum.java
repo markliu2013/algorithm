@@ -1,9 +1,7 @@
 package com.zfwhub.algorithm.codility.maximum_slice_problem;
 
-/**
- * https://app.codility.com/programmers/lessons/9-maximum_slice_problem/max_slice_sum/
- * exactly the same with MaximumSubarray LeetCode 
- */
+// https://app.codility.com/programmers/lessons/9-maximum_slice_problem/max_slice_sum/
+// @link com.zfwhub.algorithm.leetcode.popular.MaximumSubarray
 public class MaxSliceSum {
 
     /**
@@ -30,10 +28,7 @@ public class MaxSliceSum {
     }
 
     // TODO sliding window, maybe.
-    /**
-     * 
-     *  
-     */
+    @SuppressWarnings("unused")
     public static int solution3(int[] A) {
         int[] prefixSums = new int[A.length];
         prefixSums[0] = A[0];
@@ -68,7 +63,8 @@ public class MaxSliceSum {
         }
         return maxSliceSum;
     }
-
+    
+    @SuppressWarnings("unused")
     public static int solution2(int[] A) {
         int[] prefixSums = new int[A.length];
         prefixSums[0] = A[0];

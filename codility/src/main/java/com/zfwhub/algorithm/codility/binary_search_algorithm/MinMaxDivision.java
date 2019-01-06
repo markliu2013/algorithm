@@ -1,13 +1,8 @@
 package com.zfwhub.algorithm.codility.binary_search_algorithm;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
-/**
- * https://app.codility.com/programmers/lessons/14-binary_search_algorithm/min_max_division/
- */
+// https://app.codility.com/programmers/lessons/14-binary_search_algorithm/min_max_division/
 public class MinMaxDivision {
 
     /**
@@ -104,11 +99,11 @@ public class MinMaxDivision {
                     int[] arr2 = Arrays.copyOfRange(A, i, j);
                     int[] arr3 = Arrays.copyOfRange(A, j, k);
                     int[] arr4 = Arrays.copyOfRange(A, k, A.length);
-//                    System.out.println(Arrays.toString(arr1));
-//                    System.out.println(Arrays.toString(arr2));
-//                    System.out.println(Arrays.toString(arr3));
-//                    System.out.println(Arrays.toString(arr4));
-//                    System.out.println("----");
+                    System.out.println(Arrays.toString(arr1));
+                    System.out.println(Arrays.toString(arr2));
+                    System.out.println(Arrays.toString(arr3));
+                    System.out.println(Arrays.toString(arr4));
+                    System.out.println("----");
                     System.out.println("[" + i + ", " + j + ", " + k + "]");
                 }
             }
@@ -125,7 +120,7 @@ public class MinMaxDivision {
         int K = 3;
         int M = 5;
         int[] A = new int[] {2,1,5,1,2,2,2};
-        //System.out.println(MinMaxDivision.solution(K, M, A));
+        System.out.println(MinMaxDivision.solution(K, M, A));
         System.out.println(Arrays.stream(A).sum());
     }
 
