@@ -1,12 +1,8 @@
 package com.zfwhub.algorithm.codility.sieve_of_eratosthenes;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
+import java.util.*;
 
-/**
- * https://codility.com/media/train/9-Sieve.pdf
- */
+// https://codility.com/media/train/9-Sieve.pdf
 public class Eratosthenes {
 
     /**

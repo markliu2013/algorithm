@@ -8,6 +8,7 @@ import java.util.Arrays;
  */
 public class MinimumSwapsToMakeSequencesIncreasing {
     
+    @SuppressWarnings("unused")
     public static int minSwap(int[] A, int[] B) {
         int count = 0;
         int[] newA = new int[A.length];

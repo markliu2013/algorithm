@@ -7,6 +7,7 @@ import java.util.Arrays;
  * https://leetcode.com/problems/maximum-subarray/description/
  * https://blog.csdn.net/liu2012huan/article/details/51296635
  * https://zhuanlan.zhihu.com/p/37570405
+ * @link com.zfwhub.algorithm.codility.maximum_slice_problem.MaxSliceSum
  */
 public class MaximumSubarray {
 
@@ -147,5 +148,8 @@ public class MaximumSubarray {
         }
         return maxSum;
     }
+    
+    // TODO MaximumSubarray 找到最大值，并且还要找出索引。
+   // https://stackoverflow.com/questions/14180308/finding-the-start-and-end-index-for-a-max-sub-array/38023835#38023835
 
 }

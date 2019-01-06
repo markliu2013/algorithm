@@ -83,9 +83,9 @@ public class FloodDepth {
     
     public static void main(String[] args) {
 //        int[] A = new int[] {3,1};
-        int[] A1 = new int[] {1,3,2,1,2,1,5,3,3,4,2};
-        int[] A2 = new int[] {3,1,2};
-        System.out.println(FloodDepth.solution2(A2));
+//        int[] A = new int[] {1,3,2,1,2,1,5,3,3,4,2};
+        int[] A = new int[] {3,1,2};
+        System.out.println(FloodDepth.solution2(A));
     }
 
 }

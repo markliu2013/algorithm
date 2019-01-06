@@ -1,9 +1,6 @@
 package com.zfwhub.algorithm.codility.binary_search_algorithm;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 public class NailingPlanks {
 
