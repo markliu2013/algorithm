@@ -10,10 +10,13 @@ public class StickersToSpellWord {
         if (!hasSolution(stickers, target)) {
             return -1;
         } else {
-            return dp(parseStickers(stickers, target), targetToList(target), new HashMap<>());
+            List<Character> targetList = stringToList(target);
+            Collections.sort(targetList);// 排序后增加map命中率
+            return dp(parseStickers(stickers, target), targetList, new HashMap<>());
         }
     }
     
+    // target的每个字符都要在stickers中找到，否则问题无解
     private static boolean hasSolution(String[] stickers, String target) {
         Set<Character> targetSet = new HashSet<>();
         for (int i = 0; i < target.length(); i++) {
@@ -28,6 +31,7 @@ public class StickersToSpellWord {
         return stickerSet.containsAll(targetSet);
     }
     
+    // stickers 转为二维list，并且去掉不包含target字符的，因为去掉不影响问题的解
     private static List<List<Character>> parseStickers(String[] stickers, String target) {
         List<List<Character>> list = new ArrayList<>();
         Set<Character> targetSet = new HashSet<>();
@@ -49,7 +53,7 @@ public class StickersToSpellWord {
         return list;
     }
     
-    private static List<Character> targetToList(String target) {
+    private static List<Character> stringToList(String target) {
         List<Character> list = new ArrayList<>();
         for (int i = 0; i < target.length(); i++) {
             list.add(target.charAt(i));
@@ -57,7 +61,7 @@ public class StickersToSpellWord {
         return list;
     }
     
-    private static int dp(List<List<Character>> stickers, List<Character> target, HashMap<StickersToSpellWord.DpMapKey, Integer> map) {
+    private static int dp(List<List<Character>> stickers, List<Character> target, HashMap<DpMapKey, Integer> map) {
         if (target.size() == 0) {
             return 0;
         }
@@ -67,20 +71,24 @@ public class StickersToSpellWord {
         List<List<Character>> subStickers = stickers.subList(0, stickers.size()-1);
         List<Character> lastSticker = stickers.get(stickers.size()-1);
         List<StickerResult> stickerResults = go(lastSticker, target);
-        int minValue = Integer.MAX_VALUE-5;
+        int minValue = -1;
         for (int i = 0; i < stickerResults.size(); i++) {
             StickerResult stickerResult = stickerResults.get(i);
-            DpMapKey dpMapKey = new StickersToSpellWord.DpMapKey(subStickers, stickerResult.target);
-            int value1 = -1;
+            DpMapKey dpMapKey = new DpMapKey(subStickers, stickerResult.target);
+            int subMinValue = -1;
             if (map.containsKey(dpMapKey)) {
-                value1 = map.get(dpMapKey);
+                subMinValue = map.get(dpMapKey);
             } else {
-                value1 = dp(subStickers, stickerResult.target, map);
-                map.put(dpMapKey, value1);
+                subMinValue = dp(subStickers, stickerResult.target, map);
+                map.put(dpMapKey, subMinValue);
             }
-            if (value1 != -1) {
-                int value = value1 + stickerResult.count;
-                minValue = Math.min(minValue, value);                    
+            if (subMinValue != -1) {
+                subMinValue = subMinValue + stickerResult.count;
+                if (minValue == -1) {
+                    minValue = subMinValue;
+                } else {
+                    minValue = Math.min(minValue, subMinValue);
+                }
             }
         }
         return minValue;
@@ -90,19 +98,17 @@ public class StickersToSpellWord {
         List<StickerResult> list = new ArrayList<>();
         List<Character> targetList = new ArrayList<>(target);
         // 0个
-        StickerResult stickerResult0 = new StickersToSpellWord.StickerResult(0, new ArrayList<>(target));
+        StickerResult stickerResult0 = new StickerResult(0, new ArrayList<>(target));
         list.add(stickerResult0);
         boolean flag = true;
         int count = 0;
-        List<Character> list2 = new ArrayList<>();
         while (flag) {
             count++;
-            appendList(list2, sticker);
-            List<Character> list3 = new ArrayList<>(targetList);
-            remove(targetList, list2);
-            StickerResult stickerResult = new StickersToSpellWord.StickerResult(count, new ArrayList<>(targetList));
+            int oldSize = targetList.size();
+            remove(targetList, sticker);
+            StickerResult stickerResult = new StickerResult(count, new ArrayList<>(targetList));
             list.add(stickerResult);
-            if (targetList.size() == 0 || targetList.size() == list3.size()) {
+            if (targetList.size() == 0 || targetList.size() == oldSize) {
                 flag = false;
             }
         }
@@ -110,19 +116,8 @@ public class StickersToSpellWord {
     }
     
     private static void remove(List<Character> target, List<Character> list) {
-        Iterator<Character> it = list.iterator();
-        while (it.hasNext()) {
-            Character c = it.next();
-            if (target.contains(c)) {
-                target.remove(c);
-                it.remove();
-            }
-        }
-    }
-    
-    private static void appendList(List<Character> list, List<Character> sticker) {
-        for (int j = 0; j < sticker.size(); j++) {
-            list.add(sticker.get(j));
+        for (int i = 0; i < list.size(); i++) {
+            target.remove(list.get(i));
         }
     }
     
@@ -183,6 +178,3 @@ public class StickersToSpellWord {
     }
     
 }
-
-
-
