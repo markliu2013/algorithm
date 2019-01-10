@@ -3,6 +3,8 @@ package com.zfwhub.algorithm.leetcode.dp;
 import java.util.*;
 
 // https://leetcode.com/problems/stickers-to-spell-word/
+// 动态规划，从上往下递归，一直超时
+// https://leetcode.com/submissions/detail/200048701/
 public class StickersToSpellWord {
     
     public static int minStickers(String[] stickers, String target) {
@@ -17,7 +19,7 @@ public class StickersToSpellWord {
     }
     
     // target的每个字符都要在stickers中找到，否则问题无解
-    private static boolean hasSolution(String[] stickers, String target) {
+    static boolean hasSolution(String[] stickers, String target) {
         Set<Character> targetSet = new HashSet<>();
         for (int i = 0; i < target.length(); i++) {
             targetSet.add(target.charAt(i));
@@ -32,7 +34,7 @@ public class StickersToSpellWord {
     }
     
     // stickers 转为二维list，并且去掉不包含target字符的，因为去掉不影响问题的解
-    private static List<List<Character>> parseStickers(String[] stickers, String target) {
+    static List<List<Character>> parseStickers(String[] stickers, String target) {
         List<List<Character>> list = new ArrayList<>();
         Set<Character> targetSet = new HashSet<>();
         for (int i = 0; i < target.length(); i++) {
@@ -53,7 +55,7 @@ public class StickersToSpellWord {
         return list;
     }
     
-    private static List<Character> stringToList(String target) {
+    static List<Character> stringToList(String target) {
         List<Character> list = new ArrayList<>();
         for (int i = 0; i < target.length(); i++) {
             list.add(target.charAt(i));
@@ -61,7 +63,7 @@ public class StickersToSpellWord {
         return list;
     }
     
-    private static int dp(List<List<Character>> stickers, List<Character> target, HashMap<DpMapKey, Integer> map) {
+    static int dp(List<List<Character>> stickers, List<Character> target, HashMap<DpMapKey, Integer> map) {
         if (target.size() == 0) {
             return 0;
         }
@@ -94,7 +96,7 @@ public class StickersToSpellWord {
         return minValue;
     }
     
-    private static List<StickerResult> go(List<Character> sticker, List<Character> target) {
+    static List<StickerResult> go(List<Character> sticker, List<Character> target) {
         List<StickerResult> list = new ArrayList<>();
         List<Character> targetList = new ArrayList<>(target);
         // 0个
@@ -115,7 +117,7 @@ public class StickersToSpellWord {
         return list;
     }
     
-    private static void remove(List<Character> target, List<Character> list) {
+    static void remove(List<Character> target, List<Character> list) {
         for (int i = 0; i < list.size(); i++) {
             target.remove(list.get(i));
         }

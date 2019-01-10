@@ -74,5 +74,20 @@ public class StickersToSpellWordTest {
         assertEquals(expected24, StickersToSpellWord.minStickers(stickers24, target24));
         assertEquals(expected25, StickersToSpellWord.minStickers(stickers25, target25));
     }
+    
+    @Test
+    public void testMinStickers2() {
+        assertEquals(expected1, StickersToSpellWord2.minStickers(stickers1, target1));
+        assertEquals(expected2, StickersToSpellWord2.minStickers(stickers2, target2));
+        assertEquals(expected3, StickersToSpellWord2.minStickers(stickers3, target3));
+        assertEquals(expected4, StickersToSpellWord2.minStickers(stickers4, target4));
+        assertEquals(expected5, StickersToSpellWord2.minStickers(stickers5, target5));
+        assertEquals(expected6, StickersToSpellWord2.minStickers(stickers6, target6));
+        assertEquals(expected21, StickersToSpellWord2.minStickers(stickers21, target21));
+        assertEquals(expected22, StickersToSpellWord2.minStickers(stickers22, target22));
+        assertEquals(expected23, StickersToSpellWord2.minStickers(stickers23, target23));
+        assertEquals(expected24, StickersToSpellWord2.minStickers(stickers24, target24));
+        assertEquals(expected25, StickersToSpellWord2.minStickers(stickers25, target25));
+    }
 
 }
