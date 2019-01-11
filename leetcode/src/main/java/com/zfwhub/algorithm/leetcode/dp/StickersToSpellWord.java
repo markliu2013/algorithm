@@ -2,7 +2,7 @@ package com.zfwhub.algorithm.leetcode.dp;
 
 import java.util.*;
 
-import com.zfwhub.algorithm.utils.StringUtils;
+import com.zfwhub.algorithm.utils.StringUtil;
 
 // https://leetcode.com/problems/stickers-to-spell-word/
 // 动态规划，从上往下递归，一直超时
@@ -14,7 +14,7 @@ public class StickersToSpellWord {
         if (!hasSolution(stickers, target)) {
             return -1;
         } else {
-            List<Character> targetList = StringUtils.stringToList(target);
+            List<Character> targetList = StringUtil.stringToList(target);
             Collections.sort(targetList);// 排序后增加map命中率
             return dp(parseStickers(stickers, target), targetList, new HashMap<>());
         }
