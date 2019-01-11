@@ -2,7 +2,7 @@ package com.zfwhub.algorithm.leetcode.dp;
 
 import java.util.*;
 
-import com.zfwhub.algorithm.utils.CollectionUtil;
+import com.zfwhub.algorithm.utils.CollectionUtils;
 // 动态规划，从下往上递推。
 // https://leetcode.com/submissions/detail/200349923/
 public class StickersToSpellWord2 {
@@ -38,7 +38,7 @@ public class StickersToSpellWord2 {
     }
 
     static int dp(List<List<Character>> stickers, List<Character> target) {
-        List<List<Character>> targetSubsetsList = new ArrayList<>(CollectionUtil.subsetsWithDup(target));
+        List<List<Character>> targetSubsetsList = new ArrayList<>(CollectionUtils.subsetsWithDup(target));
         List<Map<List<Character>, Integer>> results = new ArrayList<>();//类似Pack01.solution02中的result
         Map<List<Character>, Integer> map = new HashMap<>();
         for (int i = 0; i < targetSubsetsList.size(); i++) {
