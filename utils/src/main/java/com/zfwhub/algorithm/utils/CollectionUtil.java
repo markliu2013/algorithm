@@ -7,9 +7,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class CollectionUtils {
+public class CollectionUtil {
     
-    private CollectionUtils() { }
+    private CollectionUtil() { }
 
     // TODO Convert a generic list to an array
     // https://www.cnblogs.com/grandyang/p/4309345.html 解法一

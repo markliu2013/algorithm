@@ -8,9 +8,9 @@ import java.util.List;
  *
  */
 
-public class StringUtils {
+public class StringUtil {
     
-    private StringUtils() {}
+    private StringUtil() {}
     
     /**
      * 将String转为List
