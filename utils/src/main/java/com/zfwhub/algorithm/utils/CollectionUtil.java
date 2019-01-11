@@ -10,7 +10,6 @@ import java.util.Set;
 public class CollectionUtil {
     
     private CollectionUtil() { }
-    
 
     // TODO Convert a generic list to an array
     // https://www.cnblogs.com/grandyang/p/4309345.html 解法一
@@ -23,7 +22,7 @@ public class CollectionUtil {
             for (int j = 0; j < size; j++) {
                 List<T> solution = new ArrayList<>(result.get(j));
                 solution.add(list.get(i));
-                result.add(list);
+                result.add(solution);
             }
         }
         return result;
