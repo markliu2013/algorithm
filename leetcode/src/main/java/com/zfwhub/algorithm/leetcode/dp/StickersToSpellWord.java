@@ -2,6 +2,8 @@ package com.zfwhub.algorithm.leetcode.dp;
 
 import java.util.*;
 
+import com.zfwhub.algorithm.utils.StringUtils;
+
 // https://leetcode.com/problems/stickers-to-spell-word/
 // 动态规划，从上往下递归，一直超时
 // https://leetcode.com/submissions/detail/200048701/
@@ -12,7 +14,7 @@ public class StickersToSpellWord {
         if (!hasSolution(stickers, target)) {
             return -1;
         } else {
-            List<Character> targetList = stringToList(target);
+            List<Character> targetList = StringUtils.stringToList(target);
             Collections.sort(targetList);// 排序后增加map命中率
             return dp(parseStickers(stickers, target), targetList, new HashMap<>());
         }
@@ -51,14 +53,6 @@ public class StickersToSpellWord {
             if (list2.size() > 0 && !list.contains(list2)) {
                 list.add(list2);
             }
-        }
-        return list;
-    }
-    
-    static List<Character> stringToList(String target) {
-        List<Character> list = new ArrayList<>();
-        for (int i = 0; i < target.length(); i++) {
-            list.add(target.charAt(i));
         }
         return list;
     }
