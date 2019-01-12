@@ -5,7 +5,7 @@ import java.util.*;
 import com.zfwhub.algorithm.utils.CollectionUtil;
 import com.zfwhub.algorithm.utils.StringUtil;
 // 动态规划，从下往上递推。
-// https://leetcode.com/submissions/detail/200349923/
+// https://leetcode.com/submissions/detail/200640884/
 public class StickersToSpellWord2 {
     
     final static int INFINITE = Integer.MAX_VALUE - 10; // 模拟无穷大
