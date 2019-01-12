@@ -68,3 +68,5 @@ out
 
 # Main Test
 utils/**/Main.java
+
+bin/
