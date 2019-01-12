@@ -70,6 +70,7 @@ public class StickersToSpellWord {
                 subMinValue = dp(subStickers, stickerResult.target, map);
                 map.put(dpMapKey, subMinValue);
             }
+            // 利用StickersToSpellWord2中无穷大的思想，此处代码可以写的更优雅。
             if (subMinValue != -1) {
                 subMinValue = subMinValue + stickerResult.count;
                 if (minValue == -1) {
