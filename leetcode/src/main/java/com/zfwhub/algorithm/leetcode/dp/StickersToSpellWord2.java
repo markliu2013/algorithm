@@ -12,16 +12,15 @@ public class StickersToSpellWord2 {
     
     public static int minStickers(String[] stickers, String target) {
         List<Character> targetList = StringUtil.charSeqToList(target);
-        List<List<Character>> stickerList = StickersToSpellWord.parseStickers(stickers, target);
-        List<List<Character>> stickerList2 = compress(stickerList, targetList);
-        int result = dp(stickerList2, targetList);
+        List<List<Character>> stickerList = compress(stickers, targetList);
+        int result = dp(stickerList, targetList);
         return result >= INFINITE ? -1 : result;
     }
     
-    private static List<List<Character>> compress(List<List<Character>> stickerList, List<Character> target) {
+    private static List<List<Character>> compress(String[] stickers, List<Character> target) {
         List<List<Character>> result = new ArrayList<>();
-        for (int i = 0; i < stickerList.size(); i++) {
-            List<Character> sticker = stickerList.get(i);
+        for (int i = 0; i < stickers.length; i++) {
+            List<Character> sticker = StringUtil.charSeqToList(stickers[i]);
             List<Character> targetList = new ArrayList<>(target);
             boolean flag = true;
             while (flag) {
