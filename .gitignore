@@ -65,3 +65,6 @@ target
 plugins/testng/test-output
 out
 /.recommenders/
+
+# Main Test
+utils/**/Main.java
