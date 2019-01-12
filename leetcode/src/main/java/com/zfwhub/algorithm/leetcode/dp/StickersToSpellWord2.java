@@ -11,7 +11,7 @@ public class StickersToSpellWord2 {
     final static int INFINITE = Integer.MAX_VALUE - 10; // 模拟无穷大
     
     public static int minStickers(String[] stickers, String target) {
-        List<Character> targetList = StringUtil.stringToList(target);
+        List<Character> targetList = StringUtil.charSeqToList(target);
         List<List<Character>> stickerList = StickersToSpellWord.parseStickers(stickers, target);
         List<List<Character>> stickerList2 = compress(stickerList, targetList);
         int result = dp(stickerList2, targetList);
@@ -26,7 +26,7 @@ public class StickersToSpellWord2 {
             boolean flag = true;
             while (flag) {
                 int oldSize = targetList.size();
-                StickersToSpellWord.remove(targetList, sticker);
+                CollectionUtil.subtract(targetList, sticker);
                 if (targetList.size() != oldSize) {
                     result.add(new ArrayList<>(sticker));
                 }
@@ -58,7 +58,7 @@ public class StickersToSpellWord2 {
                 List<Character> targetSubsets = targetSubsetsList.get(j);//result中当前行的每一格
                 List<Character> targetList = new ArrayList<>(targetSubsets);
                 // 选sticker
-                StickersToSpellWord.remove(targetList, sticker);
+                CollectionUtil.subtract(targetList, sticker);
                 int cost1 = results.get(i).get(targetList) + 1;
                 // 不选sticker
                 int cost2 = results.get(i).get(targetSubsets);
