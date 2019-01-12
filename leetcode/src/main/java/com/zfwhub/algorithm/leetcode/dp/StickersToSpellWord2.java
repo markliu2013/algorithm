@@ -39,33 +39,31 @@ public class StickersToSpellWord2 {
 
     static int dp(List<List<Character>> stickers, List<Character> target) {
         List<List<Character>> targetSubsetsList = new ArrayList<>(CollectionUtil.subsetsWithDup(target));
-        List<Map<List<Character>, Integer>> results = new ArrayList<>();//类似Pack01.solution02中的result
-        Map<List<Character>, Integer> map = new HashMap<>();
+        Map<List<Character>, Integer> results = new HashMap<>();//类似Pack01.solution3中的result
+        Map<List<Character>, Integer> preResults = new HashMap<>();
         for (int i = 0; i < targetSubsetsList.size(); i++) {
             List<Character> targetList = targetSubsetsList.get(i);
             if (targetList.size() == 0) {
-                map.put(targetList, 0);
+                preResults.put(targetList, 0);
             } else {
-                map.put(targetList, INFINITE);
+                preResults.put(targetList, INFINITE);
             }
         }
-        results.add(map);
         for (int i = 0; i < stickers.size(); i++) {
             List<Character> sticker = stickers.get(i);
-            Map<List<Character>, Integer> rowMap = new HashMap<>();//表格中每一行result对应的map
             for (int j = 0; j < targetSubsetsList.size(); j++) {
                 List<Character> targetSubsets = targetSubsetsList.get(j);//result中当前行的每一格
                 List<Character> targetList = new ArrayList<>(targetSubsets);
                 // 选sticker
                 CollectionUtil.subtract(targetList, sticker);
-                int cost1 = results.get(i).get(targetList) + 1;
+                int cost1 = preResults.get(targetList) + 1;
                 // 不选sticker
-                int cost2 = results.get(i).get(targetSubsets);
-                rowMap.put(targetSubsets, Math.min(cost1, cost2));                    
+                int cost2 = preResults.get(targetSubsets);
+                results.put(targetSubsets, Math.min(cost1, cost2));                    
             }
-            results.add(rowMap);
+            preResults = results;
         }
-        return results.get(results.size()-1).get(target);
+        return results.get(target);
     }
     
     public static void main(String[] args) {
