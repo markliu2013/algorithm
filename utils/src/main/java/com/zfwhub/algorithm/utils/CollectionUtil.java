@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
@@ -13,6 +14,11 @@ public class CollectionUtil {
 
     // TODO Convert a generic list to an array
     // https://www.cnblogs.com/grandyang/p/4309345.html 解法一
+    /**
+     * list的所有组合
+     * @param list
+     * @return
+     */
     public static <T extends Comparable<? super T>> List<List<T>> subset(List<T> list) {
         List<List<T>> result = new ArrayList<>();
         Collections.sort(list);
@@ -38,6 +44,25 @@ public class CollectionUtil {
     
     public static <T extends Comparable<? super T>> Set<List<T>> subsetsWithDup(T[] array) {
         return new HashSet<>(subset(array));
+    }
+    
+    /**
+     * a - b，a和b是两个集合，直接在集合a上进行操作。
+     * @param a
+     * @param b
+     */
+    public static <T> void subtract(Iterable<T> a, Iterable<T> b) {
+        Iterator<T> iteratorB = b.iterator();
+        while (iteratorB.hasNext()) {
+            T objB = iteratorB.next();
+            Iterator<T> iteratorA = a.iterator();
+            while (iteratorA.hasNext()) {
+                if (objB.equals(iteratorA.next())) {
+                    iteratorA.remove();
+                    break;
+                }
+            }
+        }
     }
 
 }

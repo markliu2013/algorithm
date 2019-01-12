@@ -2,11 +2,12 @@ package com.zfwhub.algorithm.leetcode.dp;
 
 import java.util.*;
 
+import com.zfwhub.algorithm.utils.CollectionUtil;
 import com.zfwhub.algorithm.utils.StringUtil;
 
 // https://leetcode.com/problems/stickers-to-spell-word/
 // 动态规划，从上往下递归，一直超时
-// https://leetcode.com/submissions/detail/200048701/
+// https://leetcode.com/submissions/detail/200624629/
 public class StickersToSpellWord {
     
     public static int minStickers(String[] stickers, String target) {
@@ -14,7 +15,7 @@ public class StickersToSpellWord {
         if (!hasSolution(stickers, target)) {
             return -1;
         } else {
-            List<Character> targetList = StringUtil.stringToList(target);
+            List<Character> targetList = StringUtil.charSeqToList(target);
             Collections.sort(targetList);// 排序后增加map命中率
             return dp(parseStickers(stickers, target), targetList, new HashMap<>());
         }
@@ -22,17 +23,8 @@ public class StickersToSpellWord {
     
     // target的每个字符都要在stickers中找到，否则问题无解
     static boolean hasSolution(String[] stickers, String target) {
-        Set<Character> targetSet = new HashSet<>();
-        for (int i = 0; i < target.length(); i++) {
-            targetSet.add(target.charAt(i));
-        }
-        Set<Character> stickerSet = new HashSet<>();
-        for (int i = 0; i < stickers.length; i++) {
-            for (int j = 0; j < stickers[i].length(); j++) {
-                stickerSet.add(stickers[i].charAt(j));
-            }
-        }
-        return stickerSet.containsAll(targetSet);
+        CharSequence stickerChars = StringUtil.removeDuplicates(stickers);
+        return StringUtil.containsAllChar(stickerChars, target);
     }
     
     // stickers 转为二维list，并且去掉不包含target字符的，因为去掉不影响问题的解
@@ -101,7 +93,7 @@ public class StickersToSpellWord {
         while (flag) {
             count++;
             int oldSize = targetList.size();
-            remove(targetList, sticker);
+            CollectionUtil.subtract(targetList, sticker);
             StickerResult stickerResult = new StickerResult(count, new ArrayList<>(targetList));
             list.add(stickerResult);
             if (targetList.size() == 0 || targetList.size() == oldSize) {
@@ -109,12 +101,6 @@ public class StickersToSpellWord {
             }
         }
         return list;
-    }
-    
-    static void remove(List<Character> target, List<Character> list) {
-        for (int i = 0; i < list.size(); i++) {
-            target.remove(list.get(i));
-        }
     }
     
     static class StickerResult {
