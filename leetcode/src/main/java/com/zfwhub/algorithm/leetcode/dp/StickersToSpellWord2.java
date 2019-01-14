@@ -5,7 +5,7 @@ import java.util.*;
 import com.zfwhub.algorithm.utils.CollectionUtil;
 import com.zfwhub.algorithm.utils.StringUtil;
 // 动态规划，从下往上递推。
-// https://leetcode.com/submissions/detail/200640884/
+// https://leetcode.com/submissions/detail/201171896/
 public class StickersToSpellWord2 {
     
     final static int INFINITE = Integer.MAX_VALUE - 10; // 模拟无穷大
@@ -38,7 +38,7 @@ public class StickersToSpellWord2 {
     }
 
     static int dp(List<List<Character>> stickers, List<Character> target) {
-        List<List<Character>> targetSubsetsList = new ArrayList<>(CollectionUtil.subsetsWithDup(target));
+        List<List<Character>> targetSubsetsList = CollectionUtil.subsetsWithDup(target);
         Map<List<Character>, Integer> results = new HashMap<>();//类似Pack01.solution3中的result
         Map<List<Character>, Integer> preResults = new HashMap<>();
         for (int i = 0; i < targetSubsetsList.size(); i++) {

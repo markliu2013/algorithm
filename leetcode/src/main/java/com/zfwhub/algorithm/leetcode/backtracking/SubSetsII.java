@@ -2,13 +2,16 @@ package com.zfwhub.algorithm.leetcode.backtracking;
 
 import java.util.*;
 
+import com.zfwhub.algorithm.utils.ArrayUtil;
+import com.zfwhub.algorithm.utils.CollectionUtil;
+
 // https://leetcode.com/problems/subsets-ii/
 public class SubSetsII {
     
     public static List<List<Integer>> subsetsWithDup(int[] nums) {
         List<List<Integer>> solutionList = new ArrayList<>();
         List<Integer> solution = new ArrayList<>();
-        Arrays.sort(nums);
+        Arrays.sort(nums); //必须排序处理后
         dfs(solutionList, solution, nums);
         return solutionList;
     }
@@ -56,9 +59,15 @@ public class SubSetsII {
     public static void unMakeMove(List<Integer> solution) {
         solution.remove(solution.size() - 1);
     }
-
+    
+    // CollectionUtil
+    public static List<List<Integer>> subsetsWithDup2(int[] nums) {
+        return CollectionUtil.subsetsWithDup(ArrayUtil.toObject(nums));
+    }
+    
     public static void main(String[] args) {
-        int[] arr = new int[] { 4, 4, 4, 1, 4 };
+        int[] arr = new int[] { 1,2,2 };
         System.out.println(SubSetsII.subsetsWithDup(arr));
+        System.out.println(SubSetsII.subsetsWithDup2(arr));
     }
 }

@@ -1,5 +1,8 @@
 package com.zfwhub.algorithm.leetcode.backtracking;
 import java.util.*;
+
+import com.zfwhub.algorithm.utils.ArrayUtil;
+import com.zfwhub.algorithm.utils.CollectionUtil;
 // https://leetcode.com/problems/subsets/
 // https://www.cnblogs.com/grandyang/p/4309345.html
 // https://leetcode.com/problems/subsets/discuss/27281/A-general-approach-to-backtracking-questions-in-Java-(Subsets-Permutations-Combination-Sum-Palindrome-Partitioning)
@@ -107,6 +110,11 @@ public class SubSets {
             list.add(list1);
         }
         return list;
+    }
+    
+    // CollectionUtil https://leetcode.com/submissions/detail/201162473/
+    public static List<List<Integer>> subsets4(int[] nums) {
+        return CollectionUtil.subsets(ArrayUtil.toObject(nums));
     }
     
     public static void main(String[] args) {
