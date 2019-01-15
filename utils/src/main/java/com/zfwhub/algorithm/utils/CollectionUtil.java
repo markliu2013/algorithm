@@ -1,6 +1,5 @@
 package com.zfwhub.algorithm.utils;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
@@ -30,10 +29,6 @@ public class CollectionUtil {
         }
     }
     
-    public static <T> List<List<T>> subsets(T[] array) {
-        return subsets(Arrays.asList(array));
-    }
-    
     /**
      * list的所有组合，list中可以有重复元素。当年不确定是否list有重复。
      * @param list
@@ -56,8 +51,22 @@ public class CollectionUtil {
         }
     }
     
-    public static <T extends Comparable<? super T>> List<List<T>> subsetsWithDup(T[] array) {
-        return subsetsWithDup(Arrays.asList(array));
+    public static <T> List<List<T>> subsets(List<T> list, int n) {
+        List<List<T>> solutionList = new ArrayList<>();
+        subsetsHelper(solutionList, new ArrayList<>(), list, 0, n);
+        return solutionList;
+    }
+    
+    private static <T> void subsetsHelper(List<List<T>> solutionList, List<T> solution, List<T> list, int start, int n) {
+        if(n == 0) {
+            solutionList.add(new ArrayList<T>(solution));
+            return;
+        }
+        for (int i = start; i < list.size(); i++) {
+            solution.add(list.get(i));
+            subsetsHelper(solutionList, solution, list, i+1, n-1);
+            solution.remove(solution.size()-1);
+        }
     }
     
     /**

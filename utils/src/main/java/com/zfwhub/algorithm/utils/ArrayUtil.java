@@ -1,5 +1,8 @@
 package com.zfwhub.algorithm.utils;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ArrayUtil {
     
     public static final int[] EMPTY_INT_ARRAY = new int[0];
@@ -27,6 +30,35 @@ public class ArrayUtil {
         final int[] result = new int[array.length];
         for (int i = 0; i < array.length; i++) {
             result[i] = array[i].intValue();
+        }
+        return result;
+    }
+    
+    /**
+     * 初始化包含1到n的数组。
+     * @param n
+     * @return
+     */
+    public static int[] newIntArray(int n) {
+        if (n < 1) {
+            throw new IllegalArgumentException("n < 1");
+        }
+        final int[] result = new int[n];
+        for (int i = 0; i < n; i++) {
+            result[i] = i + 1;
+        }
+        return result;
+    }
+    
+    public static List<Integer> toList(final int[] array) {
+        if (array == null) {
+            return null;
+        } else if (array.length == 0) {
+            return new ArrayList<>();
+        }
+        final List<Integer> result = new ArrayList<>();
+        for (int i = 0; i < array.length; i++) {
+           result.add(Integer.valueOf(array[i]));
         }
         return result;
     }
