@@ -1,4 +1,7 @@
 ## Popular Problems
+* [SubSets](https://leetcode.com/problems/subsets/)
+* [Permutations](https://leetcode.com/problems/permutations/)
+* [Combinations](https://leetcode.com/problems/combinations/)
 * [MaximumSubarray](https://blog.csdn.net/liu2012huan/article/details/51296635)
 
 ## Dynamic Programming
@@ -10,8 +13,6 @@
 * [RegularExpressionMatching](https://leetcode.com/problems/regular-expression-matching/)
 
 ## Backtracking
-* [Combinations](https://leetcode.com/problems/combinations/)
-* [SubSets](https://leetcode.com/problems/subsets/)
 * [NQueens](https://leetcode.com/problems/n-queens/)
 * [SudokuSolver](https://leetcode.com/problems/sudoku-solver/)
 * [WordSearch](https://leetcode.com/problems/word-search/)
