@@ -18,7 +18,7 @@ public class NumberUtil {
      * @return
      */
     public static int getSumFromOne(int n) {
-        return 0;
+        return (n*(n+1)) / 2;
     }
 
 }
