@@ -11,7 +11,7 @@ public class NQueensII {
         return dfs(solution, n, 0);
     }
     
-    public static int dfs(List<Integer> solution, int n, int count) {
+    private static int dfs(List<Integer> solution, int n, int count) {
         if (isASolution(solution, n)) {
             count++;
         } else {
@@ -26,12 +26,12 @@ public class NQueensII {
         return count;
     }
     
-    public static boolean isASolution(List<Integer> solution, int n) {
+    private static boolean isASolution(List<Integer> solution, int n) {
         return solution.size() == n;
     }
     
     // i是列数，在第rows.size行，尝试第i列
-    public static boolean isValid(List<Integer> solution, int i) {
+    private static boolean isValid(List<Integer> solution, int i) {
         if (solution.contains(i)) {//同一列
             return false;
         } else {//不在同一列，检查对角线
@@ -46,15 +46,17 @@ public class NQueensII {
             return true;
         }
     }
-    public static void unMakeMove(List<Integer> solution) {
+    
+    private static void unMakeMove(List<Integer> solution) {
         solution.remove(solution.size()-1);
     }
 
-    public static void makeMove(List<Integer> solution, int i) {
+    private static void makeMove(List<Integer> solution, int i) {
         solution.add(i);
     }
     
     public static void main(String[] args) {
         System.out.println(totalNQueens(4));
     }
+    
 }
