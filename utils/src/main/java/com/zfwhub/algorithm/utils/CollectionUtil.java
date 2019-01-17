@@ -9,7 +9,7 @@ public class CollectionUtil {
     private CollectionUtil() { }
 
     /**
-     * list的所有组合，list中不能有重复元素。请确认list中无重复元素，否则请使用subsetsWithDup
+     * list的所有组合，list中不能有重复元素。请确认list中无重复元素，否则请使用subsetsWithDup。
      * @param list
      * @return
      */
@@ -51,23 +51,24 @@ public class CollectionUtil {
         }
     }
     
-    public static <T> List<List<T>> subsets(List<T> list, int n) {
+    /**
+     * 找C(n,k), 指定数目k的组合。请确认list中无重复元素，否则请使用subsetsWithDup。
+     * @param list
+     * @param k
+     * @return
+     */
+    public static <T> List<List<T>> subsets(List<T> list, int k) {
         List<List<T>> solutionList = new ArrayList<>();
-        subsetsHelper(solutionList, new ArrayList<>(), list, 0, n);
+        int total = MathUtil.combine(list.size(), k);
+        for (int i = 0; i < total; i++) {
+            for (int j = 0; j < k; j++) {
+                List<T> solution = new ArrayList<>();
+                
+            }
+        }
         return solutionList;
     }
     
-    private static <T> void subsetsHelper(List<List<T>> solutionList, List<T> solution, List<T> list, int start, int n) {
-        if(n == 0) {
-            solutionList.add(new ArrayList<T>(solution));
-            return;
-        }
-        for (int i = start; i < list.size(); i++) {
-            solution.add(list.get(i));
-            subsetsHelper(solutionList, solution, list, i+1, n-1);
-            solution.remove(solution.size()-1);
-        }
-    }
     
     /**
      * a - b，a和b是两个集合，直接在集合a上进行操作。
