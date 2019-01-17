@@ -13,17 +13,6 @@ import java.util.*;
 public class BacktrackingTemplate1 {
     
     public static List<List<Integer>> combineAll(int[] nums, int n) {
-        // 检查输入参数
-        if (nums == null) {
-            throw new IllegalArgumentException("nums is null");
-        }
-        if (n < 0) {
-            throw new IllegalArgumentException("n < 0");
-        }
-        if (nums.length < n) {
-            throw new IllegalArgumentException("nums.length < n");
-        }
-        
         // 存放所有解的集合
         List<List<Integer>> solutionList = new ArrayList<>();
         // 存放单个解的集合
