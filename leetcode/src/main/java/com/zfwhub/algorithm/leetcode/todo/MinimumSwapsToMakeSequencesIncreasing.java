@@ -2,6 +2,8 @@ package com.zfwhub.algorithm.leetcode.todo;
 
 import java.util.*;
 
+import com.zfwhub.algorithm.utils.ArrayUtil;
+
 /**
  * https://leetcode.com/problems/minimum-swaps-to-make-sequences-increasing/
  * https://blog.csdn.net/zjucor/article/details/79599287
@@ -75,7 +77,7 @@ public class MinimumSwapsToMakeSequencesIncreasing {
             int[] newA = A.clone();
             int[] newB = B.clone();
             swap(newA, newB, solution);
-            if (isIncreasing(newA) && isIncreasing(newB)) {
+            if (ArrayUtil.isIncreasing(newA) && ArrayUtil.isIncreasing(newB)) {
                 return true;
             } else {
                 return false;
@@ -128,15 +130,6 @@ public class MinimumSwapsToMakeSequencesIncreasing {
                 B[i] = temp;
             }
         }
-    }
-    
-    private static boolean isIncreasing(int[] nums) {
-        for (int i = 1; i < nums.length; i++) {
-            if (nums[i] <= nums[i-1]) {
-                return false;
-            }
-        }
-        return true;
     }
     
     public static void main(String[] args) {

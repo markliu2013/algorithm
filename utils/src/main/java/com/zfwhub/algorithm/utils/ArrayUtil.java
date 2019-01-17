@@ -62,5 +62,19 @@ public class ArrayUtil {
         }
         return result;
     }
+    
+    /**
+     * 判断数组是否严格递增。
+     * @param array
+     * @return
+     */
+    public static boolean isIncreasing(final int[] array) {
+        for (int i = 1; i < array.length; i++) {
+            if (array[i] <= array[i-1]) {
+                return false;
+            }
+        }
+        return true;
+    }
 
 }
