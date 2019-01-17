@@ -28,6 +28,7 @@ public class MinimumSwapsToMakeSequencesIncreasingTest {
         assertEquals(result3, MinimumSwapsToMakeSequencesIncreasing.minSwap(A3, B3));
         assertEquals(result4, MinimumSwapsToMakeSequencesIncreasing.minSwap(A4, B4));
         assertEquals(result5, MinimumSwapsToMakeSequencesIncreasing.minSwap(A5, B5));
+        
     }
 
 }

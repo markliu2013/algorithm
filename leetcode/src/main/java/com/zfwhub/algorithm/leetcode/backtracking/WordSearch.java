@@ -24,7 +24,7 @@ public class WordSearch {
         return result.size() > 0;
     }
 
-    public static boolean dfs(List<List<List<Integer>>> result, List<List<Integer>> solution, char[][] board, String word) {
+    private static boolean dfs(List<List<List<Integer>>> result, List<List<Integer>> solution, char[][] board, String word) {
         if (isASolution(solution, word)) {
             processSolution(result, solution);
             return true;
@@ -95,16 +95,16 @@ public class WordSearch {
         return false;
     }
 
-    public static boolean isASolution(List<List<Integer>> solution, String word) {
+    private static boolean isASolution(List<List<Integer>> solution, String word) {
         return solution.size() == word.length();
     }
 
-    public static void processSolution(List<List<List<Integer>>> result, List<List<Integer>> solution) {
+    private static void processSolution(List<List<List<Integer>>> result, List<List<Integer>> solution) {
         result.add(new ArrayList<>(solution));
     }
 
     // 检查是否相等，且不能重复走
-    public static boolean isValid(char[][] board, String word, int i, int j, List<List<Integer>> solution) {
+    private static boolean isValid(char[][] board, String word, int i, int j, List<List<Integer>> solution) {
         List<Integer> step = new ArrayList<>();
         step.add(i);
         step.add(j);
@@ -114,7 +114,7 @@ public class WordSearch {
         return board[i][j] == word.charAt(k);
     }
 
-    public static void makeMove(List<List<Integer>> solution, int i, int j) {
+    private static void makeMove(List<List<Integer>> solution, int i, int j) {
         List<Integer> step = new ArrayList<>();
         step.add(i);
         step.add(j);
@@ -122,7 +122,7 @@ public class WordSearch {
         k = k + 1;
     }
 
-    public static void unmakeMove(List<List<Integer>> solution) {
+    private static void unmakeMove(List<List<Integer>> solution) {
         solution.remove(solution.size() - 1);
         k = k - 1;
     }

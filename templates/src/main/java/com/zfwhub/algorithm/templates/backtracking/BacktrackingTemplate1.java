@@ -5,7 +5,7 @@ import java.util.*;
 
 /**
  * 回溯模板 - 找到所有解
- * Combinations, 从数组中选出指定数目的所有组合
+ * Combinations, 从数组中选出指定数目的所有组合, C(n, k)
  * https://blog.csdn.net/u010500263/article/details/18435495
  * https://leetcode.com/problems/combinations/discuss/27019/A-short-recursive-Java-solution-based-on-C(nk)C(n-1k-1)%2BC(n-1k)
  * @SubSets
@@ -27,7 +27,7 @@ public class BacktrackingTemplate1 {
         return solutionList;
     }
     
-    public static void dfs(List<List<Integer>> solutionList, List<Integer> solution, int[] arr, int n) {
+    private static void dfs(List<List<Integer>> solutionList, List<Integer> solution, int[] arr, int n) {
         if (isASolution(solution, n)) {
             processSolution(solutionList, solution);
             return;// TODO 需不需要return，得看情况。SubSets为什么不需要？
@@ -47,15 +47,15 @@ public class BacktrackingTemplate1 {
         }
     }
     
-    public static boolean isASolution(List<Integer> solution, int n) {
+    private static boolean isASolution(List<Integer> solution, int n) {
         return solution.size() == n;
     }
 
-    public static void processSolution(List<List<Integer>> solutionList, List<Integer> solution) {
+    private static void processSolution(List<List<Integer>> solutionList, List<Integer> solution) {
         solutionList.add(new ArrayList<>(solution));
     }
     
-    public static boolean isValid(List<Integer> solution, int n) {
+    private static boolean isValid(List<Integer> solution, int n) {
         if (solution.size() == 0) {
             return true;
         }
@@ -63,11 +63,11 @@ public class BacktrackingTemplate1 {
         return solution.get(solution.size()-1) < n;
     }
     
-    public static void makeMove(List<Integer> solution, int n) {
+    private static void makeMove(List<Integer> solution, int n) {
         solution.add(n);
     }
     
-    public static void unMakeMove(List<Integer> solution) {
+    private static void unMakeMove(List<Integer> solution) {
         solution.remove(solution.size()-1);
     }
     

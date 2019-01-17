@@ -16,7 +16,7 @@ public class BacktrackingTemplate3 {
         return result;
     }
     
-    public static boolean dfs(List<Integer> result, List<Integer> solution, int[] arr, int n) {
+    private static boolean dfs(List<Integer> result, List<Integer> solution, int[] arr, int n) {
         if (isASolution(solution, n)) {
             processSolution(result, solution);
             return true;
@@ -34,28 +34,28 @@ public class BacktrackingTemplate3 {
         }
     }
     
-    public static boolean isASolution(List<Integer> solution, int n) {
+    private static boolean isASolution(List<Integer> solution, int n) {
         return solution.size() == n;
     }
 
-    public static void processSolution(List<Integer> result, List<Integer> solution) {
+    private static void processSolution(List<Integer> result, List<Integer> solution) {
      // TODO BacktrackingTemplate3 为什么这么写是不行的？
      // result = new ArrayList<>(solution);
         result.addAll(solution);
     }
     
-    public static boolean isValid(List<Integer> solution, int n) {
+    private static boolean isValid(List<Integer> solution, int n) {
         if (solution.size() == 0) {
             return true;
         }
         return solution.get(solution.size()-1) < n;
     }
     
-    public static void makeMove(List<Integer> solution, int n) {
+    private static void makeMove(List<Integer> solution, int n) {
         solution.add(n);
     }
     
-    public static void unMakeMove(List<Integer> solution) {
+    private static void unMakeMove(List<Integer> solution) {
         solution.remove(solution.size()-1);
     }
     

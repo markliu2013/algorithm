@@ -12,7 +12,8 @@ public class SudokuSolver {
         List<Character> solution = new ArrayList<>();//每一个格子都是数字几
         dfs(board, solution);
     }
-    public static boolean dfs(char[][] board, List<Character> solution) {
+    
+    private static boolean dfs(char[][] board, List<Character> solution) {
         if (isASolution(solution)) {
             processSolution(board, solution);
             return true;
@@ -31,15 +32,18 @@ public class SudokuSolver {
         }
         
     }
-    public static boolean isASolution(List<Character> solution) {
+    
+    private static boolean isASolution(List<Character> solution) {
         return solution.size() == RANK * RANK;
     }
-    public static void processSolution(char[][] board, List<Character> solution) {
+    
+    private static void processSolution(char[][] board, List<Character> solution) {
         for (int i = 0; i < solution.size(); i++) {
             board[i/9][i%9] = solution.get(i);
         }
     }
-    public static boolean isValid(char[][] oriBoard, List<Character> solution, int k) {
+    
+    private static boolean isValid(char[][] oriBoard, List<Character> solution, int k) {
         // init the board to check
         char[][] board = new char[9][9];
         for (int i = 0; i < oriBoard.length; i++) {
@@ -99,7 +103,8 @@ public class SudokuSolver {
     }
     
     // 代码还可以优化，不需要每次都全部检查一遍，只需要检查一下当前准备在哪个格子放的数字k
-    public static boolean isValid2(char[][] board, List<Character> solution, int k) {
+    @SuppressWarnings("unused")
+    private static boolean isValid2(char[][] board, List<Character> solution, int k) {
         int nextRow = solution.size()/9;
         int nextCol = solution.size()%9;
         // 如果下一个格子不为空，则k必须与格子的数字一样
@@ -152,21 +157,22 @@ public class SudokuSolver {
         return true;
     }
     
-    public static void unMakeMove(List<Character> solution) {
+    private static void unMakeMove(List<Character> solution) {
         solution.remove(solution.size()-1);
     }
 
-    public static void makeMove(List<Character> solution, int i) {
+    private static void makeMove(List<Character> solution, int i) {
         solution.add(Character.forDigit(i, 10));
     }
     
     // find the number closest to n and divisible by m
     // https://www.geeksforgeeks.org/find-number-closest-n-divisible-m/
-    public static int closestNumber(int n, int m) {
+    private static int closestNumber(int n, int m) {
         int q = n / m; 
         int n1 = m * q; 
         return n1; 
     }
+    
     public static void main(String[] args) {
         char[][] board = {
                 {'5','3','.','.','7','.','.','.','.'},

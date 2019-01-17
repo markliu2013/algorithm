@@ -25,7 +25,7 @@ public class WordSearch2 {
     }
 
     // x和y是当前board的索引
-    public static boolean dfs(char[][] board, String word, int x, int y, List<List<Integer>> solution) {
+    private static boolean dfs(char[][] board, String word, int x, int y, List<List<Integer>> solution) {
         if (isASolution(board, word, x, y, solution)) {
             return true;
         }
@@ -42,12 +42,12 @@ public class WordSearch2 {
         return false;
     }
 
-    public static boolean isASolution(char[][] board, String word, int x, int y, List<List<Integer>> solution) {
+    private static boolean isASolution(char[][] board, String word, int x, int y, List<List<Integer>> solution) {
         return solution.size() == word.length();
     }
 
     // direction 1,2,3,4 分别代表上下左右
-    public static boolean isValid(char[][] board, String word, List<List<Integer>> solution, int direction) {
+    private static boolean isValid(char[][] board, String word, List<List<Integer>> solution, int direction) {
         List<Integer> coordinate = getXYByDirection(solution, direction);
         int x = coordinate.get(0);
         int y = coordinate.get(1);
@@ -60,17 +60,17 @@ public class WordSearch2 {
         return board[x][y] == word.charAt(solution.size());
     }
 
-    public static void makeMove(char[][] board, String word, List<List<Integer>> solution, int direction) {
+    private static void makeMove(char[][] board, String word, List<List<Integer>> solution, int direction) {
         List<Integer> coordinate = getXYByDirection(solution, direction);
         solution.add(coordinate);
     }
 
-    public static void unMakeMove(char[][] board, String word, List<List<Integer>> solution, int direction) {
+    private static void unMakeMove(char[][] board, String word, List<List<Integer>> solution, int direction) {
         solution.remove(solution.size()-1);
     }
     
     // 根据方向，找到下一步的坐标。direction 1,2,3,4 分别代表上下左右
-    public static List<Integer> getXYByDirection(List<List<Integer>> solution, int direction) {
+    private static List<Integer> getXYByDirection(List<List<Integer>> solution, int direction) {
         List<Integer> coordinate = new ArrayList<>(2);
         int x = solution.get(solution.size() - 1).get(0);
         int y = solution.get(solution.size() - 1).get(1);
