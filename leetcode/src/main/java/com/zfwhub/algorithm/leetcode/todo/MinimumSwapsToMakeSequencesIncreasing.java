@@ -1,16 +1,13 @@
 package com.zfwhub.algorithm.leetcode.todo;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 /**
- * https://leetcode.com/problems/minimum-swaps-to-make-sequences-increasing/description/
+ * https://leetcode.com/problems/minimum-swaps-to-make-sequences-increasing/
  * https://blog.csdn.net/zjucor/article/details/79599287
  */
 public class MinimumSwapsToMakeSequencesIncreasing {
 
-    // 交换不可能超过数组的一半
     public static int minSwap(int[] A, int[] B) {
         if (A.length == 1) {
             return 0;
@@ -50,59 +47,103 @@ public class MinimumSwapsToMakeSequencesIncreasing {
     public static int minSwap2(int[] A, int[] B) {
         List<List<Boolean>> solutionList = new ArrayList<>();
         List<Boolean> solution = new ArrayList<>();
-        dfs(solutionList, solution, int[] A, int[] B);
-        return 0;
+        dfs(solutionList, solution, A, B);
+        int min = Integer.MAX_VALUE;
+        for (int i = 0; i < solutionList.size(); i++) {
+            min = Math.min(min, countSolution(solutionList.get(i)));
+        }
+        return min;
     }
 
     private static void dfs(List<List<Boolean>> solutionList, List<Boolean> solution, int[] A, int[] B) {
         if (isASolution(solution, A, B)) {
             processSolution(solutionList, solution);
-            return;// TODO 需不需要return，得看情况。SubSets为什么不需要？
-        }
-        // 每个solution有n个位置放不同的数，在每个位置都尝试arr中的每一个数。
-        for (int i = 0; i < arr.length; i++) {
-            // TODO isValid 肩负着递归的退出条件，ClimbingWays
-            if (isValid(solution, arr[i])) {
-                makeMove(solution, arr[i]);
-                dfs(solutionList, solution, arr, n);
-                // unMakeMove在下面两种情况执行：
-                // 1. isASolution 成功找到一个解
-                // 2. for循环结束
-                // 也就是找到解或者整个for结束都没找到解
-                unMakeMove(solution);
+        } else {
+            // 对应每个位置是否交换
+            for (int i = 0; i < 2; i++) {
+                if (isValid(solution, i, A, B)) {
+                    makeMove(solution, i);
+                    dfs(solutionList, solution, A, B);
+                    unMakeMove(solution);
+                }
             }
         }
     }
     
-    private static boolean isASolution(List<Integer> solution, int[] A, int[] B) {
-        return solution.size() == n;
+    private static boolean isASolution(List<Boolean> solution, int[] A, int[] B) {
+       if (solution.size() == A.length) {
+            int[] newA = A.clone();
+            int[] newB = B.clone();
+            swap(newA, newB, solution);
+            if (isIncreasing(newA) && isIncreasing(newB)) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
     }
 
-    private static void processSolution(List<List<Integer>> solutionList, List<Integer> solution) {
+    private static void processSolution(List<List<Boolean>> solutionList, List<Boolean> solution) {
         solutionList.add(new ArrayList<>(solution));
     }
     
-    private static boolean isValid(List<Integer> solution, int n) {
-        if (solution.size() == 0) {
+    // 0 false, 1 true 交换不可能超过数组的一半
+    private static boolean isValid(List<Boolean> solution, int i, int[] A, int[] B) {
+        // 为什么要加这个if，不然退出不了递归，请对比RestoreIpAddresses分析
+        if (solution.size() > A.length) {
+            return false;
+        }
+        if (i == 1 && countSolution(solution) + 1 > A.length / 2) {
+            return false;
+        } else {
             return true;
         }
-//      if (solution.contains(n)) return false;
-        return solution.get(solution.size()-1) < n;
     }
     
-    private static void makeMove(List<Integer> solution, int n) {
-        solution.add(n);
+    private static void makeMove(List<Boolean> solution, int n) {
+        solution.add(n == 0 ? false : true);
     }
     
-    private static void unMakeMove(List<Integer> solution) {
+    private static void unMakeMove(List<Boolean> solution) {
         solution.remove(solution.size()-1);
     }
     
+    private static int countSolution(List<Boolean> solution) {
+        int count = 0;
+        for (int i = 0; i < solution.size(); i++) {
+            if (solution.get(i)) {
+                count++;
+            }
+        }
+        return count;
+    }
+    
+    private static void swap(int[] A, int[] B, List<Boolean> solution) {
+        for (int i = 0; i < solution.size(); i++) {
+            if (solution.get(i)) {
+                int temp = A[i];
+                A[i] = B[i];
+                B[i] = temp;
+            }
+        }
+    }
+    
+    private static boolean isIncreasing(int[] nums) {
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] <= nums[i-1]) {
+                return false;
+            }
+        }
+        return true;
+    }
+    
     public static void main(String[] args) {
-        int[] A5 = new int[] {0,7,8,10,10,11,12,13,19,18};
-        int[] B5 = new int[] {4,4,5,7,11,14,15,16,17,20};
+        int[] A5 = new int[] {1,3,5,4};
+        int[] B5 = new int[] {1,2,3,7};
         
-        System.out.println(MinimumSwapsToMakeSequencesIncreasing.minSwap(A5, B5));
+        System.out.println(MinimumSwapsToMakeSequencesIncreasing.minSwap2(A5, B5));
         //System.out.println(Arrays.toString(newA));
         //System.out.println(Arrays.toString(newB));
     }
