@@ -96,7 +96,7 @@ public class GoldMineMain {
         return currentResult[maxPerson - 1];
     }
 
-    public List<List<GoldMine>> getAllCombination(List<GoldMine> goldMines) {
+    private List<List<GoldMine>> getAllCombination(List<GoldMine> goldMines) {
         List<List<GoldMine>> list = new ArrayList<List<GoldMine>>();
         int count = new Double(Math.pow(2.0, goldMines.size())).intValue();
         for (int i = 0; i < count; i++) {

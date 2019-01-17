@@ -19,7 +19,7 @@ public class RestoreIpAddresses {
         return solutionList;
     }
     
-    public static void dfs(List<String> solutionList, List<Integer> solution, String s) {
+    private static void dfs(List<String> solutionList, List<Integer> solution, String s) {
         if (isASolution(solution, s)) {
             processSolution(solutionList, solution, s);
         } else {
@@ -33,7 +33,8 @@ public class RestoreIpAddresses {
             }
         }
     }
-    public static boolean isASolution(List<Integer> solution, String s) {
+    
+    private static boolean isASolution(List<Integer> solution, String s) {
         // 3个点都打在了正确的位置, 需要判断分成的ip位是否合法。
         if (solution.size() == 3) {
             if (validateIPBit(s.substring(0, solution.get(0))) &&
@@ -49,7 +50,8 @@ public class RestoreIpAddresses {
             return false;
         }
     }
-    public static void processSolution(List<String> solutionList, List<Integer> solution, String s) {
+    
+    private static void processSolution(List<String> solutionList, List<Integer> solution, String s) {
         StringBuilder sb = new StringBuilder(s);
         //solution逆序循环，则可以在s中按索引从后面开始加点，不影响前面的索引。
         for (int i = solution.size()-1; i >= 0; i--) {
@@ -59,7 +61,7 @@ public class RestoreIpAddresses {
     }
     
     // 验证，将字符串分割成4个部分。i是下一个点的位置。
-    public static boolean isValid(List<Integer> solution, int i, String s) {
+    private static boolean isValid(List<Integer> solution, int i, String s) {
         // 类似 BacktrackingTemplate1.isValid
         if (solution.size() == 0) {
             return true;
@@ -105,16 +107,17 @@ public class RestoreIpAddresses {
             }
         }*/
     }
-    public static void unMakeMove(List<Integer> solution) {
+    
+    private static void unMakeMove(List<Integer> solution) {
         solution.remove(solution.size()-1);
     }
 
-    public static void makeMove(List<Integer> solution, int i) {
+    private static void makeMove(List<Integer> solution, int i) {
         solution.add(i);
     }
     
     // 判断单个的ip位，单个的ip位必须小于255
-    public static boolean validateIPBit(String str) {
+    private static boolean validateIPBit(String str) {
         if (str.length() > 3) {
             return false;
         }
@@ -127,6 +130,7 @@ public class RestoreIpAddresses {
         }
         return true;
     }
+    
     public static void main(String[] args) {
         System.out.println(restoreIpAddresses("123456"));
     }

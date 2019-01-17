@@ -78,7 +78,7 @@ public class ClimbingStairs {
         return solutionList;
     }
     
-    public static void dfs(List<List<Integer>> solutionList, List<Integer> solution, int n) {
+    private static void dfs(List<List<Integer>> solutionList, List<Integer> solution, int n) {
         if (isASolution(solution, n)) {
             processSolution(solutionList, solution);
             return;
@@ -94,24 +94,24 @@ public class ClimbingStairs {
     }
     
     // 所有的步数加起来等于楼梯级数。
-    public static boolean isASolution(List<Integer> solution, int n) {
+    private static boolean isASolution(List<Integer> solution, int n) {
         return solution.stream().mapToInt(Integer::intValue).sum() == n;
     }
 
-    public static void processSolution(List<List<Integer>> solutionList, List<Integer> solution) {
+    private static void processSolution(List<List<Integer>> solutionList, List<Integer> solution) {
         solutionList.add(new ArrayList<>(solution));
     }
     
     // 下一步不能超过楼梯级数。
-    public static boolean isValid(List<Integer> solution, int i, int n) {
+    private static boolean isValid(List<Integer> solution, int i, int n) {
         return solution.stream().mapToInt(Integer::intValue).sum() + i <= n;
     }
     
-    public static void makeMove(List<Integer> solution, int n) {
+    private static void makeMove(List<Integer> solution, int n) {
         solution.add(n);
     }
     
-    public static void unMakeMove(List<Integer> solution) {
+    private static void unMakeMove(List<Integer> solution) {
         solution.remove(solution.size()-1);
     }
     

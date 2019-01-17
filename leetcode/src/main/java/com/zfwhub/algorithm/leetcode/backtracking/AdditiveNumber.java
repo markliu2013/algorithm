@@ -41,7 +41,7 @@ public class AdditiveNumber {
         return result;
     }
     
-    public static boolean dfs(List<Boolean> solution, String num) {
+    private static boolean dfs(List<Boolean> solution, String num) {
         if (isASolution(solution, num)) {
             return true;
         } else {
@@ -60,11 +60,11 @@ public class AdditiveNumber {
         }
     }
     
-    public static boolean isASolution(List<Boolean> solution, String num) {
+    private static boolean isASolution(List<Boolean> solution, String num) {
         return solution.size() == num.length();
     }
 
-    public static boolean isValid(List<Boolean> solution, String num, int flag) {
+    private static boolean isValid(List<Boolean> solution, String num, int flag) {
         List<Integer> list = new ArrayList<>();
         for (int i = 0; i < solution.size(); i++) {
             if (solution.get(i)) {
@@ -124,15 +124,15 @@ public class AdditiveNumber {
         return true;
     }
     
-    public static void makeMove(List<Boolean> solution, int i) {
+    private static void makeMove(List<Boolean> solution, int i) {
         solution.add(i == 1);
     }
     
-    public static void unMakeMove(List<Boolean> solution) {
+    private static void unMakeMove(List<Boolean> solution) {
         solution.remove(solution.size()-1);
     }
     
-    public static List<Long> splitNums(List<Boolean> solution, String num) {
+    private static List<Long> splitNums(List<Boolean> solution, String num) {
         List<Long> list = new ArrayList<>();
         int preTrueIndex = 0;
         for (int j = 0; j < solution.size(); j++) {

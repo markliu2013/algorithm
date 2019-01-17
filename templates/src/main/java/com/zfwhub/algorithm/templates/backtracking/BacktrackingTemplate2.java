@@ -14,7 +14,7 @@ public class BacktrackingTemplate2 {
         return dfs(solution, arr, n, 0);
     }
     
-    public static int dfs(List<Integer> solution, int[] arr, int n, int count) {
+    private static int dfs(List<Integer> solution, int[] arr, int n, int count) {
         if (isASolution(solution, n)) {
             count++;
         } else {
@@ -29,22 +29,22 @@ public class BacktrackingTemplate2 {
         return count;
     }
     
-    public static boolean isASolution(List<Integer> solution, int n) {
+    private static boolean isASolution(List<Integer> solution, int n) {
         return solution.size() == n;
     }
     
-    public static boolean isValid(List<Integer> solution, int n) {
+    private static boolean isValid(List<Integer> solution, int n) {
         if (solution.size() == 0) {
             return true;
         }
         return solution.get(solution.size()-1) < n;
     }
     
-    public static void makeMove(List<Integer> solution, int n) {
+    private static void makeMove(List<Integer> solution, int n) {
         solution.add(n);
     }
     
-    public static void unMakeMove(List<Integer> solution) {
+    private static void unMakeMove(List<Integer> solution) {
         solution.remove(solution.size()-1);
     }
     

@@ -56,7 +56,7 @@ public class BinaryWatch {
         return sb.toString();
     }
 
-    public static List<List<Integer>> getCombination4(Integer[] arr, int n) {
+    private static List<List<Integer>> getCombination4(Integer[] arr, int n) {
         LinkedList<Integer> stack = new LinkedList<Integer>();
         List<List<Integer>> list = new ArrayList<List<Integer>>();
         getCombination4Helper(arr, 0, n, stack, list);

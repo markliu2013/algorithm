@@ -19,7 +19,8 @@ public class SudokuSolver2 {
         int index = 0;//尝试到哪一个了。
         dfs(board, solution, index);
     }
-    public static boolean dfs(char[][] board, List<Character> solution, int index) {
+    
+    private static boolean dfs(char[][] board, List<Character> solution, int index) {
         if (isASolution(solution, index)) {
             processSolution(board, solution);
             return true;
@@ -38,7 +39,8 @@ public class SudokuSolver2 {
         }
         
     }
-    public static boolean isASolution(List<Character> solution, int index) {
+    
+    private static boolean isASolution(List<Character> solution, int index) {
         /*for (int i = 0; i < solution.size(); i++) {
             if (solution.get(i) == EMPTY_CHAR) {
                 return false;
@@ -47,12 +49,14 @@ public class SudokuSolver2 {
         return true;*/
         return index == RANK * RANK;
     }
-    public static void processSolution(char[][] board, List<Character> solution) {
+    
+    private static void processSolution(char[][] board, List<Character> solution) {
         for (int i = 0; i < solution.size(); i++) {
             board[i/9][i%9] = solution.get(i);
         }
     }
-    public static boolean isValid(List<Character> solution, int k, int index) {
+    
+    private static boolean isValid(List<Character> solution, int k, int index) {
         // 如果下一个格子不为空，则k必须与格子的数字一样
         if (solution.get(index) != EMPTY_CHAR) {
             if (solution.get(index) == Character.forDigit(k, 10)) {
@@ -85,8 +89,7 @@ public class SudokuSolver2 {
         return true;
     }
     
-    
-    public static void unMakeMove(List<Character> solution, int index, char[][] board) {
+    private static void unMakeMove(List<Character> solution, int index, char[][] board) {
         // 此处有坑，solution之前不一定是 空 的，因为尝试的数字和之前不一致也会不合法。
         // 注意isValid不合法的所有情况都需要考虑
         // 可以和board对照，置换成board之前的字符，
@@ -94,20 +97,20 @@ public class SudokuSolver2 {
         solution.set(index, board[index/9][index%9]);
     }
 
-    public static void makeMove(List<Character> solution, int i, int index) {
+    private static void makeMove(List<Character> solution, int i, int index) {
         solution.set(index, Character.forDigit(i, 10));
     }
     
     // find the number closest to n and divisible by m
     // https://www.geeksforgeeks.org/find-number-closest-n-divisible-m/
-    public static int closestNumber(int n, int m) {
+    private static int closestNumber(int n, int m) {
         int q = n / m; 
         int n1 = m * q; 
         return n1; 
     }
     
     // 根据index，推算出index所在宫的起始索引
-    public static int startSubBox(int i) {
+    private static int startSubBox(int i) {
         return closestNumber(i / 9, 3)*9 + closestNumber(i, 3) % 9;
     }
     
