@@ -6,7 +6,6 @@ import java.util.Set;
 
 /**
  * 字符串工具类
- * @author Mark Liu
  */
 
 public class StringUtil {

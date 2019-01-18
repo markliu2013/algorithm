@@ -25,10 +25,5 @@ public class MathUtil {
         }
         return combine(n-1, k) + combine(n-1, k-1);
     }
-    
-    public static void main(String[] args) {
-        int re = MathUtil.combine(10, 9);
-        System.out.println(re);
-    }
-
+   
 }

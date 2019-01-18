@@ -57,6 +57,7 @@ public class CollectionUtil {
      * @param k
      * @return
      */
+    // TODO subsets n k
     public static <T> List<List<T>> subsets(List<T> list, int k) {
         if (k < 0) {
             throw new IllegalArgumentException("k < 0");
