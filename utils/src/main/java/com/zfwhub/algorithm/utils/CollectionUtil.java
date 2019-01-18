@@ -58,14 +58,23 @@ public class CollectionUtil {
      * @return
      */
     public static <T> List<List<T>> subsets(List<T> list, int k) {
-        List<List<T>> solutionList = new ArrayList<>();
-        int total = MathUtil.combine(list.size(), k);
-        for (int i = 0; i < total; i++) {
-            for (int j = 0; j < k; j++) {
-                List<T> solution = new ArrayList<>();
-                
-            }
+        if (k < 0) {
+            throw new IllegalArgumentException("k < 0");
         }
+        if (list == null) {
+            throw new IllegalArgumentException("list is null");
+        }
+        if (k > list.size()) {
+            throw new IllegalArgumentException("k is larger than the size of list");
+        }
+        List<List<T>> solutionList = new ArrayList<>();
+        if (k == 0) {
+            
+        }
+        if (k == list.size()) {
+            
+        }
+        
         return solutionList;
     }
     
@@ -87,6 +96,22 @@ public class CollectionUtil {
                 }
             }
         }
+    }
+    
+    /**
+     * 初始化包含1到n的list。
+     * @param n
+     * @return
+     */
+    public static List<Integer> newIntList(int n) {
+        if (n < 1) {
+            throw new IllegalArgumentException("n < 1");
+        }
+        List<Integer> result = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            result.add(i+1);
+        }
+        return result;
     }
 
 }
