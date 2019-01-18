@@ -27,7 +27,7 @@ public class MathUtil {
     }
     
     public static void main(String[] args) {
-        int re = MathUtil.combine(100, 98);
+        int re = MathUtil.combine(10, 9);
         System.out.println(re);
     }
 

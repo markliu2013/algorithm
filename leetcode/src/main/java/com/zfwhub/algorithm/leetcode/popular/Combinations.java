@@ -33,6 +33,7 @@ public class Combinations {
     /**
      * get combinations of n elements from list, 
      * dynamic programming, pascal's triangle
+     * TODO getCombination wrong
      */
     public static List<List<Integer>> getCombination(List<Integer> list, int n) {
         if (list == null || list.size() <= 0 || n > list.size()) {
@@ -192,10 +193,10 @@ public class Combinations {
     public static void main(String[] args) {
         //System.out.println(Combination.getAllCombination(new int[] {2,3,4}));
         Integer[] arr = new Integer[] {1,2,3,4};
-        System.out.println(Combinations.getCombination(Arrays.asList(arr), 2));
+        System.out.println(Combinations.getCombination(Arrays.asList(arr), 3));
         System.out.println(Combinations.getCombination3(arr, 2));
         System.out.println(Combinations.getCombination4(arr, 2));
-        System.out.println(Combinations.combine2(40, 39));
+//        System.out.println(Combinations.combine2(40, 39));
     }
 
 }
