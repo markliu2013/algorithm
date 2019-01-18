@@ -1,10 +1,7 @@
 package com.zfwhub.algorithm.codility.dynamic_programming;
-
 import java.util.Arrays;
 
-/**
- * https://app.codility.com/programmers/lessons/17-dynamic_programming/min_abs_sum/
- */
+// https://app.codility.com/programmers/lessons/17-dynamic_programming/min_abs_sum/
 public class MinAbsSum {
     
     public static int solution(int[] A) {
@@ -45,9 +42,7 @@ public class MinAbsSum {
         return Math.abs(minAbsSum);
     }
 
-    /**
-     * https://stackoverflow.com/questions/44897316/
-     */
+    // https://stackoverflow.com/questions/44897316/
     public static int solution2(int[] A) {
         if (A.length == 0)
             return 0;
