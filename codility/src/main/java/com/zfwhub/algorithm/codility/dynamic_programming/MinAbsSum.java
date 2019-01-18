@@ -4,6 +4,7 @@ import java.util.Arrays;
 // https://app.codility.com/programmers/lessons/17-dynamic_programming/min_abs_sum/
 public class MinAbsSum {
     
+    // TODO MinAbsSum
     public static int solution(int[] A) {
         int minSubAbsSum = Integer.MAX_VALUE;
         for (int i = 0; i < A.length; i++) {
