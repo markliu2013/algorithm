@@ -1,7 +1,5 @@
 package com.zfwhub.algorithm.leetcode.todo;
-
 import java.util.*;
-
 import com.zfwhub.algorithm.utils.ArrayUtil;
 
 /**
@@ -9,8 +7,21 @@ import com.zfwhub.algorithm.utils.ArrayUtil;
  * https://blog.csdn.net/zjucor/article/details/79599287
  */
 public class MinimumSwapsToMakeSequencesIncreasing {
-
+    
+    // 回溯法暴力破解
     public static int minSwap(int[] A, int[] B) {
+        List<List<Boolean>> solutionList = new ArrayList<>();
+        List<Boolean> solution = new ArrayList<>();
+        dfs(solutionList, solution, A, B);
+        int min = Integer.MAX_VALUE;
+        for (int i = 0; i < solutionList.size(); i++) {
+            min = Math.min(min, countSolution(solutionList.get(i)));
+        }
+        return min;
+    }
+    
+    // 动态规划
+    public static int minSwap2(int[] A, int[] B) {
         if (A.length == 1) {
             return 0;
         }
@@ -43,18 +54,6 @@ public class MinimumSwapsToMakeSequencesIncreasing {
         int b = minSwap(newA, newB);
         return Math.min(a, b);*/
         return 0;
-    }
-    
-    // 回溯法暴力破解
-    public static int minSwap2(int[] A, int[] B) {
-        List<List<Boolean>> solutionList = new ArrayList<>();
-        List<Boolean> solution = new ArrayList<>();
-        dfs(solutionList, solution, A, B);
-        int min = Integer.MAX_VALUE;
-        for (int i = 0; i < solutionList.size(); i++) {
-            min = Math.min(min, countSolution(solutionList.get(i)));
-        }
-        return min;
     }
 
     private static void dfs(List<List<Boolean>> solutionList, List<Boolean> solution, int[] A, int[] B) {
