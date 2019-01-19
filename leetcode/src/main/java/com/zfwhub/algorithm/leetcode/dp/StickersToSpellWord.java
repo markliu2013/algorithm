@@ -94,7 +94,7 @@ public class StickersToSpellWord {
         while (flag) {
             count++;
             int oldSize = targetList.size();
-            CollectionUtil.subtract(targetList, sticker);
+            CollectionUtil.remove(targetList, sticker);
             StickerResult stickerResult = new StickerResult(count, new ArrayList<>(targetList));
             list.add(stickerResult);
             if (targetList.size() == 0 || targetList.size() == oldSize) {

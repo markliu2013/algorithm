@@ -75,5 +75,17 @@ public class ArrayUtil {
         }
         return true;
     }
+    
+    public static List<List<Integer>> twoDArrayToList(int[][] twoDArray) {
+        List<List<Integer>> result = new ArrayList<>();
+        for (int[] array : twoDArray) {
+            List<Integer> list = new ArrayList<>();
+            for (int i : array) {
+                list.add(i);
+            }
+            result.add(list);
+        }
+        return result;
+    }
 
 }
