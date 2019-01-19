@@ -25,7 +25,7 @@ public class StickersToSpellWord2 {
             boolean flag = true;
             while (flag) {
                 int oldSize = targetList.size();
-                CollectionUtil.subtract(targetList, sticker);
+                CollectionUtil.remove(targetList, sticker);
                 if (targetList.size() != oldSize) {
                     result.add(new ArrayList<>(sticker));
                 }
@@ -55,7 +55,7 @@ public class StickersToSpellWord2 {
                 List<Character> targetSubsets = targetSubsetsList.get(j);//result中当前行的每一格
                 List<Character> targetList = new ArrayList<>(targetSubsets);
                 // 选sticker
-                CollectionUtil.subtract(targetList, sticker);
+                CollectionUtil.remove(targetList, sticker);
                 int cost1 = preResults.get(targetList) + 1;
                 // 不选sticker
                 int cost2 = preResults.get(targetSubsets);

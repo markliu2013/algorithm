@@ -22,11 +22,11 @@ public class Combinations {
             result.add(new ArrayList<Integer>());
             return result;
         }
-        result = combine(n - 1, k - 1);
+        result = combine2(n - 1, k - 1);
         for (List<Integer> list : result) {
             list.add(n);
         }
-        result.addAll(combine(n - 1, k));
+        result.addAll(combine2(n - 1, k));
         return result;
     }
     
@@ -192,11 +192,11 @@ public class Combinations {
     
     public static void main(String[] args) {
         //System.out.println(Combination.getAllCombination(new int[] {2,3,4}));
-        Integer[] arr = new Integer[] {1,2,3,4};
-        System.out.println(Combinations.getCombination(Arrays.asList(arr), 3));
-        System.out.println(Combinations.getCombination3(arr, 2));
-        System.out.println(Combinations.getCombination4(arr, 2));
-//        System.out.println(Combinations.combine2(40, 39));
+       // Integer[] arr = new Integer[] {1,2,3,4};
+      //  System.out.println(Combinations.getCombination(Arrays.asList(arr), 3));
+     //   System.out.println(Combinations.getCombination3(arr, 2));
+       // System.out.println(Combinations.getCombination4(arr, 2));
+        System.out.println(Combinations.combine2(40, 39));
     }
 
 }
