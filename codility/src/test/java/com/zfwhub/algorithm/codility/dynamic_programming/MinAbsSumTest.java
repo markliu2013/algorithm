@@ -24,14 +24,14 @@ public class MinAbsSumTest {
         int result7 = 0;
         int[] A8 = new int[] {1, 2, 2, 3, 5, 5};
         int result8 = 2;
-        assertEquals(MinAbsSum.solution(A1), result1);
-        assertEquals(MinAbsSum.solution(A2), result2);
-        assertEquals(MinAbsSum.solution(A3), result3);
-        assertEquals(MinAbsSum.solution(A4), result4);
-        assertEquals(MinAbsSum.solution(A5), result5);
-        assertEquals(MinAbsSum.solution(A6), result6);
-        assertEquals(MinAbsSum.solution(A7), result7);
-        assertEquals(MinAbsSum.solution(A8), result8);
+        assertEquals(MinAbsSum.solution2(A1), result1);
+        assertEquals(MinAbsSum.solution2(A2), result2);
+        assertEquals(MinAbsSum.solution2(A3), result3);
+        assertEquals(MinAbsSum.solution2(A4), result4);
+        assertEquals(MinAbsSum.solution2(A5), result5);
+        assertEquals(MinAbsSum.solution2(A6), result6);
+        assertEquals(MinAbsSum.solution2(A7), result7);
+        assertEquals(MinAbsSum.solution2(A8), result8);
     }
 
 }

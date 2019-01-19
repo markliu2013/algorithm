@@ -1,5 +1,4 @@
 package com.zfwhub.algorithm.utils;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,7 +7,7 @@ public class ArrayUtil {
     public static final int[] EMPTY_INT_ARRAY = new int[0];
     public static final Integer[] EMPTY_INTEGER_OBJECT_ARRAY = new Integer[0];
 
-    public static Integer[] toObject(final int[] array) {
+    public static Integer[] toObject(int[] array) {
         if (array == null) {
             return null;
         } else if (array.length == 0) {
@@ -21,7 +20,7 @@ public class ArrayUtil {
         return result;
     }
     
-    public static int[] toPrimitive(final Integer[] array) {
+    public static int[] toPrimitive(Integer[] array) {
         if (array == null) {
             return null;
         } else if (array.length == 0) {
@@ -50,7 +49,7 @@ public class ArrayUtil {
         return result;
     }
     
-    public static List<Integer> toList(final int[] array) {
+    public static List<Integer> toList(int[] array) {
         if (array == null) {
             return null;
         } else if (array.length == 0) {
@@ -59,6 +58,32 @@ public class ArrayUtil {
         final List<Integer> result = new ArrayList<>();
         for (int i = 0; i < array.length; i++) {
            result.add(Integer.valueOf(array[i]));
+        }
+        return result;
+    }
+    
+    /**
+     * 判断数组是否严格递增。
+     * @param array
+     * @return
+     */
+    public static boolean isIncreasing(int[] array) {
+        for (int i = 1; i < array.length; i++) {
+            if (array[i] <= array[i-1]) {
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    public static List<List<Integer>> twoDArrayToList(int[][] twoDArray) {
+        List<List<Integer>> result = new ArrayList<>();
+        for (int[] array : twoDArray) {
+            List<Integer> list = new ArrayList<>();
+            for (int i : array) {
+                list.add(i);
+            }
+            result.add(list);
         }
         return result;
     }
