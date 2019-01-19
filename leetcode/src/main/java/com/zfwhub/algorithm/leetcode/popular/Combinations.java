@@ -22,17 +22,18 @@ public class Combinations {
             result.add(new ArrayList<Integer>());
             return result;
         }
-        result = combine(n - 1, k - 1);
+        result = combine2(n - 1, k - 1);
         for (List<Integer> list : result) {
             list.add(n);
         }
-        result.addAll(combine(n - 1, k));
+        result.addAll(combine2(n - 1, k));
         return result;
     }
     
     /**
      * get combinations of n elements from list, 
      * dynamic programming, pascal's triangle
+     * TODO getCombination wrong
      */
     public static List<List<Integer>> getCombination(List<Integer> list, int n) {
         if (list == null || list.size() <= 0 || n > list.size()) {
@@ -171,12 +172,30 @@ public class Combinations {
         }
     }
     
+    // https://leetcode.com/problems/combinations/discuss/27002/Backtracking-Solution-Java
+    public static List<List<Integer>> combine3(int n, int k) {
+        List<List<Integer>> combs = new ArrayList<List<Integer>>();
+        combine(combs, new ArrayList<Integer>(), 1, n, k);
+        return combs;
+    }
+    public static void combine(List<List<Integer>> combs, List<Integer> comb, int start, int n, int k) {
+        if(k==0) {
+            combs.add(new ArrayList<Integer>(comb));
+            return;
+        }
+        for(int i=start;i<=n;i++) {
+            comb.add(i);
+            combine(combs, comb, i+1, n, k-1);
+            comb.remove(comb.size()-1);
+        }
+    }
+    
     public static void main(String[] args) {
         //System.out.println(Combination.getAllCombination(new int[] {2,3,4}));
-        Integer[] arr = new Integer[] {1,2,3,4};
-        System.out.println(Combinations.getCombination(Arrays.asList(arr), 2));
-        System.out.println(Combinations.getCombination3(arr, 2));
-        System.out.println(Combinations.getCombination4(arr, 2));
+       // Integer[] arr = new Integer[] {1,2,3,4};
+      //  System.out.println(Combinations.getCombination(Arrays.asList(arr), 3));
+     //   System.out.println(Combinations.getCombination3(arr, 2));
+       // System.out.println(Combinations.getCombination4(arr, 2));
         System.out.println(Combinations.combine2(40, 39));
     }
 

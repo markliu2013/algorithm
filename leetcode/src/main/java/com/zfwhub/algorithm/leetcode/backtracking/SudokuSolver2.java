@@ -2,6 +2,8 @@ package com.zfwhub.algorithm.leetcode.backtracking;
 
 import java.util.*;
 
+import com.zfwhub.algorithm.utils.NumberUtil;
+
 // https://leetcode.com/problems/sudoku-solver/
 // 第二种思路，可以把solution按照board初始化，在isASolution中判断solution中不存在空点
 public class SudokuSolver2 {
@@ -66,7 +68,7 @@ public class SudokuSolver2 {
             }
         }
         // 检查行
-        int rowStart = closestNumber(index, RANK);
+        int rowStart = NumberUtil.closestNumber(index, RANK);
         for (int i = rowStart; i <= rowStart+8; i++) {
             if (solution.get(i) == Character.forDigit(k, 10)) {
                 return false;
@@ -101,17 +103,9 @@ public class SudokuSolver2 {
         solution.set(index, Character.forDigit(i, 10));
     }
     
-    // find the number closest to n and divisible by m
-    // https://www.geeksforgeeks.org/find-number-closest-n-divisible-m/
-    private static int closestNumber(int n, int m) {
-        int q = n / m; 
-        int n1 = m * q; 
-        return n1; 
-    }
-    
     // 根据index，推算出index所在宫的起始索引
     private static int startSubBox(int i) {
-        return closestNumber(i / 9, 3)*9 + closestNumber(i, 3) % 9;
+        return NumberUtil.closestNumber(i / 9, 3)*9 + NumberUtil.closestNumber(i, 3) % 9;
     }
     
     public static void main(String[] args) {
