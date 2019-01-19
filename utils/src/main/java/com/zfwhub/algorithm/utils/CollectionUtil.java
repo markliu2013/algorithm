@@ -1,5 +1,6 @@
 package com.zfwhub.algorithm.utils;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
@@ -9,7 +10,7 @@ public class CollectionUtil {
     private CollectionUtil() { }
 
     /**
-     * list的所有组合，list中不能有重复元素。请确认list中无重复元素，否则请使用subsetsWithDup
+     * list的所有组合，list中不能有重复元素。请确认list中无重复元素，否则请使用subsetsWithDup。
      * @param list
      * @return
      */
@@ -51,30 +52,84 @@ public class CollectionUtil {
         }
     }
     
-    public static <T> List<List<T>> subsets(List<T> list, int n) {
+    /**
+     * 找C(n,k), 指定数目k的组合。请确认list中无重复元素，否则请使用subsetsWithDup。
+     * @param list
+     * @param k
+     * @return
+     */
+    public static <T> List<List<T>> subsets(List<T> list, int k) {
+        if (k < 0) {
+            throw new IllegalArgumentException("k < 0");
+        }
+        if (list == null) {
+            throw new IllegalArgumentException("list is null");
+        }
+        if (k > list.size()) {
+            throw new IllegalArgumentException("k is larger than the size of list");
+        }
         List<List<T>> solutionList = new ArrayList<>();
-        subsetsHelper(solutionList, new ArrayList<>(), list, 0, n);
+        if (k == 0) {
+            solutionList.add(new ArrayList<>());
+            return solutionList;
+        }
+        if (k == list.size()) {
+            solutionList.add(new ArrayList<>(list));
+            return solutionList;
+        }
+        T lastItem = list.get(list.size()-1);
+        List<T> subList = list.subList(0, list.size()-1);
+        List<List<T>> list1 = subsets(subList, k);
+        solutionList.addAll(list1);
+        List<List<T>> list2 = subsets(list.subList(0, list.size()-1), k-1);
+        for (int i = 0; i < list2.size(); i++) {
+            list2.get(i).add(lastItem);
+        }
+        solutionList.addAll(list2);
         return solutionList;
     }
     
-    private static <T> void subsetsHelper(List<List<T>> solutionList, List<T> solution, List<T> list, int start, int n) {
-        if(n == 0) {
-            solutionList.add(new ArrayList<T>(solution));
-            return;
-        }
-        for (int i = start; i < list.size(); i++) {
-            solution.add(list.get(i));
-            subsetsHelper(solutionList, solution, list, i+1, n-1);
-            solution.remove(solution.size()-1);
-        }
-    }
-    
     /**
-     * a - b，a和b是两个集合，直接在集合a上进行操作。
+     * a - b，a和b是两个集合，返回a-b，不影响a，b。
      * @param a
      * @param b
      */
-    public static <T> void subtract(Iterable<T> a, Iterable<T> b) {
+    public static <T> Collection<T> subtract(Iterable<? extends T> a, Iterable<? extends T> b) {
+        List<T> result = new ArrayList<>();
+        List<T> listB = new ArrayList<>();
+        for (T elementB : b) {
+            listB.add(elementB);
+        }
+        for (T elementA : a) {
+            boolean contains = false;
+            Iterator<T> iteratorB = listB.iterator();
+            while (iteratorB.hasNext()) {
+                T elementB = iteratorB.next();
+                if (elementB == null) {
+                    contains = elementA == null;
+                } else {
+                    if (elementB.equals(elementA)) {
+                        contains = true;
+                    }
+                }
+                if (contains) {
+                    iteratorB.remove();
+                    break;
+                }
+            }
+            if (!contains) {
+                result.add(elementA);
+            }
+        }
+        return result;
+    }
+    
+    /**
+     * remove b from a，a和b是两个集合，类似a-b直接在集合a上进行操作。
+     * @param a
+     * @param b
+     */
+    public static <T> void remove(Iterable<T> a, Iterable<T> b) {
         Iterator<T> iteratorB = b.iterator();
         while (iteratorB.hasNext()) {
             T objB = iteratorB.next();
@@ -85,6 +140,45 @@ public class CollectionUtil {
                     break;
                 }
             }
+        }
+    }
+    
+    /**
+     * 初始化包含1到n的list。
+     * @param n
+     * @return
+     */
+    public static List<Integer> newIntList(int n) {
+        if (n < 1) {
+            throw new IllegalArgumentException("n < 1");
+        }
+        List<Integer> result = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            result.add(i+1);
+        }
+        return result;
+    }
+    
+    /**
+     * 判断a和b两个集合，不考虑顺序的情况下是否相等。
+     * @param a
+     * @param b
+     * @return
+     */
+    // https://stackoverflow.com/questions/13501142/java-arraylist-how-can-i-tell-if-two-lists-are-equal-order-not-mattering
+    public static boolean isEqualCollection(final Collection<?> a, final Collection<?> b) {
+        if (a == null && b == null){
+            return true;
+        }
+        if((a == null && b != null) 
+          || a != null && b == null
+          || a.size() != b.size()) {
+            return false;
+        }
+        if (a.containsAll(b) && b.containsAll(a)) {
+            return subtract(a, b).size() == 0;
+        } else {
+            return false;
         }
     }
 

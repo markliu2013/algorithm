@@ -10,5 +10,13 @@
     </parent>
     <artifactId>algorithm-acm</artifactId>
     <packaging>jar</packaging>
-
+    
+    <dependencies>
+        <dependency>
+            <groupId>com.zfwhub</groupId>
+            <artifactId>algorithm-utils</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+    
 </project>
