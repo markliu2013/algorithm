@@ -1,4 +1,4 @@
-package com.zfwhub.algorithm.leetcode.popular;
+package com.zfwhub.algorithm.leetcode.base;
 import java.util.*;
 import com.zfwhub.algorithm.utils.ArrayUtil;
 import com.zfwhub.algorithm.utils.CollectionUtil;

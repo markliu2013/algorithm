@@ -1,7 +1,5 @@
 package com.zfwhub.algorithm.templates.pack_problems;
 
-import java.util.*;
-
 // 背包问题，背包实体类
 public class Pack {
     
@@ -19,24 +17,6 @@ public class Pack {
         this.weight = weight;
         this.value = value;
         this.quantity = quantity;
-    }
-
-    public static List<Pack> arrayToPackList(int[] weights, int[] values) {
-        List<Pack> packs = new ArrayList<>();
-        for (int i = 0; i < values.length; i++) {
-            Pack p = new Pack(weights[i], values[i]);
-            packs.add(p);
-        }
-        return packs;
-    }
-    
-    public static List<Pack> arrayToPackList(int[] weights, int[] values, int[] quantities) {
-        List<Pack> packs = new ArrayList<>();
-        for (int i = 0; i < values.length; i++) {
-            Pack p = new Pack(weights[i], values[i], quantities[i]);
-            packs.add(p);
-        }
-        return packs;
     }
 
     @Override
@@ -66,4 +46,10 @@ public class Pack {
             return false;
         return true;
     }
+    
+    @Override
+    public String toString() {
+        return "[weight="+weight+", value="+value+"]";
+    }
+    
 }
