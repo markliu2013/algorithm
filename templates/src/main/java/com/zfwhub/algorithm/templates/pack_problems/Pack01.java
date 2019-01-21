@@ -1,5 +1,4 @@
 package com.zfwhub.algorithm.templates.pack_problems;
-
 import java.util.*;
 
 /**
@@ -126,7 +125,7 @@ public class Pack01 {
         int[] values = new int[] { 3, 4};
         int capacity = 8;
         
-        System.out.println(solution1(Pack.arrayToPackList(volumns, values), capacity));
+        System.out.println(solution1(PackUtil.arrayToPackList(volumns, values), capacity));
 //        System.out.println(solution2(volumns, values, capacity));
 //        System.out.println(solution4(volumns, values, capacity));
     }
