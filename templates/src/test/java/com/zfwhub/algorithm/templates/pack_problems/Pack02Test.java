@@ -14,12 +14,12 @@ public class Pack02Test {
 
     @Test
     public void testSolution1() {
-        assertEquals(expected1, Pack02.solution1(Pack.arrayToPackList(volumns1, values1), capacity1));
+        assertEquals(expected1, Pack02.solution1(PackUtil.arrayToPackList(volumns1, values1), capacity1));
     }
     
     @Test
     public void testSolution2() {
-        assertEquals(expected1, Pack02.solution2(Pack.arrayToPackList(volumns1, values1), capacity1));
+        assertEquals(expected1, Pack02.solution2(PackUtil.arrayToPackList(volumns1, values1), capacity1));
     }
 
 }
