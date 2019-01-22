@@ -57,6 +57,9 @@ public class Pack01Solution {
             dpResult02 = map.get(dpMapKey02);
         } else {
             dpResult02 = solution2DP(subPacks, capacity - lastPack.weight, map);
+            if (dpMapKey02.size()) {
+                
+            }
             map.put(dpMapKey02, new DpResult(new ArrayList<>(dpResult02.packs), dpResult02.value));
         }
         dpResult02.packs.add(lastPack);
