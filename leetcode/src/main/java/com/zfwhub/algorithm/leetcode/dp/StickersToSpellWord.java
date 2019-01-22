@@ -104,6 +104,7 @@ public class StickersToSpellWord {
         return list;
     }
     
+    // 每选择一个sticker，对应的target都会改变，StickerResult封装选择的sticker个数和target的关系
     static class StickerResult {
         public int count;
         public List<Character> target;
