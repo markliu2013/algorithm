@@ -69,6 +69,29 @@ public class Pack01Solution {
         return dpResult01.compareTo(dpResult02) > 0 ? dpResult01 : dpResult02;
     }
     
+    public static List<Pack> solution3(List<Pack> packs, int capacity) {
+        DpResult[][] results = new DpResult[packs.size()+1][capacity+1];
+        // 默认第一行
+        for (int j = 0; j <= capacity; j++) {
+            results[0][j] = new DpResult(new ArrayList<>(), 0);
+        }
+        for (int i = 0; i < packs.size(); i++) {
+            Pack p = packs.get(i);
+            for (int j = 0; j <= capacity; j++) {
+                if (p.weight > j) {
+                    results[i+1][j] = new DpResult(new ArrayList<>(results[i][j].packs), results[i][j].value);
+                } else {
+                    DpResult dpResult01 = new DpResult(new ArrayList<>(results[i][j].packs), results[i][j].value);
+                    DpResult dpResult02 = new DpResult(new ArrayList<>(results[i][j-p.weight].packs), results[i][j-p.weight].value);
+                    dpResult02.packs.add(p);
+                    dpResult02.value += p.value;
+                    results[i+1][j] = dpResult01.compareTo(dpResult02) > 0 ? dpResult01 : dpResult02;
+                }
+            }
+        }
+        return results[packs.size()][capacity].packs;
+    }
+    
     // 为了优化DP，map缓存的key
     static class DpMapKey {
         
@@ -144,7 +167,7 @@ public class Pack01Solution {
         int[] volumns = new int[] { 5, 5, 3};
         int[] values = new int[] { 400, 500, 200};
         int capacity = 10;
-        List<Pack> packs = solution2(PackUtil.arrayToPackList(volumns, values), capacity);
+        List<Pack> packs = solution3(PackUtil.arrayToPackList(volumns, values), capacity);
         
         System.out.println(PackUtil.getValue(packs));
 //        System.out.println(solution2(volumns, values, capacity));
