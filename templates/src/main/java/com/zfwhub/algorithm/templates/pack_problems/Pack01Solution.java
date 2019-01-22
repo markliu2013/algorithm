@@ -45,7 +45,10 @@ public class Pack01Solution {
             dpResult01 = map.get(dpMapKey01);
         } else {
             dpResult01 = solution2DP(subPacks, capacity, map);
-            map.put(dpMapKey01, new DpResult(new ArrayList<>(dpResult01.packs), dpResult01.value));
+            // 不需要缓存packs.size=0的情况，能省则省。
+            if (dpMapKey01.packs.size() != 0) {
+                map.put(dpMapKey01, new DpResult(new ArrayList<>(dpResult01.packs), dpResult01.value));
+            }
         }
         if (lastPack.weight > capacity) {
             return dpResult01;
@@ -57,10 +60,9 @@ public class Pack01Solution {
             dpResult02 = map.get(dpMapKey02);
         } else {
             dpResult02 = solution2DP(subPacks, capacity - lastPack.weight, map);
-            if (dpMapKey02.size()) {
-                
+            if (dpMapKey02.packs.size() != 0) {
+                map.put(dpMapKey02, new DpResult(new ArrayList<>(dpResult02.packs), dpResult02.value));
             }
-            map.put(dpMapKey02, new DpResult(new ArrayList<>(dpResult02.packs), dpResult02.value));
         }
         dpResult02.packs.add(lastPack);
         dpResult02.value += lastPack.value;
