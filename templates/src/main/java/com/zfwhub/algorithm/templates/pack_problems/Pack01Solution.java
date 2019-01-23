@@ -120,6 +120,30 @@ public class Pack01Solution {
         return results[capacity].packs;
     }
     
+    public static List<Pack> solution5(List<Pack> packs, int capacity) {
+        List<Pack> result = new ArrayList<>();
+        int[] results = new int[capacity + 1];
+        int[] preResults = new int[capacity + 1];
+        for (int i = 0; i < packs.size(); i++) {
+            Pack p = packs.get(i);
+            for (int j = 0; j <= capacity; j++) {
+                if (p.weight > j) {
+                    results[j] = preResults[j];
+                } else {
+                    if (preResults[j-p.weight] + p.value > preResults[j]) {
+                        results[j] = preResults[j-p.weight] + p.value;
+                        result.add(p);
+                    } else {
+                        results[j] = preResults[j];
+                    }
+                }
+            }
+            // 注意必须是深度复制
+            preResults = results.clone();
+        }
+        return result;
+    }
+    
     // 为了优化DP，map缓存的key
     static class DpMapKey {
         
@@ -209,8 +233,10 @@ public class Pack01Solution {
         int[] values = new int[] { 400, 500, 200};
         int capacity = 10;
         List<Pack> packs = solution3(PackUtil.arrayToPackList(volumns, values), capacity);
+        List<Pack> packs2 = solution5(PackUtil.arrayToPackList(volumns, values), capacity);
         
-        System.out.println(PackUtil.getValue(packs));
+        System.out.println(packs);
+        System.out.println(packs2);
 //        System.out.println(solution2(volumns, values, capacity));
 //        System.out.println(solution4(volumns, values, capacity));
     }
