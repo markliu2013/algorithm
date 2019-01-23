@@ -120,28 +120,26 @@ public class Pack01Solution {
         return results[capacity].packs;
     }
     
+    // https://zhuanlan.zhihu.com/p/35278858
     public static List<Pack> solution5(List<Pack> packs, int capacity) {
-        List<Pack> result = new ArrayList<>();
-        int[] results = new int[capacity + 1];
-        int[] preResults = new int[capacity + 1];
+        List<Pack> solutionPackList = new ArrayList<>();
+        int[][] results = new int[packs.size()+1][capacity+1];
         for (int i = 0; i < packs.size(); i++) {
             Pack p = packs.get(i);
+            // j必须从0开始，因为容量为0的包可以装体积为0的物品
             for (int j = 0; j <= capacity; j++) {
-                if (p.weight > j) {
-                    results[j] = preResults[j];
+                if (p.weight > j) {//如果物品放不进背包
+                    results[i+1][j] = results[i][j];
                 } else {
-                    if (preResults[j-p.weight] + p.value > preResults[j]) {
-                        results[j] = preResults[j-p.weight] + p.value;
-                        result.add(p);
-                    } else {
-                        results[j] = preResults[j];
-                    }
+                    results[i+1][j] = Math.max(results[i][j], results[i][j-p.weight] + p.value);
                 }
             }
-            // 注意必须是深度复制
-            preResults = results.clone();
         }
-        return result;
+        return solutionPackList;
+    }
+    
+    private static void solution5Backtrack(List<Pack> packs, List<Pack> solutionPackList) {
+        
     }
     
     // 为了优化DP，map缓存的key
