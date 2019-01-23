@@ -120,6 +120,37 @@ public class Pack01Solution {
         return results[capacity].packs;
     }
     
+    // https://zhuanlan.zhihu.com/p/35278858
+    public static List<Pack> solution5(List<Pack> packs, int capacity) {
+        List<Pack> solutionPackList = new ArrayList<>();
+        int[][] results = new int[packs.size()+1][capacity+1];
+        for (int i = 0; i < packs.size(); i++) {
+            Pack p = packs.get(i);
+            // j必须从0开始，因为容量为0的包可以装体积为0的物品
+            for (int j = 0; j <= capacity; j++) {
+                if (p.weight > j) {//如果物品放不进背包
+                    results[i+1][j] = results[i][j];
+                } else {
+                    results[i+1][j] = Math.max(results[i][j], results[i][j-p.weight] + p.value);
+                }
+            }
+        }
+        solution5Backtrack(packs, solutionPackList, results, packs.size(), capacity);
+        return solutionPackList;
+    }
+    
+    private static void solution5Backtrack(List<Pack> packs, List<Pack> solutionPackList, int[][] results, int i, int j) {
+        if (i > 0) {
+            Pack p = packs.get(i-1);
+            if (results[i][j] == results[i-1][j]) {
+                solution5Backtrack(packs, solutionPackList, results, i-1, j);
+            } else {
+                solutionPackList.add(p);
+                solution5Backtrack(packs, solutionPackList, results, i-1, j-p.weight);
+            }
+        }
+    }
+    
     // 为了优化DP，map缓存的key
     static class DpMapKey {
         
@@ -209,8 +240,10 @@ public class Pack01Solution {
         int[] values = new int[] { 400, 500, 200};
         int capacity = 10;
         List<Pack> packs = solution3(PackUtil.arrayToPackList(volumns, values), capacity);
+        List<Pack> packs2 = solution5(PackUtil.arrayToPackList(volumns, values), capacity);
         
-        System.out.println(PackUtil.getValue(packs));
+        System.out.println(packs);
+        System.out.println(packs2);
 //        System.out.println(solution2(volumns, values, capacity));
 //        System.out.println(solution4(volumns, values, capacity));
     }
