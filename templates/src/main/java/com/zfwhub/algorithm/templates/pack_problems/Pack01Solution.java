@@ -135,11 +135,20 @@ public class Pack01Solution {
                 }
             }
         }
+        solution5Backtrack(packs, solutionPackList, results, packs.size(), capacity);
         return solutionPackList;
     }
     
-    private static void solution5Backtrack(List<Pack> packs, List<Pack> solutionPackList) {
-        
+    private static void solution5Backtrack(List<Pack> packs, List<Pack> solutionPackList, int[][] results, int i, int j) {
+        if (i > 0) {
+            Pack p = packs.get(i-1);
+            if (results[i][j] == results[i-1][j]) {
+                solution5Backtrack(packs, solutionPackList, results, i-1, j);
+            } else {
+                solutionPackList.add(p);
+                solution5Backtrack(packs, solutionPackList, results, i-1, j-p.weight);
+            }
+        }
     }
     
     // 为了优化DP，map缓存的key
