@@ -45,8 +45,8 @@ public class Pack01 {
         int[] results = new int[capacity + 1];
         int[] preResults = new int[capacity + 1];
         for (int i = 0; i < packs.size(); i++) {
+            Pack p = packs.get(i);
             for (int j = 0; j <= capacity; j++) {
-                Pack p = packs.get(i);
                 if (p.weight > j) {
                     results[j] = preResults[j];
                 } else {
