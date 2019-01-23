@@ -17,6 +17,7 @@ public class StickersToSpellWord2 {
         return result >= INFINITE ? -1 : result;
     }
     
+    // 将此问题转化为0 1型的背包问题
     private static List<List<Character>> compress(String[] stickers, List<Character> target) {
         List<List<Character>> result = new ArrayList<>();
         for (int i = 0; i < stickers.length; i++) {

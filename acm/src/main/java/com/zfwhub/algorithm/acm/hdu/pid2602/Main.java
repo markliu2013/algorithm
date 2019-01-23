@@ -20,7 +20,7 @@ public class Main {
                 for (int j = 0; j < count; j++) {
                     weigh[j] = sc.nextInt();
                 }
-                System.out.println(PackUtil.getValue(Pack01Solution.solution2(PackUtil.arrayToPackList(weigh, value), weight)));
+                System.out.println(PackUtil.getValue(Pack01Solution.solution4(PackUtil.arrayToPackList(weigh, value), weight)));
             }
         } finally {
             sc.close();
@@ -94,7 +94,56 @@ class Pack01Solution {
         dpResult02.value += lastPack.value;
         return dpResult01.compareTo(dpResult02) > 0 ? dpResult01 : dpResult02;
     }
-
+    
+    public static List<Pack> solution3(List<Pack> packs, int capacity) {
+        DpResult[][] results = new DpResult[packs.size()+1][capacity+1];
+        // 默认第一行
+        for (int j = 0; j <= capacity; j++) {
+            results[0][j] = new DpResult(new ArrayList<>(), 0);
+        }
+        for (int i = 0; i < packs.size(); i++) {
+            Pack p = packs.get(i);
+            for (int j = 0; j <= capacity; j++) {
+                if (p.weight > j) {
+                    results[i+1][j] = new DpResult(new ArrayList<>(results[i][j].packs), results[i][j].value);
+                } else {
+                    DpResult dpResult01 = new DpResult(new ArrayList<>(results[i][j].packs), results[i][j].value);
+                    DpResult dpResult02 = new DpResult(new ArrayList<>(results[i][j-p.weight].packs), results[i][j-p.weight].value);
+                    dpResult02.packs.add(p);
+                    dpResult02.value += p.value;
+                    results[i+1][j] = dpResult01.compareTo(dpResult02) > 0 ? dpResult01 : dpResult02;
+                }
+            }
+        }
+        return results[packs.size()][capacity].packs;
+    }
+    
+    public static List<Pack> solution4(List<Pack> packs, int capacity) {
+        DpResult[] results = new DpResult[capacity + 1];
+        DpResult[] preResults = new DpResult[capacity + 1];
+        // 默认第一行
+        for (int j = 0; j <= capacity; j++) {
+            preResults[j] = new DpResult(new ArrayList<>(), 0);
+        }
+        for (int i = 0; i < packs.size(); i++) {
+            Pack p = packs.get(i);
+            for (int j = 0; j <= capacity; j++) {
+                if (p.weight > j) {
+                    results[j] = preResults[j].clone();
+                } else {
+                    DpResult dpResult01 = preResults[j].clone();
+                    DpResult dpResult02 = preResults[j-p.weight].clone();
+                    dpResult02.packs.add(p);
+                    dpResult02.value += p.value;
+                    results[j] = dpResult01.compareTo(dpResult02) > 0 ? dpResult01 : dpResult02;
+                }
+            }
+            // 注意必须是深度复制
+            preResults = results.clone();
+        }
+        return results[capacity].packs;
+    }
+    
     // 为了优化DP，map缓存的key
     static class DpMapKey {
 
@@ -141,16 +190,16 @@ class Pack01Solution {
 
     }
 
-    static class DpResult implements Comparable<DpResult> {
-
+static class DpResult implements Comparable<DpResult>, Cloneable {
+        
         public List<Pack> packs;
         public Integer value;//避免每次需要循环，value在添加或删除pack时手动维护。
-
+        
         public DpResult(List<Pack> packs, Integer value) {
             this.packs = packs;
             this.value = value;
         }
-
+        
         // 判断value是否和packs一致
         public boolean checkValue() {
             return value.equals(PackUtil.getValue(packs));
@@ -160,12 +209,24 @@ class Pack01Solution {
         public int compareTo(DpResult o) {
             return value.compareTo(o.value);
         }
-
+        
+        @Override
+        public DpResult clone() {
+            try {
+                DpResult dpResult = (DpResult) super.clone();
+                dpResult.packs = new ArrayList<>(packs);
+                return dpResult;
+            } catch (CloneNotSupportedException e) {
+                // this shouldn't happen, since we are Cloneable
+                throw new InternalError();
+            }
+        }
+        
         @Override
         public String toString() {
-            return packs.toString() + ", totalValue=" + value + ".";
+            return packs.toString() + ", totalValue="+value+".";
         }
-
+        
     }
 
     public static void main(String[] args) {

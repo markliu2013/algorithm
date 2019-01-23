@@ -57,6 +57,11 @@ public class Pack01Test {
         assertEquals(expected3, Pack01.solution2(PackUtil.arrayToPackList(volumns3, values3), capacity3));
         assertEquals(expected4, Pack01.solution2(PackUtil.arrayToPackList(volumns4, values4), capacity4));
         assertEquals(expected5, Pack01.solution2(PackUtil.arrayToPackList(volumns5, values5), capacity5));
+        assertEquals(expected1, PackUtil.getValue(Pack01Solution.solution3(PackUtil.arrayToPackList(volumns1, values1), capacity1)));
+        assertEquals(expected2, PackUtil.getValue(Pack01Solution.solution3(PackUtil.arrayToPackList(volumns2, values2), capacity2)));
+        assertEquals(expected3, PackUtil.getValue(Pack01Solution.solution3(PackUtil.arrayToPackList(volumns3, values3), capacity3)));
+        assertEquals(expected4, PackUtil.getValue(Pack01Solution.solution3(PackUtil.arrayToPackList(volumns4, values4), capacity4)));
+        assertEquals(expected5, PackUtil.getValue(Pack01Solution.solution3(PackUtil.arrayToPackList(volumns5, values5), capacity5)));
     }
 
     @Test
@@ -66,6 +71,11 @@ public class Pack01Test {
         assertEquals(expected3, Pack01.solution3(PackUtil.arrayToPackList(volumns3, values3), capacity3));
         assertEquals(expected4, Pack01.solution3(PackUtil.arrayToPackList(volumns4, values4), capacity4));
         assertEquals(expected5, Pack01.solution3(PackUtil.arrayToPackList(volumns5, values5), capacity5));
+        assertEquals(expected1, PackUtil.getValue(Pack01Solution.solution4(PackUtil.arrayToPackList(volumns1, values1), capacity1)));
+        assertEquals(expected2, PackUtil.getValue(Pack01Solution.solution4(PackUtil.arrayToPackList(volumns2, values2), capacity2)));
+        assertEquals(expected3, PackUtil.getValue(Pack01Solution.solution4(PackUtil.arrayToPackList(volumns3, values3), capacity3)));
+        assertEquals(expected4, PackUtil.getValue(Pack01Solution.solution4(PackUtil.arrayToPackList(volumns4, values4), capacity4)));
+        assertEquals(expected5, PackUtil.getValue(Pack01Solution.solution4(PackUtil.arrayToPackList(volumns5, values5), capacity5)));
     }
     
     @Test
