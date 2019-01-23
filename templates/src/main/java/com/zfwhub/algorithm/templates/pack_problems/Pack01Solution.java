@@ -47,7 +47,7 @@ public class Pack01Solution {
             dpResult01 = solution2DP(subPacks, capacity, map);
             // 不需要缓存packs.size=0的情况，能省则省。
             if (dpMapKey01.packs.size() != 0) {
-                map.put(dpMapKey01, new DpResult(new ArrayList<>(dpResult01.packs), dpResult01.value));
+                map.put(dpMapKey01, dpResult01.clone());
             }
         }
         if (lastPack.weight > capacity) {
@@ -61,12 +61,63 @@ public class Pack01Solution {
         } else {
             dpResult02 = solution2DP(subPacks, capacity - lastPack.weight, map);
             if (dpMapKey02.packs.size() != 0) {
-                map.put(dpMapKey02, new DpResult(new ArrayList<>(dpResult02.packs), dpResult02.value));
+                map.put(dpMapKey02, dpResult02.clone());
             }
         }
         dpResult02.packs.add(lastPack);
         dpResult02.value += lastPack.value;
         return dpResult01.compareTo(dpResult02) > 0 ? dpResult01 : dpResult02;
+    }
+    
+    // 对应Pack01.solution2
+    public static List<Pack> solution3(List<Pack> packs, int capacity) {
+        DpResult[][] results = new DpResult[packs.size()+1][capacity+1];
+        // 默认第一行
+        for (int j = 0; j <= capacity; j++) {
+            results[0][j] = new DpResult(new ArrayList<>(), 0);
+        }
+        for (int i = 0; i < packs.size(); i++) {
+            Pack p = packs.get(i);
+            for (int j = 0; j <= capacity; j++) {
+                if (p.weight > j) {
+                    results[i+1][j] = results[i][j];
+                } else {
+                    DpResult dpResult01 = results[i][j].clone();
+                    DpResult dpResult02 = results[i][j-p.weight].clone();
+                    dpResult02.packs.add(p);
+                    dpResult02.value += p.value;
+                    results[i+1][j] = dpResult01.compareTo(dpResult02) > 0 ? dpResult01 : dpResult02;
+                }
+            }
+        }
+        return results[packs.size()][capacity].packs;
+    }
+    
+    // 对应Pack01.solution3
+    public static List<Pack> solution4(List<Pack> packs, int capacity) {
+        DpResult[] results = new DpResult[capacity + 1];
+        DpResult[] preResults = new DpResult[capacity + 1];
+        // 默认第一行
+        for (int j = 0; j <= capacity; j++) {
+            preResults[j] = new DpResult(new ArrayList<>(), 0);
+        }
+        for (int i = 0; i < packs.size(); i++) {
+            Pack p = packs.get(i);
+            for (int j = 0; j <= capacity; j++) {
+                if (p.weight > j) {
+                    results[j] = preResults[j].clone();
+                } else {
+                    DpResult dpResult01 = preResults[j].clone();
+                    DpResult dpResult02 = preResults[j-p.weight].clone();
+                    dpResult02.packs.add(p);
+                    dpResult02.value += p.value;
+                    results[j] = dpResult01.compareTo(dpResult02) > 0 ? dpResult01 : dpResult02;
+                }
+            }
+            // 注意必须是深度复制
+            preResults = results.clone();
+        }
+        return results[capacity].packs;
     }
     
     // 为了优化DP，map缓存的key
@@ -113,7 +164,8 @@ public class Pack01Solution {
         
     }
     
-    static class DpResult implements Comparable<DpResult> {
+    // TODO 深入了解 Cloneable Comparable Serializable
+    static class DpResult implements Comparable<DpResult>, Cloneable {
         
         public List<Pack> packs;
         public Integer value;//避免每次需要循环，value在添加或删除pack时手动维护。
@@ -134,6 +186,18 @@ public class Pack01Solution {
         }
         
         @Override
+        public DpResult clone() {
+            try {
+                DpResult dpResult = (DpResult) super.clone();
+                dpResult.packs = new ArrayList<>(packs);
+                return dpResult;
+            } catch (CloneNotSupportedException e) {
+                // this shouldn't happen, since we are Cloneable
+                throw new InternalError();
+            }
+        }
+        
+        @Override
         public String toString() {
             return packs.toString() + ", totalValue="+value+".";
         }
@@ -144,7 +208,7 @@ public class Pack01Solution {
         int[] volumns = new int[] { 5, 5, 3};
         int[] values = new int[] { 400, 500, 200};
         int capacity = 10;
-        List<Pack> packs = solution2(PackUtil.arrayToPackList(volumns, values), capacity);
+        List<Pack> packs = solution3(PackUtil.arrayToPackList(volumns, values), capacity);
         
         System.out.println(PackUtil.getValue(packs));
 //        System.out.println(solution2(volumns, values, capacity));
