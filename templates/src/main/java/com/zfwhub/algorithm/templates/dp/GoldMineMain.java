@@ -1,6 +1,6 @@
 package com.zfwhub.algorithm.templates.dp;
-
 import java.util.*;
+import com.zfwhub.algorithm.utils.CollectionUtil;
 
 /**
  * https://www.jianshu.com/p/e200805306db
@@ -14,7 +14,7 @@ public class GoldMineMain {
     public int getMaxGold3(List<GoldMine> goldMines, int maxPerson) {
         int maxAmount = 0;
         List<GoldMine> maxList = null;
-        List<List<GoldMine>> goldMinesCom = getAllCombination(goldMines);
+        List<List<GoldMine>> goldMinesCom = CollectionUtil.subsets(goldMines);
         for (Iterator<List<GoldMine>> iterator = goldMinesCom.iterator(); iterator.hasNext();) {
             List<GoldMine> list = iterator.next();
             int persons = 0;
@@ -94,23 +94,6 @@ public class GoldMineMain {
             preResult = currentResult;
         }
         return currentResult[maxPerson - 1];
-    }
-
-    private List<List<GoldMine>> getAllCombination(List<GoldMine> goldMines) {
-        List<List<GoldMine>> list = new ArrayList<List<GoldMine>>();
-        int count = new Double(Math.pow(2.0, goldMines.size())).intValue();
-        for (int i = 0; i < count; i++) {
-            List<GoldMine> list1 = new ArrayList<GoldMine>();
-            String binaryString = String.format("%3s", Integer.toBinaryString(i)).replace(' ', '0');
-            char[] chars = binaryString.toCharArray();
-            for (int j = 0; j < chars.length; j++) {
-                if (chars[j] == '1') {
-                    list1.add(goldMines.get(j));
-                }
-            }
-            list.add(list1);
-        }
-        return list;
     }
 
     public static void main(String[] args) {

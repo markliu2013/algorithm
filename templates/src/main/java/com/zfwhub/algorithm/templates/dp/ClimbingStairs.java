@@ -1,10 +1,9 @@
 package com.zfwhub.algorithm.templates.dp;
-
 import java.util.*;
 
 /**
  * https://leetcode.com/problems/climbing-stairs/
- * Fibonacci Concept
+ * 斐波那契数列
  */
 public class ClimbingStairs {
 
@@ -70,6 +69,9 @@ public class ClimbingStairs {
         return temp;
     }
     
+    /**
+     * 回溯解法 
+     */
     public static List<List<Integer>> climbStairs4(int n) {
         List<List<Integer>> solutionList = new ArrayList<>();
         // 存储1和2，代表每次走多少步。
