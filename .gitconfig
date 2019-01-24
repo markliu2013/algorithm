@@ -1,5 +1,8 @@
 [core]
     whitespace = -trailing-space,-indent-with-non-tab,-tab-in-indent
+	aurocrlf = true #windows
+	aurocrlf = input #mac
+	safecrlf = true
 [credential]
     helper = store
 [user]
