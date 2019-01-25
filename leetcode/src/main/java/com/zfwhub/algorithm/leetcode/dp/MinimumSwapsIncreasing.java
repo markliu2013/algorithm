@@ -5,7 +5,7 @@ import com.zfwhub.algorithm.utils.ArrayUtil;
 // https://leetcode.com/problems/minimum-swaps-to-make-sequences-increasing/
 public class MinimumSwapsIncreasing {
     
-    // 回溯法暴力破解
+    // 回溯法暴力破解 TODO 优化，已经大于当前最小，提前放弃。回溯法找最优解的套路。
     public static int minSwap(int[] A, int[] B) {
         List<List<Boolean>> solutionList = new ArrayList<>();
         List<Boolean> solution = new ArrayList<>();
@@ -14,6 +14,7 @@ public class MinimumSwapsIncreasing {
         for (int i = 0; i < solutionList.size(); i++) {
             min = Math.min(min, countSolution(solutionList.get(i)));
         }
+        System.out.println(solutionList);
         return min;
     }
     
@@ -21,11 +22,12 @@ public class MinimumSwapsIncreasing {
     public static int minSwap2(int[] A, int[] B) {
         DPResult dpResult = new DPResult();
         minSwapDP(A, B, dpResult);
+        System.out.println(dpResult);
         return dpResult.minSwap;
     }
     public static void minSwapDP(int[] A, int[] B, DPResult dpResult) {
         if (A.length == 1) {
-            dpResult.lastSwapped = false;
+            dpResult.lastSwapped = 0;
             dpResult.minSwap = 0;
             return;
         }
@@ -36,35 +38,50 @@ public class MinimumSwapsIncreasing {
         int[] subA = Arrays.copyOfRange(A, 0, A.length-1);
         int[] subB = Arrays.copyOfRange(B, 0, B.length-1);
         minSwapDP(subA, subB, dpResult);
-        int a = dpResult.minSwap;
-        if (dpResult.lastSwapped) {
+        int minSwap = dpResult.minSwap;
+        if (dpResult.lastSwapped == 1) {
             if (a1 <= b2 || b1 <= a2) {
-                if (a+1 > A.length/2) {
-                    dpResult.lastSwapped = false;
-                    dpResult.minSwap = A.length-(a+1);
+                if (minSwap+1 > A.length/2) {
+                    dpResult.lastSwapped = 0;
+                    dpResult.minSwap = A.length-(minSwap+1);
+                } else if (minSwap+1 < A.length/2) {
+                    dpResult.minSwap = minSwap+1;
                 } else {
-                    dpResult.minSwap = a+1;
+                    dpResult.minSwap = minSwap+1;
+                    dpResult.lastSwapped = -1;
                 }
-            } else {
-                dpResult.lastSwapped = false;
+            }
+        } else if (dpResult.lastSwapped == 0) {
+            if (a1 <= a2 || b1 <= b2) {
+                if (minSwap+1 > A.length/2) {
+                    dpResult.minSwap = A.length/2-(minSwap+1);
+                } else if (minSwap+1 < A.length/2) {
+                    dpResult.minSwap = minSwap+1;
+                    dpResult.lastSwapped = 1;
+                } else {
+                    dpResult.minSwap = minSwap+1;
+                    dpResult.lastSwapped = -1;
+                }
             }
         } else {
-            if (a1 <= a2 || b1 <= b2) {
-                if (a+1 > A.length/2) {
-                    dpResult.minSwap = A.length/2-(a+1);
-                } else {
-                    dpResult.lastSwapped = true;
-                    dpResult.minSwap = a+1;
-                }
+            if ((a1 > a2 && b1 > b2) || (a1 > b2 && b1 > a2)) {
+                dpResult.lastSwapped = 0;
             } else {
-                dpResult.minSwap = a;
+                dpResult.lastSwapped = 1;
             }
         }
     }
     
     private static class DPResult {
-        public boolean lastSwapped = false;
+        
+        public int lastSwapped = 0; // 最后一个是否交换了，0代表不交换，1代表交换，-1代表是否交换结果都一样。
         public int minSwap = Integer.MAX_VALUE;
+        
+        @Override
+        public String toString() {
+            return "DPResult [lastSwapped=" + lastSwapped + ", minSwap=" + minSwap + "]";
+        }
+        
     }
 
     private static void dfs(List<List<Boolean>> solutionList, List<Boolean> solution, int[] A, int[] B) {
@@ -143,12 +160,10 @@ public class MinimumSwapsIncreasing {
     }
     
     public static void main(String[] args) {
-        int[] A = new int[] {0,7,8,10,10,11,12,13,19,18};
-        int[] B = new int[] {4,4,5, 7,11,14,15,16,17,20};
+        int[] A = new int[] {0,7,8,10,10};
+        int[] B = new int[] {4,4,5, 7,11};
         System.out.println(MinimumSwapsIncreasing.minSwap(A, B));
         System.out.println(MinimumSwapsIncreasing.minSwap2(A, B));
-        //System.out.println(Arrays.toString(newA));
-        //System.out.println(Arrays.toString(newB));
     }
 
 }
