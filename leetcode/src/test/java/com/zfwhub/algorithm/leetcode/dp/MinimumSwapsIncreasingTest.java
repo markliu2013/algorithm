@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import com.zfwhub.algorithm.leetcode.dp.MinimumSwapsIncreasing;
 
-public class MinimumSwapsToMakeSequencesIncreasingTest {
+public class MinimumSwapsIncreasingTest {
 
     @Test
     public void testMinSwap() {
@@ -35,7 +35,6 @@ public class MinimumSwapsToMakeSequencesIncreasingTest {
         assertEquals(result3, MinimumSwapsIncreasing.minSwap2(A3, B3));
         assertEquals(result4, MinimumSwapsIncreasing.minSwap2(A4, B4));
         assertEquals(result5, MinimumSwapsIncreasing.minSwap2(A5, B5));
-        
     }
 
 }
