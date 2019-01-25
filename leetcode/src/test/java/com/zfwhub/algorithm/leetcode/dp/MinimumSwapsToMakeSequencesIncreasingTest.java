@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import com.zfwhub.algorithm.leetcode.dp.MinimumSwapsToMakeSequencesIncreasing;
+import com.zfwhub.algorithm.leetcode.dp.MinimumSwapsIncreasing;
 
 public class MinimumSwapsToMakeSequencesIncreasingTest {
 
@@ -25,16 +25,16 @@ public class MinimumSwapsToMakeSequencesIncreasingTest {
         int[] A5 = new int[] {0,4,4,5,9};
         int[] B5 = new int[] {0,1,6,8,10};
         int result5 = 1;
-        assertEquals(result1, MinimumSwapsToMakeSequencesIncreasing.minSwap(A1, B1));
-        assertEquals(result2, MinimumSwapsToMakeSequencesIncreasing.minSwap(A2, B2));
-        assertEquals(result3, MinimumSwapsToMakeSequencesIncreasing.minSwap(A3, B3));
-        assertEquals(result4, MinimumSwapsToMakeSequencesIncreasing.minSwap(A4, B4));
-        assertEquals(result5, MinimumSwapsToMakeSequencesIncreasing.minSwap(A5, B5));
-        assertEquals(result1, MinimumSwapsToMakeSequencesIncreasing.minSwap2(A1, B1));
-        assertEquals(result2, MinimumSwapsToMakeSequencesIncreasing.minSwap2(A2, B2));
-        assertEquals(result3, MinimumSwapsToMakeSequencesIncreasing.minSwap2(A3, B3));
-        assertEquals(result4, MinimumSwapsToMakeSequencesIncreasing.minSwap2(A4, B4));
-        assertEquals(result5, MinimumSwapsToMakeSequencesIncreasing.minSwap2(A5, B5));
+        assertEquals(result1, MinimumSwapsIncreasing.minSwap(A1, B1));
+        assertEquals(result2, MinimumSwapsIncreasing.minSwap(A2, B2));
+        assertEquals(result3, MinimumSwapsIncreasing.minSwap(A3, B3));
+        assertEquals(result4, MinimumSwapsIncreasing.minSwap(A4, B4));
+        assertEquals(result5, MinimumSwapsIncreasing.minSwap(A5, B5));
+        assertEquals(result1, MinimumSwapsIncreasing.minSwap2(A1, B1));
+        assertEquals(result2, MinimumSwapsIncreasing.minSwap2(A2, B2));
+        assertEquals(result3, MinimumSwapsIncreasing.minSwap2(A3, B3));
+        assertEquals(result4, MinimumSwapsIncreasing.minSwap2(A4, B4));
+        assertEquals(result5, MinimumSwapsIncreasing.minSwap2(A5, B5));
         
     }
 

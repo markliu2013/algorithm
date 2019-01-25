@@ -3,7 +3,7 @@ import java.util.*;
 import com.zfwhub.algorithm.utils.ArrayUtil;
 
 // https://leetcode.com/problems/minimum-swaps-to-make-sequences-increasing/
-public class MinimumSwapsToMakeSequencesIncreasing {
+public class MinimumSwapsIncreasing {
     
     // 回溯法暴力破解
     public static int minSwap(int[] A, int[] B) {
@@ -14,7 +14,6 @@ public class MinimumSwapsToMakeSequencesIncreasing {
         for (int i = 0; i < solutionList.size(); i++) {
             min = Math.min(min, countSolution(solutionList.get(i)));
         }
-        
         return min;
     }
     
@@ -146,8 +145,8 @@ public class MinimumSwapsToMakeSequencesIncreasing {
     public static void main(String[] args) {
         int[] A = new int[] {0,7,8,10,10,11,12,13,19,18};
         int[] B = new int[] {4,4,5, 7,11,14,15,16,17,20};
-        System.out.println(MinimumSwapsToMakeSequencesIncreasing.minSwap(A, B));
-        System.out.println(MinimumSwapsToMakeSequencesIncreasing.minSwap2(A, B));
+        System.out.println(MinimumSwapsIncreasing.minSwap(A, B));
+        System.out.println(MinimumSwapsIncreasing.minSwap2(A, B));
         //System.out.println(Arrays.toString(newA));
         //System.out.println(Arrays.toString(newB));
     }
