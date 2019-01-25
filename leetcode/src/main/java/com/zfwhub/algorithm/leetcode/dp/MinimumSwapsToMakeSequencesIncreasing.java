@@ -14,6 +14,7 @@ public class MinimumSwapsToMakeSequencesIncreasing {
         for (int i = 0; i < solutionList.size(); i++) {
             min = Math.min(min, countSolution(solutionList.get(i)));
         }
+        
         return min;
     }
     
