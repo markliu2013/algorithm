@@ -41,10 +41,10 @@ public class MinimumSwapsIncreasing {
         int minSwap = dpResult.minSwap;
         if (dpResult.lastSwapped == 1) {
             if (a1 <= b2 || b1 <= a2) {
-                if (minSwap+1 > A.length/2) {
+                if (minSwap+1 > (double)A.length/2) {
                     dpResult.lastSwapped = 0;
                     dpResult.minSwap = A.length-(minSwap+1);
-                } else if (minSwap+1 < A.length/2) {
+                } else if (minSwap+1 < (double)A.length/2) {
                     dpResult.minSwap = minSwap+1;
                 } else {
                     dpResult.minSwap = minSwap+1;
@@ -53,11 +53,14 @@ public class MinimumSwapsIncreasing {
             }
         } else if (dpResult.lastSwapped == 0) {
             if (a1 <= a2 || b1 <= b2) {
-                if (minSwap+1 > A.length/2) {
+                if (minSwap+1 > (double)A.length/2) {
                     dpResult.minSwap = A.length/2-(minSwap+1);
-                } else if (minSwap+1 < A.length/2) {
+                } else if (minSwap+1 < (double)A.length/2) {
                     dpResult.minSwap = minSwap+1;
                     dpResult.lastSwapped = 1;
+                    if (a1 > b2 && b1 > a2) {
+                        dpResult.lastSwapped = -1;
+                    }
                 } else {
                     dpResult.minSwap = minSwap+1;
                     dpResult.lastSwapped = -1;
@@ -86,6 +89,7 @@ public class MinimumSwapsIncreasing {
 
     private static void dfs(List<List<Boolean>> solutionList, List<Boolean> solution, int[] A, int[] B) {
         if (isASolution(solution, A, B)) {
+            System.out.println(solutionList);
             processSolution(solutionList, solution);
         } else {
             // 对应每个位置是否交换
@@ -160,10 +164,11 @@ public class MinimumSwapsIncreasing {
     }
     
     public static void main(String[] args) {
-        int[] A = new int[] {0,7,8,10,10};
-        int[] B = new int[] {4,4,5, 7,11};
+        int[] A = new int[] {0,7,8,10,10,11,12,13,19,18};
+        int[] B = new int[] {4,4,5, 7,11,14,15,16,17,20};
         System.out.println(MinimumSwapsIncreasing.minSwap(A, B));
         System.out.println(MinimumSwapsIncreasing.minSwap2(A, B));
+        System.out.println(1+1 < (double)5/2);
     }
 
 }
