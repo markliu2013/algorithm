@@ -25,6 +25,7 @@ public class MinimumSwapsIncreasing {
         System.out.println(dpResult);
         return dpResult.minSwap;
     }
+    // test
     public static void minSwapDP(int[] A, int[] B, DPResult dpResult) {
         if (A.length == 1) {
             dpResult.lastSwapped = 0;
