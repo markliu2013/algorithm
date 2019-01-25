@@ -1,7 +1,7 @@
 package com.zfwhub.algorithm.templates.dp;
 
 /**
- * get Factorial of number
+ * 阶乘算法
  */
 public class Factorial {
 

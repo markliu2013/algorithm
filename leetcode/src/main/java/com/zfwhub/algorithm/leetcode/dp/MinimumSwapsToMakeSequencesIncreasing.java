@@ -2,10 +2,7 @@ package com.zfwhub.algorithm.leetcode.dp;
 import java.util.*;
 import com.zfwhub.algorithm.utils.ArrayUtil;
 
-/**
- * https://leetcode.com/problems/minimum-swaps-to-make-sequences-increasing/
- * https://blog.csdn.net/zjucor/article/details/79599287
- */
+// https://leetcode.com/problems/minimum-swaps-to-make-sequences-increasing/
 public class MinimumSwapsToMakeSequencesIncreasing {
     
     // 回溯法暴力破解
