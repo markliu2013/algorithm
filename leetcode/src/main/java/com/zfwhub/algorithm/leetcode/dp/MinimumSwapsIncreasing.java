@@ -5,13 +5,11 @@ import com.zfwhub.algorithm.utils.ArrayUtil;
 // https://leetcode.com/problems/minimum-swaps-to-make-sequences-increasing/
 public class MinimumSwapsIncreasing {
     
-    // 回溯法暴力破解
-    //  TODO 优化，已经大于当前最小，提前放弃。回溯法找最优解的套路。
-    public static List<Boolean> bestSolution = null;
+    // 回溯法暴力破解, 用bestSolution找最优解。
     public static int minSwap(int[] A, int[] B) {
-        List<List<Boolean>> solutionList = new ArrayList<>();
         List<Boolean> solution = new ArrayList<>();
-        dfs(solutionList, solution, A, B);
+        List<Boolean> bestSolution = new ArrayList<>();
+        dfs(solution, bestSolution, A, B);
         return countSolution(bestSolution);
     }
     
@@ -84,15 +82,15 @@ public class MinimumSwapsIncreasing {
         
     }
 
-    private static void dfs(List<List<Boolean>> solutionList, List<Boolean> solution, int[] A, int[] B) {
+    private static void dfs(List<Boolean> solution, List<Boolean> bestSolution, int[] A, int[] B) {
         if (isASolution(solution, A, B)) {
-            processSolution(solutionList, solution);
+            processSolution(solution, bestSolution);
         } else {
             // 对应每个位置是否交换
             for (int i = 0; i < 2; i++) {
-                if (isValid(solution, i, A, B)) {
+                if (isValid(solution, bestSolution, i, A, B)) {
                     makeMove(solution, i);
-                    dfs(solutionList, solution, A, B);
+                    dfs(solution, bestSolution, A, B);
                     unMakeMove(solution);
                 }
             }
@@ -114,15 +112,15 @@ public class MinimumSwapsIncreasing {
         }
     }
 
-    private static void processSolution(List<List<Boolean>> solutionList, List<Boolean> solution) {
+    private static void processSolution(List<Boolean> solution, List<Boolean> bestSolution) {
         if (countSolution(bestSolution) > countSolution(solution)) {
-            bestSolution = new ArrayList<>(solution);    
+            bestSolution.clear();
+            bestSolution.addAll(solution);
         }
-        solutionList.add(new ArrayList<>(solution));
     }
     
     // 0 false, 1 true 交换不可能超过数组的一半
-    private static boolean isValid(List<Boolean> solution, int i, int[] A, int[] B) {
+    private static boolean isValid(List<Boolean> solution, List<Boolean> bestSolution, int i, int[] A, int[] B) {
         // 为什么要加这个if，不然退出不了递归，请对比RestoreIpAddresses分析
         if (solution.size() > A.length) {
             return false;
@@ -143,7 +141,7 @@ public class MinimumSwapsIncreasing {
     }
     
     private static int countSolution(List<Boolean> solution) {
-        if (solution == null) {
+        if (solution.size() == 0) {
             return Integer.MAX_VALUE;
         }
         int count = 0;
@@ -164,11 +162,13 @@ public class MinimumSwapsIncreasing {
             }
         }
     }
+    
     public static void main(String[] args) {
-        int[] A = new int[] {0,4,4,5,9};
-        int[] B = new int[] {0,1,6,8,10};
+        int[] A = new int[] {0,7,8,10,10,11,12,13,19,18};
+        int[] B = new int[] {4,4,5, 7,11,14,15,16,17,20};
         System.out.println(MinimumSwapsIncreasing.minSwap(A, B));
 //        System.out.println(MinimumSwapsIncreasing.minSwap2(A, B));
+//        System.out.println(1+1 < (double)5/2);
     }
 
 }
