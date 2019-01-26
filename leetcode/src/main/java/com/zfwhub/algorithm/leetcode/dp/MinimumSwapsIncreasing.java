@@ -5,13 +5,13 @@ import com.zfwhub.algorithm.utils.ArrayUtil;
 // https://leetcode.com/problems/minimum-swaps-to-make-sequences-increasing/
 public class MinimumSwapsIncreasing {
     
-    // 回溯法暴力破解 TODO 优化，已经大于当前最小，提前放弃。回溯法找最优解的套路。
+    // 回溯法暴力破解
+    //  TODO 优化，已经大于当前最小，提前放弃。回溯法找最优解的套路。
+    public static List<Boolean> bestSolution = null;
     public static int minSwap(int[] A, int[] B) {
         List<List<Boolean>> solutionList = new ArrayList<>();
         List<Boolean> solution = new ArrayList<>();
-        List<Boolean> bestSolution = null;
-        dfs(solutionList, solution, bestSolution, A, B);
-        System.out.println(bestSolution);
+        dfs(solutionList, solution, A, B);
         return countSolution(bestSolution);
     }
     
@@ -84,15 +84,15 @@ public class MinimumSwapsIncreasing {
         
     }
 
-    private static void dfs(List<List<Boolean>> solutionList, List<Boolean> solution, List<Boolean> bestSolution, int[] A, int[] B) {
+    private static void dfs(List<List<Boolean>> solutionList, List<Boolean> solution, int[] A, int[] B) {
         if (isASolution(solution, A, B)) {
-            processSolution(solutionList, solution, bestSolution);
+            processSolution(solutionList, solution);
         } else {
             // 对应每个位置是否交换
             for (int i = 0; i < 2; i++) {
                 if (isValid(solution, i, A, B)) {
                     makeMove(solution, i);
-                    dfs(solutionList, solution, bestSolution, A, B);
+                    dfs(solutionList, solution, A, B);
                     unMakeMove(solution);
                 }
             }
@@ -114,15 +114,10 @@ public class MinimumSwapsIncreasing {
         }
     }
 
-    private static void processSolution(List<List<Boolean>> solutionList, List<Boolean> solution, List<Boolean> bestSolution) {
-        if (bestSolution == null) {
-            bestSolution = new ArrayList<>(solution);
-        } else {
-            if (countSolution(bestSolution) > countSolution(solution)) {
-                bestSolution = new ArrayList<>(solution);    
-            }
+    private static void processSolution(List<List<Boolean>> solutionList, List<Boolean> solution) {
+        if (countSolution(bestSolution) > countSolution(solution)) {
+            bestSolution = new ArrayList<>(solution);    
         }
-        System.out.println(bestSolution);
         solutionList.add(new ArrayList<>(solution));
     }
     
@@ -132,7 +127,7 @@ public class MinimumSwapsIncreasing {
         if (solution.size() > A.length) {
             return false;
         }
-        if (i == 1 && countSolution(solution) + 1 > A.length / 2) {
+        if (i == 1 && ((countSolution(solution) + 1 > A.length / 2) || (countSolution(solution) + 1 > countSolution(bestSolution)))) {
             return false;
         } else {
             return true;
@@ -148,6 +143,9 @@ public class MinimumSwapsIncreasing {
     }
     
     private static int countSolution(List<Boolean> solution) {
+        if (solution == null) {
+            return Integer.MAX_VALUE;
+        }
         int count = 0;
         for (int i = 0; i < solution.size(); i++) {
             if (solution.get(i)) {
@@ -166,13 +164,11 @@ public class MinimumSwapsIncreasing {
             }
         }
     }
-    
     public static void main(String[] args) {
-        int[] A = new int[] {0,7,8,10,10,11,12,13,19,18};
-        int[] B = new int[] {4,4,5, 7,11,14,15,16,17,20};
+        int[] A = new int[] {0,4,4,5,9};
+        int[] B = new int[] {0,1,6,8,10};
         System.out.println(MinimumSwapsIncreasing.minSwap(A, B));
-        System.out.println(MinimumSwapsIncreasing.minSwap2(A, B));
-        System.out.println(1+1 < (double)5/2);
+//        System.out.println(MinimumSwapsIncreasing.minSwap2(A, B));
     }
 
 }
