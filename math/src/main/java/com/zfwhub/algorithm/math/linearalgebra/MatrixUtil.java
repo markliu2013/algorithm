@@ -23,4 +23,31 @@ public class MatrixUtil {
         return null;
     }
     
+    /**
+     * 列空间
+     * @param a
+     * @return
+     */
+    public static Matrix getColumnSpace(Matrix a) {
+        return null;
+    }
+    
+    /**
+     * 行空间
+     * @param a
+     * @return
+     */
+    public static Matrix getRowSpace(Matrix a) {
+        return null;
+    }
+    
+    /**
+     * 左零空间
+     * @param a
+     * @return
+     */
+    public static Matrix getLeftNullSpace(Matrix a) {
+        return null;
+    }
+    
 }

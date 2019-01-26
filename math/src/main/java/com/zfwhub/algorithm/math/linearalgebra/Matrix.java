@@ -39,6 +39,30 @@ public class Matrix {
     }
     
     /**
+     * 是否可逆
+     * @return
+     */
+    public boolean isInvertible() {
+        return false;
+    }
+    
+    /**
+     * 求秩
+     * @return
+     */
+    public int rank() {
+        return 0;
+    }
+    
+    /**
+     * 求行列式
+     * @return
+     */
+    public int determinant() {
+        return 0;
+    }
+    
+    /**
      * 转置矩阵
      */
     public void transpose() {
