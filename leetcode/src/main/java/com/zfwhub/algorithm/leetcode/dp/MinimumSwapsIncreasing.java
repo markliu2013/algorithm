@@ -9,13 +9,10 @@ public class MinimumSwapsIncreasing {
     public static int minSwap(int[] A, int[] B) {
         List<List<Boolean>> solutionList = new ArrayList<>();
         List<Boolean> solution = new ArrayList<>();
-        dfs(solutionList, solution, A, B);
-        int min = Integer.MAX_VALUE;
-        for (int i = 0; i < solutionList.size(); i++) {
-            min = Math.min(min, countSolution(solutionList.get(i)));
-        }
-        System.out.println(solutionList);
-        return min;
+        List<Boolean> bestSolution = null;
+        dfs(solutionList, solution, bestSolution, A, B);
+        System.out.println(bestSolution);
+        return countSolution(bestSolution);
     }
     
     // 动态规划
@@ -87,16 +84,15 @@ public class MinimumSwapsIncreasing {
         
     }
 
-    private static void dfs(List<List<Boolean>> solutionList, List<Boolean> solution, int[] A, int[] B) {
+    private static void dfs(List<List<Boolean>> solutionList, List<Boolean> solution, List<Boolean> bestSolution, int[] A, int[] B) {
         if (isASolution(solution, A, B)) {
-            System.out.println(solutionList);
-            processSolution(solutionList, solution);
+            processSolution(solutionList, solution, bestSolution);
         } else {
             // 对应每个位置是否交换
             for (int i = 0; i < 2; i++) {
                 if (isValid(solution, i, A, B)) {
                     makeMove(solution, i);
-                    dfs(solutionList, solution, A, B);
+                    dfs(solutionList, solution, bestSolution, A, B);
                     unMakeMove(solution);
                 }
             }
@@ -118,7 +114,15 @@ public class MinimumSwapsIncreasing {
         }
     }
 
-    private static void processSolution(List<List<Boolean>> solutionList, List<Boolean> solution) {
+    private static void processSolution(List<List<Boolean>> solutionList, List<Boolean> solution, List<Boolean> bestSolution) {
+        if (bestSolution == null) {
+            bestSolution = new ArrayList<>(solution);
+        } else {
+            if (countSolution(bestSolution) > countSolution(solution)) {
+                bestSolution = new ArrayList<>(solution);    
+            }
+        }
+        System.out.println(bestSolution);
         solutionList.add(new ArrayList<>(solution));
     }
     
