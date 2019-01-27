@@ -10,7 +10,7 @@ public class MatrixUtil {
      * @param b
      * @return
      */
-    public static Matrix multiply(Matrix a, Matrix b) {
+    public static <T extends Number> Matrix<T> multiply(Matrix<T> a, Matrix<T> b) {
         return null;
     }
     
@@ -19,7 +19,7 @@ public class MatrixUtil {
      * @param a
      * @return
      */
-    public static Matrix getNullSpace(Matrix a) {
+    public static <T extends Number> Matrix<T> getNullSpace(Matrix<T> a) {
         return null;
     }
     
@@ -28,7 +28,7 @@ public class MatrixUtil {
      * @param a
      * @return
      */
-    public static Matrix getColumnSpace(Matrix a) {
+    public static <T extends Number> Matrix<T> getColumnSpace(Matrix<T> a) {
         return null;
     }
     
@@ -37,7 +37,7 @@ public class MatrixUtil {
      * @param a
      * @return
      */
-    public static Matrix getRowSpace(Matrix a) {
+    public static <T extends Number> Matrix<T> getRowSpace(Matrix<T> a) {
         return null;
     }
     
@@ -46,8 +46,18 @@ public class MatrixUtil {
      * @param a
      * @return
      */
-    public static Matrix getLeftNullSpace(Matrix a) {
+    public static <T extends Number> Matrix<T> getLeftNullSpace(Matrix<T> a) {
         return null;
+    }
+    
+    /**
+     * 空间a和空间b是否正交
+     * @param a
+     * @param b
+     * @return
+     */
+    public static <T extends Number> boolean isOrthogonal(Matrix<T> a, Matrix<T> b) {
+        return false;
     }
     
 }
