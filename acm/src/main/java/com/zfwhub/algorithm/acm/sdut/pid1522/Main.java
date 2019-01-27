@@ -1,8 +1,31 @@
-package com.zfwhub.algorithm.math.linearalgebra;
+package com.zfwhub.algorithm.acm.sdut.pid1522;
 
-import java.util.Arrays;
-
-public class Matrix {
+import java.util.Scanner;
+// http://acm.sdut.edu.cn/onlinejudge2/index.php/Home/Index/problemdetail/pid/1522.html
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        try {
+            while (sc.hasNextLine()) {
+                int m = sc.nextInt();
+                if (m == 0) {
+                    break;
+                }
+                int[][] data = new int[m][m];
+                for (int i = 0; i < m; i++) {
+                    for (int j = 0; j < m; j++) {
+                        data[i][j] = sc.nextInt();
+                    }
+                }
+                Matrix matrix = new Matrix(data);
+                System.out.println(matrix.isSymmetric() ? "yes" : "no");
+            }
+        } finally {
+            sc.close();
+        }
+    }
+}
+ class Matrix {
     
     private int[][] data;
 
@@ -21,23 +44,12 @@ public class Matrix {
         }
         this.data = data;
     }
-    
-    /**
-     * 是否方阵
-     * @return
-     */
     public boolean isSquare() {
         int m = data.length;
         int n = data[0].length;
         return m == n;
     }
-    
-    /**
-     * 是否对称阵
-     * @return
-     */
     public boolean isSymmetric() {
-        // A为方形矩阵是A为对称矩阵的必要条件。
         if (!isSquare()) {
             return false;
         }
@@ -49,48 +61,5 @@ public class Matrix {
             }
         }
         return true;
-    }
-    
-    /**
-     * 是否可逆
-     * @return
-     */
-    public boolean isInvertible() {
-        return false;
-    }
-    
-    /**
-     * 求秩
-     * @return
-     */
-    public int rank() {
-        return 0;
-    }
-    
-    /**
-     * 求行列式
-     * @return
-     */
-    public int determinant() {
-        return 0;
-    }
-    
-    /**
-     * 转置矩阵
-     */
-    public void transpose() {
-        
-    }
-    
-    /**
-     * 逆矩阵
-     */
-    public void inverse() {
-        
-    }
-    
-    @Override
-    public String toString() {
-        return Arrays.deepToString(data);
     }
 }
