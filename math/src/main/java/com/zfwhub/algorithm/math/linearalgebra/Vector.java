@@ -1,10 +1,10 @@
 package com.zfwhub.algorithm.math.linearalgebra;
 
-public class Vector<T extends Number> {
+public class Vector {
     
-    private T[] data;
+    private int[] data;
 
-    public Vector(T[] data) {
+    public Vector(int[] data) {
         this.data = data;
     }
 

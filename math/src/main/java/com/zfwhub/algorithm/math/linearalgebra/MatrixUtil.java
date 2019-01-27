@@ -10,7 +10,7 @@ public class MatrixUtil {
      * @param b
      * @return
      */
-    public static <T extends Number> Matrix<T> multiply(Matrix<T> a, Matrix<T> b) {
+    public static Matrix multiply(Matrix a, Matrix b) {
         return null;
     }
     
@@ -19,7 +19,7 @@ public class MatrixUtil {
      * @param a
      * @return
      */
-    public static <T extends Number> Matrix<T> getNullSpace(Matrix<T> a) {
+    public static Matrix getNullSpace(Matrix a) {
         return null;
     }
     
@@ -28,7 +28,7 @@ public class MatrixUtil {
      * @param a
      * @return
      */
-    public static <T extends Number> Matrix<T> getColumnSpace(Matrix<T> a) {
+    public static Matrix getColumnSpace(Matrix a) {
         return null;
     }
     
@@ -37,7 +37,7 @@ public class MatrixUtil {
      * @param a
      * @return
      */
-    public static <T extends Number> Matrix<T> getRowSpace(Matrix<T> a) {
+    public static Matrix getRowSpace(Matrix a) {
         return null;
     }
     
@@ -46,7 +46,7 @@ public class MatrixUtil {
      * @param a
      * @return
      */
-    public static <T extends Number> Matrix<T> getLeftNullSpace(Matrix<T> a) {
+    public static Matrix getLeftNullSpace(Matrix a) {
         return null;
     }
     
@@ -56,8 +56,17 @@ public class MatrixUtil {
      * @param b
      * @return
      */
-    public static <T extends Number> boolean isOrthogonal(Matrix<T> a, Matrix<T> b) {
+    public static boolean isOrthogonal(Matrix a, Matrix b) {
         return false;
+    }
+    
+    /**
+     * 矩阵a乘以a的转置，得到对称阵。
+     * @param a
+     * @return
+     */
+    public static Matrix getSymmetric(Matrix a) {
+        return null;
     }
     
 }
