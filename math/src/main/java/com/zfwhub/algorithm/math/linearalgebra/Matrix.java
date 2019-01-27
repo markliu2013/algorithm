@@ -2,11 +2,11 @@ package com.zfwhub.algorithm.math.linearalgebra;
 
 import java.util.Arrays;
 
-public class Matrix {
+public class Matrix<T extends Number> {
     
-    private int[][] data;
+    private T[][] data;
 
-    public Matrix(int[][] data) {
+    public Matrix(T[][] data) {
         if (data == null) {
             throw new IllegalArgumentException("data is null");
         }
