@@ -8,7 +8,7 @@ public class VectorUtil {
      * @param b
      * @return
      */
-    public static <T extends Number> boolean isOrthogonal(Vector<T> a, Vector<T> b) {
+    public static boolean isOrthogonal(Vector a, Vector b) {
         return false;
     }
 
