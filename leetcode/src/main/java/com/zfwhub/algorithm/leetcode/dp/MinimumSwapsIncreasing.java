@@ -84,7 +84,6 @@ public class MinimumSwapsIncreasing {
                 } else if (minSwap+1 < (double)A.length/2) {
                     dpResult.minSwap = minSwap+1;
                     dpResult.lastSwapped = 1;
-                    
                 } else {
                     dpResult.minSwap = minSwap+1;
                     dpResult.lastSwapped = -1;
@@ -227,8 +226,10 @@ public class MinimumSwapsIncreasing {
     }
     
     public static void main(String[] args) {
-        int[] A = new int[] {0,7,8,10,10,11,12,13,19,18};
-        int[] B = new int[] {4,4,5, 7,11,14,15,16,17,20};
+        int[] A = new int[] {0,4,4};
+        int[] B = new int[] {0,1,6};
+//        int[] A = new int[] {0,7,8,10,10,11,12,13,19,18};
+//        int[] B = new int[] {4,4,5, 7,11,14,15,16,17,20};
         System.out.println(MinimumSwapsIncreasing.minSwap(A, B));
         System.out.println(MinimumSwapsIncreasing.minSwap4(A, B));
     }
