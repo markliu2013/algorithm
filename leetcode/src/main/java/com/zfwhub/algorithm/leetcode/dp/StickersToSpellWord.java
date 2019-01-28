@@ -7,7 +7,6 @@ import com.zfwhub.algorithm.utils.StringUtil;
 
 // https://leetcode.com/problems/stickers-to-spell-word/
 // 动态规划，从上往下递归，一直超时
-// https://leetcode.com/submissions/detail/200624629/
 public class StickersToSpellWord {
     
     public static int minStickers(String[] stickers, String target) {
