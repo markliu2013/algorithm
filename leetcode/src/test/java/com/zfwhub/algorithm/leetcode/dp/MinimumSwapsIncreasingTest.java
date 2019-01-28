@@ -32,16 +32,21 @@ public class MinimumSwapsIncreasingTest {
         assertEquals(result3, MinimumSwapsIncreasing.minSwap(A3, B3));
         assertEquals(result4, MinimumSwapsIncreasing.minSwap(A4, B4));
         assertEquals(result5, MinimumSwapsIncreasing.minSwap(A5, B5));
-//        assertEquals(result1, MinimumSwapsIncreasing.minSwap2(A1, B1));
-//        assertEquals(result2, MinimumSwapsIncreasing.minSwap2(A2, B2));
-//        assertEquals(result3, MinimumSwapsIncreasing.minSwap2(A3, B3));
-//        assertEquals(result4, MinimumSwapsIncreasing.minSwap2(A4, B4));
-//        assertEquals(result5, MinimumSwapsIncreasing.minSwap2(A5, B5));
+        assertEquals(result1, MinimumSwapsIncreasing.minSwap2(A1, B1));
+        assertEquals(result2, MinimumSwapsIncreasing.minSwap2(A2, B2));
+        assertEquals(result3, MinimumSwapsIncreasing.minSwap2(A3, B3));
+        assertEquals(result4, MinimumSwapsIncreasing.minSwap2(A4, B4));
+        assertEquals(result5, MinimumSwapsIncreasing.minSwap2(A5, B5));
         assertEquals(result1, MinimumSwapsIncreasing.minSwap3(A1, B1));
         assertEquals(result2, MinimumSwapsIncreasing.minSwap3(A2, B2));
         assertEquals(result3, MinimumSwapsIncreasing.minSwap3(A3, B3));
         assertEquals(result4, MinimumSwapsIncreasing.minSwap3(A4, B4));
         assertEquals(result5, MinimumSwapsIncreasing.minSwap3(A5, B5));
+        assertEquals(result1, MinimumSwapsIncreasing.minSwap4(A1, B1));
+        assertEquals(result2, MinimumSwapsIncreasing.minSwap4(A2, B2));
+        assertEquals(result3, MinimumSwapsIncreasing.minSwap4(A3, B3));
+        assertEquals(result4, MinimumSwapsIncreasing.minSwap4(A4, B4));
+        assertEquals(result5, MinimumSwapsIncreasing.minSwap4(A5, B5));
     }
 
 }
