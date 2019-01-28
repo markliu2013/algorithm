@@ -7,7 +7,7 @@ import com.zfwhub.algorithm.utils.CollectionUtil;
 public class MinimumSwapsIncreasing {
     
     // 回溯法暴力破解 
-    public static int minSwap(int[] A, int[] B) {
+    public static int solution1(int[] A, int[] B) {
         List<List<Boolean>> solutionList = new ArrayList<>();
         List<Boolean> solution = new ArrayList<>();
         dfs(solutionList, solution, A, B);
@@ -20,7 +20,7 @@ public class MinimumSwapsIncreasing {
     }
     
     // 回溯法暴力破解, 用bestSolution找最优解。已经大于当前最小，提前放弃。回溯法找最优解的套路。
-    public static int minSwap2(int[] A, int[] B) {
+    public static int solution2(int[] A, int[] B) {
         List<Boolean> solution = new ArrayList<>();
         List<Boolean> bestSolution = new ArrayList<>();
         dfs2(solution, bestSolution, A, B);
@@ -28,7 +28,7 @@ public class MinimumSwapsIncreasing {
     }
     
     // 排列组合，从小到大的尝试。
-    public static int minSwap3(int[] A, int[] B) {
+    public static int solution3(int[] A, int[] B) {
         List<Integer> list = CollectionUtil.newIntList(A.length);
         for (int i = 0; i <= list.size()/2; i++) {
             List<List<Integer>> list2 = CollectionUtil.subsets(list, i);
@@ -45,13 +45,13 @@ public class MinimumSwapsIncreasing {
     }
     
     // 动态规划
-    public static int minSwap4(int[] A, int[] B) {
+    public static int solution4(int[] A, int[] B) {
         DPResult dpResult = new DPResult();
-        minSwapDP(A, B, dpResult);
+        solution4DP(A, B, dpResult);
         System.out.println(dpResult);
         return dpResult.minSwap;
     }
-    public static void minSwapDP(int[] A, int[] B, DPResult dpResult) {
+    public static void solution4DP(int[] A, int[] B, DPResult dpResult) {
         if (A.length == 1) {
             dpResult.lastSwapped = 0;
             dpResult.minSwap = 0;
@@ -63,7 +63,7 @@ public class MinimumSwapsIncreasing {
         int b2 = B[B.length-2]; // B的倒数第二
         int[] subA = Arrays.copyOfRange(A, 0, A.length-1);
         int[] subB = Arrays.copyOfRange(B, 0, B.length-1);
-        minSwapDP(subA, subB, dpResult);
+        solution4DP(subA, subB, dpResult);
         int minSwap = dpResult.minSwap;
         if (dpResult.lastSwapped == 1) {
             if (a1 <= b2 || b1 <= a2) {
@@ -230,8 +230,8 @@ public class MinimumSwapsIncreasing {
         int[] B = new int[] {0,1,6};
 //        int[] A = new int[] {0,7,8,10,10,11,12,13,19,18};
 //        int[] B = new int[] {4,4,5, 7,11,14,15,16,17,20};
-        System.out.println(MinimumSwapsIncreasing.minSwap(A, B));
-        System.out.println(MinimumSwapsIncreasing.minSwap4(A, B));
+        System.out.println(MinimumSwapsIncreasing.solution1(A, B));
+        System.out.println(MinimumSwapsIncreasing.solution4(A, B));
     }
 
 }
