@@ -4,7 +4,8 @@ import com.zfwhub.algorithm.utils.ArrayUtil;
 import com.zfwhub.algorithm.utils.CollectionUtil;
 
 // https://leetcode.com/problems/minimum-swaps-to-make-sequences-increasing/
-public class MinimumSwapsIncreasing {
+// https://www.cnblogs.com/grandyang/p/9311385.html
+public class MinSwapIncreasing {
     
     // 回溯法暴力破解 
     public static int solution1(int[] A, int[] B) {
@@ -15,7 +16,6 @@ public class MinimumSwapsIncreasing {
         for (int i = 0; i < solutionList.size(); i++) {
             min = Math.min(min, countSolution(solutionList.get(i)));
         }
-        System.out.println(solutionList);
         return min;
     }
     
@@ -46,10 +46,33 @@ public class MinimumSwapsIncreasing {
     
     // 动态规划
     public static int solution4(int[] A, int[] B) {
-        DPResult dpResult = new DPResult();
+        if (A.length == 1) {
+            return 0;
+        }
+        int a1 = A[A.length-1]; // A的最后一个
+        int a2 = A[A.length-2]; // A的倒数第二
+        int b1 = B[B.length-1]; // B的最后一个
+        int b2 = B[B.length-2]; // B的倒数第二
+        
+        int[] subANotSwapped = Arrays.copyOfRange(A, 0, A.length-1);
+        int[] subBNotSwapped = Arrays.copyOfRange(B, 0, B.length-1);
+        int[] subASwapped = subANotSwapped.clone();
+        subASwapped[subASwapped.length-1] = b2;
+        int[] subBSwapped = subBNotSwapped.clone();
+        subBSwapped[subBSwapped.length-1] = a2;
+        int n1 = solution4(subANotSwapped, subBNotSwapped);
+        if (a1 <= a2 || b1 <= b2) {
+            n1++;
+        }
+        int s1 = solution4(subASwapped, subBSwapped)+1;
+        if (a1 <= b2 || b1 <= a2) {
+            s1++;
+        }
+        return Math.min(n1, s1);
+        /*DPResult dpResult = new DPResult();
         solution4DP(A, B, dpResult);
         System.out.println(dpResult);
-        return dpResult.minSwap;
+        return dpResult.minSwap;*/
     }
     public static void solution4DP(int[] A, int[] B, DPResult dpResult) {
         if (A.length == 1) {
@@ -226,12 +249,12 @@ public class MinimumSwapsIncreasing {
     }
     
     public static void main(String[] args) {
-        int[] A = new int[] {0,4,4};
-        int[] B = new int[] {0,1,6};
-//        int[] A = new int[] {0,7,8,10,10,11,12,13,19,18};
-//        int[] B = new int[] {4,4,5, 7,11,14,15,16,17,20};
-        System.out.println(MinimumSwapsIncreasing.solution1(A, B));
-        System.out.println(MinimumSwapsIncreasing.solution4(A, B));
+//        int[] A = new int[] {0,4,4};
+//        int[] B = new int[] {0,1,6};
+        int[] A = new int[] {0,7,8,10,10,11};
+        int[] B = new int[] {4,4,5, 7,11,14};
+        System.out.println(MinSwapIncreasing.solution1(A, B));
+        System.out.println(MinSwapIncreasing.solution4(A, B));
     }
 
 }
