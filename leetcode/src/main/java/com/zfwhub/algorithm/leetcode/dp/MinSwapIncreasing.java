@@ -46,9 +46,9 @@ public class MinSwapIncreasing {
     
     // 动态规划
     public static int solution4(int[] A, int[] B) {
+        // DPResult包括最后一个是否交换的最小交换次数
         DPResult dpResult = new DPResult();
         solution4DP(A, B, dpResult);
-        System.out.println(dpResult);
         return Math.min(dpResult.swap, dpResult.noswap);
     }
     public static void solution4DP(int[] A, int[] B, DPResult dpResult) {
@@ -67,25 +67,25 @@ public class MinSwapIncreasing {
         int subSwap = dpResult.swap;
         int subNoswap = dpResult.noswap;
         // 算dpResult.noswap
-        if (a1 > a2 && b1 > b2) {
+        if (a1 > a2 && b1 > b2) {//不交换刚好已经符合要求
 //            dpResult.noswap = subNoswap; // 不一定
-            if (a1 > b2 && b1 > a2) {
+            if (a1 > b2 && b1 > a2) {// 这种情况下应该是子数组也可以交换，所以要选一个小的。
                 dpResult.noswap = Math.min(subNoswap, subSwap);
-            } else {
+            } else {// 不交换不符合要求，这种情况下子数组就只能不交换
                 dpResult.noswap = subNoswap;
             }
-        } else {
+        } else {// 不交换不符合要求，则必须交换子数组。因为题目确定一定有解，所以交换子数组符合解。
             dpResult.noswap = subSwap;
         }
         // 算dpResult.swap
-        if (a1 > b2 && b1 > a2) {
+        if (a1 > b2 && b1 > a2) {//交换之后刚好符合要求
 //            dpResult.swap = subNoswap + 1;//不一定
-            if (a1 > a2 && b1 > b2) {
+            if (a1 > a2 && b1 > b2) {// 这种情况子数组可以一起交换
                 dpResult.swap = Math.min(subNoswap + 1, subSwap+1);
-            } else {
+            } else {//这种情况子数组不能交换
                 dpResult.swap = subNoswap + 1;
             }
-        } else {
+        } else {// 交换之后不符合要求，则必须交换子数组。
             dpResult.swap = subSwap + 1;
         }
     }
