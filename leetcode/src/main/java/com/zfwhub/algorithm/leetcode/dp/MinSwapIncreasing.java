@@ -48,6 +48,7 @@ public class MinSwapIncreasing {
     public static int solution4(int[] A, int[] B) {
         DPResult dpResult = new DPResult();
         solution4DP(A, B, dpResult);
+        System.out.println(dpResult);
         return Math.min(dpResult.swap, dpResult.noswap);
     }
     public static void solution4DP(int[] A, int[] B, DPResult dpResult) {
@@ -60,12 +61,44 @@ public class MinSwapIncreasing {
         int a2 = A[A.length-2]; // A的倒数第二
         int b1 = B[B.length-1]; // B的最后一个
         int b2 = B[B.length-2]; // B的倒数第二
+        int[] subA = Arrays.copyOfRange(A, 0, A.length-1);
+        int[] subB = Arrays.copyOfRange(B, 0, B.length-1);
+        solution4DP(subA, subB, dpResult);
+        int subSwap = dpResult.swap;
+        int subNoswap = dpResult.noswap;
+        // 算dpResult.noswap
+        if (a1 > a2 && b1 > b2) {
+//            dpResult.noswap = subNoswap; // 不一定
+            if (a1 > b2 && b1 > a2) {
+                dpResult.noswap = Math.min(subNoswap, subSwap);
+            } else {
+                dpResult.noswap = subNoswap;
+            }
+        } else {
+            dpResult.noswap = subSwap;
+        }
+        // 算dpResult.swap
+        if (a1 > b2 && b1 > a2) {
+//            dpResult.swap = subNoswap + 1;//不一定
+            if (a1 > a2 && b1 > b2) {
+                dpResult.swap = Math.min(subNoswap + 1, subSwap+1);
+            } else {
+                dpResult.swap = subNoswap + 1;
+            }
+        } else {
+            dpResult.swap = subSwap + 1;
+        }
     }
     
     private static class DPResult {
         
         public int swap = 0; 
         public int noswap = 0;
+        
+        @Override
+        public String toString() {
+            return "DPResult [swap=" + swap + ", noswap=" + noswap + "]";
+        }
         
     }
     
@@ -186,10 +219,10 @@ public class MinSwapIncreasing {
     }
     
     public static void main(String[] args) {
-//        int[] A = new int[] {0,4,4};
-//        int[] B = new int[] {0,1,6};
-        int[] A = new int[] {0,7,8,10,10,11};
-        int[] B = new int[] {4,4,5, 7,11,14};
+        int[] A = new int[] {0,1,4,6};
+        int[] B = new int[] {1,2,2,7};
+//        int[] A = new int[] {0,7,8,10,10,11};
+//        int[] B = new int[] {4,4,5, 7,11,14};
         System.out.println(MinSwapIncreasing.solution1(A, B));
         System.out.println(MinSwapIncreasing.solution4(A, B));
     }
