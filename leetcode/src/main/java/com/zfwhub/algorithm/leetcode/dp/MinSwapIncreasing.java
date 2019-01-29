@@ -46,92 +46,29 @@ public class MinSwapIncreasing {
     
     // 动态规划
     public static int solution4(int[] A, int[] B) {
-        if (A.length == 1) {
-            return 0;
-        }
-        int a1 = A[A.length-1]; // A的最后一个
-        int a2 = A[A.length-2]; // A的倒数第二
-        int b1 = B[B.length-1]; // B的最后一个
-        int b2 = B[B.length-2]; // B的倒数第二
-        
-        int[] subANotSwapped = Arrays.copyOfRange(A, 0, A.length-1);
-        int[] subBNotSwapped = Arrays.copyOfRange(B, 0, B.length-1);
-        int[] subASwapped = subANotSwapped.clone();
-        subASwapped[subASwapped.length-1] = b2;
-        int[] subBSwapped = subBNotSwapped.clone();
-        subBSwapped[subBSwapped.length-1] = a2;
-        int n1 = solution4(subANotSwapped, subBNotSwapped);
-        if (a1 <= a2 || b1 <= b2) {
-            n1++;
-        }
-        int s1 = solution4(subASwapped, subBSwapped)+1;
-        if (a1 <= b2 || b1 <= a2) {
-            s1++;
-        }
-        return Math.min(n1, s1);
-        /*DPResult dpResult = new DPResult();
+        DPResult dpResult = new DPResult();
         solution4DP(A, B, dpResult);
-        System.out.println(dpResult);
-        return dpResult.minSwap;*/
+        return Math.min(dpResult.swap, dpResult.noswap);
     }
     public static void solution4DP(int[] A, int[] B, DPResult dpResult) {
         if (A.length == 1) {
-            dpResult.lastSwapped = 0;
-            dpResult.minSwap = 0;
+            dpResult.swap = 1;
+            dpResult.noswap = 0;
             return;
         }
         int a1 = A[A.length-1]; // A的最后一个
         int a2 = A[A.length-2]; // A的倒数第二
         int b1 = B[B.length-1]; // B的最后一个
         int b2 = B[B.length-2]; // B的倒数第二
-        int[] subA = Arrays.copyOfRange(A, 0, A.length-1);
-        int[] subB = Arrays.copyOfRange(B, 0, B.length-1);
-        solution4DP(subA, subB, dpResult);
-        int minSwap = dpResult.minSwap;
-        if (dpResult.lastSwapped == 1) {
-            if (a1 <= b2 || b1 <= a2) {
-                if (minSwap+1 > (double)A.length/2) { //这种情况不可能发生
-                    dpResult.lastSwapped = 0;
-                    dpResult.minSwap = A.length-(minSwap+1);
-                } else if (minSwap+1 < (double)A.length/2) {
-                    dpResult.minSwap = minSwap+1;
-                } else {
-                    dpResult.minSwap = minSwap+1;
-                    dpResult.lastSwapped = -1;
-                }
-            }
-        } else if (dpResult.lastSwapped == 0) {
-            if (a1 <= a2 || b1 <= b2) {
-                if (minSwap+1 > (double)A.length/2) { //这种情况不可能发生
-                    dpResult.minSwap = A.length/2-(minSwap+1);
-                } else if (minSwap+1 < (double)A.length/2) {
-                    dpResult.minSwap = minSwap+1;
-                    dpResult.lastSwapped = 1;
-                } else {
-                    dpResult.minSwap = minSwap+1;
-                    dpResult.lastSwapped = -1;
-                }
-            }
-        } else {
-            if ((a1 > a2 && b1 > b2) || (a1 > b2 && b1 > a2)) {
-                dpResult.lastSwapped = 0;
-            } else {
-                dpResult.lastSwapped = 1;
-            }
-        }
     }
     
     private static class DPResult {
         
-        public int lastSwapped = 0; // 最后一个是否交换了，0代表不交换，1代表交换，-1代表是否交换结果都一样。
-        public int minSwap = Integer.MAX_VALUE;
-        
-        @Override
-        public String toString() {
-            return "DPResult [lastSwapped=" + lastSwapped + ", minSwap=" + minSwap + "]";
-        }
+        public int swap = 0; 
+        public int noswap = 0;
         
     }
+    
     private static void dfs(List<List<Boolean>> solutionList, List<Boolean> solution, int[] A, int[] B) {
         if (isASolution(solution, A, B)) {
             processSolution(solutionList, solution);
