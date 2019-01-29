@@ -11,6 +11,7 @@
 * [StickersToSpellWord](https://leetcode.com/problems/stickers-to-spell-word/)
 * [MakingTheGrade](http://poj.org/problem?id=3666)
 * [RegularExpressionMatching](https://leetcode.com/problems/regular-expression-matching/)
+* [MinimumSwapsToMakeSequencesIncreasing](https://leetcode.com/problems/minimum-swaps-to-make-sequences-increasing/)
 
 ## Backtracking
 * [NQueens](https://leetcode.com/problems/n-queens/)
