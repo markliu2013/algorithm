@@ -1,5 +1,6 @@
 package com.zfwhub.algorithm.utils;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ArrayUtil {
@@ -76,6 +77,11 @@ public class ArrayUtil {
         return true;
     }
     
+    /**
+     * 二维int数组转为为二维list
+     * @param twoDArray
+     * @return
+     */
     public static List<List<Integer>> twoDArrayToList(int[][] twoDArray) {
         List<List<Integer>> result = new ArrayList<>();
         for (int[] array : twoDArray) {
@@ -84,6 +90,27 @@ public class ArrayUtil {
                 list.add(i);
             }
             result.add(list);
+        }
+        return result;
+    }
+    
+    /**
+     * 合并两个有序数组
+     * @param nums1
+     * @param nums2
+     * @return
+     */
+    public static int[] mergeTwoSortedArray(int[] nums1, int[] nums2) {
+        int[] result = new int[nums1.length + nums2.length];
+        int nums1Index = 0;
+        for (int i = 0; i < nums2.length; i++) {
+            int index = Arrays.binarySearch(nums1, nums1Index, nums1.length, nums2[i]);
+            if (index < 0) {
+                index = (index+1)*(-1);
+            }
+            System.arraycopy(nums1, nums1Index, result, nums1Index+i, index-nums1Index);
+            nums1Index += index;
+            result[nums1Index+i] = nums2[i];
         }
         return result;
     }
