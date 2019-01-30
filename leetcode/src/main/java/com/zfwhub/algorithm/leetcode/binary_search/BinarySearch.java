@@ -5,7 +5,7 @@ package com.zfwhub.algorithm.leetcode.binary_search;
 public class BinarySearch {
     
     // 不需要nums排好序
-    public static int solution0(int[] nums, int target) {
+    public static int solution1(int[] nums, int target) {
         for (int i = 0; i < nums.length; i++) {
             if (target == nums[i]) {
                 return i;
@@ -14,7 +14,7 @@ public class BinarySearch {
         return -1;
     }
     
-    public static int solution1(int[] nums, int target) {
+    public static int solution2(int[] nums, int target) {
         int startIndex = 0;
         int endIndex = nums.length-1;
         int mid = (startIndex + endIndex) / 2;
@@ -38,12 +38,12 @@ public class BinarySearch {
         int target1 = 2;
         int[] nums2 = new int[] {5};
         int target2 = 5;
-        System.out.println(solution0(nums, target));
         System.out.println(solution1(nums, target));
-        System.out.println(solution0(nums1, target1));
+        System.out.println(solution2(nums, target));
         System.out.println(solution1(nums1, target1));
-        System.out.println(solution0(nums2, target2));
+        System.out.println(solution2(nums1, target1));
         System.out.println(solution1(nums2, target2));
+        System.out.println(solution2(nums2, target2));
     }
 
 }

@@ -1,6 +1,8 @@
-package com.zfwhub.algorithm.leetcode.dac;
+package com.zfwhub.algorithm.leetcode.binary_search;
 
 import java.util.*;
+
+import com.zfwhub.algorithm.utils.ArrayUtil;
 
 // https://leetcode.com/problems/median-of-two-sorted-arrays/description/
 public class MedianOfTwoSortedArrays {
@@ -18,14 +20,12 @@ public class MedianOfTwoSortedArrays {
     }
 
     public static double solution2(int[] nums1, int[] nums2) {
-        
-        return 0;
-    }
-
-    // TODO mergetTwoSortedArray
-    public static int[] mergetTwoSortedArray(int[] nums1, int[] nums2) {
-        
-        return null;
+        int[] nums = ArrayUtil.mergeTwoSortedArray(nums1, nums2);
+        if (nums.length % 2 == 0) {
+            return (nums[nums.length / 2 - 1] + (double) nums[nums.length / 2]) / 2;
+        } else {
+            return nums[(nums.length - 1) / 2];
+        }
     }
 
     public static void main(String[] args) {
