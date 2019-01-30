@@ -6,52 +6,52 @@ import org.junit.Test;
 
 public class RegularExpressionMatchingTest {
     
-    String s1 = "aa";
-    String p1 = "a";
-    boolean expected1 = false;
-    
-    String s2 = "aa";
-    String p2 = "a*";
-    boolean expected2 = true;
-    
-    String s3 = "ab";
-    String p3 = ".*";
-    boolean expected3 = true;
-    
-    String s4 = "aab";
-    String p4 = "c*a*b";
-    boolean expected4 = true;
-    
-    String s5 = "mississippi";
-    String p5 = "mis*is*p*.";
-    boolean expected5 = false;
-    
-    String s6 = "a";
-    String p6 = "";
-    boolean expected6 = false;
-    
-    String s7 = "a";
-    String p7 = "aa";
-    boolean expected7 = false;
-    
-    String s8 = "a";
-    String p8 = ".*..a*";
-    boolean expected8 = false;
-    
-    String s9 = "";
-    String p9 = "";
-    boolean expected9 = true;
-    
-    String s10 = "a";
-    String p10 = "a.*";
-    boolean expected10 = true;
-    
-    String s11 = "";
-    String p11 = "a*a*";
-    boolean expected11 = true;
-
     @Test
     public void testSolution() {
+        String s1 = "aa";
+        String p1 = "a";
+        boolean expected1 = false;
+        
+        String s2 = "aa";
+        String p2 = "a*";
+        boolean expected2 = true;
+        
+        String s3 = "ab";
+        String p3 = ".*";
+        boolean expected3 = true;
+        
+        String s4 = "aab";
+        String p4 = "c*a*b";
+        boolean expected4 = true;
+        
+        String s5 = "mississippi";
+        String p5 = "mis*is*p*.";
+        boolean expected5 = false;
+        
+        String s6 = "a";
+        String p6 = "";
+        boolean expected6 = false;
+        
+        String s7 = "a";
+        String p7 = "aa";
+        boolean expected7 = false;
+        
+        String s8 = "a";
+        String p8 = ".*..a*";
+        boolean expected8 = false;
+        
+        String s9 = "";
+        String p9 = "";
+        boolean expected9 = true;
+        
+        String s10 = "a";
+        String p10 = "a.*";
+        boolean expected10 = true;
+        
+        String s11 = "";
+        String p11 = "a*a*";
+        boolean expected11 = true;
+        
         assertEquals(expected1, RegularExpressionMatching.isMatch(s1, p1));
         assertEquals(expected2, RegularExpressionMatching.isMatch(s2, p2));
         assertEquals(expected3, RegularExpressionMatching.isMatch(s3, p3));

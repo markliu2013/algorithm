@@ -1,5 +1,6 @@
 package com.zfwhub.algorithm.utils;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ArrayUtil {
@@ -76,6 +77,11 @@ public class ArrayUtil {
         return true;
     }
     
+    /**
+     * 二维int数组转为为二维list
+     * @param twoDArray
+     * @return
+     */
     public static List<List<Integer>> twoDArrayToList(int[][] twoDArray) {
         List<List<Integer>> result = new ArrayList<>();
         for (int[] array : twoDArray) {
@@ -84,6 +90,37 @@ public class ArrayUtil {
                 list.add(i);
             }
             result.add(list);
+        }
+        return result;
+    }
+    
+    /**
+     * 合并两个有序数组
+     * @param nums1
+     * @param nums2
+     * @return
+     */
+    public static int[] mergeTwoSortedArray(int[] nums1, int[] nums2) {
+        if (nums1.length == 0) {
+            return nums2.clone();
+        }
+        if (nums2.length == 0) {
+            return nums1.clone();
+        }
+        int[] result = new int[nums1.length + nums2.length];
+        int nums1CurrentIndex = 0;
+        int resultCurrentIndex = 0;
+        for (int i = 0; i < nums2.length; i++) {
+            int index = Math.abs(Arrays.binarySearch(nums1, nums1CurrentIndex, nums1.length, nums2[i])+1);
+            System.arraycopy(nums1, nums1CurrentIndex, result, resultCurrentIndex, index-nums1CurrentIndex);
+            resultCurrentIndex += (index-nums1CurrentIndex);
+            nums1CurrentIndex += (index-nums1CurrentIndex);
+            result[resultCurrentIndex] = nums2[i];
+            resultCurrentIndex++;
+        }
+        // nums1有可能还没跑完
+        if (nums1CurrentIndex < nums1.length) {
+            System.arraycopy(nums1, nums1CurrentIndex, result, resultCurrentIndex, nums1.length-nums1CurrentIndex);
         }
         return result;
     }
