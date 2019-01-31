@@ -54,76 +54,78 @@ class Pack01Solution {
 
     // 递归 + 备忘录
     public static List<Pack> solution2(List<Pack> packs, int capacity) {
-        DpResult dpResult = solution2DP(packs, capacity, new HashMap<>());
-        return dpResult.packs;
+        DPStatus dpStatus = solution2DP(packs, capacity, new HashMap<>());
+        return dpStatus.packs;
     }
 
-    private static DpResult solution2DP(List<Pack> packs, int capacity, HashMap<DpMapKey, DpResult> map) {
+    private static DPStatus solution2DP(List<Pack> packs, int capacity, HashMap<DpMapKey, DPStatus> map) {
         if (packs == null || packs.size() == 0) {
-            return new DpResult(new ArrayList<>(), 0);
+            return new DPStatus(new ArrayList<>(), 0);
         }
         Pack lastPack = packs.get(packs.size() - 1);
         List<Pack> subPacks = packs.subList(0, packs.size() - 1);
         // 不选
-        DpResult dpResult01 = null;
+        DPStatus dpStatus01 = null;
         DpMapKey dpMapKey01 = new DpMapKey(subPacks, capacity);
         if (map.containsKey(dpMapKey01)) {
-            dpResult01 = map.get(dpMapKey01);
+            dpStatus01 = map.get(dpMapKey01);
         } else {
-            dpResult01 = solution2DP(subPacks, capacity, map);
+            dpStatus01 = solution2DP(subPacks, capacity, map);
             // 不需要缓存packs.size=0的情况，能省则省。
             if (dpMapKey01.packs.size() != 0) {
-                map.put(dpMapKey01, new DpResult(new ArrayList<>(dpResult01.packs), dpResult01.value));
+                map.put(dpMapKey01, dpStatus01.clone());
             }
         }
         if (lastPack.weight > capacity) {
-            return dpResult01;
+            return dpStatus01;
         }
         // 选
-        DpResult dpResult02 = null;
+        DPStatus dpStatus02 = null;
         DpMapKey dpMapKey02 = new DpMapKey(subPacks, capacity - lastPack.weight);
         if (map.containsKey(dpMapKey02)) {
-            dpResult02 = map.get(dpMapKey02);
+            dpStatus02 = map.get(dpMapKey02);
         } else {
-            dpResult02 = solution2DP(subPacks, capacity - lastPack.weight, map);
+            dpStatus02 = solution2DP(subPacks, capacity - lastPack.weight, map);
             if (dpMapKey02.packs.size() != 0) {
-                map.put(dpMapKey02, new DpResult(new ArrayList<>(dpResult02.packs), dpResult02.value));
+                map.put(dpMapKey02, dpStatus02.clone());
             }
         }
-        dpResult02.packs.add(lastPack);
-        dpResult02.value += lastPack.value;
-        return dpResult01.compareTo(dpResult02) > 0 ? dpResult01 : dpResult02;
+        dpStatus02.packs.add(lastPack);
+        dpStatus02.value += lastPack.value;
+        return dpStatus01.compareTo(dpStatus02) > 0 ? dpStatus01 : dpStatus02;
     }
-    
+
+    // 对应Pack01.solution2
     public static List<Pack> solution3(List<Pack> packs, int capacity) {
-        DpResult[][] results = new DpResult[packs.size()+1][capacity+1];
+        DPStatus[][] results = new DPStatus[packs.size() + 1][capacity + 1];
         // 默认第一行
         for (int j = 0; j <= capacity; j++) {
-            results[0][j] = new DpResult(new ArrayList<>(), 0);
+            results[0][j] = new DPStatus(new ArrayList<>(), 0);
         }
         for (int i = 0; i < packs.size(); i++) {
             Pack p = packs.get(i);
             for (int j = 0; j <= capacity; j++) {
                 if (p.weight > j) {
-                    results[i+1][j] = new DpResult(new ArrayList<>(results[i][j].packs), results[i][j].value);
+                    results[i + 1][j] = results[i][j];
                 } else {
-                    DpResult dpResult01 = new DpResult(new ArrayList<>(results[i][j].packs), results[i][j].value);
-                    DpResult dpResult02 = new DpResult(new ArrayList<>(results[i][j-p.weight].packs), results[i][j-p.weight].value);
-                    dpResult02.packs.add(p);
-                    dpResult02.value += p.value;
-                    results[i+1][j] = dpResult01.compareTo(dpResult02) > 0 ? dpResult01 : dpResult02;
+                    DPStatus dpStatus01 = results[i][j].clone();
+                    DPStatus dpStatus02 = results[i][j - p.weight].clone();
+                    dpStatus02.packs.add(p);
+                    dpStatus02.value += p.value;
+                    results[i + 1][j] = dpStatus01.compareTo(dpStatus02) > 0 ? dpStatus01 : dpStatus02;
                 }
             }
         }
         return results[packs.size()][capacity].packs;
     }
-    
+
+    // 对应Pack01.solution3
     public static List<Pack> solution4(List<Pack> packs, int capacity) {
-        DpResult[] results = new DpResult[capacity + 1];
-        DpResult[] preResults = new DpResult[capacity + 1];
+        DPStatus[] results = new DPStatus[capacity + 1];
+        DPStatus[] preResults = new DPStatus[capacity + 1];
         // 默认第一行
         for (int j = 0; j <= capacity; j++) {
-            preResults[j] = new DpResult(new ArrayList<>(), 0);
+            preResults[j] = new DPStatus(new ArrayList<>(), 0);
         }
         for (int i = 0; i < packs.size(); i++) {
             Pack p = packs.get(i);
@@ -131,11 +133,11 @@ class Pack01Solution {
                 if (p.weight > j) {
                     results[j] = preResults[j].clone();
                 } else {
-                    DpResult dpResult01 = preResults[j].clone();
-                    DpResult dpResult02 = preResults[j-p.weight].clone();
-                    dpResult02.packs.add(p);
-                    dpResult02.value += p.value;
-                    results[j] = dpResult01.compareTo(dpResult02) > 0 ? dpResult01 : dpResult02;
+                    DPStatus dpStatus01 = preResults[j].clone();
+                    DPStatus dpStatus02 = preResults[j - p.weight].clone();
+                    dpStatus02.packs.add(p);
+                    dpStatus02.value += p.value;
+                    results[j] = dpStatus01.compareTo(dpStatus02) > 0 ? dpStatus01 : dpStatus02;
                 }
             }
             // 注意必须是深度复制
@@ -143,37 +145,38 @@ class Pack01Solution {
         }
         return results[capacity].packs;
     }
-    
+
+    // https://zhuanlan.zhihu.com/p/35278858
     public static List<Pack> solution5(List<Pack> packs, int capacity) {
         List<Pack> solutionPackList = new ArrayList<>();
-        int[][] results = new int[packs.size()+1][capacity+1];
+        int[][] results = new int[packs.size() + 1][capacity + 1];
         for (int i = 0; i < packs.size(); i++) {
             Pack p = packs.get(i);
             // j必须从0开始，因为容量为0的包可以装体积为0的物品
             for (int j = 0; j <= capacity; j++) {
                 if (p.weight > j) {//如果物品放不进背包
-                    results[i+1][j] = results[i][j];
+                    results[i + 1][j] = results[i][j];
                 } else {
-                    results[i+1][j] = Math.max(results[i][j], results[i][j-p.weight] + p.value);
+                    results[i + 1][j] = Math.max(results[i][j], results[i][j - p.weight] + p.value);
                 }
             }
         }
         solution5Backtrack(packs, solutionPackList, results, packs.size(), capacity);
         return solutionPackList;
     }
-    
+
     private static void solution5Backtrack(List<Pack> packs, List<Pack> solutionPackList, int[][] results, int i, int j) {
         if (i > 0) {
-            Pack p = packs.get(i-1);
-            if (results[i][j] == results[i-1][j]) {
-                solution5Backtrack(packs, solutionPackList, results, i-1, j);
+            Pack p = packs.get(i - 1);
+            if (results[i][j] == results[i - 1][j]) {
+                solution5Backtrack(packs, solutionPackList, results, i - 1, j);
             } else {
                 solutionPackList.add(p);
-                solution5Backtrack(packs, solutionPackList, results, i-1, j-p.weight);
+                solution5Backtrack(packs, solutionPackList, results, i - 1, j - p.weight);
             }
         }
     }
-    
+
     // 为了优化DP，map缓存的key
     static class DpMapKey {
 
@@ -220,54 +223,43 @@ class Pack01Solution {
 
     }
 
-static class DpResult implements Comparable<DpResult>, Cloneable {
-        
+    // TODO 深入了解 Cloneable Comparable Serializable
+    static class DPStatus implements Comparable<DPStatus>, Cloneable {
+
         public List<Pack> packs;
         public Integer value;//避免每次需要循环，value在添加或删除pack时手动维护。
-        
-        public DpResult(List<Pack> packs, Integer value) {
+
+        public DPStatus(List<Pack> packs, Integer value) {
             this.packs = packs;
             this.value = value;
         }
-        
+
         // 判断value是否和packs一致
         public boolean checkValue() {
             return value.equals(PackUtil.getValue(packs));
         }
 
         @Override
-        public int compareTo(DpResult o) {
+        public int compareTo(DPStatus o) {
             return value.compareTo(o.value);
         }
-        
+
         @Override
-        public DpResult clone() {
+        public DPStatus clone() {
             try {
-                DpResult dpResult = (DpResult) super.clone();
-                dpResult.packs = new ArrayList<>(packs);
-                return dpResult;
+                DPStatus dpStatus = (DPStatus) super.clone();
+                dpStatus.packs = new ArrayList<>(packs);
+                return dpStatus;
             } catch (CloneNotSupportedException e) {
                 // this shouldn't happen, since we are Cloneable
                 throw new InternalError();
             }
         }
-        
+
         @Override
         public String toString() {
-            return packs.toString() + ", totalValue="+value+".";
+            return packs.toString() + ", totalValue=" + value + ".";
         }
-        
-    }
-
-    public static void main(String[] args) {
-        int[] volumns = new int[] { 5, 5, 3 };
-        int[] values = new int[] { 400, 500, 200 };
-        int capacity = 10;
-        List<Pack> packs = solution2(PackUtil.arrayToPackList(volumns, values), capacity);
-
-        System.out.println(PackUtil.getValue(packs));
-        //        System.out.println(solution2(volumns, values, capacity));
-        //        System.out.println(solution4(volumns, values, capacity));
     }
 
 }

@@ -28,53 +28,53 @@ public class Pack01Solution {
     
     // 递归 + 备忘录
     public static List<Pack> solution2(List<Pack> packs, int capacity) {
-        DpResult dpResult = solution2DP(packs, capacity, new HashMap<>());
-        return dpResult.packs;
+        DPStatus dpStatus = solution2DP(packs, capacity, new HashMap<>());
+        return dpStatus.packs;
     }
     
-    private static DpResult solution2DP(List<Pack> packs, int capacity, HashMap<DpMapKey, DpResult> map) {
+    private static DPStatus solution2DP(List<Pack> packs, int capacity, HashMap<DpMapKey, DPStatus> map) {
         if (packs == null || packs.size() == 0) {
-            return new DpResult(new ArrayList<>(), 0);
+            return new DPStatus(new ArrayList<>(), 0);
         }
         Pack lastPack = packs.get(packs.size()-1);
         List<Pack> subPacks = packs.subList(0, packs.size()-1);
         // 不选
-        DpResult dpResult01 = null;
+        DPStatus dpStatus01 = null;
         DpMapKey dpMapKey01 = new DpMapKey(subPacks, capacity);
         if (map.containsKey(dpMapKey01)) {
-            dpResult01 = map.get(dpMapKey01);
+            dpStatus01 = map.get(dpMapKey01);
         } else {
-            dpResult01 = solution2DP(subPacks, capacity, map);
+            dpStatus01 = solution2DP(subPacks, capacity, map);
             // 不需要缓存packs.size=0的情况，能省则省。
             if (dpMapKey01.packs.size() != 0) {
-                map.put(dpMapKey01, dpResult01.clone());
+                map.put(dpMapKey01, dpStatus01.clone());
             }
         }
         if (lastPack.weight > capacity) {
-            return dpResult01;
+            return dpStatus01;
         }
         // 选
-        DpResult dpResult02 = null;
+        DPStatus dpStatus02 = null;
         DpMapKey dpMapKey02 = new DpMapKey(subPacks, capacity - lastPack.weight);
         if (map.containsKey(dpMapKey02)) {
-            dpResult02 = map.get(dpMapKey02);
+            dpStatus02 = map.get(dpMapKey02);
         } else {
-            dpResult02 = solution2DP(subPacks, capacity - lastPack.weight, map);
+            dpStatus02 = solution2DP(subPacks, capacity - lastPack.weight, map);
             if (dpMapKey02.packs.size() != 0) {
-                map.put(dpMapKey02, dpResult02.clone());
+                map.put(dpMapKey02, dpStatus02.clone());
             }
         }
-        dpResult02.packs.add(lastPack);
-        dpResult02.value += lastPack.value;
-        return dpResult01.compareTo(dpResult02) > 0 ? dpResult01 : dpResult02;
+        dpStatus02.packs.add(lastPack);
+        dpStatus02.value += lastPack.value;
+        return dpStatus01.compareTo(dpStatus02) > 0 ? dpStatus01 : dpStatus02;
     }
     
     // 对应Pack01.solution2
     public static List<Pack> solution3(List<Pack> packs, int capacity) {
-        DpResult[][] results = new DpResult[packs.size()+1][capacity+1];
+        DPStatus[][] results = new DPStatus[packs.size()+1][capacity+1];
         // 默认第一行
         for (int j = 0; j <= capacity; j++) {
-            results[0][j] = new DpResult(new ArrayList<>(), 0);
+            results[0][j] = new DPStatus(new ArrayList<>(), 0);
         }
         for (int i = 0; i < packs.size(); i++) {
             Pack p = packs.get(i);
@@ -82,11 +82,11 @@ public class Pack01Solution {
                 if (p.weight > j) {
                     results[i+1][j] = results[i][j];
                 } else {
-                    DpResult dpResult01 = results[i][j].clone();
-                    DpResult dpResult02 = results[i][j-p.weight].clone();
-                    dpResult02.packs.add(p);
-                    dpResult02.value += p.value;
-                    results[i+1][j] = dpResult01.compareTo(dpResult02) > 0 ? dpResult01 : dpResult02;
+                    DPStatus dpStatus01 = results[i][j].clone();
+                    DPStatus dpStatus02 = results[i][j-p.weight].clone();
+                    dpStatus02.packs.add(p);
+                    dpStatus02.value += p.value;
+                    results[i+1][j] = dpStatus01.compareTo(dpStatus02) > 0 ? dpStatus01 : dpStatus02;
                 }
             }
         }
@@ -95,11 +95,11 @@ public class Pack01Solution {
     
     // 对应Pack01.solution3
     public static List<Pack> solution4(List<Pack> packs, int capacity) {
-        DpResult[] results = new DpResult[capacity + 1];
-        DpResult[] preResults = new DpResult[capacity + 1];
+        DPStatus[] results = new DPStatus[capacity + 1];
+        DPStatus[] preResults = new DPStatus[capacity + 1];
         // 默认第一行
         for (int j = 0; j <= capacity; j++) {
-            preResults[j] = new DpResult(new ArrayList<>(), 0);
+            preResults[j] = new DPStatus(new ArrayList<>(), 0);
         }
         for (int i = 0; i < packs.size(); i++) {
             Pack p = packs.get(i);
@@ -107,11 +107,11 @@ public class Pack01Solution {
                 if (p.weight > j) {
                     results[j] = preResults[j].clone();
                 } else {
-                    DpResult dpResult01 = preResults[j].clone();
-                    DpResult dpResult02 = preResults[j-p.weight].clone();
-                    dpResult02.packs.add(p);
-                    dpResult02.value += p.value;
-                    results[j] = dpResult01.compareTo(dpResult02) > 0 ? dpResult01 : dpResult02;
+                    DPStatus dpStatus01 = preResults[j].clone();
+                    DPStatus dpStatus02 = preResults[j-p.weight].clone();
+                    dpStatus02.packs.add(p);
+                    dpStatus02.value += p.value;
+                    results[j] = dpStatus01.compareTo(dpStatus02) > 0 ? dpStatus01 : dpStatus02;
                 }
             }
             // 注意必须是深度复制
@@ -196,12 +196,12 @@ public class Pack01Solution {
     }
     
     // TODO 深入了解 Cloneable Comparable Serializable
-    static class DpResult implements Comparable<DpResult>, Cloneable {
+    static class DPStatus implements Comparable<DPStatus>, Cloneable {
         
         public List<Pack> packs;
         public Integer value;//避免每次需要循环，value在添加或删除pack时手动维护。
         
-        public DpResult(List<Pack> packs, Integer value) {
+        public DPStatus(List<Pack> packs, Integer value) {
             this.packs = packs;
             this.value = value;
         }
@@ -212,16 +212,16 @@ public class Pack01Solution {
         }
 
         @Override
-        public int compareTo(DpResult o) {
+        public int compareTo(DPStatus o) {
             return value.compareTo(o.value);
         }
         
         @Override
-        public DpResult clone() {
+        public DPStatus clone() {
             try {
-                DpResult dpResult = (DpResult) super.clone();
-                dpResult.packs = new ArrayList<>(packs);
-                return dpResult;
+                DPStatus dpStatus = (DPStatus) super.clone();
+                dpStatus.packs = new ArrayList<>(packs);
+                return dpStatus;
             } catch (CloneNotSupportedException e) {
                 // this shouldn't happen, since we are Cloneable
                 throw new InternalError();
