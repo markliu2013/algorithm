@@ -1,4 +1,4 @@
-package com.zfwhub.algorithm.leetcode.backtracking;
+package com.zfwhub.algorithm.templates.backtracking;
 
 import java.util.*;
 

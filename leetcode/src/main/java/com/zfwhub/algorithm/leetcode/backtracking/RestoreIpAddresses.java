@@ -3,11 +3,9 @@ package com.zfwhub.algorithm.leetcode.backtracking;
 import java.util.*;
 
 // https://leetcode.com/problems/restore-ip-addresses/
-// https://leetcode.com/problems/restore-ip-addresses/discuss/30949/My-code-in-Java
-// https://leetcode.com/problems/restore-ip-addresses/discuss/30944/Very-simple-DFS-solution
 public class RestoreIpAddresses {
 
-    public static List<String> restoreIpAddresses(String s) {
+    public static List<String> solution1(String s) {
         List<String> solutionList = new ArrayList<>();//存储s打上正确的点的string
         if (s.length() > 12) {//大于12，那么有一个肯定超过三位数，所以绝对无解。
             return solutionList;
@@ -132,7 +130,7 @@ public class RestoreIpAddresses {
     }
     
     public static void main(String[] args) {
-        System.out.println(restoreIpAddresses("123456"));
+        System.out.println(solution1("123456"));
     }
 
 }

@@ -6,31 +6,7 @@ import java.util.*;
 // 题目的意思: 必须是前面两个数相加
 public class AdditiveNumber {
     
-    // Wrong Answer
-    public static boolean isAdditiveNumber0(String num) {
-        int[] numArr = new int[num.length()];
-        for (int i = 0; i < num.length(); i++) {
-            numArr[i] = Character.getNumericValue(num.charAt(i));
-        }
-        for (int i = 2; i < numArr.length; i++) {
-            boolean flag = false;  
-            checkIndex:
-            for (int j = 0; j < i; j++) {
-                for (int k = j+1; k < i; k++) {
-                    if (numArr[j] + numArr[k] == numArr[i]) {
-                        flag = true;
-                        break checkIndex;
-                    }
-                }
-            }
-            if (!flag) {
-                return false;
-            }
-        }
-        return true;
-    }
-    
-    public static boolean isAdditiveNumber(String num) {
+    public static boolean solution1(String num) {
         if (num.length() < 3) {
             return false;
         }
@@ -146,7 +122,7 @@ public class AdditiveNumber {
     
     public static void main(String[] args) {
 //        System.out.println(isAdditiveNumber("000"));
-        System.out.println(isAdditiveNumber("120122436"));
+        System.out.println(solution1("120122436"));
     }
     
 }

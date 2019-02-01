@@ -34,7 +34,7 @@ public class BinaryWatch {
     }
 
     // https://medium.com/competitive-programming/leetcode-401-binary-watch-e65f005a52e3
-    public static List<String> solution(int num) {
+    public static List<String> solution1(int num) {
         List<String> result = new ArrayList<>();
         for (int h = 0; h < 12; h++) {
             for (int m = 0; m < 60; m++) {
@@ -83,7 +83,7 @@ public class BinaryWatch {
     }
 
     public static void main(String[] args) {
-        System.out.println(solution(2));
+        System.out.println(solution1(2));
     }
 
 }
