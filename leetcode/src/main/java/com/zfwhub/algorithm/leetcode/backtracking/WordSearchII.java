@@ -12,7 +12,7 @@ public class WordSearchII {
             set.add(word);
         }
         for (String word : set) {
-            if (WordSearch2.exist(board, word)) {
+            if (WordSearch.solution2(board, word)) {
                 list.add(word);
             }
         }

@@ -22,13 +22,13 @@ public class AdditiveNumberTest {
         boolean expected6 = false;
         String num7 = "120122436";
         boolean expected7 = false;
-        assertEquals(expected1, AdditiveNumber.isAdditiveNumber(num1));
-        assertEquals(expected2, AdditiveNumber.isAdditiveNumber(num2));
-        assertEquals(expected3, AdditiveNumber.isAdditiveNumber(num3));
-        assertEquals(expected4, AdditiveNumber.isAdditiveNumber(num4));
-        assertEquals(expected5, AdditiveNumber.isAdditiveNumber(num5));
-        assertEquals(expected6, AdditiveNumber.isAdditiveNumber(num6));
-        assertEquals(expected7, AdditiveNumber.isAdditiveNumber(num7));
+        assertEquals(expected1, AdditiveNumber.solution1(num1));
+        assertEquals(expected2, AdditiveNumber.solution1(num2));
+        assertEquals(expected3, AdditiveNumber.solution1(num3));
+        assertEquals(expected4, AdditiveNumber.solution1(num4));
+        assertEquals(expected5, AdditiveNumber.solution1(num5));
+        assertEquals(expected6, AdditiveNumber.solution1(num6));
+        assertEquals(expected7, AdditiveNumber.solution1(num7));
     }
 
 }

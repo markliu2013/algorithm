@@ -48,12 +48,12 @@ public class StickersToSpellWordTest {
 
     @Test
     public void testMinStickers() {
-        assertEquals(expected, StickersToSpellWord.minStickers(stickers, target));
+        assertEquals(expected, StickersToSpellWord.solution1(stickers, target));
     }
     
     @Test
     public void testMinStickers2() {
-        assertEquals(expected, StickersToSpellWord2.minStickers(stickers, target));
+        assertEquals(expected, StickersToSpellWord.solution2(stickers, target));
     }
 
 }
