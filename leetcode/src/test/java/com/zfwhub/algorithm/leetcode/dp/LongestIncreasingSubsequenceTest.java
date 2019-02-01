@@ -20,6 +20,10 @@ public class LongestIncreasingSubsequenceTest {
         assertEquals(expected2, LongestIncreasingSubsequence.solution1(nums2));
         assertEquals(expected3, LongestIncreasingSubsequence.solution1(nums3));
         assertEquals(expected4, LongestIncreasingSubsequence.solution1(nums4));
+        assertEquals(expected1, LongestIncreasingSubsequence.solution2(nums1));
+        assertEquals(expected2, LongestIncreasingSubsequence.solution2(nums2));
+        assertEquals(expected3, LongestIncreasingSubsequence.solution2(nums3));
+        assertEquals(expected4, LongestIncreasingSubsequence.solution2(nums4));
     }
 
 }

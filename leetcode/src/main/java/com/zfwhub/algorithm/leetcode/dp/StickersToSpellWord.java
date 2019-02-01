@@ -115,7 +115,7 @@ public class StickersToSpellWord {
         }
     }
     
-    static class DpMapKey {
+    private static class DpMapKey {
         public List<List<Character>> stickers;
         public List<Character> target;
         
