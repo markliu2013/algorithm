@@ -3,7 +3,6 @@ package com.zfwhub.algorithm.leetcode.backtracking;
 import java.util.*;
 
 // https://leetcode.com/problems/additive-number/
-// 题目的意思: 必须是前面两个数相加
 public class AdditiveNumber {
     
     public static boolean solution1(String num) {
@@ -122,7 +121,7 @@ public class AdditiveNumber {
     
     public static void main(String[] args) {
 //        System.out.println(isAdditiveNumber("000"));
-        System.out.println(solution1("120122436"));
+        System.out.println(solution1("214748364721474836422147483641"));
     }
     
 }

@@ -1,4 +1,5 @@
 package com.zfwhub.algorithm.leetcode.backtracking;
+import java.math.BigDecimal;
 import java.util.*;
 
 import com.zfwhub.algorithm.utils.CollectionUtil;
@@ -84,10 +85,7 @@ public class SplitArrayFibonacci {
     }
     
     private static void processSolution(List<Integer> result, List<Boolean> solution, String num) {
-        List<Long> list = splitNums(solution, num);
-        for (Long long1 : list) {
-            result.add(long1.intValue());
-        }
+        result.addAll(splitNums(solution, num));
     }
 
     private static boolean isASolution(List<Boolean> solution, String num) {
@@ -107,10 +105,14 @@ public class SplitArrayFibonacci {
             if (solution.size()+1 >= mid && flag == 0) {
                 return false;
             }
-            // 不能这样 "02"
             if (flag == 1) {
                 String targetStr = num.substring(0, solution.size()+1);
+                // 不能这样 "02"
                 if (targetStr.startsWith("0") && targetStr.length() > 1) {
+                    return false;
+                }
+                // 不能超出integer范围
+                if (!isInRange(targetStr)) {
                     return false;
                 }
             }
@@ -133,6 +135,10 @@ public class SplitArrayFibonacci {
                 if (targetStr.startsWith("0") && targetStr.length() > 1) {
                     return false;
                 }
+                // 不能超出integer范围
+                if (!isInRange(targetStr)) {
+                    return false;
+                }
             }
         }
         // 最后一个点必须分
@@ -141,14 +147,18 @@ public class SplitArrayFibonacci {
         }
         // 前面已经有两个以上分割点了
         if (list.size() >= 2 && flag == 1) {
-            List<Long> numList = splitNums(solution, num);
             String targetStr = num.substring(list.get(list.size()-1)+1, solution.size()+1);
             if (targetStr.startsWith("0") && targetStr.length() > 1) {
                 return false;
             }
-            Long target = Long.valueOf(targetStr);
-            Long pre1 = numList.get(numList.size()-1);
-            Long pre2 = numList.get(numList.size()-2);
+            // 不能超出integer范围
+            if (!isInRange(targetStr)) {
+                return false;
+            }
+            List<Integer> numList = splitNums(solution, num);
+            Integer target = Integer.valueOf(targetStr);
+            Integer pre1 = numList.get(numList.size()-1);
+            Integer pre2 = numList.get(numList.size()-2);
             return target == pre1 + pre2;
         }
         return true;
@@ -162,20 +172,25 @@ public class SplitArrayFibonacci {
         solution.remove(solution.size()-1);
     }
     
-    private static List<Long> splitNums(List<Boolean> solution, String num) {
-        List<Long> list = new ArrayList<>();
+    private static List<Integer> splitNums(List<Boolean> solution, String num) {
+        List<Integer> list = new ArrayList<>();
         int preTrueIndex = 0;
         for (int j = 0; j < solution.size(); j++) {
             if (solution.get(j) == true) {
-                list.add(Long.valueOf(num.substring(preTrueIndex, j+1)));
+                list.add(Integer.valueOf(num.substring(preTrueIndex, j+1)));
                 preTrueIndex = j+1;
             }
         }
         return list;
     }
+    
+    // 检查是否在integer范围内
+    private static boolean isInRange(String target) {
+        return new BigDecimal(target).compareTo(new BigDecimal(Integer.MAX_VALUE)) <= 0;
+    }
 
     public static void main(String[] args) {
-        System.out.println(solution2("214748364721474836422147483641"));
+        System.out.println(solution2("539834657215398346785398346991079669377161950407626991734534318677529701785098211336528511"));
     }
     
 }
