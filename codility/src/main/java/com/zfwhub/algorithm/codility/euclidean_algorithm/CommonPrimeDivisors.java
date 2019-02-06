@@ -13,8 +13,8 @@ public class CommonPrimeDivisors {
         for (int i = 0; i < A.length; i++) {
             int N = A[i];
             int M = B[i];
-            ArrayList<Integer> list1 = Eratosthenes.factorization(N);
-            ArrayList<Integer> list2 = Eratosthenes.factorization(M);
+            ArrayList<Integer> list1 = Eratosthenes.factorization2(N);
+            ArrayList<Integer> list2 = Eratosthenes.factorization2(M);
             HashSet<Integer> set1 = new HashSet<Integer>();
             set1.addAll(list1);
             HashSet<Integer> set2 = new HashSet<Integer>();

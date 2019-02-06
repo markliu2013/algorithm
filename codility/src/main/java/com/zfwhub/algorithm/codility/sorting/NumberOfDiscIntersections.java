@@ -1,15 +1,13 @@
 package com.zfwhub.algorithm.codility.sorting;
 
-/**
- * https://app.codility.com/programmers/lessons/6-sorting/number_of_disc_intersections/
- */
+// https://app.codility.com/programmers/lessons/6-sorting/number_of_disc_intersections/
 public class NumberOfDiscIntersections {
 
     /**
      * brute force, get all combinations of two, then check.
      * Be careful, overflow
      */
-    public static int solution(int[] A) {
+    public static int solution1(int[] A) {
         int count = 0;
         for (int i = 0; i < A.length; i++) {
             for (int j = i + 1; j < A.length; j++) {
@@ -33,7 +31,7 @@ public class NumberOfDiscIntersections {
     }
 
     public static void main(String[] args) {
-        System.out.println(NumberOfDiscIntersections.solution(new int[] { 1, 5, 2, 1, 4, 0 }));
+        System.out.println(NumberOfDiscIntersections.solution1(new int[] { 1, 5, 2, 1, 4, 0 }));
     }
 
 }

@@ -7,7 +7,7 @@ public class Eratosthenes {
     
     // 找1到n的所有质数
     public static HashSet<Integer> sieve1(int n) {
-        HashSet<Integer> set = new HashSet<Integer>();
+        HashSet<Integer> set = new HashSet<>();
         for (int i = 2; i <= n; i++) {
             set.add(i);
         }
@@ -24,7 +24,7 @@ public class Eratosthenes {
     }
 
     public static HashSet<Integer> sieve2(int n) {
-        HashSet<Integer> set = new HashSet<Integer>();
+        HashSet<Integer> set = new HashSet<>();
         for (int i = 2; i <= n; i++) {
             set.add(i);
         }
@@ -99,6 +99,7 @@ public class Eratosthenes {
         // System.out.println(Eratosthenes.sieve2(Integer.MAX_VALUE-100));
         System.out.println(Eratosthenes.factorization(30));
         System.out.println(Eratosthenes.factorization2(30));
+        System.out.println(sieve1(20));
     }
 
 }
