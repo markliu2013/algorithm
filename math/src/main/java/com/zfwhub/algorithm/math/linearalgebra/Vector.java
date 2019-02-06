@@ -7,5 +7,13 @@ public class Vector {
     public Vector(int[] data) {
         this.data = data;
     }
+    
+    public double length() {
+        int result = 0;
+        for (int i : data) {
+            result += i*i;
+        }
+        return Math.sqrt(result);
+    }
 
 }
