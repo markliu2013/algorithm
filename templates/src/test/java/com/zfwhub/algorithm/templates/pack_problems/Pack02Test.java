@@ -21,5 +21,10 @@ public class Pack02Test {
     public void testSolution2() {
         assertEquals(expected1, Pack02.solution2(PackUtil.arrayToPackList(volumns1, values1), capacity1));
     }
+    
+    @Test
+    public void testSolution3() {
+        assertEquals(expected1, Pack02.solution3(PackUtil.arrayToPackList(volumns1, values1), capacity1));
+    }
 
 }
