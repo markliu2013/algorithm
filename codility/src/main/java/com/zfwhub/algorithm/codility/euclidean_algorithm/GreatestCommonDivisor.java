@@ -1,5 +1,6 @@
 package com.zfwhub.algorithm.codility.euclidean_algorithm;
 
+// https://codility.com/media/train/10-Gcd.pdf
 public class GreatestCommonDivisor {
 
     /**

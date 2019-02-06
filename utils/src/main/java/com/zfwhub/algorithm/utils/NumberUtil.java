@@ -20,5 +20,16 @@ public class NumberUtil {
     public static int getSumFromOne(int n) {
         return (n*(n+1)) / 2;
     }
+    
+    /**
+     * 求a和b的最大公约数。
+     * @param a
+     * @param b
+     * @return
+     */
+    // TODO gcd
+    public static int gcd(int a, int b) {
+        return 0;
+    }
 
 }

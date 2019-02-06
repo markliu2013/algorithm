@@ -28,18 +28,12 @@ public class CommonPrimeDivisors {
 
     // TODO CommonPrimeDivisors
     public static int solution2(int[] A, int[] B) {
+        
         return 0;
     }
 
-    // TODO 
-    public static boolean checkNums(int N, int M) {
-        if (N < M) {
-            return false;
-        } else if (N > M) {
-            return checkNums(M, N);
-        } else {
-            return true;
-        }
+    private static boolean checkNums(int N, int M) {
+        return false;
     }
 
     public static void main(String[] args) {
