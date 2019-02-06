@@ -4,12 +4,10 @@ import java.util.*;
 
 // https://codility.com/media/train/9-Sieve.pdf
 public class Eratosthenes {
-
-    /**
-     * get all prime numbers from 1 to n
-     */
-    public static HashSet<Integer> sieve(int n) {
-        HashSet<Integer> set = new HashSet<Integer>();
+    
+    // 找1到n的所有质数
+    public static HashSet<Integer> sieve1(int n) {
+        HashSet<Integer> set = new HashSet<>();
         for (int i = 2; i <= n; i++) {
             set.add(i);
         }
@@ -26,7 +24,7 @@ public class Eratosthenes {
     }
 
     public static HashSet<Integer> sieve2(int n) {
-        HashSet<Integer> set = new HashSet<Integer>();
+        HashSet<Integer> set = new HashSet<>();
         for (int i = 2; i <= n; i++) {
             set.add(i);
         }
@@ -42,6 +40,7 @@ public class Eratosthenes {
         return set;
     }
 
+    // 分解质因数
     public static ArrayList<Integer> factorization(int n) {
         ArrayList<Integer> list = new ArrayList<Integer>();
         int result = n;
@@ -65,7 +64,19 @@ public class Eratosthenes {
         return list;
     }
 
-    public static int[] arraryF(int n) {
+
+    public static ArrayList<Integer> factorization2(int x) {
+        ArrayList<Integer> list = new ArrayList<Integer>();
+        int[] F = arraryF(x);
+        while (F[x] > 0) {
+            list.add(F[x]);
+            x = x / F[x];
+        }
+        list.add(x);
+        return list;
+    }
+
+    private static int[] arraryF(int n) {
         int[] F = new int[n + 1];
         int i = 2;
         while (i * i <= n) {
@@ -82,23 +93,13 @@ public class Eratosthenes {
         }
         return F;
     }
-
-    public static ArrayList<Integer> factorization2(int x) {
-        ArrayList<Integer> list = new ArrayList<Integer>();
-        int[] F = arraryF(x);
-        while (F[x] > 0) {
-            list.add(F[x]);
-            x = x / F[x];
-        }
-        list.add(x);
-        return list;
-    }
-
+    
     public static void main(String[] args) {
         // System.out.println(Eratosthenes.sieve(100));
         // System.out.println(Eratosthenes.sieve2(Integer.MAX_VALUE-100));
-        System.out.println(Eratosthenes.factorization(10));
-        System.out.println(Eratosthenes.factorization2(30));
+        System.out.println(Eratosthenes.factorization(75));
+        System.out.println(Eratosthenes.factorization2(15));
+        System.out.println(sieve1(20));
     }
 
 }

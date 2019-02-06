@@ -39,4 +39,46 @@ public class Pack02 {
         return Pack01.solution4(packs2, capacity);
     }
     
+    public static int solution3(List<Pack> packs, int capacity) {
+        // 初始化表格，默认第一行全部是 0
+        int[][] results = new int[packs.size()+1][capacity+1];
+        for (int i = 0; i < packs.size(); i++) {
+            Pack p = packs.get(i);
+            // j必须从0开始，因为容量为0的包可以装体积为0的物品
+            for (int j = 0; j <= capacity; j++) {
+                if (p.weight > j) {//如果物品放不进背包
+                    results[i+1][j] = results[i][j];
+                } else {
+                    int count = j / p.weight;
+                    for (int k = 0; k <= count; k++) {
+                        results[i+1][j] = Math.max(results[i+1][j], results[i][j - p.weight*k] + p.value * k);
+                    }
+                }
+            }
+        }
+        return results[packs.size()][capacity];
+    }
+    
+    // TODO solution4 Why wrong?
+    public static int solution4(List<Pack> packs, int capacity) {
+        int[] results = new int[capacity + 1];
+        int[] preResults = new int[capacity + 1];
+        for (int i = 0; i < packs.size(); i++) {
+            Pack p = packs.get(i);
+            for (int j = 0; j <= capacity; j++) {
+                if (p.weight > j) {
+                    results[j] = preResults[j];
+                } else {
+                    int count = j / p.weight;
+                    for (int k = 0; k <= count; k++) {
+                        results[j] = Math.max(preResults[j], preResults[j - p.weight*k] + p.value * k);
+                    }
+                }
+            }
+            // 注意必须是深度复制
+            preResults = results.clone();
+        }
+        return results[capacity];
+    }
+    
 }

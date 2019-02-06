@@ -223,7 +223,6 @@ class Pack01Solution {
 
     }
 
-    // TODO 深入了解 Cloneable Comparable Serializable
     static class DPStatus implements Comparable<DPStatus>, Cloneable {
 
         public List<Pack> packs;

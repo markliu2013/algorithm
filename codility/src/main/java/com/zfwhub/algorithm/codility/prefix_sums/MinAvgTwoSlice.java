@@ -1,17 +1,10 @@
 package com.zfwhub.algorithm.codility.prefix_sums;
 
-/**
- * Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.
- * it is similar with leetcode MaximumSubarray
- * https://leetcode.com/problems/maximum-subarray/description/
- * https://app.codility.com/programmers/lessons/5-prefix_sums/min_avg_two_slice/
-*/
+// https://app.codility.com/programmers/lessons/5-prefix_sums/min_avg_two_slice/
 public class MinAvgTwoSlice {
 
-    /**
-     * straightforward
-     */
-    public int solution(int[] A) {
+    // straightforward
+    public static int solution1(int[] A) {
         float minAvg = Float.MAX_VALUE;
         int minAvgIndex = 0;
         for (int i = 0; i < A.length; i++) {
@@ -30,11 +23,9 @@ public class MinAvgTwoSlice {
         return minAvgIndex;
     }
 
-    /**
-     * prefixsum is avg
-     * https://app.codility.com/demo/results/trainingUXQSX8-U8S/
-     */
-    public int solution2(int[] A) {
+    // prefixsum is avg
+    // https://app.codility.com/demo/results/trainingUXQSX8-U8S/
+    public static int solution2(int[] A) {
         float[] prefixSums = new float[A.length];
         prefixSums[0] = A[0];
         for (int i = 1; i < A.length; i++) {
@@ -54,10 +45,8 @@ public class MinAvgTwoSlice {
         return minAvgIndex;
     }
 
-    /**
-     * prefixSums optimization
-     */
-    public int solution3(int[] A) {
+    // prefixSums optimization
+    public static int solution3(int[] A) {
         int[] prefixSums = new int[A.length];
         prefixSums[0] = A[0];
         for (int i = 1; i < A.length; i++) {
