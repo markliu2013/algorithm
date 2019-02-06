@@ -97,8 +97,8 @@ public class Eratosthenes {
     public static void main(String[] args) {
         // System.out.println(Eratosthenes.sieve(100));
         // System.out.println(Eratosthenes.sieve2(Integer.MAX_VALUE-100));
-        System.out.println(Eratosthenes.factorization(30));
-        System.out.println(Eratosthenes.factorization2(30));
+        System.out.println(Eratosthenes.factorization(75));
+        System.out.println(Eratosthenes.factorization2(15));
         System.out.println(sieve1(20));
     }
 

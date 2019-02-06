@@ -27,9 +27,12 @@ public class NumberUtil {
      * @param b
      * @return
      */
-    // TODO gcd
-    public static int gcd(int a, int b) {
-        return 0;
+    public static long gcd(long a, long b) {
+        if (a % b == 0) {
+            return b;
+        } else {
+            return gcd(b, a % b);
+        }
     }
 
 }
