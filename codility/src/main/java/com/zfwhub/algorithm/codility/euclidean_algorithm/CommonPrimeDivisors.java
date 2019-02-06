@@ -5,15 +5,10 @@ import java.util.HashSet;
 
 import com.zfwhub.algorithm.codility.sieve_of_eratosthenes.Eratosthenes;
 
-/**
- * https://app.codility.com/programmers/lessons/12-euclidean_algorithm/common_prime_divisors/
- */
+// https://app.codility.com/programmers/lessons/12-euclidean_algorithm/common_prime_divisors/
 public class CommonPrimeDivisors {
 
-    /**
-     * If they have the same numbers in factorization?
-     */
-    public static int solution(int[] A, int[] B) {
+    public static int solution1(int[] A, int[] B) {
         int count = 0;
         for (int i = 0; i < A.length; i++) {
             int N = A[i];
@@ -50,6 +45,6 @@ public class CommonPrimeDivisors {
     public static void main(String[] args) {
         int[] A = new int[] { 15, 10, 3 };
         int[] B = new int[] { 75, 30, 5 };
-        System.out.println(CommonPrimeDivisors.solution(A, B));
+        System.out.println(CommonPrimeDivisors.solution1(A, B));
     }
 }
