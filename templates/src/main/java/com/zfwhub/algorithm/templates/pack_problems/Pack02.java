@@ -59,4 +59,26 @@ public class Pack02 {
         return results[packs.size()][capacity];
     }
     
+    // TODO solution4 Why wrong?
+    public static int solution4(List<Pack> packs, int capacity) {
+        int[] results = new int[capacity + 1];
+        int[] preResults = new int[capacity + 1];
+        for (int i = 0; i < packs.size(); i++) {
+            Pack p = packs.get(i);
+            for (int j = 0; j <= capacity; j++) {
+                if (p.weight > j) {
+                    results[j] = preResults[j];
+                } else {
+                    int count = j / p.weight;
+                    for (int k = 0; k <= count; k++) {
+                        results[j] = Math.max(preResults[j], preResults[j - p.weight*k] + p.value * k);
+                    }
+                }
+            }
+            // 注意必须是深度复制
+            preResults = results.clone();
+        }
+        return results[capacity];
+    }
+    
 }
