@@ -2,11 +2,9 @@ package com.zfwhub.algorithm.codility.sorting;
 
 // https://app.codility.com/programmers/lessons/6-sorting/number_of_disc_intersections/
 public class NumberOfDiscIntersections {
-
-    /**
-     * brute force, get all combinations of two, then check.
-     * Be careful, overflow
-     */
+    
+    // brute force, get all combinations of two, then check.
+    // Be careful, overflow
     public static int solution1(int[] A) {
         int count = 0;
         for (int i = 0; i < A.length; i++) {
@@ -21,9 +19,7 @@ public class NumberOfDiscIntersections {
     }
 
     // TODO
-    /**
-     * sorting optimization 
-     */
+    // sorting optimization
     public static int solution2(int[] A) {
         int count = 0;
 
