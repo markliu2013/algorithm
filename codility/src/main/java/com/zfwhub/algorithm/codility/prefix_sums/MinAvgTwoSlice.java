@@ -66,10 +66,26 @@ public class MinAvgTwoSlice {
         return minAvgIndex;
     }
 
-    // TODO
     // https://www.martinkysel.com/codility-minavgtwoslice-solution/
     public static int solution4(int[] A) {
-        return 0;
+        int minIndex = 0;
+        double minValue = Double.MAX_VALUE;
+        for (int i = 0; i < A.length-1; i++) {
+            if ((A[i] + A[i+1]) / 2.0 < minValue) {
+                minIndex = i;
+                minValue = (A[i] + A[i+1])/2.0;
+            }
+            if (i < A.length-2 && (A[i] + A[i+1] + A[i+2]) / 3.0 < minValue) {
+                minIndex = i;
+                minValue = (A[i] + A[i+1] + A[i+2]) / 3.0;
+            }
+        }
+        return minIndex;
+    }
+    
+    public static void main(String[] args) {
+        int[] A = new int[] {4,2,2,5,1,5,8};
+        System.out.println(solution4(A));
     }
 
 }
