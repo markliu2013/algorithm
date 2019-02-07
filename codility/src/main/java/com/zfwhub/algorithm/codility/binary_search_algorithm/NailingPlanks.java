@@ -5,6 +5,7 @@ import java.util.*;
 import com.zfwhub.algorithm.utils.ArrayUtil;
 
 // https://app.codility.com/programmers/lessons/14-binary_search_algorithm/nailing_planks/
+// http://codility-lessons.blogspot.com/2015/03/lesson-11-nailingplanks-nailing-planks.html
 public class NailingPlanks {
 
     // brute force，必须是前面的所有钉子都使用。
@@ -50,7 +51,8 @@ public class NailingPlanks {
     // binary search
     public static int solution3(int[] A, int[] B, int[] C) {
         HashSet<Integer> set = new HashSet<Integer>();
-        Arrays.sort(C);
+        Arrays.sort(A);
+        Arrays.sort(B);
         int indexA = 0;//从左往右挤
         int indexB = B.length-1;//从右往左挤
         for (int i = 0; i < C.length; i++) {
@@ -73,12 +75,12 @@ public class NailingPlanks {
     }
 
     public static void main(String[] args) {
-                int[] A = new int[]{1,4,5,8};
-                int[] B = new int[]{4,5,9,10};
-                int[] C = new int[]{4,6,7,10,2};
-//        int[] A = new int[] { 3, 4, 5, 6, 9 };
-//        int[] B = new int[] { 16, 17, 18, 19, 20 };
-//        int[] C = new int[] { 19, 17, 7 };
+//                int[] A = new int[]{1,4,5,8};
+//                int[] B = new int[]{4,5,9,10};
+//                int[] C = new int[]{4,6,7,10,2};
+        int[] A = new int[] { 3, 4, 4, 6, 9 };
+        int[] B = new int[] { 16, 17, 17, 19, 20 };
+        int[] C = new int[] { 19, 17, 7 };
         System.out.println(solution1(A, B, C));
 //        System.out.println(solution2(A, B, C));
         System.out.println(solution3(A, B, C));
