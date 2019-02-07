@@ -154,6 +154,7 @@ public class NailingPlanks {
         int[] C = new int[] { 19, 17, 7 };
         System.out.println(NailingPlanks.solution1(A, B, C));
         System.out.println(NailingPlanks.solution2(A, B, C));
+        System.out.println(NailingPlanks.solution3(A, B, C));
     }
 
 }

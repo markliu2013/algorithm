@@ -2,15 +2,13 @@ package com.zfwhub.algorithm.leetcode.dp;
 import java.util.*;
 
 // https://leetcode.com/problems/regular-expression-matching/
-// https://leetcode.com/submissions/detail/200680154/
 public class RegularExpressionMatching {
     
     static final Character ASTERISK_CHAR = '*';
     static final Character POINT_CHAR = '.';
     static final String ASTERISK_STRING = "*";
 
-    // TODO RegularExpressionMatching
-    public static boolean isMatch(String s, String p) {
+    public static boolean solution1(String s, String p) {
         if (p.length() == 0) {
             if (s.length() == 0) {
                 return true;
@@ -32,7 +30,7 @@ public class RegularExpressionMatching {
         return dp(s, patterns);
     }
     
-    static boolean dp(String s, List<CharPattern> patterns) {
+    private static boolean dp(String s, List<CharPattern> patterns) {
         if (s.length() == 0 && patterns.size() == 0) {
             return true;
         }
@@ -77,12 +75,10 @@ public class RegularExpressionMatching {
         }
     }
     
-    static class CharPattern {
+    private static class CharPattern {
         
         public boolean isAsterisk;
         public Character character;
-        
-        public CharPattern() { }
         
         public int checkLastCount(String s) {
             int count = 0;
@@ -122,7 +118,7 @@ public class RegularExpressionMatching {
     public static void main(String[] args) {
         String s = "";
         String p = "a*a*";
-        System.out.println(isMatch(s, p));
+        System.out.println(solution1(s, p));
     }
 
 }

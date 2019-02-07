@@ -1,8 +1,6 @@
 package com.zfwhub.algorithm.leetcode.string;
 
-/**
- * https://leetcode.com/problems/zigzag-conversion/description/
- */
+// https://leetcode.com/problems/zigzag-conversion/description/
 public class ZigZag {
     
     public static String convert(String s, int numRows) {
