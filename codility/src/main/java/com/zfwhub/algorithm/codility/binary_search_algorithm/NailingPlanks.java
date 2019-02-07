@@ -2,12 +2,14 @@ package com.zfwhub.algorithm.codility.binary_search_algorithm;
 
 import java.util.*;
 
+import com.zfwhub.algorithm.utils.ArrayUtil;
+
+// https://app.codility.com/programmers/lessons/14-binary_search_algorithm/nailing_planks/
 public class NailingPlanks {
 
-    /**
-     * brute force
-     */
-    public static int solution(int[] A, int[] B, int[] C) {
+    // brute force，必须是前面的所有钉子都使用。
+    public static int solution1(int[] A, int[] B, int[] C) {
+        // 把nailed的index放到set
         HashSet<Integer> set = new HashSet<Integer>();
         for (int i = 0; i < C.length; i++) {
             for (int j = 0; j < A.length; j++) {
@@ -22,32 +24,23 @@ public class NailingPlanks {
         return -1;
     }
 
-    /**
-     * brute force, remove early
-     */
-    // TODO wrong NailingPlanks
-    public static int solution4(int[] A, int[] B, int[] C) {
-        ArrayList<Integer> list1 = new ArrayList<Integer>();
-        for (int i = 0; i < A.length; i++) {
-            list1.add(A[i]);
-        }
-        ArrayList<Integer> list2 = new ArrayList<Integer>();
-        for (int i = 0; i < B.length; i++) {
-            list2.add(B[i]);
-        }
-        ArrayList<Integer> list3 = new ArrayList<Integer>();
+    // 删除A和B中已经nailed，后续搜索提高效率。
+    public static int solution2(int[] A, int[] B, int[] C) {
+        List<Integer> listA = ArrayUtil.toList(A);
+        List<Integer> listB = ArrayUtil.toList(B);
         for (int i = 0; i < C.length; i++) {
-            for (int j = 0; j < list1.size(); j++) {
-                if (C[i] >= list1.get(j) && C[i] <= list2.get(j)) {
-                    list3.add(j);
+            List<Integer> listAtoRemove = new ArrayList<>();
+            List<Integer> listBtoRemove = new ArrayList<>();
+            for (int j = 0; j < A.length; j++) {
+                if (C[i] >= A[j] && C[i] <= B[j]) {
+                    listAtoRemove.add(A[j]);
+                    listBtoRemove.add(B[j]);
                 }
             }
-            if (list3.size() == A.length) {
+            listA.removeAll(listAtoRemove);
+            listB.removeAll(listBtoRemove);
+            if (listA.size() == 0 && listB.size() == 0) {
                 return i + 1;
-            }
-            for (Integer integer : list3) {
-                list1.remove(integer);
-                list2.remove(integer);
             }
         }
         return -1;
@@ -57,7 +50,7 @@ public class NailingPlanks {
      * binary search
      */
     // TODO wrong.
-    public static int solution2(int[] A, int[] B, int[] C) {
+    public static int solution3(int[] A, int[] B, int[] C) {
         HashSet<Integer> set = new HashSet<Integer>();
         for (int i = 0; i < C.length; i++) {
             int begin1 = 0;
@@ -100,7 +93,7 @@ public class NailingPlanks {
     }
 
     // TODO list, check and remove
-    public static int solution3(int[] A, int[] B, int[] C) {
+    public static int solution4(int[] A, int[] B, int[] C) {
         ArrayList<Integer> list1 = new ArrayList<Integer>();
         for (int i = 0; i < A.length; i++) {
             list1.add(A[i]);
@@ -159,7 +152,7 @@ public class NailingPlanks {
         int[] A = new int[] { 3, 4, 5, 6, 9 };
         int[] B = new int[] { 16, 17, 18, 19, 20 };
         int[] C = new int[] { 19, 17, 7 };
-        System.out.println(NailingPlanks.solution(A, B, C));
+        System.out.println(NailingPlanks.solution1(A, B, C));
         System.out.println(NailingPlanks.solution2(A, B, C));
     }
 
