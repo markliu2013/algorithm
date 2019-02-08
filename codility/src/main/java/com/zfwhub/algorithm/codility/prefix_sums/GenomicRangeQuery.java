@@ -94,11 +94,6 @@ public class GenomicRangeQuery {
         return result;
     }
 
-    // TODO https://stackoverflow.com/questions/19552754/java-codility-training-genomic-range-query
-    public int[] solution3(String S, int[] P, int[] Q) {
-        return null;
-    }
-
     public static void main(String[] args) {
         GenomicRangeQuery grq = new GenomicRangeQuery();
         //        int[] P = new int[] { 2, 5, 0 };

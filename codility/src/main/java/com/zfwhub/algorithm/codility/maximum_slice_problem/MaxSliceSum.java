@@ -4,10 +4,8 @@ package com.zfwhub.algorithm.codility.maximum_slice_problem;
 // @link com.zfwhub.algorithm.leetcode.popular.MaximumSubarray
 public class MaxSliceSum {
 
-    /**
-     * dynamic programming, down to top 
-     */
-    public static int solution(int[] A) {
+    // dynamic programming, down to top 
+    public static int solution1(int[] A) {
         int[] max1 = new int[A.length];//end with i's MaxSliceSum
         int[] max2 = new int[A.length];//from 0 to i's MaxSliceSum
         max1[0] = A[0];
