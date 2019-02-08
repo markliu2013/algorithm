@@ -1,17 +1,12 @@
 package com.zfwhub.algorithm.codility.caterpillar_method;
 
 import java.util.HashSet;
-/**
- * https://app.codility.com/programmers/lessons/15-caterpillar_method/count_distinct_slices/
- */
+// https://app.codility.com/programmers/lessons/15-caterpillar_method/count_distinct_slices/
 public class CountDistinctSlices {
     
     public static int MAX = 1000000000;
     
-    /**
-     * brute force
-     */
-    public static int solution(int M, int[] A) {
+    public static int solution1(int M, int[] A) {
         int count = 0;
         for (int i = 0; i < A.length; i++) {
             for (int j = i; j < A.length; j++) {
@@ -42,7 +37,7 @@ public class CountDistinctSlices {
     public static void main(String[] args) {
         int[] A = new int[] {3,4,5,5,2};
         int M = 6;
-        System.out.println(CountDistinctSlices.solution(M, A));;
+        System.out.println(CountDistinctSlices.solution1(M, A));;
     }
 
 }

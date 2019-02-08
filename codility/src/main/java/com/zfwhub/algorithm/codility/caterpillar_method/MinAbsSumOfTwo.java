@@ -1,14 +1,10 @@
 package com.zfwhub.algorithm.codility.caterpillar_method;
 
-/**
- * https://app.codility.com/programmers/lessons/15-caterpillar_method/min_abs_sum_of_two/
- */
+// https://app.codility.com/programmers/lessons/15-caterpillar_method/min_abs_sum_of_two/
 public class MinAbsSumOfTwo {
     
-    /**
-     * brute force
-     */
-    public static int solution(int[] A) {
+    // brute force
+    public static int solution1(int[] A) {
         int min = Integer.MAX_VALUE;
         for (int i = 0; i < A.length; i++) {
             for (int j = i; j < A.length; j++) {
@@ -25,9 +21,9 @@ public class MinAbsSumOfTwo {
     
     public static void main(String[] args) {
         int[] A = new int[] {1,4,-3};
-        System.out.println(MinAbsSumOfTwo.solution(A));
+        System.out.println(MinAbsSumOfTwo.solution1(A));
         A = new int[] {-8,4,5,-10,3};
-        System.out.println(MinAbsSumOfTwo.solution(A));
+        System.out.println(MinAbsSumOfTwo.solution1(A));
     }
 
 }

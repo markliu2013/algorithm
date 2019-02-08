@@ -2,15 +2,11 @@ package com.zfwhub.algorithm.codility.caterpillar_method;
 
 import java.util.Arrays;
 
-/**
- * https://app.codility.com/programmers/lessons/15-caterpillar_method/count_triangles/
- */
+// https://app.codility.com/programmers/lessons/15-caterpillar_method/count_triangles/
 public class CountTriangles {
 
-    /**
-     * brute force
-     */
-    public static int solution(int[] A) {
+    // brute force
+    public static int solution1(int[] A) {
         int count = 0;
         for (int i = 0; i < A.length; i++) {
             for (int j = i + 1; j < A.length; j++) {
