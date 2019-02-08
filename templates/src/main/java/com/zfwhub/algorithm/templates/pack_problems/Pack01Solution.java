@@ -120,7 +120,7 @@ public class Pack01Solution {
         return results[capacity].packs;
     }
     
-    // https://zhuanlan.zhihu.com/p/35278858
+    // https://zhuanlan.zhihu.com/p/35278858, Accepted
     public static List<Pack> solution5(List<Pack> packs, int capacity) {
         List<Pack> solutionPackList = new ArrayList<>();
         int[][] results = new int[packs.size()+1][capacity+1];
