@@ -62,27 +62,11 @@ public class Pack01 {
         return results[capacity];
     }
     
-    // 逆序递推，优化存储空间为一个一维数组。
-    public static int solution4(List<Pack> packs, int capacity) {
-        int[] results = new int[capacity + 1];
-        for (int i = 0; i < packs.size(); i++) {
-            Pack p = packs.get(i);
-            for (int j = capacity; j >= 0; j--) {
-                if (p.weight > j) {
-                    results[j] = results[j];
-                } else {
-                    results[j] = Math.max(results[j], results[j-p.weight] + p.value);
-                }
-            }
-        }
-        return results[capacity];
-    }
-    
     // TODO Why wrong?
-    // @link com.zfwhub.algorithm.acm.hihocoder.no1043.Main use solution5 Accepted
-    // @link com.zfwhub.algorithm.acm.hdu.pid2191.Main use solution5 Accepted
+    // @link com.zfwhub.algorithm.acm.hihocoder.no1043.Main use solution4 Accepted
+    // @link com.zfwhub.algorithm.acm.hdu.pid2191.Main use solution4 Accepted
     // 两个for循环，避免判断。
-    public static int solution5(List<Pack> packs, int capacity) {
+    public static int solution4(List<Pack> packs, int capacity) {
         int[] results = new int[capacity + 1];
         int[] preResults = new int[capacity + 1];
         for (int i = 0; i < packs.size(); i++) {
@@ -94,6 +78,22 @@ public class Pack01 {
                 results[j] = Math.max(preResults[j], preResults[j-p.weight] + p.value);
             }
             preResults = results.clone();
+        }
+        return results[capacity];
+    }
+    
+    // 逆序递推，优化存储空间为一个一维数组。
+    public static int solution5(List<Pack> packs, int capacity) {
+        int[] results = new int[capacity + 1];
+        for (int i = 0; i < packs.size(); i++) {
+            Pack p = packs.get(i);
+            for (int j = capacity; j >= 0; j--) {
+                if (p.weight > j) {
+                    results[j] = results[j];
+                } else {
+                    results[j] = Math.max(results[j], results[j-p.weight] + p.value);
+                }
+            }
         }
         return results[capacity];
     }
