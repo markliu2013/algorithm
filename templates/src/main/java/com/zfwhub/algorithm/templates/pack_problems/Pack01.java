@@ -11,6 +11,7 @@ import java.util.*;
  */
 public class Pack01 {
 
+    // 递归超时
     public static int solution1(List<Pack> packs, int capacity) {
         if (capacity < 0) {
             return Integer.MIN_VALUE;
@@ -24,6 +25,7 @@ public class Pack01 {
         return Math.max(solution1(subPacks, capacity), solution1(subPacks, capacity - lastPack.weight) + lastPack.value);
     }
 
+    // 二维表格递推
     public static int solution2(List<Pack> packs, int capacity) {
         // 初始化表格，默认第一行全部是 0
         int[][] results = new int[packs.size()+1][capacity+1];
@@ -41,7 +43,7 @@ public class Pack01 {
         return results[packs.size()][capacity];
     }
 
-    // 优化存储空间
+    // 两个一维数组，优化存储空间。
     public static int solution3(List<Pack> packs, int capacity) {
         int[] results = new int[capacity + 1];
         int[] preResults = new int[capacity + 1];
@@ -60,12 +62,12 @@ public class Pack01 {
         return results[capacity];
     }
     
-    // 递减顺序推算
+    // 逆序递推，以便可以优化存储空间为一个一维数组。
     public static int solution4(List<Pack> packs, int capacity) {
         int[] results = new int[capacity + 1];
         for (int i = 0; i < packs.size(); i++) {
+            Pack p = packs.get(i);
             for (int j = capacity; j >= 0; j--) {
-                Pack p = packs.get(i);
                 if (p.weight > j) {
                     results[j] = results[j];
                 } else {
@@ -77,6 +79,7 @@ public class Pack01 {
     }
     
     // TODO solution5 Why wrong?
+    // 两个for循环，避免判断。
     public static int solution5(List<Pack> packs, int capacity) {
         int[][] results = new int[packs.size()+1][capacity+1];
         for (int i = 0; i < packs.size(); i++) {
