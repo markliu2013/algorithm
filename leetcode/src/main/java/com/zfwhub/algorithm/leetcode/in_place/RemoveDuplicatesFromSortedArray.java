@@ -4,17 +4,16 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 
-/**
+/*
  * https://leetcode.com/problems/remove-duplicates-from-sorted-array/description/
  * https://leetcode.com/articles/two-pointer-technique/
  * https://app.codility.com/programmers/lessons/15-caterpillar_method/
+ * https://www.cnblogs.com/zpfbuaa/p/6635577.html
  */
 public class RemoveDuplicatesFromSortedArray {
 
-    /**
-     * Cheat, Fake
-     */
-    public static int removeDuplicates(int[] nums) {
+    // Cheat, Fake
+    public static int solution1(int[] nums) {
         LinkedHashSet<Integer> set = new LinkedHashSet<Integer>();
         for (int i = 0; i < nums.length; i++) {
             set.add(nums[i]);
@@ -28,10 +27,8 @@ public class RemoveDuplicatesFromSortedArray {
         return set.size();
     }
 
-    /**
-     * two-pointer-technique, in place algorithm
-     */
-    public static int removeDuplicates2(int[] nums) {
+    // two-pointer-technique, in place algorithm
+    public static int solution2(int[] nums) {
         if (nums.length == 0) {
             return 0;
         }
@@ -47,10 +44,10 @@ public class RemoveDuplicatesFromSortedArray {
 
     public static void main(String[] args) {
         int[] nums1 = new int[] { 1, 1, 2 };
-        System.out.println(removeDuplicates2(nums1));
+        System.out.println(solution2(nums1));
         System.out.println(Arrays.toString(nums1));
         int[] nums2 = new int[] { 0, 0, 1, 1, 1, 2, 2, 3, 3, 4 };
-        System.out.println(removeDuplicates2(nums2));
+        System.out.println(solution2(nums2));
         System.out.println(Arrays.toString(nums2));
     }
 

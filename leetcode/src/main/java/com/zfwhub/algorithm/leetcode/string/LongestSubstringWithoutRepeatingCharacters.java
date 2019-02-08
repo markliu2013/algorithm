@@ -2,16 +2,14 @@ package com.zfwhub.algorithm.leetcode.string;
 
 import java.util.HashSet;
 
-/**
+/*
  * Given a string, find the length of the longest substring without repeating characters.
  * https://leetcode.com/problems/longest-substring-without-repeating-characters/description/
  */
 public class LongestSubstringWithoutRepeatingCharacters {
 
-    /**
-     * straightforward, brute force
-     */
-    public static int solution(String s) {
+    // straightforward, brute force
+    public static int solution1(String s) {
         int maxLength = 0;
         for (int i = 0; i < s.length(); i++) {
             for (int j = i + 1; j <= s.length(); j++) {
@@ -24,7 +22,7 @@ public class LongestSubstringWithoutRepeatingCharacters {
         return maxLength;
     }
 
-    /**
+    /*
      * check a range by range, range from startIndex to endIndex
      * check if there is a char exists in the range
      * if exists, startIndex should move to the exists index' next.
