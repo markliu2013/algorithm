@@ -7,7 +7,7 @@ import java.util.*;
  */
 public class Pack02 {
     
-    // 递归
+    // 递归超时
     public static int solution1(List<Pack> packs, int capacity) {
         if (capacity < 0) {
             return Integer.MIN_VALUE;
@@ -39,6 +39,7 @@ public class Pack02 {
         return Pack01.solution4(packs2, capacity);
     }
     
+    // 二维表格递推
     public static int solution3(List<Pack> packs, int capacity) {
         // 初始化表格，默认第一行全部是 0
         int[][] results = new int[packs.size()+1][capacity+1];
