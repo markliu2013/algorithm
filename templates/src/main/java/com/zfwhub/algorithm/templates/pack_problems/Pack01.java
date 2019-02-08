@@ -62,7 +62,7 @@ public class Pack01 {
         return results[capacity];
     }
     
-    // 逆序递推，以便可以优化存储空间为一个一维数组。
+    // 逆序递推，优化存储空间为一个一维数组。
     public static int solution4(List<Pack> packs, int capacity) {
         int[] results = new int[capacity + 1];
         for (int i = 0; i < packs.size(); i++) {
@@ -78,26 +78,11 @@ public class Pack01 {
         return results[capacity];
     }
     
-    // TODO solution5 Why wrong?
+    // TODO Why wrong?
+    // @link com.zfwhub.algorithm.acm.hihocoder.no1043.Main use solution5 Accepted
+    // @link com.zfwhub.algorithm.acm.hdu.pid2191.Main use solution5 Accepted
     // 两个for循环，避免判断。
     public static int solution5(List<Pack> packs, int capacity) {
-        int[][] results = new int[packs.size()+1][capacity+1];
-        for (int i = 0; i < packs.size(); i++) {
-            Pack p = packs.get(i);
-            for (int j = 0; j < p.weight; j++) {
-                results[i+1][j] = results[i][j];
-            }
-            for (int j = p.weight; j <= capacity; j++) {
-                results[i+1][j] = Math.max(results[i][j], results[i][j-p.weight] + p.value);
-            }
-        }
-        return results[packs.size()][capacity];
-    }
-    
-    // TODO Why wrong?
-    // @link com.zfwhub.algorithm.acm.hihocoder.no1043.Main use solution6 Accepted
-    // @link com.zfwhub.algorithm.acm.hdu.pid2191.Main use solution6 Accepted
-    public static int solution6(List<Pack> packs, int capacity) {
         int[] results = new int[capacity + 1];
         int[] preResults = new int[capacity + 1];
         for (int i = 0; i < packs.size(); i++) {
