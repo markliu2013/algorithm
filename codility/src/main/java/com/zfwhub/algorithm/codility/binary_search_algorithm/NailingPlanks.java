@@ -47,7 +47,7 @@ public class NailingPlanks {
         return -1;
     }
 
-    // TODO wrong.
+    // TODO NailingPlanks. binary search
     // binary search
     public static int solution3(int[] A, int[] B, int[] C) {
         HashSet<Integer> set = new HashSet<Integer>();

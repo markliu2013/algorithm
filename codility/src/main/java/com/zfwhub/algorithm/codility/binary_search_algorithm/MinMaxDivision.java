@@ -5,10 +5,8 @@ import java.util.*;
 // https://app.codility.com/programmers/lessons/14-binary_search_algorithm/min_max_division/
 public class MinMaxDivision {
 
-    /**
-     * brute force
-     */
-    public static int solution(int K, int M, int[] A) {
+    // brute force
+    public static int solution1(int K, int M, int[] A) {
         if (K == 1) {
             return Arrays.stream(A).sum();
         }
@@ -30,10 +28,8 @@ public class MinMaxDivision {
         return minLargeSum;
     }
 
-    /**
-     * split array to k blocks
-     */
-    public static List<List<List<Integer>>> splitArray(int[] arr, int k) {
+    // split array to k blocks
+    private static List<List<List<Integer>>> splitArray(int[] arr, int k) {
         int[] arr1 = new int[arr.length];
         for (int i = 0; i < arr.length; i++) {
             arr1[i] = i;
@@ -120,7 +116,7 @@ public class MinMaxDivision {
         int K = 3;
         int M = 5;
         int[] A = new int[] {2,1,5,1,2,2,2};
-        System.out.println(MinMaxDivision.solution(K, M, A));
+        System.out.println(MinMaxDivision.solution1(K, M, A));
         System.out.println(Arrays.stream(A).sum());
     }
 
