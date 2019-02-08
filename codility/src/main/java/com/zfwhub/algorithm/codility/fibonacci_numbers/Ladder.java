@@ -3,15 +3,11 @@ package com.zfwhub.algorithm.codility.fibonacci_numbers;
 import java.math.BigInteger;
 import java.util.Arrays;
 
-/**
- * https://app.codility.com/programmers/lessons/13-fibonacci_numbers/ladder/
- */
+// https://app.codility.com/programmers/lessons/13-fibonacci_numbers/ladder/
 public class Ladder {
 
-    /**
-     * brute force, use BigInteger fix overflow.
-     */
-    public static int[] solution(int[] A, int[] B) {
+    // brute force, use BigInteger fix overflow.
+    public static int[] solution1(int[] A, int[] B) {
         int[] result = new int[A.length];
         for (int i = 0; i < A.length; i++) {
             BigInteger a = fibonacciDynamic(A[i]);
@@ -21,7 +17,7 @@ public class Ladder {
         return result;
     }
 
-    public static BigInteger fibonacciDynamic(int n) {
+    private static BigInteger fibonacciDynamic(int n) {
         BigInteger[] fibArr = new BigInteger[n + 2];
         fibArr[0] = new BigInteger("0");
         fibArr[1] = new BigInteger("1");
@@ -31,7 +27,7 @@ public class Ladder {
         return fibArr[fibArr.length - 1];
     }
 
-    /**
+    /*
      * 334 % 10 = 4
      * 12345 % 10 = 5
      * 334 % 100 = 34
@@ -46,7 +42,7 @@ public class Ladder {
     public static void main(String[] args) {
         int[] A = new int[] { 5000, 4, 5, 5, 1 };
         int[] B = new int[] { 10, 2, 4, 3, 1 };
-        System.out.println(Arrays.toString(Ladder.solution(A, B)));
+        System.out.println(Arrays.toString(Ladder.solution1(A, B)));
         System.out.println(Arrays.toString(Ladder.solution2(A, B)));
     }
 

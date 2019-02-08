@@ -2,13 +2,13 @@ package com.zfwhub.algorithm.codility.prime_and_composite_numbers;
 
 import java.util.ArrayList;
 
-/**
+/*
  * https://app.codility.com/programmers/lessons/10-prime_and_composite_numbers/flags/
  * https://codility.com/media/train/solution-flags.pdf
  */
 public class Flags {
 
-    /**
+    /*
      * wrong answer.
      * https://app.codility.com/demo/results/training2Z5C4Z-DDC/
      */
@@ -37,7 +37,7 @@ public class Flags {
         return maxFlags;
     }
 
-    /**
+    /*
      * brute force
      */
     public static int solution2(int[] A) {
@@ -68,7 +68,7 @@ public class Flags {
         return maxFlags;
     }
 
-    /**
+    /*
      * brute force, return early
      */
     public static int solution3(int[] A) {
