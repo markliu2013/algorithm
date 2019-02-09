@@ -37,7 +37,7 @@ public class LetterCombinations {
         return list;
     }
     
-    public static List<String> solution(String digits) {
+    public static List<String> solution1(String digits) {
         List<String> list1 = new ArrayList<>();
         if (digits == null || digits.isEmpty() || digits.trim().isEmpty()) {
             return list1;
@@ -84,7 +84,7 @@ public class LetterCombinations {
     
     public static void main(String[] args) {
         System.out.println(solution0("27"));
-        System.out.println(solution("27"));
+        System.out.println(solution1("27"));
     }
 
 }
