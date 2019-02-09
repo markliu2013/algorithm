@@ -14,9 +14,9 @@ public class FloodDepthTest {
         int result2 = 0;
         int[] A3 = new int[] {3,1,2};
         int result3 = 1;
-        assertEquals(FloodDepth.solution(A1), result1);
-        assertEquals(FloodDepth.solution(A2), result2);
-        assertEquals(FloodDepth.solution(A3), result3);
+        assertEquals(FloodDepth.solution1(A1), result1);
+        assertEquals(FloodDepth.solution1(A2), result2);
+        assertEquals(FloodDepth.solution1(A3), result3);
     }
     
     @Test

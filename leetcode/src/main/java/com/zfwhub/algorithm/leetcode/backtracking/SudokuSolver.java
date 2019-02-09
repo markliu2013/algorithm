@@ -164,7 +164,7 @@ public class SudokuSolver {
                 return false;
             }
         }
-        // TODO SudokuSolver 检查宫 要算出当前宫，里面夹杂了solution和board的数据。
+        // SudokuSolver 检查宫 要算出当前宫，里面夹杂了solution和board的数据。
         return true;
     }
     
@@ -249,7 +249,6 @@ public class SudokuSolver {
         // 此处有坑，solution之前不一定是 空 的，因为尝试的数字和之前不一致也会不合法。
         // 注意isValid不合法的所有情况都需要考虑
         // 可以和board对照，置换成board之前的字符，
-        // TODO SudokuSolver2 另一种思路，通过isValid返回。
         solution.set(index, board[index/9][index%9]);
     }
 

@@ -5,10 +5,8 @@ import java.util.*;
 // https://codility.com/media/train/14-GreedyAlgorithms.pdf
 public class CoinChanging {
 
-    /**
-     * greedy, wrong. M = [1,3,4] k = 6
-     */
-    public static LinkedHashMap<Integer, Integer> solution(int[] M, int k) {
+    // greedy, wrong. M = [1,3,4] k = 6
+    public static LinkedHashMap<Integer, Integer> solution1(int[] M, int k) {
         LinkedHashMap<Integer, Integer> map = new LinkedHashMap<Integer, Integer>();
         for (int i = M.length - 1; i >= 0; i--) {
             map.put(M[i], k / M[i]);
@@ -17,8 +15,6 @@ public class CoinChanging {
         return map;
     }
 
-    // TODO CoinChanging
-    // https://codility.com/media/train/15-DynamicProgramming.pdf
     public static LinkedHashMap<Integer, Integer> solution2(int[] M, int k) {
         LinkedHashMap<Integer, Integer> map = new LinkedHashMap<>();
         System.out.println(dp(M, k, map));
@@ -60,7 +56,7 @@ public class CoinChanging {
     public static void main(String[] args) {
         int[] M = new int[] { 1, 3, 4 };
         int k = 6;
-        System.out.println(CoinChanging.solution(M, k));
+        System.out.println(CoinChanging.solution1(M, k));
         System.out.println(CoinChanging.solution2(M, k));
     }
 }

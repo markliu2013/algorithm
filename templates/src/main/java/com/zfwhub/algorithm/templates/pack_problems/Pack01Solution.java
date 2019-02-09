@@ -69,84 +69,84 @@ public class Pack01Solution {
         return dpStatus01.compareTo(dpStatus02) > 0 ? dpStatus01 : dpStatus02;
     }
     
-    // 对应Pack01.solution2
+    // 二维表格递推, 对应Pack01.solution2
     public static List<Pack> solution3(List<Pack> packs, int capacity) {
-        DPStatus[][] results = new DPStatus[packs.size()+1][capacity+1];
+        DPStatus[][] dp = new DPStatus[packs.size()+1][capacity+1];
         // 默认第一行
         for (int j = 0; j <= capacity; j++) {
-            results[0][j] = new DPStatus(new ArrayList<>(), 0);
+            dp[0][j] = new DPStatus(new ArrayList<>(), 0);
         }
         for (int i = 0; i < packs.size(); i++) {
             Pack p = packs.get(i);
             for (int j = 0; j <= capacity; j++) {
                 if (p.weight > j) {
-                    results[i+1][j] = results[i][j];
+                    dp[i+1][j] = dp[i][j];
                 } else {
-                    DPStatus dpStatus01 = results[i][j].clone();
-                    DPStatus dpStatus02 = results[i][j-p.weight].clone();
+                    DPStatus dpStatus01 = dp[i][j].clone();
+                    DPStatus dpStatus02 = dp[i][j-p.weight].clone();
                     dpStatus02.packs.add(p);
                     dpStatus02.value += p.value;
-                    results[i+1][j] = dpStatus01.compareTo(dpStatus02) > 0 ? dpStatus01 : dpStatus02;
+                    dp[i+1][j] = dpStatus01.compareTo(dpStatus02) > 0 ? dpStatus01 : dpStatus02;
                 }
             }
         }
-        return results[packs.size()][capacity].packs;
+        return dp[packs.size()][capacity].packs;
     }
     
-    // 对应Pack01.solution3
+    // 两个一维数组，优化存储空间。对应Pack01.solution3
     public static List<Pack> solution4(List<Pack> packs, int capacity) {
-        DPStatus[] results = new DPStatus[capacity + 1];
-        DPStatus[] preResults = new DPStatus[capacity + 1];
+        DPStatus[] dp = new DPStatus[capacity + 1];
+        DPStatus[] preDp = new DPStatus[capacity + 1];
         // 默认第一行
         for (int j = 0; j <= capacity; j++) {
-            preResults[j] = new DPStatus(new ArrayList<>(), 0);
+            preDp[j] = new DPStatus(new ArrayList<>(), 0);
         }
         for (int i = 0; i < packs.size(); i++) {
             Pack p = packs.get(i);
             for (int j = 0; j <= capacity; j++) {
                 if (p.weight > j) {
-                    results[j] = preResults[j].clone();
+                    dp[j] = preDp[j].clone();
                 } else {
-                    DPStatus dpStatus01 = preResults[j].clone();
-                    DPStatus dpStatus02 = preResults[j-p.weight].clone();
+                    DPStatus dpStatus01 = preDp[j].clone();
+                    DPStatus dpStatus02 = preDp[j-p.weight].clone();
                     dpStatus02.packs.add(p);
                     dpStatus02.value += p.value;
-                    results[j] = dpStatus01.compareTo(dpStatus02) > 0 ? dpStatus01 : dpStatus02;
+                    dp[j] = dpStatus01.compareTo(dpStatus02) > 0 ? dpStatus01 : dpStatus02;
                 }
             }
             // 注意必须是深度复制
-            preResults = results.clone();
+            preDp = dp.clone();
         }
-        return results[capacity].packs;
+        return dp[capacity].packs;
     }
     
-    // https://zhuanlan.zhihu.com/p/35278858
+    // https://zhuanlan.zhihu.com/p/35278858, Accepted
     public static List<Pack> solution5(List<Pack> packs, int capacity) {
         List<Pack> solutionPackList = new ArrayList<>();
-        int[][] results = new int[packs.size()+1][capacity+1];
+        int[][] dp = new int[packs.size()+1][capacity+1];
         for (int i = 0; i < packs.size(); i++) {
             Pack p = packs.get(i);
             // j必须从0开始，因为容量为0的包可以装体积为0的物品
             for (int j = 0; j <= capacity; j++) {
                 if (p.weight > j) {//如果物品放不进背包
-                    results[i+1][j] = results[i][j];
+                    dp[i+1][j] = dp[i][j];
                 } else {
-                    results[i+1][j] = Math.max(results[i][j], results[i][j-p.weight] + p.value);
+                    dp[i+1][j] = Math.max(dp[i][j], dp[i][j-p.weight] + p.value);
                 }
             }
         }
-        solution5Backtrack(packs, solutionPackList, results, packs.size(), capacity);
+        solution5Backtrack(packs, solutionPackList, dp, packs.size(), capacity);
         return solutionPackList;
     }
     
-    private static void solution5Backtrack(List<Pack> packs, List<Pack> solutionPackList, int[][] results, int i, int j) {
+    private static void solution5Backtrack(List<Pack> packs, List<Pack> solutionPackList, int[][] dp, int i, int j) {
         if (i > 0) {
             Pack p = packs.get(i-1);
-            if (results[i][j] == results[i-1][j]) {
-                solution5Backtrack(packs, solutionPackList, results, i-1, j);
+            if (dp[i][j] == dp[i-1][j]) {
+                solution5Backtrack(packs, solutionPackList, dp, i-1, j);
             } else {
                 solutionPackList.add(p);
-                solution5Backtrack(packs, solutionPackList, results, i-1, j-p.weight);
+                solution5Backtrack(packs, solutionPackList, dp, i-1, j-p.weight);
             }
         }
     }

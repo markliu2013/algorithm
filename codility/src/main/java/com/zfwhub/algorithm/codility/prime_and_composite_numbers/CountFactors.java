@@ -1,14 +1,10 @@
 package com.zfwhub.algorithm.codility.prime_and_composite_numbers;
 
-/**
- * https://app.codility.com/programmers/lessons/10-prime_and_composite_numbers/count_factors/ 
- */
+// https://app.codility.com/programmers/lessons/10-prime_and_composite_numbers/count_factors/
 public class CountFactors {
 
-    /**
-     * count 1 by 1  Integer.MAX_VALUE wrong
-     */
-    public static int solution(int N) {
+    // count 1 by 1  Integer.MAX_VALUE wrong
+    public static int solution1(int N) {
         int count = 0;
         for (int i = 1; i <= N; i++) {
             if (N % i == 0) {
@@ -18,10 +14,7 @@ public class CountFactors {
         return count;
     }
 
-    /**
-     * Don't need count from 1 to n, just need from 1 to n's square root
-     * Will overflow
-     */
+    // Don't need count from 1 to n, just need from 1 to n's square root Will overflow
     public static int solution2(int N) {
         int count = 0;
         int i = 1;
@@ -51,9 +44,7 @@ public class CountFactors {
         return count;
     }
 
-    /**
-     * fix overflow  Integer.MAX_VALUE wrong
-     */
+    // fix overflow  Integer.MAX_VALUE wrong
     public static int solution4(int N) {
         int count = 0;
         int i = 1;
@@ -69,10 +60,7 @@ public class CountFactors {
         return count;
     }
 
-    // TODO CountFactors fix Integer.MAX_VALUE
-    /**
-     * fix overflow
-     */
+    // fix overflow
     public static int solution5(long N) {
         int count = 0;
         long i = 1L;

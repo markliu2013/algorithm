@@ -181,29 +181,5 @@ public class CollectionUtil {
             return false;
         }
     }
-    
-    /**
-     * 判断a和b两个二维集合，不考虑顺序的情况下是否相等。
-     * @param a
-     * @param b
-     * @return
-     */
-    // TODO isEqualTwoDimensionCollection 将List改为Collection都可以
-    public static <T> boolean isEqualTwoDimensionCollection(List<List<T>> a, List<List<T>> b) {
-        if (a == null && b == null){
-            return true;
-        }
-        if((a == null && b != null) 
-          || a != null && b == null
-          || a.size() != b.size()) {
-            return false;
-        }
-        if (isEqualCollection(a, b)) {//不考虑第一维的情况相等
-            // TODO isEqualTwoDimensionCollection
-            return true;
-        } else {
-            return false;
-        }
-    }
 
 }

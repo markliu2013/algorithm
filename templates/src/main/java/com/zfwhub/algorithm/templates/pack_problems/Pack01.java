@@ -7,9 +7,12 @@ import java.util.*;
  * https://zhuanlan.zhihu.com/p/35278858
  * https://zhuanlan.zhihu.com/p/30959069
  * https://www.cnblogs.com/bahcelor/p/6836695.html
+ * https://www.cnblogs.com/zlcxbb/p/5820666.html
+ * https://blog.csdn.net/luming_xml/article/details/71922365
  */
 public class Pack01 {
 
+    // 递归超时
     public static int solution1(List<Pack> packs, int capacity) {
         if (capacity < 0) {
             return Integer.MIN_VALUE;
@@ -23,109 +26,95 @@ public class Pack01 {
         return Math.max(solution1(subPacks, capacity), solution1(subPacks, capacity - lastPack.weight) + lastPack.value);
     }
 
+    // 二维表格递推
     public static int solution2(List<Pack> packs, int capacity) {
         // 初始化表格，默认第一行全部是 0
-        int[][] results = new int[packs.size()+1][capacity+1];
+        int[][] dp = new int[packs.size()+1][capacity+1];
         for (int i = 0; i < packs.size(); i++) {
             Pack p = packs.get(i);
             // j必须从0开始，因为容量为0的包可以装体积为0的物品
             for (int j = 0; j <= capacity; j++) {
                 if (p.weight > j) {//如果物品放不进背包
-                    results[i+1][j] = results[i][j];
+                    dp[i+1][j] = dp[i][j];
                 } else {
-                    results[i+1][j] = Math.max(results[i][j], results[i][j-p.weight] + p.value);
+                    dp[i+1][j] = Math.max(dp[i][j], dp[i][j-p.weight] + p.value);
                 }
             }
         }
-        return results[packs.size()][capacity];
+        return dp[packs.size()][capacity];
     }
 
-    // 优化存储空间
+    // 两个一维数组，优化存储空间。
     public static int solution3(List<Pack> packs, int capacity) {
-        int[] results = new int[capacity + 1];
-        int[] preResults = new int[capacity + 1];
+        int[] dp = new int[capacity + 1];
+        int[] preDp = new int[capacity + 1];
         for (int i = 0; i < packs.size(); i++) {
             Pack p = packs.get(i);
             for (int j = 0; j <= capacity; j++) {
                 if (p.weight > j) {
-                    results[j] = preResults[j];
+                    dp[j] = preDp[j];
                 } else {
-                    results[j] = Math.max(preResults[j], preResults[j-p.weight] + p.value);
+                    dp[j] = Math.max(preDp[j], preDp[j-p.weight] + p.value);
                 }
             }
             // 注意必须是深度复制
-            preResults = results.clone();
+            preDp = dp.clone();
         }
-        return results[capacity];
+        return dp[capacity];
     }
     
-    // 递减顺序推算
+    // 两个for循环，避免判断。
     public static int solution4(List<Pack> packs, int capacity) {
-        int[] results = new int[capacity + 1];
+        int[] dp = new int[capacity + 1];
+        int[] preDp = new int[capacity + 1];
         for (int i = 0; i < packs.size(); i++) {
+            Pack p = packs.get(i);
+            // 加了这个就会Wrong Answer，如果p.weight > capacity，则数组越界。
+            /*for (int j = 0; j < p.weight && j <= capacity; j++) {
+                dp[j] = preDp[j];
+            }*/
+            for (int j = p.weight; j <= capacity; j++) {
+                dp[j] = Math.max(preDp[j], preDp[j-p.weight] + p.value);
+            }
+            preDp = dp.clone();
+        }
+        return dp[capacity];
+    }
+    
+    // 逆序递推，优化存储空间为一个一维数组。
+    public static int solution5(List<Pack> packs, int capacity) {
+        int[] dp = new int[capacity + 1];
+        for (int i = 0; i < packs.size(); i++) {
+            Pack p = packs.get(i);
             for (int j = capacity; j >= 0; j--) {
-                Pack p = packs.get(i);
                 if (p.weight > j) {
-                    results[j] = results[j];
+                    dp[j] = dp[j];
                 } else {
-                    results[j] = Math.max(results[j], results[j-p.weight] + p.value);
+                    dp[j] = Math.max(dp[j], dp[j-p.weight] + p.value);
                 }
             }
         }
-        return results[capacity];
+        return dp[capacity];
     }
     
-    // TODO solution5 Why wrong?
-    public static int solution5(List<Pack> packs, int capacity) {
-        int[][] results = new int[packs.size()+1][capacity+1];
-        for (int i = 0; i < packs.size(); i++) {
-            Pack p = packs.get(i);
-            for (int j = 0; j < p.weight; j++) {
-                results[i+1][j] = results[i][j];
-            }
-            for (int j = p.weight; j <= capacity; j++) {
-                results[i+1][j] = Math.max(results[i][j], results[i][j-p.weight] + p.value);
-            }
-        }
-        return results[packs.size()][capacity];
-    }
-    
-    // TODO Why wrong?
-    // @link com.zfwhub.algorithm.acm.hihocoder.no1043.Main use solution6 Accepted
-    // @link com.zfwhub.algorithm.acm.hdu.pid2191.Main use solution6 Accepted
+    // (两个for循环，避免判断) + 逆序递推 。 终极版。
     public static int solution6(List<Pack> packs, int capacity) {
-        int[] results = new int[capacity + 1];
-        int[] preResults = new int[capacity + 1];
+        int[] dp = new int[capacity + 1];
         for (int i = 0; i < packs.size(); i++) {
             Pack p = packs.get(i);
-            for (int j = 0; j < p.weight; j++) {
-                results[j] = preResults[j];
-            }
-            for (int j = p.weight; j <= capacity; j++) {
-                results[j] = Math.max(preResults[j], preResults[j-p.weight] + p.value);
-            }
-            preResults = results.clone();
-        }
-        return results[capacity];
-    }
-    
-    // https://blog.csdn.net/luming_xml/article/details/71922365
-    public static int solution9(int[] weigh, int[] value, int weight) {
-        int[] dp = new int[weight + 1];
-        for (int i = 0; i < weigh.length; i++) {
-            for (int j = weight; j >= weigh[i]; j--) {
-                dp[j] = Math.max(dp[j], dp[j - weigh[i]] + value[i]);
+            for (int j = capacity; j >= p.weight; j--) {
+                dp[j] = Math.max(dp[j], dp[j-p.weight] + p.value);
             }
         }
-        return dp[weight];
+        return dp[capacity];
     }
 
     public static void main(String[] args) {
-        int[] volumns = new int[] { 2, 3};
-        int[] values = new int[] { 3, 4};
+        int[] volumns = new int[] { 2,3,4,10 };
+        int[] values = new int[] { 3,4,5,6 };
         int capacity = 8;
-        
-        System.out.println(solution1(PackUtil.arrayToPackList(volumns, values), capacity));
+        System.out.println(solution3(PackUtil.arrayToPackList(volumns, values), capacity));
+        System.out.println(solution4(PackUtil.arrayToPackList(volumns, values), capacity));
 //        System.out.println(solution2(volumns, values, capacity));
 //        System.out.println(solution4(volumns, values, capacity));
     }

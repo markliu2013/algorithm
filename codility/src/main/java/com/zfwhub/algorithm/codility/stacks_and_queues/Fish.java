@@ -1,12 +1,10 @@
 package com.zfwhub.algorithm.codility.stacks_and_queues;
 
-/**
- * https://app.codility.com/programmers/lessons/7-stacks_and_queues/fish/
- */
+// https://app.codility.com/programmers/lessons/7-stacks_and_queues/fish/
 public class Fish {
 
     // TODO fish
-    public static int solution(int[] A, int[] B) {
+    public static int solution1(int[] A, int[] B) {
         return 0;
     }
 

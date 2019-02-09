@@ -1,15 +1,13 @@
 package com.zfwhub.algorithm.codility.challenge;
 
-/**
- * https://app.codility.com/programmers/lessons/90-tasks_from_indeed_prime_2015_challenge/flood_depth/
- */
+// https://app.codility.com/programmers/lessons/90-tasks_from_indeed_prime_2015_challenge/flood_depth/
 public class FloodDepth {
     
-    /**
+    /*
      * base on every point A[i], search the max left and right side.
      * the depth is min(right-A[i], left-A[i])
      */
-    public static int solution(int[] A) {
+    public static int solution1(int[] A) {
         if (A == null || A.length == 0) {
             throw new RuntimeException("Array A can't be null or empty.");
         }
@@ -34,9 +32,7 @@ public class FloodDepth {
         return maximumDepth;
     }
     
-    /**
-     * dynamic programming
-     */
+    // dynamic programming
     public static int solution2(int[] A) {
         if (A == null || A.length == 0) {
             throw new RuntimeException("Array A can't be null or empty.");

@@ -52,17 +52,17 @@ public class RegularExpressionMatchingTest {
         String p11 = "a*a*";
         boolean expected11 = true;
         
-        assertEquals(expected1, RegularExpressionMatching.isMatch(s1, p1));
-        assertEquals(expected2, RegularExpressionMatching.isMatch(s2, p2));
-        assertEquals(expected3, RegularExpressionMatching.isMatch(s3, p3));
-        assertEquals(expected4, RegularExpressionMatching.isMatch(s4, p4));
-        assertEquals(expected5, RegularExpressionMatching.isMatch(s5, p5));
-        assertEquals(expected6, RegularExpressionMatching.isMatch(s6, p6));
-        assertEquals(expected7, RegularExpressionMatching.isMatch(s7, p7));
-        assertEquals(expected8, RegularExpressionMatching.isMatch(s8, p8));
-        assertEquals(expected9, RegularExpressionMatching.isMatch(s9, p9));
-        assertEquals(expected10, RegularExpressionMatching.isMatch(s10, p10));
-        assertEquals(expected11, RegularExpressionMatching.isMatch(s11, p11));
+        assertEquals(expected1, RegularExpressionMatching.solution1(s1, p1));
+        assertEquals(expected2, RegularExpressionMatching.solution1(s2, p2));
+        assertEquals(expected3, RegularExpressionMatching.solution1(s3, p3));
+        assertEquals(expected4, RegularExpressionMatching.solution1(s4, p4));
+        assertEquals(expected5, RegularExpressionMatching.solution1(s5, p5));
+        assertEquals(expected6, RegularExpressionMatching.solution1(s6, p6));
+        assertEquals(expected7, RegularExpressionMatching.solution1(s7, p7));
+        assertEquals(expected8, RegularExpressionMatching.solution1(s8, p8));
+        assertEquals(expected9, RegularExpressionMatching.solution1(s9, p9));
+        assertEquals(expected10, RegularExpressionMatching.solution1(s10, p10));
+        assertEquals(expected11, RegularExpressionMatching.solution1(s11, p11));
     }
 
 }
