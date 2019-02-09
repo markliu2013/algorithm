@@ -51,12 +51,14 @@ public class BacktrackingTemplate1 {
         solutionList.add(new ArrayList<>(solution));
     }
     
+    // isValid 肩负着递归的退出条件，否则会陷入死循环。
     private static boolean isValid(List<Integer> solution, int n) {
         if (solution.size() == 0) {
             return true;
         }
 //      if (solution.contains(n)) return false;
         return solution.get(solution.size()-1) < n;
+//        return true;
     }
     
     private static void makeMove(List<Integer> solution, int n) {
@@ -69,6 +71,6 @@ public class BacktrackingTemplate1 {
     
     public static void main(String[] args) {
         int[] arr = new int[] {1,2,3};
-        System.out.println(BacktrackingTemplate1.combineAll(arr, 0));
+        System.out.println(BacktrackingTemplate1.combineAll(arr, 2));
     }
 }

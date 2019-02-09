@@ -100,7 +100,8 @@ public class ClimbingStairs {
     
     // 下一步不能超过楼梯级数。isValid 肩负着递归的退出条件，否则会陷入死循环。
     private static boolean isValid(List<Integer> solution, int i, int n) {
-        return CollectionUtil.sum(solution) + i <= n;
+//        return CollectionUtil.sum(solution) + i <= n;
+        return true;
     }
     
     private static void makeMove(List<Integer> solution, int n) {
@@ -112,9 +113,8 @@ public class ClimbingStairs {
     }
     
     public static void main(String[] args) {
-        System.out.println(ClimbingStairs.solution1(5));
-        System.out.println(ClimbingStairs.solution4(5).size());
-        System.out.println(ClimbingStairs.solution4(5));
+        System.out.println(ClimbingStairs.solution1(3));
+        System.out.println(ClimbingStairs.solution4(3));
     }
 
 }
