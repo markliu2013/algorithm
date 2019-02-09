@@ -29,22 +29,13 @@ public class Main {
 }
 
 class Pack01 {
-    // TODO Why wrong?
-    // @link com.zfwhub.algorithm.acm.hihocoder.no1043.Main use solution6 Accepted
-    // @link com.zfwhub.algorithm.acm.hdu.pid2191.Main use solution6 Accepted
     public static int solution5(List<Pack> packs, int capacity) {
         int[] dp = new int[capacity + 1];
-        int[] preDp = new int[capacity + 1];
         for (int i = 0; i < packs.size(); i++) {
             Pack p = packs.get(i);
-            // 加了这个就会Wrong Answer，如果p.weight > capacity，则数组越界。
-            for (int j = 0; j < p.weight && j <= capacity; j++) {
-                dp[j] = preDp[j];
+            for (int j = capacity; j >= p.weight; j--) {
+                dp[j] = Math.max(dp[j], dp[j-p.weight] + p.value);
             }
-            for (int j = p.weight; j <= capacity; j++) {
-                dp[j] = Math.max(preDp[j], preDp[j-p.weight] + p.value);
-            }
-            preDp = dp.clone();
         }
         return dp[capacity];
     }

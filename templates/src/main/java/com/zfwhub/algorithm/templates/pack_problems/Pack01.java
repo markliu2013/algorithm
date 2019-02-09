@@ -8,6 +8,7 @@ import java.util.*;
  * https://zhuanlan.zhihu.com/p/30959069
  * https://www.cnblogs.com/bahcelor/p/6836695.html
  * https://www.cnblogs.com/zlcxbb/p/5820666.html
+ * https://blog.csdn.net/luming_xml/article/details/71922365
  */
 public class Pack01 {
 
@@ -96,15 +97,16 @@ public class Pack01 {
         return dp[capacity];
     }
     
-    // https://blog.csdn.net/luming_xml/article/details/71922365
-    public static int solution9(int[] weigh, int[] value, int weight) {
-        int[] dp = new int[weight + 1];
-        for (int i = 0; i < weigh.length; i++) {
-            for (int j = weight; j >= weigh[i]; j--) {
-                dp[j] = Math.max(dp[j], dp[j - weigh[i]] + value[i]);
+    // (两个for循环，避免判断) + 逆序递推
+    public static int solution6(List<Pack> packs, int capacity) {
+        int[] dp = new int[capacity + 1];
+        for (int i = 0; i < packs.size(); i++) {
+            Pack p = packs.get(i);
+            for (int j = capacity; j >= p.weight; j--) {
+                dp[j] = Math.max(dp[j], dp[j-p.weight] + p.value);
             }
         }
-        return dp[weight];
+        return dp[capacity];
     }
 
     public static void main(String[] args) {
