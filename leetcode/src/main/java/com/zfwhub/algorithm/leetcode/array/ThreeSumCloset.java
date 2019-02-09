@@ -6,13 +6,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/3sum-closest/
- */
+// https://leetcode.com/problems/3sum-closest/
 public class ThreeSumCloset {
 
     // brute force,
-    public static int solution(int[] nums, int target) {
+    public static int solution1(int[] nums, int target) {
         int result = 0;
         int min = Integer.MAX_VALUE;
         for (int i = 0; i < nums.length; i++) {
@@ -96,13 +94,13 @@ public class ThreeSumCloset {
         int target2 = 1;
         int[] nums3 = new int[] {-1,0,1,2,-1,-4};
         int target3 = 0;
-        System.out.println(solution(nums, target));
+        System.out.println(solution1(nums, target));
         System.out.println(solution2(nums, target));
-        System.out.println(solution(nums1, target1));
+        System.out.println(solution1(nums1, target1));
         System.out.println(solution2(nums1, target1));
-        System.out.println(solution(nums2, target2));
+        System.out.println(solution1(nums2, target2));
         System.out.println(solution2(nums2, target2));
-        System.out.println(solution(nums3, target3));
+        System.out.println(solution1(nums3, target3));
         System.out.println(solution2(nums3, target3));
     }
 

@@ -1,17 +1,13 @@
 package com.zfwhub.algorithm.codility.sorting;
 
+import java.util.Arrays;
 import java.util.HashSet;
 
-/**
- * given an array A consisting of N integers, returns the number of distinct values in array A.
- * https://app.codility.com/programmers/lessons/6-sorting/distinct/
- */
+// https://app.codility.com/programmers/lessons/6-sorting/distinct/
 public class Distinct {
 
-    /**
-     * HashSet
-     */
-    public static int solution(int[] A) {
+    // HashSet， 全部100分
+    public static int solution1(int[] A) {
         HashSet<Integer> set = new HashSet<Integer>();
         for (int i = 0; i < A.length; i++) {
             set.add(A[i]);
@@ -19,9 +15,22 @@ public class Distinct {
         return set.size();
     }
 
-    // TODO no built in, need sort?
+    // sort
     public static int solution2(int[] A) {
-        return 0;
+        if (A.length == 0) {
+            return 0;
+        }
+        if (A.length == 1) {
+            return 1;
+        }
+        int count = 1;
+        Arrays.sort(A);
+        for (int i = 0; i < A.length - 1; i++) {
+            if (A[i] != A[i + 1]) {
+                count++;
+            }
+        }
+        return count;
     }
 
     public static void main(String[] args) {
