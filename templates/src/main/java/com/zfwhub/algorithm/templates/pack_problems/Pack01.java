@@ -97,7 +97,7 @@ public class Pack01 {
         return dp[capacity];
     }
     
-    // (两个for循环，避免判断) + 逆序递推
+    // (两个for循环，避免判断) + 逆序递推 。 终极版。
     public static int solution6(List<Pack> packs, int capacity) {
         int[] dp = new int[capacity + 1];
         for (int i = 0; i < packs.size(); i++) {
