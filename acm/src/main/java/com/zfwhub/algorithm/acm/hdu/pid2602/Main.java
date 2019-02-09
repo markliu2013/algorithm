@@ -33,19 +33,20 @@ class Pack01 {
     // @link com.zfwhub.algorithm.acm.hihocoder.no1043.Main use solution6 Accepted
     // @link com.zfwhub.algorithm.acm.hdu.pid2191.Main use solution6 Accepted
     public static int solution5(List<Pack> packs, int capacity) {
-        int[] results = new int[capacity + 1];
-        int[] preResults = new int[capacity + 1];
+        int[] dp = new int[capacity + 1];
+        int[] preDp = new int[capacity + 1];
         for (int i = 0; i < packs.size(); i++) {
             Pack p = packs.get(i);
-            for (int j = 0; j < p.weight; j++) {
-                results[j] = preResults[j];
+            // 加了这个就会Wrong Answer，如果p.weight > capacity，则数组越界。
+            for (int j = 0; j < p.weight && j <= capacity; j++) {
+                dp[j] = preDp[j];
             }
             for (int j = p.weight; j <= capacity; j++) {
-                results[j] = Math.max(preResults[j], preResults[j-p.weight] + p.value);
+                dp[j] = Math.max(preDp[j], preDp[j-p.weight] + p.value);
             }
-            preResults = results.clone();
+            preDp = dp.clone();
         }
-        return results[capacity];
+        return dp[capacity];
     }
 }
 
@@ -55,15 +56,6 @@ class PackUtil {
         List<Pack> packs = new ArrayList<>();
         for (int i = 0; i < values.length; i++) {
             Pack p = new Pack(weights[i], values[i]);
-            packs.add(p);
-        }
-        return packs;
-    }
-
-    public static List<Pack> arrayToPackList(int[] weights, int[] values, int[] quantities) {
-        List<Pack> packs = new ArrayList<>();
-        for (int i = 0; i < values.length; i++) {
-            Pack p = new Pack(weights[i], values[i], quantities[i]);
             packs.add(p);
         }
         return packs;
