@@ -181,5 +181,18 @@ public class CollectionUtil {
             return false;
         }
     }
+    
+    /**
+     * 求和
+     * @param nums
+     * @return
+     */
+    public static int sum(Iterable<Integer> nums) {
+        int sum = 0;
+        for (int i : nums) {
+            sum += i;
+        }
+        return sum;
+    }
 
 }

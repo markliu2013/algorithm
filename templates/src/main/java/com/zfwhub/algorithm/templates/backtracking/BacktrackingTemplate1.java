@@ -14,10 +14,10 @@ public class BacktrackingTemplate1 {
         // 存放单个解的集合
         List<Integer> solution = new ArrayList<>();
         
-        if (n == 0) {// 0! = 1
+       /* if (n == 0) { // 0! = 1
             solutionList.add(solution);
             return solutionList;
-        }
+        }*/
         
         dfs(solutionList, solution, nums, n);
         return solutionList;
@@ -30,7 +30,7 @@ public class BacktrackingTemplate1 {
         }
         // 每个solution有n个位置放不同的数，在每个位置都尝试arr中的每一个数。
         for (int i = 0; i < arr.length; i++) {
-            // TODO isValid 肩负着递归的退出条件，ClimbingWays
+            // TODO isValid 肩负着递归的退出条件，
             if (isValid(solution, arr[i])) {
                 makeMove(solution, arr[i]);
                 dfs(solutionList, solution, arr, n);
@@ -69,6 +69,6 @@ public class BacktrackingTemplate1 {
     
     public static void main(String[] args) {
         int[] arr = new int[] {1,2,3};
-        System.out.println(BacktrackingTemplate1.combineAll(arr, 2));
+        System.out.println(BacktrackingTemplate1.combineAll(arr, 0));
     }
 }
