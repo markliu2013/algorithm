@@ -79,7 +79,7 @@ public class ClimbingStairs {
             processSolution(solutionList, solution);
             return;
         }
-        // 走一步或两步
+        // solution的每个位置都尝试，走一步或两步。
         for (int i = 1; i <= 2; i++) {
             if (isValid(solution, i, n)) {
                 makeMove(solution, i);
@@ -100,8 +100,7 @@ public class ClimbingStairs {
     
     // 下一步不能超过楼梯级数。isValid 肩负着递归的退出条件，否则会陷入死循环。
     private static boolean isValid(List<Integer> solution, int i, int n) {
-//        return CollectionUtil.sum(solution) + i <= n;
-        return true;
+        return CollectionUtil.sum(solution) + i <= n;
     }
     
     private static void makeMove(List<Integer> solution, int n) {

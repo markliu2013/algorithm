@@ -30,7 +30,8 @@ public class BacktrackingTemplate1 {
         }
         // 每个solution有n个位置放不同的数，在每个位置都尝试arr中的每一个数。
         for (int i = 0; i < arr.length; i++) {
-            // TODO isValid 肩负着递归的退出条件，
+            // 1. isValid返回true 且 isASolution返回false，则会陷入死循环。
+            // 2. isValid返回false 或 isASolution返回true肩负着循环退出。
             if (isValid(solution, arr[i])) {
                 makeMove(solution, arr[i]);
                 dfs(solutionList, solution, arr, n);
