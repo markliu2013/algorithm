@@ -3,15 +3,11 @@ package com.zfwhub.algorithm.codility.stacks_and_queues;
 import java.util.HashSet;
 import java.util.Iterator;
 
-/**
- * https://app.codility.com/programmers/lessons/7-stacks_and_queues/stone_wall/
- */
+// https://app.codility.com/programmers/lessons/7-stacks_and_queues/stone_wall/
 public class StoneWall {
 
-    /**
-     * brute force
-     */
-    public static int solution(int[] H) {
+    // brute force, Performance bad
+    public static int solution1(int[] H) {
         int count = 0;
         HashSet<Integer> set = new HashSet<Integer>();
         for (int i = 0; i < H.length; i++) {
@@ -38,14 +34,11 @@ public class StoneWall {
         return count;
     }
 
-    /**
-     * brute force
-     */
+    // brute force, Performance bad
     public static int solution2(int[] H) {
         int count = 0;
         HashSet<Integer> set = new HashSet<Integer>();
         for (int i = 0; i < H.length; i++) {
-            System.out.print(count + " ");
             if (!set.contains(H[i])) {
                 set.add(H[i]);
                 count++;
@@ -61,13 +54,12 @@ public class StoneWall {
         return count;
     }
 
-    // TODO StoneWall
+    // TODO StoneWall WRONG ANSWER
     public static int solution3(int[] H) {
         int count = 0;
         int metric = 0;
         HashSet<Integer> set = new HashSet<Integer>();
         for (int i = 0; i < H.length; i++) {
-            System.out.print(count + " ");
             if (set.contains(H[i]) && H[i] <= metric) {
             } else {
                 set.add(H[i]);
@@ -79,14 +71,14 @@ public class StoneWall {
     }
 
     // TODO StoneWall stack or quene
-    public static int solution6(int[] H) {
+    public static int solution4(int[] H) {
         return 0;
     }
 
     public static void main(String[] args) {
-        System.out.println(StoneWall.solution2(new int[] { 8, 8, 5, 7, 9, 8, 7, 4, 8 }));
-        System.out.println(StoneWall.solution3(new int[] { 8, 8, 5, 7, 9, 8, 7, 4, 8 }));
-        //        System.out.println(StoneWall.solution2(new int[] {1,2,3,1,2}));
-        //        System.out.println(StoneWall.solution3(new int[] {1,2,3,1,2}));
+        System.out.println(solution2(new int[] { 8, 8, 5, 7, 9, 8, 7, 4, 8 }));
+        System.out.println(solution3(new int[] { 8, 8, 5, 7, 9, 8, 7, 4, 8 }));
+        //        System.out.println(solution2(new int[] {1,2,3,1,2}));
+        //        System.out.println(solution3(new int[] {1,2,3,1,2}));
     }
 }
