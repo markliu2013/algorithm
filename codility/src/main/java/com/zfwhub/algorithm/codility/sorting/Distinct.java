@@ -15,7 +15,7 @@ public class Distinct {
         return set.size();
     }
 
-    // sort
+    // 排序之后判断相邻的数字是否相等
     public static int solution2(int[] A) {
         if (A.length == 0) {
             return 0;
