@@ -21,13 +21,13 @@ public class StickersToSpellWord {
     }
     
     // target的每个字符都要在stickers中找到，否则问题无解
-    static boolean hasSolution(String[] stickers, String target) {
-        CharSequence stickerChars = StringUtil.removeDuplicates(stickers);
+    private static boolean hasSolution(String[] stickers, String target) {
+        CharSequence stickerChars = removeDuplicates(stickers);
         return StringUtil.containsAllChar(stickerChars, target);
     }
     
     // stickers 转为二维list，并且去掉不包含target字符的，因为去掉不影响问题的解
-    static List<List<Character>> parseStickers(String[] stickers, String target) {
+    private static List<List<Character>> parseStickers(String[] stickers, String target) {
         List<List<Character>> list = new ArrayList<>();
         Set<Character> targetSet = new HashSet<>();
         for (int i = 0; i < target.length(); i++) {
@@ -48,7 +48,8 @@ public class StickersToSpellWord {
         return list;
     }
     
-    static int dp(List<List<Character>> stickers, List<Character> target, HashMap<DpMapKey, Integer> map) {
+    // 递归，从上往下。
+    private static int dp(List<List<Character>> stickers, List<Character> target, HashMap<DpMapKey, Integer> map) {
         if (target.size() == 0) {
             return 0;
         }
@@ -82,7 +83,7 @@ public class StickersToSpellWord {
         return minValue;
     }
     
-    static List<StickerResult> go(List<Character> sticker, List<Character> target) {
+    private static List<StickerResult> go(List<Character> sticker, List<Character> target) {
         List<StickerResult> list = new ArrayList<>();
         List<Character> targetList = new ArrayList<>(target);
         // 0个
@@ -103,12 +104,31 @@ public class StickersToSpellWord {
         return list;
     }
     
+    
+    /**
+     * 将一个CharSequence类型的数组合并为一个StringBuilder，并去掉其中重复的字符。
+     * @param targets 需要合并的数组
+     * @return 合并后的StringBuilder，不保证targets中的顺序。
+     */
+    private static <T extends CharSequence> StringBuilder removeDuplicates(T[] targets) {
+        Set<Character> set = new HashSet<>();
+        for (int i = 0; i < targets.length; i++) {
+            for (int j = 0; j < targets[i].length(); j++) {
+                set.add(targets[i].charAt(j));
+            }
+        }
+        StringBuilder sb = new StringBuilder(set.size());
+        for (Character c : set) {
+            sb.append(c);
+        }
+        return sb;
+    }
+    
     // 每选择一个sticker，对应的target都会改变，StickerResult封装选择的sticker个数和target的关系
-    static class StickerResult {
+    private static class StickerResult {
         public int count;
         public List<Character> target;
-        public StickerResult() {
-        }
+        
         public StickerResult(int count, List<Character> target) {
             this.count = count;
             this.target = target;
@@ -154,7 +174,7 @@ public class StickersToSpellWord {
         }
     }
     
-    final static int INFINITE = Integer.MAX_VALUE - 10; // 模拟无穷大
+    private final static int INFINITE = Integer.MAX_VALUE - 10; // 模拟无穷大
     // 动态规划，从下往上递推。
     public static int solution2(String[] stickers, String target) {
         List<Character> targetList = StringUtil.charSeqToList(target);
@@ -184,7 +204,8 @@ public class StickersToSpellWord {
         return result;
     }
 
-    static int dp(List<List<Character>> stickers, List<Character> target) {
+    // 递推，从下往上。
+    private static int dp(List<List<Character>> stickers, List<Character> target) {
         List<List<Character>> targetSubsetsList = CollectionUtil.subsetsWithDup(target);
         Map<List<Character>, Integer> results = new HashMap<>();//类似Pack01.solution3中的result
         Map<List<Character>, Integer> preResults = new HashMap<>();

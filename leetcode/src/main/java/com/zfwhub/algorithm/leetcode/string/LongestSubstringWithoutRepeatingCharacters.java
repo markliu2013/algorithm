@@ -1,21 +1,17 @@
 package com.zfwhub.algorithm.leetcode.string;
 
-import java.util.HashSet;
+import com.zfwhub.algorithm.utils.StringUtil;
 
-/*
- * Given a string, find the length of the longest substring without repeating characters.
- * https://leetcode.com/problems/longest-substring-without-repeating-characters/description/
- */
+// https://leetcode.com/problems/longest-substring-without-repeating-characters/
 public class LongestSubstringWithoutRepeatingCharacters {
-
-    // straightforward, brute force
+    
+    // straightforward, brute force, Time Limit Exceeded
     public static int solution1(String s) {
         int maxLength = 0;
         for (int i = 0; i < s.length(); i++) {
             for (int j = i + 1; j <= s.length(); j++) {
-                String subStr = s.substring(i, j);
-                if (isAllUnique(subStr)) {
-                    maxLength = Math.max(maxLength, subStr.length());
+                if (StringUtil.isAllUnique(s, i, j)) {
+                    maxLength = Math.max(maxLength, j-i);
                 }
             }
         }
@@ -51,21 +47,10 @@ public class LongestSubstringWithoutRepeatingCharacters {
         return maxLength;
     }
 
-    private static boolean isAllUnique(String s) {
-        HashSet<Character> set = new HashSet<Character>();
-        for (int i = 0; i < s.length(); i++) {
-            if (set.contains(s.charAt(i))) {
-                return false;
-            } else {
-                set.add(s.charAt(i));
-            }
-        }
-        return true;
-    }
-
     public static void main(String[] args) {
-        String s = "bpfbhmipx";
-        System.out.println(LongestSubstringWithoutRepeatingCharacters.solution2(s));
+        String s = "abcabcbb";
+        System.out.println(solution1(s));
+        System.out.println(solution2(s));
     }
 
 }

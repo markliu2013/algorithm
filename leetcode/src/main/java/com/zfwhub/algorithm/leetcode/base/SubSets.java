@@ -17,6 +17,7 @@ public class SubSets {
     private static void dfs(List<List<Integer>> solutionList, List<Integer> solution, int[] arr) {
         if (isASolution(solutionList, solution, arr)) {
             processSolution(solutionList, solution);
+            // TODO SubSets 为什么不能return？
         }
         for (int i = 0; i < arr.length; i++) {
             if (isValid(solution, arr[i])) {

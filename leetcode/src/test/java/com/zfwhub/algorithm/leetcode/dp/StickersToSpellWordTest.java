@@ -17,6 +17,7 @@ public class StickersToSpellWordTest {
     private String target;
     private int expected;
     
+    // https://github.com/junit-team/junit4/wiki/Parameterized-tests
     @Parameters
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][] {
@@ -47,12 +48,12 @@ public class StickersToSpellWordTest {
     }
 
     @Test
-    public void testMinStickers() {
+    public void testSolution1() {
         assertEquals(expected, StickersToSpellWord.solution1(stickers, target));
     }
     
     @Test
-    public void testMinStickers2() {
+    public void testSolution2() {
         assertEquals(expected, StickersToSpellWord.solution2(stickers, target));
     }
 

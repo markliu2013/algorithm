@@ -26,7 +26,7 @@ public class BacktrackingTemplate1 {
     private static void dfs(List<List<Integer>> solutionList, List<Integer> solution, int[] arr, int n) {
         if (isASolution(solution, n)) {
             processSolution(solutionList, solution);
-            return;// TODO 需不需要return，得看情况。SubSets为什么不需要？
+            return;
         }
         // 每个solution有n个位置放不同的数，在每个位置都尝试arr中的每一个数。
         for (int i = 0; i < arr.length; i++) {

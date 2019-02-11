@@ -4,44 +4,21 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-/**
- * 字符串工具类
- */
-
 public class StringUtil {
     
     private StringUtil() {}
     
     /**
      * 将CharSequence转为List。
-     * @param target 要转换的CharSequence
+     * @param cs 要转换的CharSequence
      * @return 转换后的list
      */
-    public static List<Character> charSeqToList(CharSequence target) {
+    public static List<Character> charSeqToList(CharSequence cs) {
         List<Character> list = new ArrayList<>();
-        for (int i = 0; i < target.length(); i++) {
-            list.add(target.charAt(i));
+        for (int i = 0; i < cs.length(); i++) {
+            list.add(cs.charAt(i));
         }
         return list;
-    }
-    
-    /**
-     * 将一个CharSequence类型的数组合并为一个StringBuilder，并去掉其中重复的字符。
-     * @param targets 需要合并的数组
-     * @return 合并后的StringBuilder，不保证targets中的顺序。
-     */
-    public static <T extends CharSequence> StringBuilder removeDuplicates(T[] targets) {
-        Set<Character> set = new HashSet<>();
-        for (int i = 0; i < targets.length; i++) {
-            for (int j = 0; j < targets[i].length(); j++) {
-                set.add(targets[i].charAt(j));
-            }
-        }
-        StringBuilder sb = new StringBuilder(set.size());
-        for (Character c : set) {
-            sb.append(c);
-        }
-        return sb;
     }
     
     /**
@@ -60,6 +37,26 @@ public class StringUtil {
             }
         }
         return false;
+    }
+    
+    /**
+     * 检查字符序列cs指定范围中，是否不包括重复字符。
+     * @param cs
+     * @param beginIndex the beginning index, inclusive.
+     * @param endIndex the ending index, exclusive.
+     * @return {@code true} 如果不存在重复字符，{@code false} 存在重复字符
+     */
+    public static boolean isAllUnique(CharSequence cs, int beginIndex, int endIndex) {
+        Set<Character> set = new HashSet<>();
+        for (int i = beginIndex; i < endIndex; i++) {
+            Character ch = cs.charAt(i);
+            if (set.contains(ch)) {
+                return false;
+            } else {
+                set.add(ch);
+            }
+        }
+        return true;
     }
     
 }
