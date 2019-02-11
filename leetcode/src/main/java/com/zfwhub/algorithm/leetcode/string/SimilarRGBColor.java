@@ -1,24 +1,21 @@
 package com.zfwhub.algorithm.leetcode.string;
 
-/*
- * https://leetcode.com/contest/weekly-contest-76/problems/similar-rgb-color/
- * leetcode 800
- * http://guoyc.com/en/post/leetcode_weekly_contest_76/
- */
+// http://guoyc.com/en/post/leetcode_weekly_contest_76/#800-similar-rgb-color
 public class SimilarRGBColor {
     
-    public static String solution(String color) {
+    public static String solution1(String color) {
         String r=color.substring(1, 3);
         String g=color.substring(3, 5);
         String b=color.substring(5, 7);
         return "#"+findSim(r)+findSim(g)+findSim(b);
     }
-    // TODO SimilarRGBColor Leetcode simple
+    
+    // TODO SimilarRGBColor Leetcode simple, string format用法，LeetCode article
     public static String solution2(String color) {
         return "";
     }
     
-    public static String findSim(String color) {
+    private static String findSim(String color) {
         Character c1 = color.charAt(0);
         Integer integer=Integer.parseInt(color, 16);
         if (c1=='0') {
@@ -63,7 +60,7 @@ public class SimilarRGBColor {
     }
     
     public static void main(String[] args) {
-        System.out.println(SimilarRGBColor.solution("#09f166"));
+        System.out.println(SimilarRGBColor.solution1("#09f166"));
     }
 
 }

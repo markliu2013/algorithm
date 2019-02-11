@@ -125,4 +125,17 @@ public class ArrayUtil {
         return result;
     }
     
+    /**
+     * 数组求和
+     * @param nums
+     * @return
+     */
+    public static int sum(int[] nums) {
+        int sum = 0;
+        for (int i : nums) {
+            sum += i;
+        }
+        return sum;
+    }
+    
 }

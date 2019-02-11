@@ -2,6 +2,7 @@ package com.zfwhub.algorithm.utils;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
@@ -144,6 +145,29 @@ public class CollectionUtil {
     }
     
     /**
+     * 使用指定的Comparator，删除a中大于e的元素。
+     * 可以灵活指定删除条件。实现例如以下功能：
+     * 
+     * <ul>
+     * <li>删除integer集合中大于某个integer的所有元素。</li>
+     * <li>删除integer集合中小于某个integer的所有元素。</li>
+     * <li>删除string集合中长度大于某个string的所有元素</li>
+     * </ul>
+     * 
+     * @param a
+     * @param e
+     * @param c 决定删除条件的Comparator
+     */
+    public static <T> void remove(Iterable<T> a, T e, Comparator<? super T> c) {
+        Iterator<T> iterator = a.iterator();
+        while (iterator.hasNext()) {
+            if (c.compare(iterator.next(), e) > 0) {
+                iterator.remove();
+            }
+        }
+    }
+    
+    /**
      * 初始化包含1到n的list。
      * @param n
      * @return
@@ -180,6 +204,19 @@ public class CollectionUtil {
         } else {
             return false;
         }
+    }
+    
+    /**
+     * 求和
+     * @param nums
+     * @return
+     */
+    public static int sum(Iterable<Integer> nums) {
+        int sum = 0;
+        for (int i : nums) {
+            sum += i;
+        }
+        return sum;
     }
 
 }

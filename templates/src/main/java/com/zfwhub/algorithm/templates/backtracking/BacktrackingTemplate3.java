@@ -37,8 +37,8 @@ public class BacktrackingTemplate3 {
     }
 
     private static void processSolution(List<Integer> result, List<Integer> solution) {
-     // TODO BacktrackingTemplate3 为什么这么写是不行的？
-     // result = new ArrayList<>(solution);
+        // 为什么这么写是不行的？
+        // result = new ArrayList<>(solution);
         result.addAll(solution);
     }
     

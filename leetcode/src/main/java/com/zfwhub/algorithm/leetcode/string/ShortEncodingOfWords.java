@@ -1,34 +1,30 @@
 package com.zfwhub.algorithm.leetcode.string;
 
+import java.util.*;
+
 // https://leetcode.com/problems/short-encoding-of-words/description/
 public class ShortEncodingOfWords {
 
-    // TODO ShortEncodingOfWords
-    public int minimumLengthEncoding(String[] words) {
-        String maxString = words[0];
-        for (int i = 1; i < words.length; i++) {
-            if (maxString.length() < words[i].length()) {
-                maxString = words[i];
+    public static int solution1(String[] words) {
+        // 先长到短排序，保证后面短的被长的包含了。
+        Arrays.sort(words, (a, b)->Integer.compare(b.length(), a.length()));
+        Set<String> set = new HashSet<>();
+        int result = 0;
+        for (String word : words) {
+            // 只要set中没有包含，则把所有的子字符串全部添加。
+            if (!set.contains(word)) {
+                for (int i = 0; i < word.length(); i++) {
+                    set.add(word.substring(i));
+                }
+                result += word.length();
+                result++; // 添加 #
             }
         }
-        return 0;
+        return result;
     }
-
-    public int encodeTwo(String str1, String str2) {
-        if (str1.indexOf(str2) >= 0) {
-            return 0;
-        } else {
-
-        }
-        return 0;
-    }
-
+    
     public static void main(String[] args) {
         String[] words = new String[] { "time", "me", "bell" };
-        ShortEncodingOfWords shortEncodingOfWords = new ShortEncodingOfWords();
-        int result = shortEncodingOfWords.minimumLengthEncoding(words);
-        System.out.println(result);
-        int result2 = shortEncodingOfWords.encodeTwo("time", "tim");
-        System.out.println(result2);
+        System.out.println(solution1(words));
     }
 }

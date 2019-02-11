@@ -1,12 +1,7 @@
 package com.zfwhub.algorithm.datastructure.tree;
+import java.util.*;
 
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Stack;
-
-/**
- * https://blog.csdn.net/u012428012/article/details/79089915
- */
+// https://blog.csdn.net/u012428012/article/details/79089915
 public class TreeUtil {
     
     /**

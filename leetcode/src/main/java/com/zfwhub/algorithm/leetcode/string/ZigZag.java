@@ -3,11 +3,10 @@ package com.zfwhub.algorithm.leetcode.string;
 // https://leetcode.com/problems/zigzag-conversion/description/
 public class ZigZag {
     
-    public static String convert(String s, int numRows) {
+    public static String solution1(String s, int numRows) {
         if (numRows == 1) {
             return s;
         }
-        // TODO ZigZag save space
         Character[][] charMatrix = new Character[s.length()][numRows];
         char[] chars = s.toCharArray();
         int x = 0;
@@ -35,16 +34,11 @@ public class ZigZag {
         }
         return sb.toString();
     }
-    // TODO ZigZag
-    // https://blog.csdn.net/tonywearme/article/details/47719841
-    public static String convert2(String s, int numRows) {
-        return "";
-    }
 
     public static void main(String[] args) {
-        String s = "A";
-        int numRows = 1;
-        System.out.println(ZigZag.convert(s, numRows));
+        String s = "PAYPALISHIRING";
+        int numRows = 4;
+        System.out.println(ZigZag.solution1(s, numRows));
     }
 
 }

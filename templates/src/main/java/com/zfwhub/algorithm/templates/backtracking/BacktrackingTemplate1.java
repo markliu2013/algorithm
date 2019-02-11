@@ -14,10 +14,10 @@ public class BacktrackingTemplate1 {
         // 存放单个解的集合
         List<Integer> solution = new ArrayList<>();
         
-        if (n == 0) {// 0! = 1
+       /* if (n == 0) { // 0! = 1
             solutionList.add(solution);
             return solutionList;
-        }
+        }*/
         
         dfs(solutionList, solution, nums, n);
         return solutionList;
@@ -26,11 +26,12 @@ public class BacktrackingTemplate1 {
     private static void dfs(List<List<Integer>> solutionList, List<Integer> solution, int[] arr, int n) {
         if (isASolution(solution, n)) {
             processSolution(solutionList, solution);
-            return;// TODO 需不需要return，得看情况。SubSets为什么不需要？
+            return;
         }
         // 每个solution有n个位置放不同的数，在每个位置都尝试arr中的每一个数。
         for (int i = 0; i < arr.length; i++) {
-            // TODO isValid 肩负着递归的退出条件，ClimbingWays
+            // 1. isValid返回true 且 isASolution返回false，则会陷入死循环。因为unMakeMove执行不到。
+            // 2. isValid返回false 或 isASolution返回true肩负着循环退出。
             if (isValid(solution, arr[i])) {
                 makeMove(solution, arr[i]);
                 dfs(solutionList, solution, arr, n);
@@ -51,12 +52,14 @@ public class BacktrackingTemplate1 {
         solutionList.add(new ArrayList<>(solution));
     }
     
+    // isValid 肩负着递归的退出条件，否则会陷入死循环。
     private static boolean isValid(List<Integer> solution, int n) {
         if (solution.size() == 0) {
             return true;
         }
 //      if (solution.contains(n)) return false;
-        return solution.get(solution.size()-1) < n;
+        return solution.get(solution.size()-1) < n; //后一个比前面大
+//        return true;
     }
     
     private static void makeMove(List<Integer> solution, int n) {
@@ -69,6 +72,6 @@ public class BacktrackingTemplate1 {
     
     public static void main(String[] args) {
         int[] arr = new int[] {1,2,3};
-        System.out.println(BacktrackingTemplate1.combineAll(arr, 2));
+        System.out.println(BacktrackingTemplate1.combineAll(arr, 1));
     }
 }
