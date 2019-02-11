@@ -15,7 +15,7 @@ public class SubSets {
     }
     
     private static void dfs(List<List<Integer>> solutionList, List<Integer> solution, int[] arr) {
-        if (isASolution(solutionList, solution)) {
+        if (isASolution(solutionList, solution, arr)) {
             processSolution(solutionList, solution);
         }
         for (int i = 0; i < arr.length; i++) {
@@ -27,9 +27,9 @@ public class SubSets {
         }
     }
     
-    private static boolean isASolution(List<List<Integer>> solutionList, List<Integer> solution) {
-        // TODO SubSets 为什么不需要判断。
+    private static boolean isASolution(List<List<Integer>> solutionList, List<Integer> solution, int[] arr) {
 //      return !solutionList.contains(solution);
+//        return solution.size() <= arr.length;
         return true;
     }
 
@@ -41,7 +41,7 @@ public class SubSets {
         if (solution.size() == 0) {
             return true;
         }
-        return solution.get(solution.size()-1) < n;
+        return solution.get(solution.size()-1) < n; //后一个比前面大
     }
     
     private static void makeMove(List<Integer> solution, int n) {
@@ -115,9 +115,10 @@ public class SubSets {
     }
     
     public static void main(String[] args) {
-        int[] arr = new int[] {1,2,3};
+        int[] arr = new int[] {1,2};
         System.out.println(SubSets.solution1(arr));
         System.out.println(SubSets.solution2(arr));
         System.out.println(SubSets.solution3(arr));
+//        System.out.println(SubSets.solution4(arr));
     }
 }
