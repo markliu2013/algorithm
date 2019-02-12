@@ -6,7 +6,7 @@ import java.util.Arrays;
 // https://app.codility.com/programmers/lessons/13-fibonacci_numbers/ladder/
 public class Ladder {
 
-    // brute force, use BigInteger fix overflow.
+    // brute force, use BigInteger fix overflow. Performance 0%
     public static int[] solution1(int[] A, int[] B) {
         int[] result = new int[A.length];
         for (int i = 0; i < A.length; i++) {
@@ -34,7 +34,7 @@ public class Ladder {
      * 12345 % 100 = 45
      * &0xff?
      */
-    // TODO ladder
+    // TODO Ladder
     public static int[] solution2(int[] A, int[] B) {
         return null;
     }

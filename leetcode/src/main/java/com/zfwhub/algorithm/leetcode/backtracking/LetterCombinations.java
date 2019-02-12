@@ -25,6 +25,7 @@ public class LetterCombinations {
             list1.add(map.get(digits.charAt(i)));
         }
         Set<String> set = new LinkedHashSet<>();
+        // 当list1中两个元素，两层循环。
         for (int i = 0; i < list1.get(0).length(); i++) {
             for (int j = 0; j < list1.get(1).length(); j++) {
                 StringBuilder sb = new StringBuilder();
@@ -78,13 +79,9 @@ public class LetterCombinations {
         }
     }
     
-    // TODO LetterCombinations
-    // https://www.cnblogs.com/grandyang/p/4452220.html
-    // https://www.cnblogs.com/kepuCS/p/5271654.html
-    
     public static void main(String[] args) {
-        System.out.println(solution0("27"));
-        System.out.println(solution1("27"));
+        System.out.println(solution0("273"));
+        System.out.println(solution1("273"));
     }
 
 }

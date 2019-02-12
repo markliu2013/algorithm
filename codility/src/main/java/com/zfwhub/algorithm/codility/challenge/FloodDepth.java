@@ -9,7 +9,7 @@ public class FloodDepth {
      */
     public static int solution1(int[] A) {
         if (A == null || A.length == 0) {
-            throw new RuntimeException("Array A can't be null or empty.");
+            throw new IllegalArgumentException("Array A can't be null or empty.");
         }
         int maximumDepth = 0;
         for (int i = 1; i < A.length - 1; i++) {
@@ -32,7 +32,7 @@ public class FloodDepth {
         return maximumDepth;
     }
     
-    // dynamic programming
+    // dynamic programming. Performance 100%
     public static int solution2(int[] A) {
         if (A == null || A.length == 0) {
             throw new RuntimeException("Array A can't be null or empty.");
@@ -70,11 +70,6 @@ public class FloodDepth {
             }
         }
         return currentDept;
-    }
-    
-    // TODO FloodDepth simply dynamic programming, top to down?
-    public static int solution3(int[] A) {
-        return 0;
     }
     
     public static void main(String[] args) {
