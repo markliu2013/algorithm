@@ -9,7 +9,7 @@ import com.zfwhub.algorithm.utils.CollectionUtil;
 // 其实是把数组分成两部分，两部分的和差值最小。
 public class MinAbsSum {
     
-    // 组合暴力解法
+    // 组合暴力解法. Performance 0%s
     public static int solution1(int[] A) {
         if (A.length == 0) {
             return 0;
