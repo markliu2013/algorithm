@@ -18,7 +18,7 @@ public class NumberOfDiscIntersections {
         return count;
     }
 
-    // TODO
+    // TODO NumberOfDiscIntersections
     // sorting optimization
     public static int solution2(int[] A) {
         int count = 0;

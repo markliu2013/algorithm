@@ -126,7 +126,7 @@ public class ArrayUtil {
     }
     
     /**
-     * 数组求和
+     * int数组求和
      * @param nums
      * @return
      */

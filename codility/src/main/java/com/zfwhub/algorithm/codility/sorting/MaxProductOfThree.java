@@ -2,17 +2,12 @@ package com.zfwhub.algorithm.codility.sorting;
 
 import java.util.Arrays;
 
-/**
- * Given an integer array, find three numbers whose product is maximum and output the maximum product.
- * https://app.codility.com/programmers/lessons/6-sorting/max_product_of_three/
- * https://leetcode.com/problems/maximum-product-of-three-numbers/description/
- */
+// https://app.codility.com/programmers/lessons/6-sorting/max_product_of_three/
+// https://leetcode.com/problems/maximum-product-of-three-numbers/
 public class MaxProductOfThree {
 
-    /**
-     * brute force, count every combination.
-     */
-    public static int solution(int[] A) {
+    // brute force, count every combination.
+    public static int solution1(int[] A) {
         int maxProduct = Integer.MIN_VALUE;
         for (int i = 0; i < A.length; i++) {
             for (int j = i + 1; j < A.length; j++) {
@@ -24,9 +19,7 @@ public class MaxProductOfThree {
         return maxProduct;
     }
 
-    /**
-     * sorted, then in condition to figure 
-     */
+    // 排序之后，分情况讨论。
     public static int solution2(int[] A) {
         if (A.length == 3) {
             return A[0] * A[1] * A[2];
@@ -41,20 +34,35 @@ public class MaxProductOfThree {
         return Math.max(A[0] * A[1] * A[A.length - 1], A[A.length - 1] * A[A.length - 2] * A[A.length - 3]);
     }
 
-    /**
-     * simplify
-     */
+    // solution2 化简
     public static int solution3(int[] A) {
         Arrays.sort(A);
         return Math.max(A[0] * A[1] * A[A.length - 1], A[A.length - 1] * A[A.length - 2] * A[A.length - 3]);
     }
 
-    // TODO MaxProductOfThree
-    /**
-     * https://leetcode.com/problems/maximum-product-of-three-numbers/solution/
-     */
+    // 不需要排序，只需要找到两个最小的数，三个最大的数即可。
     public static int solution4(int[] A) {
-        return 0;
+        int min1 = Integer.MAX_VALUE, min2 = Integer.MAX_VALUE;
+        int max1 = Integer.MIN_VALUE, max2 = Integer.MIN_VALUE, max3 = Integer.MIN_VALUE;
+        for (int n: A) {
+            if (n <= min1) {
+                min2 = min1;
+                min1 = n;
+            } else if (n <= min2) {     // n lies between min1 and min2
+                min2 = n;
+            }
+            if (n >= max1) {            // n is greater than max1, max2 and max3
+                max3 = max2;
+                max2 = max1;
+                max1 = n;
+            } else if (n >= max2) {     // n lies betweeen max1 and max2
+                max3 = max2;
+                max2 = n;
+            } else if (n >= max3) {     // n lies betwen max2 and max3
+                max3 = n;
+            }
+        }
+        return Math.max(min1 * min2 * max1, max1 * max2 * max3);
     }
 
     public static void main(String[] args) {

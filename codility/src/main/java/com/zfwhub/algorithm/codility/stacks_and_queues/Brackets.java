@@ -2,13 +2,10 @@ package com.zfwhub.algorithm.codility.stacks_and_queues;
 
 import java.util.*;
 
-/**
- * Parentheses Validation
- * https://app.codility.com/programmers/lessons/7-stacks_and_queues/brackets/
- */
+// https://app.codility.com/programmers/lessons/7-stacks_and_queues/brackets/
 public class Brackets {
 
-    public boolean isValid3(String s) {
+    public static boolean solution1(String s) {
         char[] stack = new char[s.length()];
         int head = 0;
         for (char c : s.toCharArray()) {
@@ -36,7 +33,7 @@ public class Brackets {
 
     }
 
-    public boolean isValid2(String s) {
+    public static boolean solution2(String s) {
         Stack<Character> stack = new Stack<Character>();
         for (char c : s.toCharArray()) {
             if (c == '(')
@@ -51,7 +48,7 @@ public class Brackets {
         return stack.isEmpty();
     }
 
-    public boolean isValid(String s) {
+    public static boolean solution3(String s) {
         char[] chars = s.toCharArray();
         LinkedList<Character> stack = new LinkedList<Character>();
         for (int i = 0; i < chars.length; i++) {
@@ -60,7 +57,6 @@ public class Brackets {
                 continue;
             }
             char c2 = stack.peek();
-
             if (match(c2, chars[i])) {
                 stack.pop();
             } else {
@@ -70,7 +66,7 @@ public class Brackets {
         return stack.size() == 0;
     }
 
-    public boolean match(char c1, char c2) {
+    private static boolean match(char c1, char c2) {
         if ((c1 == '(' && c2 == ')') || (c1 == '[' && c2 == ']') || c1 == '{' && c2 == '}') {
             return true;
         }
@@ -78,7 +74,6 @@ public class Brackets {
     }
 
     public static void main(String[] args) {
-        Brackets brackets = new Brackets();
-        System.out.println(brackets.isValid("()[{}"));
+        System.out.println(solution3("()[{}"));
     }
 }
