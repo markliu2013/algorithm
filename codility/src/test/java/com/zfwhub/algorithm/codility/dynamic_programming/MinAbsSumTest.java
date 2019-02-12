@@ -23,7 +23,7 @@ public class MinAbsSumTest {
         int[] A7 = new int[] {1, 5, 2, 5, 2, 3};
         int expected7 = 0;
         int[] A8 = new int[] {1, 2, 2, 3, 5, 5};
-        int expected8 = 2;
+        int expected8 = 0;
         assertEquals(expected1, MinAbsSum.solution1(A1));
         assertEquals(expected2, MinAbsSum.solution1(A2));
         assertEquals(expected3, MinAbsSum.solution1(A3));
