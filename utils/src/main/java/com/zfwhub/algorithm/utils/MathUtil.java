@@ -1,5 +1,7 @@
 package com.zfwhub.algorithm.utils;
 
+import java.math.BigInteger;
+
 public class MathUtil {
     
     private MathUtil() { }
@@ -11,7 +13,7 @@ public class MathUtil {
      * @return
      */
     // TODO 改为使用递推
-    public static int combine(int n, int k) {
+    public static BigInteger combine(int n, int k) {
         if (k < 0) {
             throw new IllegalArgumentException("k < 0");
         }
@@ -22,11 +24,26 @@ public class MathUtil {
             throw new IllegalArgumentException("k > n");
         }
         if (k == 0 || n == k) {
-            return 1;
+            return BigInteger.valueOf(1);
         }
-        int[][] dp = new int[n+1][k+1];
-        return dp[n][k];
-        //return combine(n-1, k) + combine(n-1, k-1);
+        if (k > n / 2 ) {
+            k = n - k;
+        }
+        BigInteger[] dp = new BigInteger[k+1];
+        BigInteger[] preDp = new BigInteger[k+1];
+        preDp[0] = BigInteger.valueOf(0);
+        for (int j = 1; j <= k; j++) {
+            preDp[j] = BigInteger.valueOf(0);
+        }
+        for (int i = 0; i <= n; i++) {
+            dp[0] = new BigInteger("1");
+            for (int j = 1; j <= k; j++) {
+                dp[j] = preDp[j].add(preDp[j-1]);
+            }
+            preDp = dp.clone();
+        }
+        return dp[dp.length-1];
+//        return combine(n-1, k) + combine(n-1, k-1);
     }
     
     /**

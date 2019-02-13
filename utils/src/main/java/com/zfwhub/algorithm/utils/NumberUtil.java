@@ -27,6 +27,7 @@ public class NumberUtil {
      * @param b
      * @return
      */
+    // BigInteger 也可以计算gcd
     public static long gcd(long a, long b) {
         if (a % b == 0) {
             return b;
