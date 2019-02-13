@@ -136,10 +136,10 @@ public class MinMaxDivision {
     
 
     public static void main(String[] args) {
-        int K = 4;
+        int K = 1;
         int M = 1;
-        int[] A = new int[] {1,2};
-        System.out.println(solution1(K, M, A));
+        int[] A = ArrayUtil.newIntArray(10000);
+//        System.out.println(solution1(K, M, A));
         System.out.println(solution2(K, M, A));
     }
 

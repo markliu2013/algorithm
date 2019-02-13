@@ -2,14 +2,13 @@ package com.zfwhub.algorithm.leetcode.base;
 
 import java.util.*;
 
-import com.zfwhub.algorithm.utils.ArrayUtil;
 import com.zfwhub.algorithm.utils.CollectionUtil;
 
 // https://leetcode.com/problems/combinations/
 public class Combinations {
     
     public static List<List<Integer>> solution1(int n, int k) {
-        return CollectionUtil.combine(ArrayUtil.toList(ArrayUtil.newIntArray(n)), k);
+        return CollectionUtil.combine(CollectionUtil.newIntList(n), k);
     }
     
     // https://leetcode.com/problems/combinations/discuss/27002/Backtracking-Solution-Java

@@ -59,6 +59,7 @@ public class CollectionUtil {
      * @param k
      * @return
      */
+    // TODO 改为使用递推
     public static <T> List<List<T>> combine(List<T> list, int k) {
         if (k < 0) {
             throw new IllegalArgumentException("k < 0");
