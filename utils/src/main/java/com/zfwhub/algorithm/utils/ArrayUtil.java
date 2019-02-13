@@ -14,7 +14,7 @@ public class ArrayUtil {
         } else if (array.length == 0) {
             return EMPTY_INTEGER_OBJECT_ARRAY;
         }
-        final Integer[] result = new Integer[array.length];
+        Integer[] result = new Integer[array.length];
         for (int i = 0; i < array.length; i++) {
             result[i] = Integer.valueOf(array[i]);
         }
@@ -27,7 +27,7 @@ public class ArrayUtil {
         } else if (array.length == 0) {
             return EMPTY_INT_ARRAY;
         }
-        final int[] result = new int[array.length];
+        int[] result = new int[array.length];
         for (int i = 0; i < array.length; i++) {
             result[i] = array[i].intValue();
         }
@@ -43,7 +43,7 @@ public class ArrayUtil {
         if (n < 1) {
             throw new IllegalArgumentException("n < 1");
         }
-        final int[] result = new int[n];
+        int[] result = new int[n];
         for (int i = 0; i < n; i++) {
             result[i] = i + 1;
         }
@@ -56,7 +56,7 @@ public class ArrayUtil {
         } else if (array.length == 0) {
             return new ArrayList<>();
         }
-        final List<Integer> result = new ArrayList<>();
+        List<Integer> result = new ArrayList<>();
         for (int i = 0; i < array.length; i++) {
            result.add(Integer.valueOf(array[i]));
         }
@@ -64,7 +64,7 @@ public class ArrayUtil {
     }
     
     /**
-     * 判断数组是否严格递增。
+     * 判断数组是否严格递增。空数组是严格递增。
      * @param array
      * @return
      */
@@ -141,13 +141,14 @@ public class ArrayUtil {
     /**
      * 指定范围的数组求和。
      * @param nums
-     * @param beginIndex
-     * @param endIndex
+     * @param fromIndex inclusive
+     * @param toIndex exclusive
      * @return
      */
-    public static int sum(int[] nums, int beginIndex, int endIndex) {
+    public static int sum(int[] nums, int fromIndex, int toIndex) {
+        Utilities.indexRangeCheck(fromIndex, toIndex, nums.length);
         int sum = 0;
-        for (int i = beginIndex; i < endIndex; i++) {
+        for (int i = fromIndex; i < toIndex; i++) {
             sum += nums[i];
         }
         return sum;

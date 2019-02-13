@@ -9,6 +9,15 @@ import java.util.List;
 public class CollectionUtil {
     
     private CollectionUtil() { }
+    
+    // 组合结果的最大值。
+    private static final int COMBINATION_MAX_SIZE = 5200300;
+    
+    // combine支持的最大集合
+    private static final int MAX_SIZE_COMBINE = 500;
+    
+    // subsets支持的最大集合
+    private static final int MAX_SIZE_SUBSETS = 20;
 
     /**
      * list的所有组合，list中不能有重复元素。请确认list中无重复元素，否则请使用subsetsWithDup。
@@ -16,12 +25,14 @@ public class CollectionUtil {
      * @return
      */
     public static <T> List<List<T>> subsets(List<T> list) {
+        if (list.size() > MAX_SIZE_SUBSETS) {
+            throw new IllegalArgumentException("the size of list is larger than " + MAX_SIZE_SUBSETS);
+        }
         List<List<T>> solutionList = new ArrayList<>();
         subsetsHelper(solutionList, new ArrayList<>(), list, 0);
         return solutionList;
     }
     
-    // backtrack
     private static <T> void subsetsHelper(List<List<T>> solutionList, List<T> solution, List<T> list, int start) {
         solutionList.add(new ArrayList<>(solution));
         for (int i = start; i < list.size(); i++) {
@@ -32,11 +43,14 @@ public class CollectionUtil {
     }
     
     /**
-     * list的所有组合，list中可以有重复元素。当年不确定是否list有重复。
+     * list的所有组合，list中可以有重复元素。
      * @param list
      * @return
      */
     public static <T extends Comparable<? super T>> List<List<T>> subsetsWithDup(List<T> list) {
+        if (list.size() > MAX_SIZE_SUBSETS) {
+            throw new IllegalArgumentException("the size of list is larger than " + MAX_SIZE_SUBSETS);
+        }
         List<List<T>> solutionList = new ArrayList<>();
         Collections.sort(list); //必须加上排序，以方便去重。
         subsetsWithDupHelper(solutionList, new ArrayList<>(), list, 0);
@@ -59,7 +73,6 @@ public class CollectionUtil {
      * @param k
      * @return
      */
-    // TODO 改为使用递推
     public static <T> List<List<T>> combine(List<T> list, int k) {
         if (k < 0) {
             throw new IllegalArgumentException("k < 0");
@@ -69,6 +82,14 @@ public class CollectionUtil {
         }
         if (k > list.size()) {
             throw new IllegalArgumentException("k is larger than the size of list");
+        }
+        // 会出现递归栈溢出 
+        if (list.size() > MAX_SIZE_COMBINE) {
+            throw new IllegalArgumentException("the size of list is larger than " + MAX_SIZE_COMBINE);
+        }
+        // 结果超出范围，避免程序超时。
+        if (MathUtil.combine(list.size(), k).intValue() > COMBINATION_MAX_SIZE) {
+            throw new IllegalArgumentException("the combination result is too large");
         }
         List<List<T>> solutionList = new ArrayList<>();
         if (k == 0) {
@@ -223,13 +244,14 @@ public class CollectionUtil {
     /**
      * 指定范围的求和。
      * @param nums
-     * @param beginIndex
-     * @param endIndex
+     * @param fromIndex inclusive
+     * @param toIndex exclusive
      * @return
      */
-    public static int sum(List<Integer> nums, int beginIndex, int endIndex) {
+    public static int sum(List<Integer> nums, int fromIndex, int toIndex) {
+        Utilities.indexRangeCheck(fromIndex, toIndex, nums.size());
         int sum = 0;
-        for (int i = beginIndex; i < endIndex; i++) {
+        for (int i = fromIndex; i < toIndex; i++) {
             sum += nums.get(i);
         }
         return sum;

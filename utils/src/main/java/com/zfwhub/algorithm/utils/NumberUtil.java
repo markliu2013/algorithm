@@ -9,7 +9,7 @@ public class NumberUtil {
      * @return
      */
     public static int closestNumber(int a, int b) {
-        return b * (a / b); 
+        return b * (a / b);
     }
     
     /**
@@ -19,6 +19,25 @@ public class NumberUtil {
      */
     public static int getSumFromOne(int n) {
         return (n*(n+1)) / 2;
+    }
+    
+    /**
+     * a到b之间自然数的求和，
+     * @param a inclusive
+     * @param b inclusive
+     * @return
+     */
+    public  long sum(int a, int b) {
+//        if (k < 0) {
+//            throw new IllegalArgumentException("k < 0");
+//        }
+//        if (n < 0) {
+//            throw new IllegalArgumentException("n < 0");
+//        }
+//        if (k > n) {
+//            throw new IllegalArgumentException("k > n");
+//        }
+        return ( (a+b) * (b-a+1) ) / 2;
     }
     
     /**
