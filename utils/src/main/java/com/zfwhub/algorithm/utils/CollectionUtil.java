@@ -91,6 +91,7 @@ public class CollectionUtil {
         if (MathUtil.combine(list.size(), k).intValue() > COMBINATION_MAX_SIZE) {
             throw new IllegalArgumentException("the combination result is too large");
         }
+        // TODO 到底能不能根据组合数，一次for循环搞定？二进制？
         List<List<T>> solutionList = new ArrayList<>();
         if (k == 0) {
             solutionList.add(new ArrayList<>());
