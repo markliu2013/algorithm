@@ -24,7 +24,9 @@ public class MathUtil {
         if (k == 0 || n == k) {
             return 1;
         }
-        return combine(n-1, k) + combine(n-1, k-1);
+        int[][] dp = new int[n+1][k+1];
+        return dp[n][k];
+        //return combine(n-1, k) + combine(n-1, k-1);
     }
     
     /**
