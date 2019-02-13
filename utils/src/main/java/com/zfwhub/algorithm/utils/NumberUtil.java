@@ -29,6 +29,7 @@ public class NumberUtil {
      */
     // BigInteger 也可以计算gcd
     public static long gcd(long a, long b) {
+        // 碾转相除法
         if (a % b == 0) {
             return b;
         } else {

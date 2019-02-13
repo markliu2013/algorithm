@@ -13,7 +13,7 @@ public class MathUtil {
      * @return
      */
     // TODO 改为使用递推
-    public static BigInteger combine(int n, int k) {
+    public static BigInteger combine(long n, long k) {
         if (k < 0) {
             throw new IllegalArgumentException("k < 0");
         }
@@ -26,17 +26,17 @@ public class MathUtil {
         if (k == 0 || n == k) {
             return BigInteger.valueOf(1);
         }
+        //  C(n, k) = C(n, n-k) 优化
         if (k > n / 2 ) {
             k = n - k;
         }
         BigInteger[] dp = new BigInteger[k+1];
         BigInteger[] preDp = new BigInteger[k+1];
-        preDp[0] = BigInteger.valueOf(0);
-        for (int j = 1; j <= k; j++) {
+        for (int j = 0; j <= k; j++) {
             preDp[j] = BigInteger.valueOf(0);
         }
         for (int i = 0; i <= n; i++) {
-            dp[0] = new BigInteger("1");
+            dp[0] = BigInteger.valueOf(1);
             for (int j = 1; j <= k; j++) {
                 dp[j] = preDp[j].add(preDp[j-1]);
             }
