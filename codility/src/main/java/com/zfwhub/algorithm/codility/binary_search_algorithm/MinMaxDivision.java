@@ -2,30 +2,56 @@ package com.zfwhub.algorithm.codility.binary_search_algorithm;
 
 import java.util.*;
 
+import com.zfwhub.algorithm.utils.ArrayUtil;
+import com.zfwhub.algorithm.utils.CollectionUtil;
+
 // https://app.codility.com/programmers/lessons/14-binary_search_algorithm/min_max_division/
 public class MinMaxDivision {
 
-    // brute force
+    // brute force. Performance 0%
     public static int solution1(int K, int M, int[] A) {
         if (K == 1) {
-            return Arrays.stream(A).sum();
+            return ArrayUtil.sum(A);
         }
         List<List<List<Integer>>> blocks = splitArray(A, K);
         int minLargeSum = Integer.MAX_VALUE;
         for (int i = 0; i < blocks.size(); i++) {
-            List<List<Integer>> list = blocks.get(i);
+            List<List<Integer>> block = blocks.get(i);
             int largeSum = Integer.MIN_VALUE;
-            for (int j = 0; j < list.size(); j++) {
-                List<Integer> list2 = list.get(j);
-                int sum = 0;
-                for (int k = 0; k < list2.size(); k++) {
-                    sum += list2.get(k);
-                }
-                largeSum = Math.max(largeSum, sum);
+            for (int j = 0; j < block.size(); j++) {
+                largeSum = Math.max(largeSum, CollectionUtil.sum(block.get(j)));
             }
             minLargeSum = Math.min(minLargeSum, largeSum);
         }
         return minLargeSum;
+    }
+    
+    // 使用util的方法
+    public static int solution2(int K, int M, int[] A) {
+        if (A.length == 0) {
+            return 0;
+        }
+        if (K > A.length) {
+            K = A.length;
+        }
+        List<List<Integer>> combinations = CollectionUtil.combine(CollectionUtil.newIntList(A.length), K-1);
+        int minLargeSum = Integer.MAX_VALUE;
+        for (List<Integer> combination : combinations) {
+            int preIndex = 0;
+            int largeSum = Integer.MIN_VALUE;
+            combination.add(A.length);
+            for (int i = 0; i < combination.size(); i++) {
+                largeSum = Math.max(largeSum, ArrayUtil.sum(A, preIndex, combination.get(i)));
+                preIndex = combination.get(i);
+            }
+            minLargeSum = Math.min(minLargeSum, largeSum);
+        }
+        return minLargeSum;
+    }
+    
+    // TODO MinMaxDivision
+    public static int solution3(int K, int M, int[] A) {
+        return 0;
     }
 
     // split array to k blocks
@@ -86,7 +112,8 @@ public class MinMaxDivision {
             n++;
         }
     }
-
+    
+    // 分成4个数组的代码
     public static int solutionMock(int K, int M, int[] A) {
         for (int i = 0; i < A.length; i++) {
             for (int j = i; j < A.length; j++) {
@@ -107,17 +134,13 @@ public class MinMaxDivision {
         return 0;
     }
     
-    // TODO MinMaxDivision
-    public static int solution2(int K, int M, int[] A) {
-        return 0;
-    }
 
     public static void main(String[] args) {
-        int K = 3;
-        int M = 5;
-        int[] A = new int[] {2,1,5,1,2,2,2};
-        System.out.println(MinMaxDivision.solution1(K, M, A));
-        System.out.println(Arrays.stream(A).sum());
+        int K = 4;
+        int M = 1;
+        int[] A = new int[] {1,2};
+        System.out.println(solution1(K, M, A));
+        System.out.println(solution2(K, M, A));
     }
 
 }

@@ -132,8 +132,23 @@ public class ArrayUtil {
      */
     public static int sum(int[] nums) {
         int sum = 0;
-        for (int i : nums) {
-            sum += i;
+        for (int num : nums) {
+            sum += num;
+        }
+        return sum;
+    }
+    
+    /**
+     * 指定范围的数组求和。
+     * @param nums
+     * @param beginIndex
+     * @param endIndex
+     * @return
+     */
+    public static int sum(int[] nums, int beginIndex, int endIndex) {
+        int sum = 0;
+        for (int i = beginIndex; i < endIndex; i++) {
+            sum += nums[i];
         }
         return sum;
     }

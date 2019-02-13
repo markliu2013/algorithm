@@ -59,7 +59,7 @@ public class CollectionUtil {
      * @param k
      * @return
      */
-    public static <T> List<List<T>> subsets(List<T> list, int k) {
+    public static <T> List<List<T>> combine(List<T> list, int k) {
         if (k < 0) {
             throw new IllegalArgumentException("k < 0");
         }
@@ -80,9 +80,9 @@ public class CollectionUtil {
         }
         T lastItem = list.get(list.size()-1);
         List<T> subList = list.subList(0, list.size()-1);
-        List<List<T>> list1 = subsets(subList, k);
+        List<List<T>> list1 = combine(subList, k);
         solutionList.addAll(list1);
-        List<List<T>> list2 = subsets(list.subList(0, list.size()-1), k-1);
+        List<List<T>> list2 = combine(list.subList(0, list.size()-1), k-1);
         for (int i = 0; i < list2.size(); i++) {
             list2.get(i).add(lastItem);
         }
@@ -215,6 +215,21 @@ public class CollectionUtil {
         int sum = 0;
         for (int i : nums) {
             sum += i;
+        }
+        return sum;
+    }
+    
+    /**
+     * 指定范围的求和。
+     * @param nums
+     * @param beginIndex
+     * @param endIndex
+     * @return
+     */
+    public static int sum(List<Integer> nums, int beginIndex, int endIndex) {
+        int sum = 0;
+        for (int i = beginIndex; i < endIndex; i++) {
+            sum += nums.get(i);
         }
         return sum;
     }

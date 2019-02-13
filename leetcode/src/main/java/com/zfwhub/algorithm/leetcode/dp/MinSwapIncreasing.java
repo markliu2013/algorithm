@@ -31,7 +31,7 @@ public class MinSwapIncreasing {
     public static int solution3(int[] A, int[] B) {
         List<Integer> list = CollectionUtil.newIntList(A.length);
         for (int i = 0; i <= list.size()/2; i++) {
-            List<List<Integer>> list2 = CollectionUtil.subsets(list, i);
+            List<List<Integer>> list2 = CollectionUtil.combine(list, i);
             for (int j = 0; j < list2.size(); j++) {
                 int[] newA = A.clone();
                 int[] newB = B.clone();
