@@ -3,11 +3,10 @@ package com.zfwhub.algorithm.leetcode.base;
 import java.util.*;
 
 // https://leetcode.com/problems/permutations/
-// https://www.quora.com/How-does-recursion-work-inside-a-for-loop-Most-importantly-how-does-it-flow
 public class Permutations {
     
     //想一下for循环算阶层的办法。
-    public static List<List<Integer>> permute(int[] nums) {
+    public static List<List<Integer>> solution1(int[] nums) {
         if (nums.length == 1) {
             List<List<Integer>> list = new ArrayList<List<Integer>>();
             List<Integer> list2 = new ArrayList<Integer>();
@@ -20,7 +19,7 @@ public class Permutations {
                 int[] dest = new int[nums.length - 1];
                 System.arraycopy(nums, 0, dest, 0, i);
                 System.arraycopy(nums, i + 1, dest, i, nums.length - 1 - i);
-                List<List<Integer>> list4 = permute(dest);
+                List<List<Integer>> list4 = solution1(dest);
                 for (int k = 0; k < list4.size(); k++) {
                     List<Integer> list5 = list4.get(k);
                     list5.add(nums[i]);
@@ -31,7 +30,7 @@ public class Permutations {
         }
     }
     
-    public static List<List<Integer>> permute2(int[] nums) {
+    public static List<List<Integer>> solution2(int[] nums) {
         List<List<Integer>> solutionList = new ArrayList<>();
         List<Integer> solution = new ArrayList<>();
         dfs(solutionList, solution, nums);
@@ -74,6 +73,6 @@ public class Permutations {
 
     public static void main(String[] args) {
         int[] nums = new int[] { 1, 2, 3 };
-        System.out.println(Permutations.permute(nums));
+        System.out.println(Permutations.solution1(nums));
     }
 }

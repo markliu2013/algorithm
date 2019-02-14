@@ -21,21 +21,27 @@ public class SplitArrayFibonacciTest {
         List<Integer> expected3 = new ArrayList<>();
         String s4 = "0123";
         List<Integer> expected4 = new ArrayList<>();
+        
         String s5 = "1101111";
-        List<Integer> expected5 = ArrayUtil.toList(new int[] {11, 0, 11, 11});
+        List<Integer> expected5_1 = ArrayUtil.toList(new int[] {11, 0, 11, 11});
+        List<Integer> expected5_2 = ArrayUtil.toList(new int[] {110, 1, 111});
+        List<List<Integer>> expected5 = new ArrayList<>();
+        expected5.add(expected5_1);
+        expected5.add(expected5_2);
+        
         String s6 = "000000000";
         List<Integer> expected6 = ArrayUtil.toList(new int[] {0,0,0,0,0,0,0,0,0});
         assertEquals(expected1, SplitArrayFibonacci.solution1(s1));
         assertEquals(expected2, SplitArrayFibonacci.solution1(s2));
         assertEquals(expected3, SplitArrayFibonacci.solution1(s3));
         assertEquals(expected4, SplitArrayFibonacci.solution1(s4));
-        assertEquals(expected5, SplitArrayFibonacci.solution1(s5));
+        assertTrue(expected5.contains(SplitArrayFibonacci.solution1(s5)));
         assertEquals(expected6, SplitArrayFibonacci.solution1(s6));
         assertEquals(expected1, SplitArrayFibonacci.solution2(s1));
         assertEquals(expected2, SplitArrayFibonacci.solution2(s2));
         assertEquals(expected3, SplitArrayFibonacci.solution2(s3));
         assertEquals(expected4, SplitArrayFibonacci.solution2(s4));
-        assertEquals(expected5, SplitArrayFibonacci.solution2(s5));
+        assertTrue(expected5.contains(SplitArrayFibonacci.solution2(s5)));
         assertEquals(expected6, SplitArrayFibonacci.solution2(s6));
     }
 
