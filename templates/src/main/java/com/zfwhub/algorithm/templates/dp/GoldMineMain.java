@@ -14,7 +14,7 @@ public class GoldMineMain {
     public int getMaxGold3(List<GoldMine> goldMines, int maxPerson) {
         int maxAmount = 0;
         List<GoldMine> maxList = null;
-        List<List<GoldMine>> goldMinesCom = CollectionUtil.subsets(goldMines);
+        List<List<GoldMine>> goldMinesCom = CollectionUtil.subsetsRemoveDup(goldMines);
         for (Iterator<List<GoldMine>> iterator = goldMinesCom.iterator(); iterator.hasNext();) {
             List<GoldMine> list = iterator.next();
             int persons = 0;

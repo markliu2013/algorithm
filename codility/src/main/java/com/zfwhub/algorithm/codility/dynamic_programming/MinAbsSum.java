@@ -16,7 +16,7 @@ public class MinAbsSum {
         }
         int result = Integer.MAX_VALUE;
         // 所有选择的组合，选的为1，不选的为-1。因为A中有重复元素，必须使用索引判断。
-        List<List<Integer>> list = CollectionUtil.subsets(CollectionUtil.newIntList(A.length));
+        List<List<Integer>> list = CollectionUtil.subsets(CollectionUtil.newIntList(1, A.length));
         for (List<Integer> list2 : list) {
             // 组合生成S数组
             int[] S = new int[A.length];

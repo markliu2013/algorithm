@@ -10,7 +10,7 @@ public class SplitArrayFibonacci {
     // Memory Limit Exceeded
     public static List<Integer> solution1(String S) {
         // 尝试分割string
-        List<List<Integer>> list = CollectionUtil.subsets(CollectionUtil.newIntList(S.length()-1));
+        List<List<Integer>> list = CollectionUtil.subsets(CollectionUtil.newIntList(1, S.length()-1));
         for (int i = 0; i < list.size(); i++) {
             List<Integer> splitList = list.get(i);
             if (splitList.size() >= 2) {

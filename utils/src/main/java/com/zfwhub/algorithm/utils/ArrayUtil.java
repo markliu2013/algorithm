@@ -8,55 +8,77 @@ public class ArrayUtil {
     public static final int[] EMPTY_INT_ARRAY = new int[0];
     public static final Integer[] EMPTY_INTEGER_OBJECT_ARRAY = new Integer[0];
 
+    /**
+     * <p>Converts an array of primitive ints to objects.
+     *
+     * <p>This method returns {@code null} for a {@code null} input array.
+     *
+     * @param array  an {@code int} array
+     * @return an {@code Integer} array, {@code null} if null array input
+     */
     public static Integer[] toObject(int[] array) {
         if (array == null) {
             return null;
         } else if (array.length == 0) {
             return EMPTY_INTEGER_OBJECT_ARRAY;
         }
-        final Integer[] result = new Integer[array.length];
+        Integer[] result = new Integer[array.length];
         for (int i = 0; i < array.length; i++) {
             result[i] = Integer.valueOf(array[i]);
         }
         return result;
     }
     
-    public static int[] toPrimitive(Integer[] array) {
+    /**
+     * <p>Converts an array of object Integer to primitives handling {@code null}.
+     *
+     * <p>This method returns {@code null} for a {@code null} input array.
+     *
+     * @param array  a {@code Integer} array, may be {@code null}
+     * @param valueForNull  the value to insert if {@code null} found
+     * @return an {@code int} array, {@code null} if null array input
+     */
+    public static int[] toPrimitive(Integer[] array, int valueForNull) {
         if (array == null) {
             return null;
         } else if (array.length == 0) {
             return EMPTY_INT_ARRAY;
         }
-        final int[] result = new int[array.length];
+        int[] result = new int[array.length];
         for (int i = 0; i < array.length; i++) {
-            result[i] = array[i].intValue();
+            Integer b = array[i];
+            result[i] = (b == null ? valueForNull : b.intValue());
         }
         return result;
     }
     
     /**
-     * 初始化包含1到n的数组。
-     * @param n
+     * 初始化一个int数组，包含a到b的所有整数。
+     * @param a inclusive
+     * @param b inclusive
      * @return
      */
-    public static int[] newIntArray(int n) {
-        if (n < 1) {
-            throw new IllegalArgumentException("n < 1");
-        }
-        final int[] result = new int[n];
-        for (int i = 0; i < n; i++) {
-            result[i] = i + 1;
+    public static int[] newIntArray(int a, int b) {
+        if (a > b) throw new IllegalArgumentException("a > b");
+        int[] result = new int[b-a+1];
+        for (int i = 0; i < result.length; i++) {
+            result[i] = a + i;
         }
         return result;
     }
     
+    /**
+     * int数组转list
+     * @param array
+     * @return
+     */
     public static List<Integer> toList(int[] array) {
         if (array == null) {
             return null;
         } else if (array.length == 0) {
             return new ArrayList<>();
         }
-        final List<Integer> result = new ArrayList<>();
+        List<Integer> result = new ArrayList<>();
         for (int i = 0; i < array.length; i++) {
            result.add(Integer.valueOf(array[i]));
         }
@@ -64,13 +86,13 @@ public class ArrayUtil {
     }
     
     /**
-     * 判断数组是否严格递增。
-     * @param array
+     * 判断数组是否严格递增。空数组是严格递增。
+     * @param nums
      * @return
      */
-    public static boolean isIncreasing(int[] array) {
-        for (int i = 1; i < array.length; i++) {
-            if (array[i] <= array[i-1]) {
+    public static boolean isIncreasing(int[] nums) {
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] <= nums[i-1]) {
                 return false;
             }
         }
@@ -79,12 +101,12 @@ public class ArrayUtil {
     
     /**
      * 二维int数组转为为二维list
-     * @param twoDArray
+     * @param nums
      * @return
      */
-    public static List<List<Integer>> twoDArrayToList(int[][] twoDArray) {
+    public static List<List<Integer>> twoDArrayToList(int[][] nums) {
         List<List<Integer>> result = new ArrayList<>();
-        for (int[] array : twoDArray) {
+        for (int[] array : nums) {
             List<Integer> list = new ArrayList<>();
             for (int i : array) {
                 list.add(i);
@@ -132,8 +154,24 @@ public class ArrayUtil {
      */
     public static int sum(int[] nums) {
         int sum = 0;
-        for (int i : nums) {
-            sum += i;
+        for (int num : nums) {
+            sum += num;
+        }
+        return sum;
+    }
+    
+    /**
+     * 指定范围的数组求和。
+     * @param nums
+     * @param fromIndex inclusive
+     * @param toIndex exclusive
+     * @return
+     */
+    public static int sum(int[] nums, int fromIndex, int toIndex) {
+        Utilities.indexRangeCheck(fromIndex, toIndex, nums.length);
+        int sum = 0;
+        for (int i = fromIndex; i < toIndex; i++) {
+            sum += nums[i];
         }
         return sum;
     }
