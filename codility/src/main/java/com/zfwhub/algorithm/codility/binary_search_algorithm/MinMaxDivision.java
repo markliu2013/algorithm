@@ -34,8 +34,10 @@ public class MinMaxDivision {
         if (K > A.length) {
             K = A.length;
         }
+        // 数组A分成K份，总共几种分法
         List<List<Integer>> combinations = CollectionUtil.combine(CollectionUtil.newIntList(1, A.length), K-1);
         int minLargeSum = Integer.MAX_VALUE;
+        // 计算每个分法的largeSum
         for (List<Integer> combination : combinations) {
             int preIndex = 0;
             int largeSum = Integer.MIN_VALUE;
