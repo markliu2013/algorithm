@@ -191,16 +191,15 @@ public class CollectionUtil {
     }
     
     /**
-     * 初始化包含1到n的list。
-     * @param n
+     * 初始化一个list，包含a到b的所有整数。
+     * @param a inclusive
+     * @param b inclusive
      * @return
      */
-    public static List<Integer> newIntList(int n) {
-        if (n < 1) {
-            throw new IllegalArgumentException("n < 1");
-        }
+    public static List<Integer> newIntList(int a, int b) {
+        if (a > b) throw new IllegalArgumentException("a > b");
         List<Integer> result = new ArrayList<>();
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < b-a+1; i++) {
             result.add(i+1);
         }
         return result;

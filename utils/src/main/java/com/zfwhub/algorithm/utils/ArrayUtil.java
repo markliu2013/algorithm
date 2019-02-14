@@ -8,6 +8,14 @@ public class ArrayUtil {
     public static final int[] EMPTY_INT_ARRAY = new int[0];
     public static final Integer[] EMPTY_INTEGER_OBJECT_ARRAY = new Integer[0];
 
+    /**
+     * <p>Converts an array of primitive ints to objects.
+     *
+     * <p>This method returns {@code null} for a {@code null} input array.
+     *
+     * @param array  an {@code int} array
+     * @return an {@code Integer} array, {@code null} if null array input
+     */
     public static Integer[] toObject(int[] array) {
         if (array == null) {
             return null;
@@ -21,7 +29,16 @@ public class ArrayUtil {
         return result;
     }
     
-    public static int[] toPrimitive(Integer[] array) {
+    /**
+     * <p>Converts an array of object Integer to primitives handling {@code null}.
+     *
+     * <p>This method returns {@code null} for a {@code null} input array.
+     *
+     * @param array  a {@code Integer} array, may be {@code null}
+     * @param valueForNull  the value to insert if {@code null} found
+     * @return an {@code int} array, {@code null} if null array input
+     */
+    public static int[] toPrimitive(Integer[] array, int valueForNull) {
         if (array == null) {
             return null;
         } else if (array.length == 0) {
@@ -29,27 +46,32 @@ public class ArrayUtil {
         }
         int[] result = new int[array.length];
         for (int i = 0; i < array.length; i++) {
-            result[i] = array[i].intValue();
+            Integer b = array[i];
+            result[i] = (b == null ? valueForNull : b.intValue());
         }
         return result;
     }
     
     /**
-     * 初始化包含1到n的数组。
-     * @param n
+     * 初始化一个int数组，包含a到b的所有整数。
+     * @param a inclusive
+     * @param b inclusive
      * @return
      */
-    public static int[] newIntArray(int n) {
-        if (n < 1) {
-            throw new IllegalArgumentException("n < 1");
-        }
-        int[] result = new int[n];
-        for (int i = 0; i < n; i++) {
-            result[i] = i + 1;
+    public static int[] newIntArray(int a, int b) {
+        if (a > b) throw new IllegalArgumentException("a > b");
+        int[] result = new int[b-a+1];
+        for (int i = 0; i < result.length; i++) {
+            result[i] = a + i;
         }
         return result;
     }
     
+    /**
+     * int数组转list
+     * @param array
+     * @return
+     */
     public static List<Integer> toList(int[] array) {
         if (array == null) {
             return null;

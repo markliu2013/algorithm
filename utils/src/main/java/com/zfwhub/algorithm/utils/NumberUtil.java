@@ -8,35 +8,28 @@ public class NumberUtil {
      * @param b
      * @return
      */
-    public static int closestNumber(int a, int b) {
+    public static int closestMultiple(int a, int b) {
+        if (a < 0) {
+            throw new IllegalArgumentException("a < 0");
+        }
+        if (b < 0) {
+            throw new IllegalArgumentException("b < 0");
+        }
+        // 0没有倍数
+        if (b == 0) {
+            throw new IllegalArgumentException("b = 0");
+        }
         return b * (a / b);
     }
     
     /**
-     * 计算1到n之间自然数的求和。
-     * @param n
-     * @return
-     */
-    public static int getSumFromOne(int n) {
-        return (n*(n+1)) / 2;
-    }
-    
-    /**
-     * a到b之间自然数的求和，
+     * a到b之间整数的求和，
      * @param a inclusive
      * @param b inclusive
      * @return
      */
-    public  long sum(int a, int b) {
-//        if (k < 0) {
-//            throw new IllegalArgumentException("k < 0");
-//        }
-//        if (n < 0) {
-//            throw new IllegalArgumentException("n < 0");
-//        }
-//        if (k > n) {
-//            throw new IllegalArgumentException("k > n");
-//        }
+    public static int sum(int a, int b) {
+        if (a > b) throw new IllegalArgumentException("a > b");
         return ( (a+b) * (b-a+1) ) / 2;
     }
     
@@ -47,7 +40,14 @@ public class NumberUtil {
      * @return
      */
     // BigInteger 也可以计算gcd
-    public static long gcd(long a, long b) {
+    public static int gcd(int a, int b) {
+        if (a == 0) {
+            throw new IllegalArgumentException("a = 0");
+        }
+        if (b == 0) {
+            throw new IllegalArgumentException("b = 0");
+        }
+        // TODO 负数 gcd
         // 碾转相除法
         if (a % b == 0) {
             return b;

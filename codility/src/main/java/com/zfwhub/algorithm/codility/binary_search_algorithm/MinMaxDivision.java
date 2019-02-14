@@ -34,7 +34,7 @@ public class MinMaxDivision {
         if (K > A.length) {
             K = A.length;
         }
-        List<List<Integer>> combinations = CollectionUtil.combine(CollectionUtil.newIntList(A.length), K-1);
+        List<List<Integer>> combinations = CollectionUtil.combine(CollectionUtil.newIntList(1, A.length), K-1);
         int minLargeSum = Integer.MAX_VALUE;
         for (List<Integer> combination : combinations) {
             int preIndex = 0;
@@ -138,7 +138,7 @@ public class MinMaxDivision {
     public static void main(String[] args) {
         int K = 1;
         int M = 1;
-        int[] A = ArrayUtil.newIntArray(10000);
+        int[] A = ArrayUtil.newIntArray(1, 10000);
 //        System.out.println(solution1(K, M, A));
         System.out.println(solution2(K, M, A));
     }
