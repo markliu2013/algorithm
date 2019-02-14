@@ -28,7 +28,7 @@ public class NumberUtil {
      * @param b inclusive
      * @return
      */
-    public static int sum(int a, int b) {
+    public static long sum(long a, long b) {
         if (a > b) throw new IllegalArgumentException("a > b");
         return ( (a+b) * (b-a+1) ) / 2;
     }
