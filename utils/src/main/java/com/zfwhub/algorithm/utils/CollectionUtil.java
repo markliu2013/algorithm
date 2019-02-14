@@ -24,6 +24,7 @@ public class CollectionUtil {
      * @param list
      * @return
      */
+    // TODO subsets改为二进制
     public static <T> List<List<T>> subsets(List<T> list) {
         if (list.size() > MAX_SIZE_SUBSETS) {
             throw new IllegalArgumentException("the size of list is larger than " + MAX_SIZE_SUBSETS);
@@ -47,6 +48,7 @@ public class CollectionUtil {
      * @param list
      * @return
      */
+ // TODO subsets改为二进制
     public static <T extends Comparable<? super T>> List<List<T>> subsetsWithDup(List<T> list) {
         if (list.size() > MAX_SIZE_SUBSETS) {
             throw new IllegalArgumentException("the size of list is larger than " + MAX_SIZE_SUBSETS);

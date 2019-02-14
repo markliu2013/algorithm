@@ -87,12 +87,12 @@ public class ArrayUtil {
     
     /**
      * 判断数组是否严格递增。空数组是严格递增。
-     * @param array
+     * @param nums
      * @return
      */
-    public static boolean isIncreasing(int[] array) {
-        for (int i = 1; i < array.length; i++) {
-            if (array[i] <= array[i-1]) {
+    public static boolean isIncreasing(int[] nums) {
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] <= nums[i-1]) {
                 return false;
             }
         }
@@ -101,12 +101,12 @@ public class ArrayUtil {
     
     /**
      * 二维int数组转为为二维list
-     * @param twoDArray
+     * @param nums
      * @return
      */
-    public static List<List<Integer>> twoDArrayToList(int[][] twoDArray) {
+    public static List<List<Integer>> twoDArrayToList(int[][] nums) {
         List<List<Integer>> result = new ArrayList<>();
-        for (int[] array : twoDArray) {
+        for (int[] array : nums) {
             List<Integer> list = new ArrayList<>();
             for (int i : array) {
                 list.add(i);
