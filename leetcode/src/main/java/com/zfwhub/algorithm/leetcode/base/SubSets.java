@@ -99,7 +99,6 @@ public class SubSets {
         for (int i = 0; i < count; i++) {
             List<Integer> list1 = new ArrayList<Integer>();
             String binaryString = String.format("%3s", Integer.toBinaryString(i)).replace(' ', '0');
-            System.out.println(binaryString);
             char[] chars = binaryString.toCharArray();
             for (int j = 0; j < chars.length; j++) {
                 if (chars[j] == '1') {
@@ -117,10 +116,10 @@ public class SubSets {
     }
     
     public static void main(String[] args) {
-        int[] arr = ArrayUtil.newIntArray(1, 3);
-//        System.out.println(SubSets.solution1(arr));
-        System.out.println(SubSets.solution4(arr));
-//        System.out.println(SubSets.solution3(arr));
+        int[] arr = new int[] {1,2};
+        System.out.println(SubSets.solution1(arr));
+        System.out.println(SubSets.solution2(arr));
+        System.out.println(SubSets.solution3(arr));
 //        System.out.println(SubSets.solution4(arr));
     }
 }

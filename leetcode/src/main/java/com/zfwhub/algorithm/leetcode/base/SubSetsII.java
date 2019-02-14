@@ -61,35 +61,14 @@ public class SubSetsII {
         solution.remove(solution.size() - 1);
     }
     
+    // CollectionUtil
     public static List<List<Integer>> solution2(int[] nums) {
-        return subsetsWithDup(ArrayUtil.toList(nums));
-    }
-    
-    private static <T extends Comparable<? super T>> List<List<T>> subsetsWithDup(List<T> list) {
-        List<List<T>> solutionList = new ArrayList<>();
-        Collections.sort(list); //必须加上排序，以方便去重。
-        subsetsWithDupHelper(solutionList, new ArrayList<>(), list, 0);
-        return solutionList;
-    }
-    
-    private static <T extends Comparable<? super T>> void subsetsWithDupHelper(List<List<T>> solutionList, List<T> solution, List<T> list, int start) {
-        solutionList.add(new ArrayList<>(solution));
-        for (int i = start; i < list.size(); i++) {
-            if(i > start && list.get(i) == list.get(i-1)) continue; // skip duplicates
-            solution.add(list.get(i));
-            subsetsWithDupHelper(solutionList, solution, list, i+1);
-            solution.remove(solution.size()-1);
-        }
-    }
-    
-    public static List<List<Integer>> solution3(int[] nums) {
-        return CollectionUtil.subsetsRemoveDup(ArrayUtil.toList(nums));
+        return CollectionUtil.subsetsWithDup(ArrayUtil.toList(nums));
     }
     
     public static void main(String[] args) {
         int[] arr = new int[] { 1,2,2 };
         System.out.println(SubSetsII.solution1(arr));
         System.out.println(SubSetsII.solution2(arr));
-        System.out.println(SubSetsII.solution3(arr));
     }
 }

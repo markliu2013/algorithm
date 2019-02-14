@@ -47,7 +47,7 @@ public class CommonPrimeDivisors {
         if (a == 1 || b == 1) {
             return false;
         }
-        int gcd = NumberUtil.gcd(a, b);
+        int gcd = (int)NumberUtil.gcd(a, b);
         if (gcd == 1) {
             return false;
         }
@@ -55,10 +55,10 @@ public class CommonPrimeDivisors {
         int newb = b / gcd;
         while (true) {
             if (newa != 1) {
-                newa = newa / NumberUtil.gcd(newa, gcd);
+                newa = newa / (int)NumberUtil.gcd(newa, gcd);
             }
             if (newb != 1) {
-                newb = newb / NumberUtil.gcd(newb, gcd);
+                newb = newb / (int)NumberUtil.gcd(newb, gcd);
             }
             if (newa == 1 && newb == 1) {
                 return true;

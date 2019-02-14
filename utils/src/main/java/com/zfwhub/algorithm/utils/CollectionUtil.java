@@ -1,86 +1,74 @@
 package com.zfwhub.algorithm.utils;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
-import java.util.LinkedHashSet;
 import java.util.List;
 
 public class CollectionUtil {
     
     private CollectionUtil() { }
-    
-    // 组合结果的最大值。
-    private static final int COMBINATION_MAX_SIZE = 5200300;
-    
-    // combine支持的最大集合
-    private static final int MAX_SIZE_COMBINE = 500;
-    
-    // subsets支持的最大集合
-    private static final int MAX_SIZE_SUBSETS = 20;
 
     /**
-     * <p>list的所有组合，list中不能有重复元素。如果无法确认是否有重复元素请使用{@link #subsetsRemoveDup(List) subsetsRemoveDup}方法。</p>
-     * <p>返回的list按size从小到大排序，以便提前找到最优解。</p>
+     * list的所有组合，list中不能有重复元素。请确认list中无重复元素，否则请使用subsetsWithDup。
      * @param list
      * @return
      */
     public static <T> List<List<T>> subsets(List<T> list) {
-        if (list.size() > MAX_SIZE_SUBSETS) {
-            throw new IllegalArgumentException("the size of list is larger than " + MAX_SIZE_SUBSETS);
-        }
         List<List<T>> solutionList = new ArrayList<>();
-        solutionList.add(new ArrayList<>());
-        for (int i = 1; i <= list.size(); i++) {
-            solutionList.addAll(combine(list, i));
-        }
+        subsetsHelper(solutionList, new ArrayList<>(), list, 0);
         return solutionList;
     }
     
+    // backtrack
+    private static <T> void subsetsHelper(List<List<T>> solutionList, List<T> solution, List<T> list, int start) {
+        solutionList.add(new ArrayList<>(solution));
+        for (int i = start; i < list.size(); i++) {
+            solution.add(list.get(i));
+            subsetsHelper(solutionList, solution, list, i+1);
+            solution.remove(solution.size()-1);
+        }
+    }
+    
     /**
-     * <p>list的所有组合，list中可以有重复元素。如果已确认无重复元素请使用{@link #subsets(List) subsets}方法，效率更高。</p>
-     * <p>返回的list按size从小到大排序，以便提前找到最优解。</p>
+     * list的所有组合，list中可以有重复元素。当年不确定是否list有重复。
      * @param list
      * @return
      */
-    public static <T> List<List<T>> subsetsRemoveDup(List<T> list) {
-        if (list.size() > MAX_SIZE_SUBSETS) {
-            throw new IllegalArgumentException("the size of list is larger than " + MAX_SIZE_SUBSETS);
-        }
+    public static <T extends Comparable<? super T>> List<List<T>> subsetsWithDup(List<T> list) {
         List<List<T>> solutionList = new ArrayList<>();
-        solutionList.add(new ArrayList<>());
-        for (int i = 1; i <= list.size(); i++) {
-            solutionList.addAll(combineRemoveDup(list, i));
-        }
+        Collections.sort(list); //必须加上排序，以方便去重。
+        subsetsWithDupHelper(solutionList, new ArrayList<>(), list, 0);
         return solutionList;
     }
     
-    private static void combineRangeCheck(int k, int size) {
-        if (k < 0) {
-            throw new IllegalArgumentException("k < 0");
-        }
-        if (k > size) {
-            throw new IllegalArgumentException("k is larger than the size of list");
-        }
-        // 会出现递归栈溢出 
-        if (size > MAX_SIZE_COMBINE) {
-            throw new IllegalArgumentException("the size of list is larger than " + MAX_SIZE_COMBINE);
-        }
-        // 结果超出范围，避免程序超时。
-        if (MathUtil.combine(size, k).intValue() > COMBINATION_MAX_SIZE) {
-            throw new IllegalArgumentException("the combination result is too large");
+    private static <T extends Comparable<? super T>> void subsetsWithDupHelper(List<List<T>> solutionList, List<T> solution, List<T> list, int start) {
+        solutionList.add(new ArrayList<>(solution));
+        for (int i = start; i < list.size(); i++) {
+            if(i > start && list.get(i) == list.get(i-1)) continue; // skip duplicates
+            solution.add(list.get(i));
+            subsetsWithDupHelper(solutionList, solution, list, i+1);
+            solution.remove(solution.size()-1);
         }
     }
     
     /**
-     * 找C(n,k), 指定数目k的组合。list中不能有重复元素。如果无法确认是否有重复元素请使用{@link #combineRemoveDup(List, int) combineRemoveDup}方法。
+     * 找C(n,k), 指定数目k的组合。请确认list中无重复元素，否则请使用subsetsWithDup。
      * @param list
      * @param k
      * @return
      */
-    public static <T> List<List<T>> combine(List<T> list, int k) {
-        combineRangeCheck(k, list.size());
-        // TODO 到底能不能根据组合数，一次for循环搞定？二进制？
+    public static <T> List<List<T>> subsets(List<T> list, int k) {
+        if (k < 0) {
+            throw new IllegalArgumentException("k < 0");
+        }
+        if (list == null) {
+            throw new IllegalArgumentException("list is null");
+        }
+        if (k > list.size()) {
+            throw new IllegalArgumentException("k is larger than the size of list");
+        }
         List<List<T>> solutionList = new ArrayList<>();
         if (k == 0) {
             solutionList.add(new ArrayList<>());
@@ -92,9 +80,9 @@ public class CollectionUtil {
         }
         T lastItem = list.get(list.size()-1);
         List<T> subList = list.subList(0, list.size()-1);
-        List<List<T>> list1 = combine(subList, k);
+        List<List<T>> list1 = subsets(subList, k);
         solutionList.addAll(list1);
-        List<List<T>> list2 = combine(list.subList(0, list.size()-1), k-1);
+        List<List<T>> list2 = subsets(list.subList(0, list.size()-1), k-1);
         for (int i = 0; i < list2.size(); i++) {
             list2.get(i).add(lastItem);
         }
@@ -102,36 +90,6 @@ public class CollectionUtil {
         return solutionList;
     }
     
-    /**
-     * 找C(n,k), 指定数目k的组合。list中可以有重复元素。如果已确认无重复元素请使用{@link #combine(List, int) combine}方法，效率更高。
-     * @param list
-     * @param k
-     * @return
-     */
-    public static <T> List<List<T>> combineRemoveDup(List<T> list, int k) {
-        combineRangeCheck(k, list.size());
-        List<List<T>> solutionList = new ArrayList<>();
-        if (k == 0) {
-            solutionList.add(new ArrayList<>());
-            return solutionList;
-        }
-        if (k == list.size()) {
-            solutionList.add(new ArrayList<>(list));
-            return solutionList;
-        }
-        LinkedHashSet<List<T>> solutionSet = new LinkedHashSet<>();
-        T lastItem = list.get(list.size()-1);
-        List<T> subList = list.subList(0, list.size()-1);
-        List<List<T>> list1 = combine(subList, k);
-        solutionSet.addAll(list1);
-        List<List<T>> list2 = combine(list.subList(0, list.size()-1), k-1);
-        for (int i = 0; i < list2.size(); i++) {
-            list2.get(i).add(lastItem);
-        }
-        solutionSet.addAll(list2);
-        solutionList.addAll(solutionSet);
-        return solutionList;
-    }
     /**
      * a - b，a和b是两个集合，返回a-b，不影响a，b。
      * @param a
@@ -210,15 +168,16 @@ public class CollectionUtil {
     }
     
     /**
-     * 初始化一个list，包含a到b的所有整数。
-     * @param a inclusive
-     * @param b inclusive
+     * 初始化包含1到n的list。
+     * @param n
      * @return
      */
-    public static List<Integer> newIntList(int a, int b) {
-        if (a > b) throw new IllegalArgumentException("a > b");
+    public static List<Integer> newIntList(int n) {
+        if (n < 1) {
+            throw new IllegalArgumentException("n < 1");
+        }
         List<Integer> result = new ArrayList<>();
-        for (int i = 0; i < b-a+1; i++) {
+        for (int i = 0; i < n; i++) {
             result.add(i+1);
         }
         return result;
@@ -230,8 +189,8 @@ public class CollectionUtil {
      * @param b
      * @return
      */
+    // https://stackoverflow.com/questions/13501142/java-arraylist-how-can-i-tell-if-two-lists-are-equal-order-not-mattering
     public static boolean isEqualCollection(Collection<?> a, Collection<?> b) {
-     // https://stackoverflow.com/questions/13501142/java-arraylist-how-can-i-tell-if-two-lists-are-equal-order-not-mattering
         if (a == null && b == null){
             return true;
         }
@@ -256,22 +215,6 @@ public class CollectionUtil {
         int sum = 0;
         for (int i : nums) {
             sum += i;
-        }
-        return sum;
-    }
-    
-    /**
-     * 指定范围的求和。
-     * @param nums
-     * @param fromIndex inclusive
-     * @param toIndex exclusive
-     * @return
-     */
-    public static int sum(List<Integer> nums, int fromIndex, int toIndex) {
-        Utilities.indexRangeCheck(fromIndex, toIndex, nums.size());
-        int sum = 0;
-        for (int i = fromIndex; i < toIndex; i++) {
-            sum += nums.get(i);
         }
         return sum;
     }

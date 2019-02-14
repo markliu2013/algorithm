@@ -206,7 +206,7 @@ public class StickersToSpellWord {
 
     // 递推，从下往上。
     private static int dp(List<List<Character>> stickers, List<Character> target) {
-        List<List<Character>> targetSubsetsList = CollectionUtil.subsetsRemoveDup(target);
+        List<List<Character>> targetSubsetsList = CollectionUtil.subsetsWithDup(target);
         Map<List<Character>, Integer> results = new HashMap<>();//类似Pack01.solution3中的result
         Map<List<Character>, Integer> preResults = new HashMap<>();
         for (int i = 0; i < targetSubsetsList.size(); i++) {

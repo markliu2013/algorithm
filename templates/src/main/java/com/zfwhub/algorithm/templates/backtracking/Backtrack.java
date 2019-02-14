@@ -86,7 +86,7 @@ public class Backtrack {
     }
     
     public static void main(String[] args) {
-        int[] A = new int[] {1,2,3};
+        int[] A = new int[] {1,2,3,4};
         System.out.println(backtrack(A));
     }
 }
