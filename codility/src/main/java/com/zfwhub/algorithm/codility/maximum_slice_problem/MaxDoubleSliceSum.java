@@ -1,16 +1,12 @@
 package com.zfwhub.algorithm.codility.maximum_slice_problem;
 
-/**
- * https://app.codility.com/programmers/lessons/9-maximum_slice_problem/max_double_slice_sum/
- */
+// https://app.codility.com/programmers/lessons/9-maximum_slice_problem/max_double_slice_sum/
 public class MaxDoubleSliceSum {
 
-    /**
-     * straightforward, brute force
-     */
-    public static int solution(int[] A) {
+    // brute force. Performance 14%
+    public static int solution1(int[] A) {
         if (A == null || A.length < 3) {
-            throw new RuntimeException("The array can't be null and length greater than 3");
+            throw new IllegalArgumentException("The array can't be null and length greater than 3");
         }
         int maxDoubleSliceSum = Integer.MIN_VALUE;
         for (int i = 0; i < A.length; i++) {
@@ -30,9 +26,7 @@ public class MaxDoubleSliceSum {
         return maxDoubleSliceSum;
     }
 
-    /**
-     * prefix sums; 
-     */
+    // prefix sums. Performance 14%
     public static int solution2(int[] A) {
         int[] prefixSums = new int[A.length];
         // get prefixSum
@@ -54,15 +48,15 @@ public class MaxDoubleSliceSum {
         return maxDoubleSliceSum;
     }
 
-    // TODO MaxDoubleSliceSum
+    // TODO MaxDoubleSliceSum 优化
     public static int solution3(int[] A) {
         return 0;
     }
 
     public static void main(String[] args) {
-        System.out.println(MaxDoubleSliceSum.solution(new int[] { 3, 2, 6, -1, 4, 5, -1, 2 }));
+        System.out.println(MaxDoubleSliceSum.solution1(new int[] { 3, 2, 6, -1, 4, 5, -1, 2 }));
         System.out.println(MaxDoubleSliceSum.solution2(new int[] { 3, 2, 6, -1, 4, 5, -1, 2 }));
-        System.out.println(MaxDoubleSliceSum.solution(new int[] { -1, -2, -3, 4, 5 }));
+        System.out.println(MaxDoubleSliceSum.solution1(new int[] { -1, -2, -3, 4, 5 }));
         System.out.println(MaxDoubleSliceSum.solution2(new int[] { -1, -2, -3, 4, 5 }));
     }
 
