@@ -80,7 +80,6 @@ public class CollectionUtil {
      */
     public static <T> List<List<T>> combine(List<T> list, int k) {
         combineRangeCheck(k, list.size());
-        // TODO 到底能不能根据组合数，一次for循环搞定？二进制？
         List<List<T>> solutionList = new ArrayList<>();
         if (k == 0) {
             solutionList.add(new ArrayList<>());
