@@ -39,21 +39,17 @@ public class NumberUtil {
      * @param b
      * @return
      */
-    // BigInteger 也可以计算gcd
     public static int gcd(int a, int b) {
-        if (a == 0) {
-            throw new IllegalArgumentException("a = 0");
-        }
-        if (b == 0) {
-            throw new IllegalArgumentException("b = 0");
-        }
-        // TODO 负数 gcd
-        // 碾转相除法
+        if (a == 0) throw new IllegalArgumentException("a = 0");
+        if (b == 0) throw new IllegalArgumentException("b = 0");
+        if (a < 0) throw new IllegalArgumentException("a < 0");
+        if (b < 0) throw new IllegalArgumentException("b < 0");
+        // 碾转相除法. BigInteger 也可以计算gcd
         if (a % b == 0) {
             return b;
         } else {
             return gcd(b, a % b);
         }
     }
-
+    
 }
