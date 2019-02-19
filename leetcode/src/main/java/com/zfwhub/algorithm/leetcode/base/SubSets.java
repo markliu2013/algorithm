@@ -99,7 +99,6 @@ public class SubSets {
         for (int i = 0; i < count; i++) {
             List<Integer> list1 = new ArrayList<Integer>();
             String binaryString = String.format("%3s", Integer.toBinaryString(i)).replace(' ', '0');
-            System.out.println(binaryString);
             char[] chars = binaryString.toCharArray();
             for (int j = 0; j < chars.length; j++) {
                 if (chars[j] == '1') {
