@@ -35,13 +35,13 @@ public class NumberUtil {
     
     /**
      * a到b之间整数的求和，
-     * @param a inclusive
-     * @param b inclusive
+     * @param start inclusive
+     * @param stop inclusive
      * @return
      */
-    public static long sum(long a, long b) {
-        if (a > b) throw new IllegalArgumentException("a > b");
-        return ( (a+b) * (b-a+1) ) / 2;
+    public static long sum(long start, long stop) {
+        if (start > stop) throw new IllegalArgumentException("a > b");
+        return ( (start+stop) * (stop-start+1) ) / 2;
     }
     
     /**
