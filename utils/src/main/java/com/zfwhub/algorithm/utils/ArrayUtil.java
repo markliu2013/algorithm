@@ -53,18 +53,48 @@ public class ArrayUtil {
     }
     
     /**
-     * 初始化一个int数组，包含a到b的所有整数。
-     * @param a inclusive
-     * @param b inclusive
-     * @return
+     * 创建一个整数数组。
+     * @param start inclusive
+     * @param stop exclusive
+     * @param steop 步长
+     * @return 
      */
-    public static int[] newIntArray(int a, int b) {
-        if (a > b) throw new IllegalArgumentException("a > b");
-        int[] result = new int[b-a+1];
-        for (int i = 0; i < result.length; i++) {
-            result[i] = a + i;
+    public static int[] newIntArray(int start, int stop, int step) {
+        if (step == 0) {
+            throw new IllegalArgumentException("step == 0");
+        }
+        if ((step > 0 && start >= stop) || (step < 0 && start <= stop)) {
+            return new int[] {};
+        }
+        int[]result = new int[(int) Math.ceil(Math.abs((double)(stop-start)/step))];
+        if (step > 0) {
+            int index = 0;
+            for (int i = start; i < stop; i += step) {
+                result[index] = i;
+                index++;
+            }
+        } else {
+            int index = 0;
+            for (int i = start; i > stop; i += step) {
+                result[index] = i;
+                index++;
+            }
         }
         return result;
+    }
+    
+    /**
+     * 
+     * @param start
+     * @param stop
+     * @return
+     */
+    public static int[] newIntArray(int start, int stop) {
+        return newIntArray(start, stop, 1);
+    }
+    
+    public static int[] newIntArray(int stop) {
+        return newIntArray(0, stop, 1);
     }
     
     /**

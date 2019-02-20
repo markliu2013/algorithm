@@ -209,16 +209,25 @@ public class CollectionUtil {
     }
     
     /**
-     * 初始化一个list，包含a到b的所有整数。
-     * @param a inclusive
-     * @param b inclusive
-     * @return
+     * 创建一个整数列表。
+     * @param start inclusive
+     * @param stop exclusive
+     * @param steop 步长
+     * @return 
      */
-    public static List<Integer> newIntList(int a, int b) {
-        if (a > b) throw new IllegalArgumentException("a > b");
+    public static List<Integer> newIntList(int start, int stop, int step) {
+        if (step == 0) {
+            throw new IllegalArgumentException("step == 0");
+        }
         List<Integer> result = new ArrayList<>();
-        for (int i = 0; i < b-a+1; i++) {
-            result.add(i+1);
+        if (step > 0) {
+            for (int i = start; i < stop; i += step) {
+                result.add(i);
+            }
+        } else {
+            for (int i = start; i > stop; i += step) {
+                result.add(i);
+            }
         }
         return result;
     }

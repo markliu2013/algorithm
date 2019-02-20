@@ -2,17 +2,17 @@ package com.zfwhub.algorithm.codility.sorting;
 
 import java.util.Arrays;
 
-/**
+/*
  * Array can combine triangle?
  * https://app.codility.com/programmers/lessons/6-sorting/triangle/
  */
 public class Triangle {
 
-    /**
+    /*
      * brute force, get all combinations, then check.
      * int maybe overflow
      */
-    public static int solution(int[] A) {
+    public static int solution1(int[] A) {
         for (int i = 0; i < A.length; i++) {
             for (int j = i + 1; j < A.length; j++) {
                 for (int k = j + 1; k < A.length; k++) {
@@ -25,7 +25,7 @@ public class Triangle {
         return 0;
     }
 
-    /**
+    /*
      * fix overflow, use subtract instead of addition
      */
     public static int solution2(int[] A) {
@@ -41,7 +41,7 @@ public class Triangle {
         return 0;
     }
 
-    /**
+    /*
      * check the most possible condition, then no need check others.
      * sorted then check every 3 adjacents
      */
@@ -56,7 +56,7 @@ public class Triangle {
     }
 
     public static void main(String[] args) {
-        System.out.println(Triangle.solution2(new int[] { Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE }));
+        System.out.println(solution2(new int[] { Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE }));
     }
 
 }
