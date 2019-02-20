@@ -5,6 +5,8 @@ import java.util.List;
 
 public class ArrayUtil {
     
+    private ArrayUtil() { }
+    
     public static final int[] EMPTY_INT_ARRAY = new int[0];
     public static final Integer[] EMPTY_INTEGER_OBJECT_ARRAY = new Integer[0];
 
