@@ -8,7 +8,7 @@ import com.zfwhub.algorithm.utils.CollectionUtil;
 public class Combinations {
     
     public static List<List<Integer>> solution1(int n, int k) {
-        return CollectionUtil.combine(CollectionUtil.newIntList(1, n, 1), k);
+        return CollectionUtil.combine(CollectionUtil.newIntList(1, n), k);
     }
     
     // https://leetcode.com/problems/combinations/discuss/27002/Backtracking-Solution-Java

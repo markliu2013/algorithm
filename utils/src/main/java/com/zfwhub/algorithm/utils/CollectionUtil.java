@@ -233,6 +233,24 @@ public class CollectionUtil {
     }
     
     /**
+     * 创建一个整数列表。step默认1。
+     * @param start
+     * @param stop
+     * @return
+     */
+    public static List<Integer> newIntList(int start, int stop) {
+        return newIntList(start, stop, 1);
+    }
+    
+    /**
+     * 创建一个整数列表。start默认0，step默认1。
+     * @param stop
+     * @return
+     */
+    public static List<Integer> newIntList(int stop) {
+        return newIntList(0, stop, 1);
+    }
+    /**
      * 判断a和b两个集合，不考虑顺序的情况下是否相等。
      * @param a
      * @param b

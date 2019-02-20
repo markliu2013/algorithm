@@ -58,7 +58,7 @@ public class CountTriangles {
     }
 
     public static void main(String[] args) {
-        int[] A = ArrayUtil.newIntArray(1, 10, 1);
+        int[] A = ArrayUtil.newIntArray(1, 10);
         System.out.println(solution2(A));
     }
 }

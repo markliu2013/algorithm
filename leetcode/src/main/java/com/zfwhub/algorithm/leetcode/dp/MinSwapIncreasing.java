@@ -29,7 +29,7 @@ public class MinSwapIncreasing {
     
     // 排列组合，从小到大的尝试。
     public static int solution3(int[] A, int[] B) {
-        List<Integer> list = CollectionUtil.newIntList(1, A.length+1, 1);
+        List<Integer> list = CollectionUtil.newIntList(1, A.length+1);
         for (int i = 0; i <= list.size()/2; i++) {
             List<List<Integer>> list2 = CollectionUtil.combine(list, i);
             for (int j = 0; j < list2.size(); j++) {

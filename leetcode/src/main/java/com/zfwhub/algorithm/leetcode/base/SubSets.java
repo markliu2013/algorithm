@@ -116,7 +116,7 @@ public class SubSets {
     }
     
     public static void main(String[] args) {
-        int[] arr = ArrayUtil.newIntArray(1, 3, 1);
+        int[] arr = ArrayUtil.newIntArray(1, 3);
 //        System.out.println(SubSets.solution1(arr));
         System.out.println(SubSets.solution4(arr));
 //        System.out.println(SubSets.solution3(arr));

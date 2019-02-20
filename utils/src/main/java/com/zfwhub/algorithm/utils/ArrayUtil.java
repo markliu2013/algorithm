@@ -86,7 +86,7 @@ public class ArrayUtil {
     }
     
     /**
-     * 
+     * 创建一个整数数组。step默认1。
      * @param start
      * @param stop
      * @return
@@ -95,6 +95,11 @@ public class ArrayUtil {
         return newIntArray(start, stop, 1);
     }
     
+    /**
+     * 创建一个整数数组。start默认0，step默认1。
+     * @param stop
+     * @return
+     */
     public static int[] newIntArray(int stop) {
         return newIntArray(0, stop, 1);
     }
