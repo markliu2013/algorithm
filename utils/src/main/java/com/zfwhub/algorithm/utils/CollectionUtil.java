@@ -3,9 +3,11 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 public class CollectionUtil {
     
@@ -108,9 +110,9 @@ public class CollectionUtil {
      * @param k
      * @return
      */
-    public static <T extends Comparable<? super T>> List<List<T>> combineRemoveDup(List<T> list, int k) {
+    public static <T> Set<List<T>> combineRemoveDup(List<T> list, int k) {
         combineRangeCheck(k, list.size());
-        List<List<T>> solutionList = new ArrayList<>();
+        Set<List<T>> solutionList = new HashSet<>();
         if (k == 0) {
             solutionList.add(new ArrayList<>());
             return solutionList;
@@ -119,13 +121,13 @@ public class CollectionUtil {
             solutionList.add(new ArrayList<>(list));
             return solutionList;
         }
-        LinkedHashSet<List<T>> solutionSet = new LinkedHashSet<>();
         T lastItem = list.get(list.size()-1);
         List<T> subList = list.subList(0, list.size()-1);
         List<List<T>> list1 = combine(subList, k);
         for (List<T> solution : list1) {
-            Collections.sort(solution);
-            solutionSet.add(solution);
+            if (solutionList.conta) {
+                
+            }
         }
         List<List<T>> list2 = combine(list.subList(0, list.size()-1), k-1);
         for (int i = 0; i < list2.size(); i++) {
