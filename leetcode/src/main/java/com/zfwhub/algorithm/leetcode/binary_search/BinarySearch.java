@@ -1,7 +1,7 @@
 package com.zfwhub.algorithm.leetcode.binary_search;
 
 // https://leetcode.com/problems/binary-search/
-// https://www.zhihu.com/question/36132386/answer/155438728
+// https://www.zhihu.com/question/36132386/
 public class BinarySearch {
     
     // 不需要nums排好序
@@ -14,16 +14,16 @@ public class BinarySearch {
         return -1;
     }
     
+    // 二分查找
     public static int solution2(int[] nums, int target) {
         int startIndex = 0;
         int endIndex = nums.length-1;
-        int mid = (startIndex + endIndex) / 2;
         while (startIndex <= endIndex) {
-            mid = (startIndex + endIndex) / 2;
+            int mid = (startIndex + endIndex) / 2;
             if (nums[mid] > target) {
-                endIndex = mid-1;
+                endIndex = mid - 1;
             } else if (nums[mid] < target) {
-                startIndex = mid+1;
+                startIndex = mid + 1;
             } else {
                 return mid;
             }

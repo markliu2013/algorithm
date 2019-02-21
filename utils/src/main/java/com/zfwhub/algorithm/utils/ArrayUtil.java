@@ -184,6 +184,10 @@ public class ArrayUtil {
         return result;
     }
     
+    public static int lowerBound(int[] a, int fromIndex, int toIndex, int key) {
+        return 0;
+    }
+    
     /**
      * int数组求和
      * @param nums

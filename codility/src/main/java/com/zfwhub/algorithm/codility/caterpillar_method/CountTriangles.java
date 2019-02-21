@@ -36,7 +36,6 @@ public class CountTriangles {
         for (List<Integer> triple : triples) {
             Collections.sort(triple);
             if (triple.get(0) + triple.get(1) > triple.get(2)) {
-                System.out.println(triple);
                 count++;
             }
         }
@@ -50,15 +49,25 @@ public class CountTriangles {
         Arrays.sort(A);
         for (int i = 0; i < A.length; i++) {
             for (int j = i + 1; j < A.length; j++) {
-                Arrays.binarySearch(A, j+1, A.length, A[i]+A[j]);
-                
+                // 要找一个位置，满足 x >= value 的最小x 
+                int index = Arrays.binarySearch(A, j+1, A.length, A[i]+A[j]);
+                // 注意如果有相等的，要找最右边那个。
+                if (index > 0) {
+                    count += index - (j+1);
+                    // 继续往右
+                    // TODO
+                } else {
+                    count += Math.abs((index + 1)) - (j+1);
+                }
             }
         }
         return count;
     }
 
     public static void main(String[] args) {
-        int[] A = ArrayUtil.newIntArray(1, 10);
-        System.out.println(solution2(A));
+        int[] A = new int[] {1,10,10,7,5,10,5,2,3,5};
+        System.out.println(solution1(A));
+        //System.out.println(solution2(A));
+        System.out.println(solution3(A));
     }
 }
