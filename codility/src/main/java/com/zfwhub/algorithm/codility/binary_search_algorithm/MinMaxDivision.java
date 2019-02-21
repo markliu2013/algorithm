@@ -35,7 +35,7 @@ public class MinMaxDivision {
             K = A.length;
         }
         // 数组A分成K份，总共几种分法
-        List<List<Integer>> combinations = CollectionUtil.combine(CollectionUtil.newIntList(1, A.length), K-1);
+        List<List<Integer>> combinations = CollectionUtil.combine(CollectionUtil.newIntList(1, A.length+1), K-1);
         int minLargeSum = Integer.MAX_VALUE;
         // 计算每个分法的largeSum
         for (List<Integer> combination : combinations) {
@@ -140,8 +140,8 @@ public class MinMaxDivision {
     public static void main(String[] args) {
         int K = 1;
         int M = 1;
-        int[] A = ArrayUtil.newIntArray(1, 10000);
-//        System.out.println(solution1(K, M, A));
+        int[] A = ArrayUtil.newIntArray(1, 5);
+        System.out.println(solution1(K, M, A));
         System.out.println(solution2(K, M, A));
     }
 

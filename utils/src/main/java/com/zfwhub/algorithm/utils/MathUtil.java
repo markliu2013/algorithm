@@ -8,6 +8,10 @@ public class MathUtil {
     
     // 计算排列组合数，阶乘的最大值。
     private static final int MAX_COMBINE = 10000;
+    // 计算阶乘支持的最大数
+    private static final int MAX_FACTORIAL = 10000;
+    // 计算斐波那契支持的最大数
+    private static final int MAX_FIBONACCI = 50000;
     
     /**
      * 求组合数 C(n, k)
@@ -67,8 +71,8 @@ public class MathUtil {
         if (n < 0) {
             throw new IllegalArgumentException("n < 0");
         }
-        if (n > MAX_COMBINE) {
-            throw new IllegalArgumentException("n > " + MAX_COMBINE);
+        if (n > MAX_FACTORIAL) {
+            throw new IllegalArgumentException("n > " + MAX_FACTORIAL);
         }
         // 0! = 1
         if (n == 1 || n == 0) {
@@ -80,6 +84,36 @@ public class MathUtil {
             }
             return value;
         }
+    }
+    
+    /**
+     * 求斐波那契的第n项，首项从0开始。0 1 1 2 3 5。
+     * @param n
+     * @return
+     */
+    // 通向公式算法
+    public static BigInteger fibonacci(int n) {
+        if (n < 0) {
+            throw new IllegalArgumentException("n < 0");
+        }
+        if (n > MAX_FIBONACCI) {
+            throw new IllegalArgumentException("n > " + MAX_FIBONACCI);
+        }
+        if (n == 0) {
+            return BigInteger.valueOf(0);
+        }
+        if (n == 1) {
+            return BigInteger.valueOf(1);
+        }
+        BigInteger a = BigInteger.valueOf(0);
+        BigInteger b = BigInteger.valueOf(1);
+        BigInteger temp = BigInteger.valueOf(0);
+        for (int i = 2; i <= n; i++) {
+            temp = a.add(b);
+            a = b;
+            b = temp;
+        }
+        return temp;
     }
     
 }

@@ -3,6 +3,7 @@ package com.zfwhub.algorithm.leetcode.backtracking;
 import java.util.*;
 
 import com.zfwhub.algorithm.utils.NumberUtil;
+import com.zfwhub.algorithm.utils.NumberUtil.ClosestMultipleFlag;
 
 // https://leetcode.com/problems/sudoku-solver/
 public class SudokuSolver {
@@ -103,7 +104,7 @@ public class SudokuSolver {
         for (int i = 0; i < RANK; i++) { //循环9个宫
             Set<Character> set = new HashSet<>();
             for (int j = 0; j < RANK; j++) {//具体的宫，需要推断出宫的索引
-                int row = NumberUtil.closestMultiple(i,3)+j/3;
+                int row = NumberUtil.closestMultiple(i, 3, ClosestMultipleFlag.FLOOR)+j/3;
                 int col = j%3+(i%3)*3;
                 if (board[row][col] != EMPTY_CHAR && set.contains(board[row][col])) {
                     return false;
@@ -142,7 +143,7 @@ public class SudokuSolver {
             }
             return true;
         }
-        for (int i = NumberUtil.closestMultiple(solution.size()-1, RANK); i < solution.size(); i++) {
+        for (int i = NumberUtil.closestMultiple(solution.size()-1, RANK, ClosestMultipleFlag.FLOOR); i < solution.size(); i++) {
             if (solution.get(i) == Character.forDigit(k, 10)) {
                 return false;
             }
@@ -222,7 +223,7 @@ public class SudokuSolver {
             }
         }
         // 检查行
-        int rowStart = NumberUtil.closestMultiple(index, RANK);
+        int rowStart = NumberUtil.closestMultiple(index, RANK, ClosestMultipleFlag.FLOOR);
         for (int i = rowStart; i <= rowStart+8; i++) {
             if (solution.get(i) == Character.forDigit(k, 10)) {
                 return false;
@@ -258,7 +259,7 @@ public class SudokuSolver {
     
     // 根据index，推算出index所在宫的起始索引
     private static int startSubBox2(int i) {
-        return NumberUtil.closestMultiple(i / 9, 3)*9 + NumberUtil.closestMultiple(i, 3) % 9;
+        return NumberUtil.closestMultiple(i / 9, 3, ClosestMultipleFlag.FLOOR)*9 + NumberUtil.closestMultiple(i, 3, ClosestMultipleFlag.FLOOR) % 9;
     }
     
     public static void main(String[] args) {

@@ -2,13 +2,18 @@ package com.zfwhub.algorithm.utils;
 
 public class NumberUtil {
     
+    public enum ClosestMultipleFlag {
+        FLOOR, ROUND, CEIL;
+    }
+    
     /**
-     * 寻找一个b的倍数，满足最接近a且不大于a。
+     * 寻找一个b的倍数，满足最接近a。
      * @param a
      * @param b
+     * @param flag 控制和a的大小关系，FLOOR，不大于a。ROUND，绝对值最接近a。CEIL，大于或等于a。
      * @return
      */
-    public static int closestMultiple(int a, int b) {
+    public static int closestMultiple(int a, int b, ClosestMultipleFlag flag) {
         if (a < 0) {
             throw new IllegalArgumentException("a < 0");
         }
@@ -19,18 +24,24 @@ public class NumberUtil {
         if (b == 0) {
             throw new IllegalArgumentException("b = 0");
         }
-        return b * (a / b);
+        if (flag == ClosestMultipleFlag.FLOOR) {
+            return b * (a / b);
+        } else if (flag == ClosestMultipleFlag.CEIL) {
+            return (int)(b * Math.ceil((double)a / b));
+        } else {
+            return (int)(b * Math.round((double)a / b));
+        }
     }
     
     /**
      * a到b之间整数的求和，
-     * @param a inclusive
-     * @param b inclusive
+     * @param start inclusive
+     * @param stop inclusive
      * @return
      */
-    public static long sum(long a, long b) {
-        if (a > b) throw new IllegalArgumentException("a > b");
-        return ( (a+b) * (b-a+1) ) / 2;
+    public static long sum(long start, long stop) {
+        if (start > stop) throw new IllegalArgumentException("a > b");
+        return ( (start+stop) * (stop-start+1) ) / 2;
     }
     
     /**

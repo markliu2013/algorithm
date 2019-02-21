@@ -6,8 +6,8 @@ import org.junit.Test;
 public class CollectionUtilTest {
 
     @Test
-    public void testSubsetsListOfTInt() {
-        List<List<Integer>> actual1 = CollectionUtil.combine(CollectionUtil.newIntList(1, 4), 2);
+    public void testCombine() {
+        List<List<Integer>> actual1 = CollectionUtil.combine(CollectionUtil.newIntList(1, 5), 2);
         List<List<Integer>> expected1 = ArrayUtil.twoDArrayToList(new int[][] { 
             {1, 2},
             {1, 3},

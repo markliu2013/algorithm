@@ -80,7 +80,6 @@ public class CollectionUtil {
      */
     public static <T> List<List<T>> combine(List<T> list, int k) {
         combineRangeCheck(k, list.size());
-        // TODO 到底能不能根据组合数，一次for循环搞定？二进制？
         List<List<T>> solutionList = new ArrayList<>();
         if (k == 0) {
             solutionList.add(new ArrayList<>());
@@ -210,20 +209,47 @@ public class CollectionUtil {
     }
     
     /**
-     * 初始化一个list，包含a到b的所有整数。
-     * @param a inclusive
-     * @param b inclusive
-     * @return
+     * 创建一个整数列表。
+     * @param start inclusive
+     * @param stop exclusive
+     * @param steop 步长
+     * @return 
      */
-    public static List<Integer> newIntList(int a, int b) {
-        if (a > b) throw new IllegalArgumentException("a > b");
+    public static List<Integer> newIntList(int start, int stop, int step) {
+        if (step == 0) {
+            throw new IllegalArgumentException("step == 0");
+        }
         List<Integer> result = new ArrayList<>();
-        for (int i = 0; i < b-a+1; i++) {
-            result.add(i+1);
+        if (step > 0) {
+            for (int i = start; i < stop; i += step) {
+                result.add(i);
+            }
+        } else {
+            for (int i = start; i > stop; i += step) {
+                result.add(i);
+            }
         }
         return result;
     }
     
+    /**
+     * 创建一个整数列表。step默认1。
+     * @param start
+     * @param stop
+     * @return
+     */
+    public static List<Integer> newIntList(int start, int stop) {
+        return newIntList(start, stop, 1);
+    }
+    
+    /**
+     * 创建一个整数列表。start默认0，step默认1。
+     * @param stop
+     * @return
+     */
+    public static List<Integer> newIntList(int stop) {
+        return newIntList(0, stop, 1);
+    }
     /**
      * 判断a和b两个集合，不考虑顺序的情况下是否相等。
      * @param a
