@@ -1,6 +1,7 @@
 package com.zfwhub.algorithm.utils;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
@@ -43,7 +44,7 @@ public class CollectionUtil {
      * @param list
      * @return
      */
-    public static <T> List<List<T>> subsetsRemoveDup(List<T> list) {
+    public static <T extends Comparable<? super T>> List<List<T>> subsetsRemoveDup(List<T> list) {
         if (list.size() > MAX_SIZE_SUBSETS) {
             throw new IllegalArgumentException("the size of list is larger than " + MAX_SIZE_SUBSETS);
         }
@@ -107,7 +108,7 @@ public class CollectionUtil {
      * @param k
      * @return
      */
-    public static <T> List<List<T>> combineRemoveDup(List<T> list, int k) {
+    public static <T extends Comparable<? super T>> List<List<T>> combineRemoveDup(List<T> list, int k) {
         combineRangeCheck(k, list.size());
         List<List<T>> solutionList = new ArrayList<>();
         if (k == 0) {
@@ -122,15 +123,22 @@ public class CollectionUtil {
         T lastItem = list.get(list.size()-1);
         List<T> subList = list.subList(0, list.size()-1);
         List<List<T>> list1 = combine(subList, k);
-        solutionSet.addAll(list1);
+        for (List<T> solution : list1) {
+            Collections.sort(solution);
+            solutionSet.add(solution);
+        }
         List<List<T>> list2 = combine(list.subList(0, list.size()-1), k-1);
         for (int i = 0; i < list2.size(); i++) {
             list2.get(i).add(lastItem);
         }
-        solutionSet.addAll(list2);
+        for (List<T> solution : list2) {
+            Collections.sort(solution);
+            solutionSet.add(solution);
+        }
         solutionList.addAll(solutionSet);
         return solutionList;
     }
+    
     /**
      * a - b，a和b是两个集合，返回a-b，不影响a，b。
      * @param a
