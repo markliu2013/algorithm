@@ -42,26 +42,23 @@ public class CountTriangles {
         return count;
     }
     
-    // TODO CountTriangles https://www.cnblogs.com/grandyang/p/7053730.html
-    // 排序后，固定两个数，然后二分查找。
+    
+    // 排序后，固定两个数，然后二分查找。 Performance 100%
     public static int solution3(int[] A) {
         int count = 0;
         Arrays.sort(A);
         for (int i = 0; i < A.length; i++) {
             for (int j = i + 1; j < A.length; j++) {
-                // 要找一个位置，满足 x >= value 的最小x 
-                int index = Arrays.binarySearch(A, j+1, A.length, A[i]+A[j]);
-                // 注意如果有相等的，要找最右边那个。
-                if (index > 0) {
-                    count += index - (j+1);
-                    // 继续往右
-                    // TODO
-                } else {
-                    count += Math.abs((index + 1)) - (j+1);
-                }
+                // 要找一个位置，满足 x >= value 的最小x
+                count += ArrayUtil.lowerBound(A, j+1, A.length, A[i]+A[j]) - (j+1);
             }
         }
         return count;
+    }
+    
+    // TODO CountTriangles https://www.cnblogs.com/grandyang/p/7053730.html
+    public static int solution4(int[] A) {
+        return 0;
     }
 
     public static void main(String[] args) {

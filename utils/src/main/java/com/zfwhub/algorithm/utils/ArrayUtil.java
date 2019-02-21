@@ -184,8 +184,50 @@ public class ArrayUtil {
         return result;
     }
     
+    /**
+     * 寻找数组区间中第一个不小于某个值的索引。<br/>
+     * 因为区间是离散的，将返回值-1，即为小于某个值的索引。
+     * <a href="https://en.cppreference.com/w/cpp/algorithm/lower_bound">https://en.cppreference.com/w/cpp/algorithm/lower_bound</a>
+     * @param a
+     * @param fromIndex
+     * @param toIndex
+     * @param key
+     * @return a中区间[fromIndex, toIndex)内满足x >= value的最小值x的位置。若这样的x不存在，返回toIndex。
+     */
     public static int lowerBound(int[] a, int fromIndex, int toIndex, int key) {
-        return 0;
+        while (fromIndex < toIndex) { // 搜索区间[fromIndex, toIndex)不为空
+            int mid = fromIndex + (toIndex - fromIndex) / 2; // 防溢出
+            if (a[mid] < key) fromIndex = mid + 1;
+            else toIndex = mid;
+        }
+        return fromIndex; // toIndex也行，因为[fromIndex, toIndex)为空的时候它们重合
+    }
+    
+    /**
+     * 
+     * @param a
+     * @param fromIndex
+     * @param toIndex
+     * @param key
+     * @return
+     */
+    public static int upperBound(int[] a, int fromIndex, int toIndex, int key) {
+        while (fromIndex < toIndex) {
+            int mid = fromIndex + (toIndex - fromIndex) / 2;
+            if (a[mid] < key) fromIndex = mid + 1;
+            else toIndex = mid;
+        }
+        return fromIndex;
+    }
+    
+    /**
+     * 寻找数组中第一个不小于某个值的索引。
+     * @param a
+     * @param key
+     * @return
+     */
+    public static int lowerBound(int[] a, int key) {
+        return lowerBound(a, 0, a.length, key);
     }
     
     /**
