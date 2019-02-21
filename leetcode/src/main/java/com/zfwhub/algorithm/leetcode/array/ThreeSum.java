@@ -2,13 +2,11 @@ package com.zfwhub.algorithm.leetcode.array;
 
 import java.util.*;
 
-/**
- * https://leetcode.com/problems/3sum/description/
- */
+// https://leetcode.com/problems/3sum/
 public class ThreeSum {
     
     // Time Limit Exceeded， 暴力解法
-    public static List<List<Integer>> solution(int[] nums) {
+    public static List<List<Integer>> solution1(int[] nums) {
         List<List<Integer>> lists = new ArrayList<List<Integer>>();
         if (nums == null || nums.length < 3) {
             return lists;
@@ -31,6 +29,7 @@ public class ThreeSum {
         }
         return lists;
     }
+    
     // Time Limit Exceeded, 暴力解法 + HashSet
     public static List<List<Integer>> solution2(int[] nums) {
         List<List<Integer>> lists = new ArrayList<List<Integer>>();
