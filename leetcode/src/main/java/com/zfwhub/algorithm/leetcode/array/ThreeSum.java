@@ -30,7 +30,7 @@ public class ThreeSum {
         return lists;
     }
     
-    // Time Limit Exceeded, 暴力解法 + HashSet
+    // Time Limit Exceeded, 暴力解法 ，最后用HashSet去重。
     public static List<List<Integer>> solution2(int[] nums) {
         List<List<Integer>> lists = new ArrayList<List<Integer>>();
         if (nums == null || nums.length < 3) {
@@ -54,7 +54,8 @@ public class ThreeSum {
         lists = new ArrayList<List<Integer>>(new HashSet<List<Integer>>(lists));
         return lists;
     }
-    // Time Limit Exceeded, 暴力解法 + HashSet
+    
+    // Time Limit Exceeded, 暴力解法 + HashSet做容器。
     public static List<List<Integer>> solution3(int[] nums) {
         List<List<Integer>> lists = new ArrayList<List<Integer>>();
         if (nums == null || nums.length < 3) {
@@ -78,67 +79,9 @@ public class ThreeSum {
         lists = new ArrayList<List<Integer>>(sets);
         return lists;
     }
-    // Not Completed
-    public static List<List<Integer>> solution4(int[] nums) {
-        List<List<Integer>> lists = new ArrayList<List<Integer>>();
-        if (nums == null || nums.length < 3) {
-            return lists;
-        }
-        // check [0,0,0]
-//        int countZero = 0;
-//        for (int i = 0; i < nums.length; i++) {
-//            if (nums[i] == 0) {
-//                countZero++;
-//            }
-//        }
-//        if (countZero >= 3) {
-//            List<Integer> list1 = new ArrayList<Integer>();
-//            list1.add(0);
-//            list1.add(0);
-//            list1.add(0);
-//            lists.add(list1);
-//        }
-        HashSet<Integer> set1 = new HashSet<Integer>();
-        HashSet<Integer> set2 = new HashSet<Integer>();
-        for (int i = 0; i < nums.length; i++) {
-            if (!set1.contains(nums[i])) {
-                set1.add(nums[i]);
-            } else {
-                set2.add(nums[i]);
-            }
-        }
-        Integer[] nums1 = set1.toArray(new Integer[0]);
-        for (int i = 0; i < nums1.length; i++) {
-            for (int j = i+1; j < nums1.length; j++) {
-                for (int k = j+1; k < nums1.length; k++) {
-                    if (nums1[i] + nums1[j] + nums1[k] == 0) {
-                        List<Integer> list1 = new ArrayList<Integer>();
-                        list1.add(nums1[i]);
-                        list1.add(nums1[j]);
-                        list1.add(nums1[k]);
-                        lists.add(list1);
-                    }
-                }
-            }
-        }
-        Iterator<Integer> iter2 = set2.iterator();
-        while (iter2.hasNext()) {
-            Integer num1 = iter2.next();
-            nums1 = set1.toArray(new Integer[0]);
-            for (int i = 0; i < nums1.length; i++) {
-                if (nums1[i] + num1 + num1 == 0) {
-                    List<Integer> list1 = new ArrayList<Integer>();
-                    list1.add(num1);
-                    list1.add(num1);
-                    list1.add(nums1[i]);
-                    lists.add(list1);
-                }
-            }
-        }
-        return lists;
-    }
+    
     // Time Limit Exceeded
-    public static List<List<Integer>> solution5(int[] nums) {
+    public static List<List<Integer>> solution4(int[] nums) {
         List<List<Integer>> lists = new ArrayList<List<Integer>>();
         if (nums == null || nums.length < 3) {
             return lists;
@@ -201,6 +144,7 @@ public class ThreeSum {
         }
         return lists;
     }
+    
     // 转化为two sum的问题, Time Limit Exceeded
     public static List<List<Integer>> solution6(int[] nums) {
         List<List<Integer>> lists = new ArrayList<List<Integer>>();
