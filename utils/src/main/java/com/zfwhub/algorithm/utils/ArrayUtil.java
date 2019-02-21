@@ -1,6 +1,5 @@
 package com.zfwhub.algorithm.utils;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class ArrayUtil {
@@ -160,6 +159,7 @@ public class ArrayUtil {
      * @return
      */
     public static int[] mergeTwoSortedArray(int[] nums1, int[] nums2) {
+        // 如果某个数组是空，则直接返回另一个数组
         if (nums1.length == 0) {
             return nums2.clone();
         }
@@ -167,17 +167,22 @@ public class ArrayUtil {
             return nums1.clone();
         }
         int[] result = new int[nums1.length + nums2.length];
-        int nums1CurrentIndex = 0;
-        int resultCurrentIndex = 0;
+        // 逐个循环nums2，使用二分查找往nums1中插入。
+        int nums1CurrentIndex = 0; //控制nums1中的插入点。
+        int resultCurrentIndex = 0; //逐步填充result，填充到哪个位置了。
         for (int i = 0; i < nums2.length; i++) {
-            int index = Math.abs(Arrays.binarySearch(nums1, nums1CurrentIndex, nums1.length, nums2[i])+1);
+            // 在nums1中寻找插入点。要找一个位置，满足 x <= value 的最大x
+            int index = upperBound(nums1, nums1CurrentIndex, nums1.length,  nums2[i]);
+            // 从nums1CurrentIndex到index区间都复制到result
             System.arraycopy(nums1, nums1CurrentIndex, result, resultCurrentIndex, index-nums1CurrentIndex);
+            // 维护nums1CurrentIndex 和 resultCurrentIndex
             resultCurrentIndex += (index-nums1CurrentIndex);
             nums1CurrentIndex += (index-nums1CurrentIndex);
+            // nums2当前值，放到result。
             result[resultCurrentIndex] = nums2[i];
             resultCurrentIndex++;
         }
-        // nums1有可能还没跑完
+        // nums1有可能还没跑完，则复制nums1剩下的到result。
         if (nums1CurrentIndex < nums1.length) {
             System.arraycopy(nums1, nums1CurrentIndex, result, resultCurrentIndex, nums1.length-nums1CurrentIndex);
         }
@@ -186,6 +191,7 @@ public class ArrayUtil {
     
     /**
      * 寻找数组区间中第一个不小于某个值的索引。<br/>
+     * 给定数组a、区间[fromIndex, toIndex)和一个目标值key，返回区间内<b>第一个</b><i>不小于</i>（即<i>大于或等于</i>）<code>key</code>的元素的位置。若不存在，返回<code>toIndex</code>。
      * 因为区间是离散的，将返回值-1，即为小于某个值的索引。
      * <a href="https://en.cppreference.com/w/cpp/algorithm/lower_bound">https://en.cppreference.com/w/cpp/algorithm/lower_bound</a>
      * @param a
@@ -204,30 +210,45 @@ public class ArrayUtil {
     }
     
     /**
-     * 
+     * 寻找数组区间中第一个大于某个值的索引。<br/>
+     * 给定数组a、区间[fromIndex, toIndex)和一个目标值key，返回区间内<b>第一个</b><i>大于</i><code>key</code>的元素的位置。若不存在，返回<code>toIndex</code>。
+     * 因为区间是离散的，将返回值-1，即为小于或等于某个值的索引。
+     * <a href="https://en.cppreference.com/w/cpp/algorithm/lower_bound">https://en.cppreference.com/w/cpp/algorithm/lower_bound</a>
      * @param a
      * @param fromIndex
      * @param toIndex
      * @param key
-     * @return
+     * @return a中区间[fromIndex, toIndex)内满足x >= value的最小值x的位置。若这样的x不存在，返回toIndex。
      */
     public static int upperBound(int[] a, int fromIndex, int toIndex, int key) {
         while (fromIndex < toIndex) {
             int mid = fromIndex + (toIndex - fromIndex) / 2;
-            if (a[mid] < key) fromIndex = mid + 1;
+            if (!(key < a[mid])) fromIndex = mid + 1;
             else toIndex = mid;
         }
         return fromIndex;
+        // 可以使用JDK中的方法
+        // return Math.abs(Arrays.binarySearch(a, fromIndex, toIndex, key)+1);
     }
     
     /**
      * 寻找数组中第一个不小于某个值的索引。
      * @param a
      * @param key
-     * @return
+     * @return 如果存在则返回索引值，不存在则返回数组的长度。
      */
     public static int lowerBound(int[] a, int key) {
         return lowerBound(a, 0, a.length, key);
+    }
+    
+    /**
+     * 寻找数组中第一个大于某个值的索引。
+     * @param a
+     * @param key
+     * @return 如果存在则返回索引值，不存在则返回数组的长度。
+     */
+    public static int upperBound(int[] a, int key) {
+        return upperBound(a, 0, a.length, key);
     }
     
     /**
