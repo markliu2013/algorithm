@@ -2,9 +2,10 @@ package com.zfwhub.algorithm.utils;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.Iterator;
-import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 public class CollectionUtil {
     
@@ -55,7 +56,7 @@ public class CollectionUtil {
         return solutionList;
     }
     
-    private static void combineRangeCheck(int k, int size) {
+    public static void combineRangeCheck(int k, int size) {
         if (k < 0) {
             throw new IllegalArgumentException("k < 0");
         }
@@ -93,7 +94,7 @@ public class CollectionUtil {
         List<T> subList = list.subList(0, list.size()-1);
         List<List<T>> list1 = combine(subList, k);
         solutionList.addAll(list1);
-        List<List<T>> list2 = combine(list.subList(0, list.size()-1), k-1);
+        List<List<T>> list2 = combine(subList, k-1);
         for (int i = 0; i < list2.size(); i++) {
             list2.get(i).add(lastItem);
         }
@@ -102,14 +103,33 @@ public class CollectionUtil {
     }
     
     /**
+     * 不考虑list的顺序，判断set中是包含某个list。
+     * @param set
+     * @param list
+     * @return
+     */
+    private static <T> boolean contains(Set<List<T>> set, List<T> list) {
+        if (set.contains(list)) {
+            return true;
+        } else {
+            for (List<T> list2 : set) {
+                if (isEqualCollection(list, list2)) {
+                    return true;
+                }
+            }
+            return false;
+        }
+    }
+    
+    /**
      * 找C(n,k), 指定数目k的组合。list中可以有重复元素。如果已确认无重复元素请使用{@link #combine(List, int) combine}方法，效率更高。
      * @param list
      * @param k
      * @return
      */
-    public static <T> List<List<T>> combineRemoveDup(List<T> list, int k) {
+    public static <T> Set<List<T>> combineRemoveDup(List<T> list, int k) {
         combineRangeCheck(k, list.size());
-        List<List<T>> solutionList = new ArrayList<>();
+        Set<List<T>> solutionList = new HashSet<>();
         if (k == 0) {
             solutionList.add(new ArrayList<>());
             return solutionList;
@@ -118,19 +138,22 @@ public class CollectionUtil {
             solutionList.add(new ArrayList<>(list));
             return solutionList;
         }
-        LinkedHashSet<List<T>> solutionSet = new LinkedHashSet<>();
         T lastItem = list.get(list.size()-1);
         List<T> subList = list.subList(0, list.size()-1);
-        List<List<T>> list1 = combine(subList, k);
-        solutionSet.addAll(list1);
-        List<List<T>> list2 = combine(list.subList(0, list.size()-1), k-1);
-        for (int i = 0; i < list2.size(); i++) {
-            list2.get(i).add(lastItem);
+        Set<List<T>> set1 = combineRemoveDup(subList, k);
+        solutionList.addAll(set1);
+        Set<List<T>> set2 = combineRemoveDup(list.subList(0, list.size()-1), k-1);
+        for (List<T> list3 : set2) {
+            list3.add(lastItem);
         }
-        solutionSet.addAll(list2);
-        solutionList.addAll(solutionSet);
+        for (List<T> list2 : set2) {
+            if (!contains(solutionList, list2)) {
+                solutionList.add(list2);
+            }
+        }
         return solutionList;
     }
+    
     /**
      * a - b，a和b是两个集合，返回a-b，不影响a，b。
      * @param a

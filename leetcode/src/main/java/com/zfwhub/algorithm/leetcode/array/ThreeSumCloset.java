@@ -1,6 +1,7 @@
 package com.zfwhub.algorithm.leetcode.array;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -79,10 +80,30 @@ public class ThreeSumCloset {
         return result;
     }
     
-    // solution2 + 二分查找
-    // TODO ThreeSumCloset
+    // 固定一点 + two pointer
     public static int solution3(int[] nums, int target) {
-        return 0;
+        Arrays.sort(nums);
+        int result = 0;
+        int minGap = Integer.MAX_VALUE;
+        for (int i = 0; i < nums.length-2; i++) {
+            int leftIndex = i+1;
+            int rightIndex = nums.length-1;
+            while (leftIndex < rightIndex) {
+                int gap = nums[i] + nums[leftIndex] + nums[rightIndex] - target;
+                if (minGap > Math.abs(gap)) {
+                    minGap = Math.abs(gap);
+                    result = nums[i] + nums[leftIndex] + nums[rightIndex];
+                }
+                if (gap == 0) {
+                    return target;
+                } else if (gap < 0) {
+                    leftIndex++;
+                } else {
+                    rightIndex--;
+                }
+            }
+        }
+        return result;
     }
     
     public static void main(String[] args) {
@@ -94,14 +115,21 @@ public class ThreeSumCloset {
         int target2 = 1;
         int[] nums3 = new int[] {-1,0,1,2,-1,-4};
         int target3 = 0;
-        System.out.println(solution1(nums, target));
-        System.out.println(solution2(nums, target));
-        System.out.println(solution1(nums1, target1));
-        System.out.println(solution2(nums1, target1));
-        System.out.println(solution1(nums2, target2));
-        System.out.println(solution2(nums2, target2));
-        System.out.println(solution1(nums3, target3));
-        System.out.println(solution2(nums3, target3));
+        System.out.print(solution1(nums, target) + " ");
+        System.out.print(solution2(nums, target) + " ");
+        System.out.print(solution3(nums, target) + " ");
+        System.out.println();
+        System.out.print(solution1(nums1, target1) + " ");
+        System.out.print(solution2(nums1, target1) + " ");
+        System.out.print(solution3(nums1, target1) + " ");
+        System.out.println();
+        System.out.print(solution1(nums2, target2) + " ");
+        System.out.print(solution2(nums2, target2) + " ");
+        System.out.print(solution3(nums2, target2) + " ");
+        System.out.println();
+        System.out.print(solution1(nums3, target3) + " ");
+        System.out.print(solution2(nums3, target3) + " ");
+        System.out.print(solution3(nums3, target3) + " ");
     }
 
 }
