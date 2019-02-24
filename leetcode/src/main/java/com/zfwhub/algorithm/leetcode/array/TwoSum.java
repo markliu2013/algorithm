@@ -3,7 +3,7 @@ package com.zfwhub.algorithm.leetcode.array;
 import java.util.HashMap;
 import java.util.Arrays;
 
-// https://leetcode.com/problems/two-sum/solution/
+// https://leetcode.com/problems/two-sum/
 public class TwoSum {
 
     // straightforward

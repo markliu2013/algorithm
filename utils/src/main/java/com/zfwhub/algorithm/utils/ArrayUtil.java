@@ -1,6 +1,9 @@
 package com.zfwhub.algorithm.utils;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class ArrayUtil {
     
@@ -278,6 +281,35 @@ public class ArrayUtil {
             sum += nums[i];
         }
         return sum;
+    }
+    
+    /**
+     * int数组的组合，如果需要去重，请先将a排序。
+     * @param a
+     * @param k
+     * @return
+     */
+    public static Set<List<Integer>> combine(int[] a, int k) {
+        CollectionUtil.combineRangeCheck(k, a.length);
+        Set<List<Integer>> solutionList = new HashSet<>();
+        if (k == 0) {
+            solutionList.add(new ArrayList<>());
+            return solutionList;
+        }
+        if (k == a.length) {
+            solutionList.add(toList(a));
+            return solutionList;
+        }
+        int lastItem = a[a.length-1];
+        int[] subArray = Arrays.copyOfRange(a, 0, a.length-1);
+        Set<List<Integer>> set1 = combine(subArray, k);
+        solutionList.addAll(set1);
+        Set<List<Integer>> set2 = combine(subArray, k-1);
+        for (List<Integer> list2 : set2) {
+            list2.add(lastItem);
+        }
+        solutionList.addAll(set2);
+        return solutionList;
     }
     
 }

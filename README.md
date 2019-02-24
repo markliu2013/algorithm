@@ -47,6 +47,11 @@
 * [Two-pointer Technique](https://leetcode.com/articles/two-pointer-technique/)
 
 ## Two-Pointer Algorithm
+* [TwoSum](https://leetcode.com/problems/two-sum/)
+* [ThreeSum](https://leetcode.com/problems/3sum/)
+* [ThreeSumCloset](https://leetcode.com/problems/3sum-closest/)
+* [FourSum](https://leetcode.com/problems/4sum/)
+* [CountTriangles](https://app.codility.com/programmers/lessons/15-caterpillar_method/count_triangles/)
 * [ContainerWithMostWater](https://leetcode.com/problems/container-with-most-water/)
 
 ## Elementary Math

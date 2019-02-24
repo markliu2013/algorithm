@@ -2,14 +2,11 @@ package com.zfwhub.algorithm.leetcode.array;
 
 import java.util.*;
 
-/**
- * https://leetcode.com/problems/4sum/description/
- * https://www.cnblogs.com/shytong/p/5138629.html
- */
+// https://leetcode.com/problems/4sum/
 public class FourSum {
     
     // 暴力解法
-    public static List<List<Integer>> solution(int[] nums, int target) {
+    public static List<List<Integer>> solution1(int[] nums, int target) {
         List<List<Integer>> lists = new ArrayList<List<Integer>>();
         if (nums == null || nums.length < 4) {
             return lists;
@@ -116,6 +113,7 @@ public class FourSum {
         return lists;
     }
     
+    // 转化为two sum。
     public static List<List<Integer>> solution4(int[] nums, int target) {
         List<List<Integer>> lists = new ArrayList<List<Integer>>();
         if (nums == null || nums.length < 4) {
@@ -167,7 +165,7 @@ public class FourSum {
     public static void main(String[] args) {
         int[] nums = new int[] {1, 0, -1, 0, -2, 2};
         int target = 0;
-        System.out.println(FourSum.solution(nums, target));
+        System.out.println(FourSum.solution1(nums, target));
         System.out.println(FourSum.solution4(nums, target));
     }
 }

@@ -1,11 +1,9 @@
 package com.zfwhub.algorithm.utils;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -46,7 +44,7 @@ public class CollectionUtil {
      * @param list
      * @return
      */
-    public static <T extends Comparable<? super T>> List<List<T>> subsetsRemoveDup(List<T> list) {
+    public static <T> List<List<T>> subsetsRemoveDup(List<T> list) {
         if (list.size() > MAX_SIZE_SUBSETS) {
             throw new IllegalArgumentException("the size of list is larger than " + MAX_SIZE_SUBSETS);
         }
@@ -58,7 +56,7 @@ public class CollectionUtil {
         return solutionList;
     }
     
-    private static void combineRangeCheck(int k, int size) {
+    public static void combineRangeCheck(int k, int size) {
         if (k < 0) {
             throw new IllegalArgumentException("k < 0");
         }
@@ -96,12 +94,31 @@ public class CollectionUtil {
         List<T> subList = list.subList(0, list.size()-1);
         List<List<T>> list1 = combine(subList, k);
         solutionList.addAll(list1);
-        List<List<T>> list2 = combine(list.subList(0, list.size()-1), k-1);
+        List<List<T>> list2 = combine(subList, k-1);
         for (int i = 0; i < list2.size(); i++) {
             list2.get(i).add(lastItem);
         }
         solutionList.addAll(list2);
         return solutionList;
+    }
+    
+    /**
+     * 不考虑list的顺序，判断set中是包含某个list。
+     * @param set
+     * @param list
+     * @return
+     */
+    private static <T> boolean contains(Set<List<T>> set, List<T> list) {
+        if (set.contains(list)) {
+            return true;
+        } else {
+            for (List<T> list2 : set) {
+                if (isEqualCollection(list, list2)) {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
     
     /**
@@ -123,21 +140,17 @@ public class CollectionUtil {
         }
         T lastItem = list.get(list.size()-1);
         List<T> subList = list.subList(0, list.size()-1);
-        List<List<T>> list1 = combine(subList, k);
-        for (List<T> solution : list1) {
-            if (solutionList.conta) {
-                
+        Set<List<T>> set1 = combineRemoveDup(subList, k);
+        solutionList.addAll(set1);
+        Set<List<T>> set2 = combineRemoveDup(list.subList(0, list.size()-1), k-1);
+        for (List<T> list3 : set2) {
+            list3.add(lastItem);
+        }
+        for (List<T> list2 : set2) {
+            if (!contains(solutionList, list2)) {
+                solutionList.add(list2);
             }
         }
-        List<List<T>> list2 = combine(list.subList(0, list.size()-1), k-1);
-        for (int i = 0; i < list2.size(); i++) {
-            list2.get(i).add(lastItem);
-        }
-        for (List<T> solution : list2) {
-            Collections.sort(solution);
-            solutionSet.add(solution);
-        }
-        solutionList.addAll(solutionSet);
         return solutionList;
     }
     

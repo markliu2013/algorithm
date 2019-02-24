@@ -87,7 +87,7 @@ public class SubSetsII {
     }
     
     public static void main(String[] args) {
-        int[] arr = new int[] { 1,2,2 };
+        int[] arr = new int[] { 2,2,1 };
         System.out.println(SubSetsII.solution1(arr));
         System.out.println(SubSetsII.solution2(arr));
         System.out.println(SubSetsII.solution3(arr));
