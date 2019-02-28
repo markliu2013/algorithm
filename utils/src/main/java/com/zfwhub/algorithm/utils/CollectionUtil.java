@@ -69,7 +69,7 @@ public class CollectionUtil {
         }
         // 结果超出范围，避免程序超时。
         if (MathUtil.combine(size, k).intValue() > COMBINATION_MAX_SIZE) {
-            throw new IllegalArgumentException("the combination result is too large");
+            throw new IllegalArgumentException("the combination result is larger than " + COMBINATION_MAX_SIZE);
         }
     }
     

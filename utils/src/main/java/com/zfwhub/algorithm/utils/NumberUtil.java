@@ -1,6 +1,12 @@
 package com.zfwhub.algorithm.utils;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class NumberUtil {
+    
+    private static final int GET_ALL_PRIME_MAX = 30000000;
     
     public enum ClosestMultipleFlag {
         FLOOR, ROUND, CEIL;
@@ -61,6 +67,33 @@ public class NumberUtil {
         } else {
             return gcd(b, a % b);
         }
+    }
+    
+    /**
+     * 小于或等于n的所有质数。
+     * @param n
+     * @return
+     */
+    public static List<Integer> getAllPrime(int n) {
+        if (n > GET_ALL_PRIME_MAX) {
+            throw new IllegalArgumentException("n > " + GET_ALL_PRIME_MAX);
+        }
+        boolean prime[] = new boolean[n + 1];
+        Arrays.fill(prime, true);
+        for (int p = 2; p * p <= n; p++) {
+            if (prime[p]) {
+                for (int i = p * 2; i <= n; i += p) {
+                    prime[i] = false;
+                }
+            }
+        }
+        List<Integer> primeNumbers = new ArrayList<>();
+        for (int i = 2; i <= n; i++) {
+            if (prime[i]) {
+                primeNumbers.add(i);
+            }
+        }
+        return primeNumbers;
     }
     
 }
