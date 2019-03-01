@@ -2,13 +2,14 @@ package com.zfwhub.algorithm.codility.prime_and_composite_numbers;
 
 import java.util.*;
 import com.zfwhub.algorithm.utils.*;
+import com.zfwhub.algorithm.utils.NumberUtil.ClosestMultipleFlag;
 
 // https://app.codility.com/programmers/lessons/10-prime_and_composite_numbers/peaks/
 public class Peaks {
 
     // brute force
     public static int solution1(int[] A) {
-        Set<Integer> peaks = getPeaks(A);
+        List<Integer> peaks = getPeaks(A);
         // 最多不可能超过peaks.size()，从大到小尝试。
         for (int i = peaks.size(); i > 0; i--) {
             // 如果能整除，则判断每个区间是否有peak
@@ -38,7 +39,7 @@ public class Peaks {
     
     // 效率比solution1块很多了
     public static int solution2(int[] A) {
-        Set<Integer> peaks = getPeaks(A);
+        List<Integer> peaks = getPeaks(A);
         for (int i = peaks.size(); i > 0; i--) {
             if (A.length % i == 0) {
               // 将每个peak都尽量往右靠。如果没有重复的。
@@ -59,8 +60,8 @@ public class Peaks {
         return 0;
     }
     
-    private static Set<Integer> getPeaks(int[] A) {
-        Set<Integer> peaks = new HashSet<>();
+    private static List<Integer> getPeaks(int[] A) {
+        List<Integer> peaks = new ArrayList<>();
         for (int i = 1; i < A.length-1; i++) {
             if (A[i] > A[i-1] && A[i] > A[i+1]) {
                 peaks.add(i);
