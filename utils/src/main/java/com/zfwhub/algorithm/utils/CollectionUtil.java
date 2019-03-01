@@ -221,14 +221,18 @@ public class CollectionUtil {
      * @param a
      * @param e
      * @param c 决定删除条件的Comparator
+     * @return {@code true} 至少有一个元素被删除了，{@code false} a中没有元素被删除
      */
-    public static <T> void remove(Iterable<T> a, T e, Comparator<? super T> c) {
+    public static <T> boolean remove(Iterable<T> a, T e, Comparator<? super T> c) {
+        boolean retVal = false;
         Iterator<T> iterator = a.iterator();
         while (iterator.hasNext()) {
             if (c.compare(iterator.next(), e) > 0) {
                 iterator.remove();
+                retVal = true;
             }
         }
+        return retVal;
     }
     
     /**

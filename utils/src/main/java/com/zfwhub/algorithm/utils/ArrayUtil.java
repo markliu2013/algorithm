@@ -1,7 +1,9 @@
 package com.zfwhub.algorithm.utils;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
@@ -104,6 +106,31 @@ public class ArrayUtil {
      */
     public static int[] newIntArray(int stop) {
         return newIntArray(0, stop, 1);
+    }
+    
+    /**
+     * 将整型的集合转化为int数组。
+     * @param c
+     * @return
+     */
+    public static int[] newIntArray(Iterable<Integer> c) {
+        int size = 0;
+        if (c instanceof Collection) {
+            size = ((Collection<Integer>) c).size();
+        } else {
+            Iterator<Integer> iterator = c.iterator();
+            while(iterator.hasNext()) {
+                iterator.next();
+                size++;
+            }
+        }
+        int[] arr = new int[size];
+        int index = 0;
+        for (int i : c) {
+            arr[index] = i;
+            index++;
+        }
+        return arr;
     }
     
     /**
