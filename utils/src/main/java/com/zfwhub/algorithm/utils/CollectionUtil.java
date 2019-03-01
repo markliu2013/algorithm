@@ -69,7 +69,7 @@ public class CollectionUtil {
         }
         // 结果超出范围，避免程序超时。
         if (MathUtil.combine(size, k).intValue() > COMBINATION_MAX_SIZE) {
-            throw new IllegalArgumentException("the combination result is too large");
+            throw new IllegalArgumentException("the combination result is larger than " + COMBINATION_MAX_SIZE);
         }
     }
     
@@ -221,14 +221,18 @@ public class CollectionUtil {
      * @param a
      * @param e
      * @param c 决定删除条件的Comparator
+     * @return {@code true} 至少有一个元素被删除了，{@code false} a中没有元素被删除
      */
-    public static <T> void remove(Iterable<T> a, T e, Comparator<? super T> c) {
+    public static <T> boolean remove(Iterable<T> a, T e, Comparator<? super T> c) {
+        boolean retVal = false;
         Iterator<T> iterator = a.iterator();
         while (iterator.hasNext()) {
             if (c.compare(iterator.next(), e) > 0) {
                 iterator.remove();
+                retVal = true;
             }
         }
+        return retVal;
     }
     
     /**
@@ -323,6 +327,28 @@ public class CollectionUtil {
             sum += nums.get(i);
         }
         return sum;
+    }
+    
+    /**
+     * 判断两个集合中是否有相同元素。
+     * @param a
+     * @param b
+     * @return {@code true} a和b至少存在一个相同的元素，{@code false} a和b不存在相同元素
+     */
+    public static <T> boolean hasDuplicates(Iterable<? extends T> a, Iterable<? extends T> b) {
+        Set<T> set1 = new HashSet<>();
+        for (T t : a) {
+            set1.add(t);
+        }
+        if (set1.size() == 0) {
+            return false;
+        }
+        for (T t : b) {
+            if (set1.contains(t)) {
+                return true;
+            }
+        }
+        return false;
     }
 
 }

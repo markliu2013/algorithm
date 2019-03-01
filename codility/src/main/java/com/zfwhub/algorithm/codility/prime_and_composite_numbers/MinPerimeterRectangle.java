@@ -1,14 +1,10 @@
 package com.zfwhub.algorithm.codility.prime_and_composite_numbers;
 
-/**
- * https://app.codility.com/programmers/lessons/10-prime_and_composite_numbers/min_perimeter_rectangle/ 
- */
+// https://app.codility.com/programmers/lessons/10-prime_and_composite_numbers/min_perimeter_rectangle/
 public class MinPerimeterRectangle {
 
-    /**
-     * brute force 
-     */
-    public static int solution(int N) {
+    // brute force
+    public static int solution1(int N) {
         int minPerimeter = Integer.MAX_VALUE;
         for (int i = 1; i <= N; i++) {
             if (N % i == 0) {
@@ -21,9 +17,7 @@ public class MinPerimeterRectangle {
         return minPerimeter;
     }
 
-    /**
-     * just need from 1 to n's square root
-     */
+    // just need from 1 to n's square root
     public static int solution2(int N) {
         int minPerimeter = Integer.MAX_VALUE;
         int i = 1;
@@ -43,9 +37,7 @@ public class MinPerimeterRectangle {
         return minPerimeter;
     }
 
-    /**
-     * the most close a and b, is the answer.
-     */
+    // the most close a and b, is the answer.
     public static int solution3(int N) {
         int i = (int) Math.ceil(Math.sqrt(N));
         while (i > 1) {
@@ -58,9 +50,9 @@ public class MinPerimeterRectangle {
     }
 
     public static void main(String[] args) {
-        System.out.println(MinPerimeterRectangle.solution(5));
-        System.out.println(MinPerimeterRectangle.solution2(5));
-        System.out.println(MinPerimeterRectangle.solution3(5));
+        System.out.println(solution1(5));
+        System.out.println(solution2(5));
+        System.out.println(solution3(5));
     }
 
 }
