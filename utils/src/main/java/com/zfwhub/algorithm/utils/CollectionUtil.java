@@ -324,5 +324,27 @@ public class CollectionUtil {
         }
         return sum;
     }
+    
+    /**
+     * 判断两个集合中是否有相同元素。
+     * @param a
+     * @param b
+     * @return {@code true} a和b至少存在一个相同的元素，{@code false} a和b不存在相同元素
+     */
+    public static <T> boolean hasDuplicates(Iterable<? extends T> a, Iterable<? extends T> b) {
+        Set<T> set1 = new HashSet<>();
+        for (T t : a) {
+            set1.add(t);
+        }
+        if (set1.size() == 0) {
+            return false;
+        }
+        for (T t : b) {
+            if (set1.contains(t)) {
+                return true;
+            }
+        }
+        return false;
+    }
 
 }
