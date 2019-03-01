@@ -16,8 +16,8 @@ public class AbsDistinct {
     }
     
     // TODO AbsDistinct
-    // in place algorithm
     public static int solution2(int[] A) {
+        
         return 0;
     }
     
