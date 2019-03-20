@@ -139,16 +139,24 @@ public class ArrayUtil {
      * @return
      */
     public static List<Integer> toList(int[] array) {
-        if (array == null) {
-            return null;
-        } else if (array.length == 0) {
-            return new ArrayList<>();
-        }
         List<Integer> result = new ArrayList<>();
         for (int i = 0; i < array.length; i++) {
            result.add(Integer.valueOf(array[i]));
         }
         return result;
+    }
+    
+    /**
+     * int数组转set
+     * @param array
+     * @return
+     */
+    public static Set<Integer> toSet(int[] array) {
+        Set<Integer> result = new HashSet<>();
+        for (int i = 0; i < array.length; i++) {
+            result.add(Integer.valueOf(array[i]));
+         }
+         return result;
     }
     
     /**
