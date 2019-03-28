@@ -169,41 +169,4 @@ public class MaximumSubarray {
         return sum;
     }
 
-    // TODO sliding window, maybe.
-    @SuppressWarnings("unused")
-    public static int solution9(int[] A) {
-        int[] prefixSums = new int[A.length];
-        prefixSums[0] = A[0];
-        for (int i = 1; i < A.length; i++) {
-            prefixSums[i] = prefixSums[i - 1] + A[i];
-        }
-
-        int maxSliceSum = A[0];
-        int startIndex = 0;// max start index
-        int endIndex = 0;//max end index
-        int currentStartIndex = 0;
-        for (int i = 1; i < A.length; i++) {
-            if (A[i] <= 0) {
-
-            } else {
-                if (prefixSums[i - 1] < 0) {//遇到正数，前面的加起来小于0
-                    if (A[i] > maxSliceSum) {//这个数很大，前面的都淘汰。
-                        maxSliceSum = A[i];
-                        startIndex = i;
-                        endIndex = i;
-                        currentStartIndex = i;
-                    } else {//继续观察
-                        currentStartIndex = i;
-                    }
-                }
-                if (prefixSums[i] - prefixSums[endIndex] > 0) {
-                    endIndex = i;
-                    maxSliceSum += prefixSums[i] - prefixSums[endIndex];
-                }
-            }
-
-        }
-        return maxSliceSum;
-    }
-
 }

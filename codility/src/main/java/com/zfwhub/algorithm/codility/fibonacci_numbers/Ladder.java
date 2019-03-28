@@ -42,8 +42,8 @@ public class Ladder {
     public static void main(String[] args) {
         int[] A = new int[] { 5000, 4, 5, 5, 1 };
         int[] B = new int[] { 10, 2, 4, 3, 1 };
-        System.out.println(Arrays.toString(Ladder.solution1(A, B)));
-        System.out.println(Arrays.toString(Ladder.solution2(A, B)));
+        System.out.println(Arrays.toString(solution1(A, B)));
+        System.out.println(Arrays.toString(solution2(A, B)));
     }
 
 }

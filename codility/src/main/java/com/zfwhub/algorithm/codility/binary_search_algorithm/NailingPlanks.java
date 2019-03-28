@@ -5,10 +5,9 @@ import java.util.*;
 import com.zfwhub.algorithm.utils.ArrayUtil;
 
 // https://app.codility.com/programmers/lessons/14-binary_search_algorithm/nailing_planks/
-// http://codility-lessons.blogspot.com/2015/03/lesson-11-nailingplanks-nailing-planks.html
 public class NailingPlanks {
 
-    // brute force，必须是前面的所有钉子都使用。
+    // brute force，必须是前面的所有钉子都使用。Performance 0
     public static int solution1(int[] A, int[] B, int[] C) {
         // 把nailed的index放到set
         HashSet<Integer> set = new HashSet<Integer>();
@@ -18,6 +17,7 @@ public class NailingPlanks {
                     set.add(j);
                 }
             }
+            // 全部nailed
             if (set.size() == A.length) {
                 return i + 1;
             }
@@ -25,7 +25,8 @@ public class NailingPlanks {
         return -1;
     }
 
-    // 删除A和B中已经nailed，后续搜索提高效率。
+    // 删除A和B中已经nailed，后续搜索提高效率。Performance 0
+    // https://app.codility.com/demo/results/trainingVV25UF-MUK/
     public static int solution2(int[] A, int[] B, int[] C) {
         List<Integer> listA = ArrayUtil.toList(A);
         List<Integer> listB = ArrayUtil.toList(B);
@@ -48,7 +49,6 @@ public class NailingPlanks {
     }
 
     // TODO NailingPlanks. binary search
-    // binary search
     public static int solution3(int[] A, int[] B, int[] C) {
         HashSet<Integer> set = new HashSet<Integer>();
         Arrays.sort(A);

@@ -116,8 +116,4 @@ public class MathUtil {
         return temp;
     }
     
-    public static void main(String[] args) {
-        System.out.println(fibonacci(30));
-    }
-    
 }

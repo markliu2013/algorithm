@@ -2,10 +2,10 @@ package com.zfwhub.algorithm.leetcode.backtracking;
 
 import java.util.*;
 
+// https://leetcode.com/problems/word-search-ii/
 public class WordSearchII {
     
-    // TODO WordSearchII Time Limit Exceeded
-    public static List<String> findWords(char[][] board, String[] words) {
+    public static List<String> solution1(char[][] board, String[] words) {
         List<String> list = new ArrayList<>();
         Set<String> set = new HashSet<>();
         for (String word : words) {
@@ -19,6 +19,13 @@ public class WordSearchII {
         return list;
     }
     
+    // TODO WordSearchII
+    public static List<String> solution2(char[][] board, String[] words) {
+        Set<String> solution = new HashSet<>();
+        
+        return new ArrayList<>(solution);
+    }
+    
     public static void main(String[] args) {
         char[][] board1 = { 
                 { 'o', 'a' , 'a' , 'n' }, 
@@ -27,7 +34,7 @@ public class WordSearchII {
                 { 'i', 'f' , 'l' , 'v' }
         };
         String[] words1 = new String[] {"oath","pea","eat","rain"};
-        System.out.println(findWords(board1, words1));
+        System.out.println(solution1(board1, words1));
     }
 
 }

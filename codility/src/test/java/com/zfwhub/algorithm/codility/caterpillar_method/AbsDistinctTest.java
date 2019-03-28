@@ -7,7 +7,7 @@ import org.junit.Test;
 public class AbsDistinctTest {
 
     @Test
-    public void test() {
+    public void testSolution() {
         int[] A1 = new int[] {-5,-3,-1,0,3,6};
         int expected1 = 5;
         int[] A2 = new int[] {-10};

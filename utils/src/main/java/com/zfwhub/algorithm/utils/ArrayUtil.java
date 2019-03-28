@@ -13,6 +13,7 @@ public class ArrayUtil {
     
     public static final int[] EMPTY_INT_ARRAY = new int[0];
     public static final Integer[] EMPTY_INTEGER_OBJECT_ARRAY = new Integer[0];
+    public static final int INDEX_NOT_FOUND = -1;
 
     /**
      * <p>Converts an array of primitive ints to objects.
@@ -230,7 +231,7 @@ public class ArrayUtil {
     /**
      * 寻找数组区间中第一个不小于某个值的索引。<br/>
      * 给定数组a、区间[fromIndex, toIndex)和一个目标值key，返回区间内<b>第一个</b><i>不小于</i>（即<i>大于或等于</i>）<code>key</code>的元素的位置。若不存在，返回<code>toIndex</code>。
-     * 因为区间是离散的，将返回值-1，即为小于某个值的索引。
+     * 因为区间是离散的，将返回值减去1，即为小于某个值的索引。
      * <a href="https://en.cppreference.com/w/cpp/algorithm/lower_bound">https://en.cppreference.com/w/cpp/algorithm/lower_bound</a>
      * @param a
      * @param fromIndex
@@ -250,7 +251,7 @@ public class ArrayUtil {
     /**
      * 寻找数组区间中第一个大于某个值的索引。<br/>
      * 给定数组a、区间[fromIndex, toIndex)和一个目标值key，返回区间内<b>第一个</b><i>大于</i><code>key</code>的元素的位置。若不存在，返回<code>toIndex</code>。
-     * 因为区间是离散的，将返回值-1，即为小于或等于某个值的索引。
+     * 因为区间是离散的，将返回值减去1，即为小于或等于某个值的索引。
      * <a href="https://en.cppreference.com/w/cpp/algorithm/lower_bound">https://en.cppreference.com/w/cpp/algorithm/lower_bound</a>
      * @param a
      * @param fromIndex
@@ -267,6 +268,30 @@ public class ArrayUtil {
         return fromIndex;
         // 可以使用JDK中的方法
         // return Math.abs(Arrays.binarySearch(a, fromIndex, toIndex, key)+1);
+    }
+    
+    /**
+     * 找到和某个值最接近的索引
+     * @param a
+     * @param fromIndex
+     * @param toIndex
+     * @param key
+     * @return
+     */
+    public static int closeBound(int[] a, int fromIndex, int toIndex, int key) {
+        int upperBound = upperBound(a, fromIndex, toIndex, key);
+        if (upperBound == fromIndex) {
+            return fromIndex;
+        } else if (upperBound == toIndex) {
+            return upperBound-1;
+        } else {
+            int lowerBound = upperBound - 1;
+            if (Math.abs(a[upperBound] - key) > Math.abs(a[lowerBound] - key)) {
+                return lowerBound;
+            } else {
+                return upperBound;
+            }
+        }
     }
     
     /**
@@ -289,17 +314,15 @@ public class ArrayUtil {
         return upperBound(a, 0, a.length, key);
     }
     
+    
+    
     /**
      * int数组求和
      * @param nums
      * @return
      */
     public static int sum(int[] nums) {
-        int sum = 0;
-        for (int num : nums) {
-            sum += num;
-        }
-        return sum;
+        return sum(nums, 0, nums.length);
     }
     
     /**
@@ -345,6 +368,30 @@ public class ArrayUtil {
         }
         solutionList.addAll(set2);
         return solutionList;
+    }
+    
+    public static int indexOf(int[] array, int valueToFind, int fromIndex, int toIndex) {
+        Utilities.indexRangeCheck(fromIndex, toIndex, array.length);
+        for (int i = fromIndex; i < toIndex; i++) {
+            if (valueToFind == array[i]) {
+                return i;
+            }
+        }
+        return INDEX_NOT_FOUND;
+    }
+    
+    public static int indexOf(int[] array, int valueToFind) {
+        return indexOf(array, valueToFind, 0, array.length);
+    }
+    
+    /**
+     * 将int数组全部转成正数。
+     * @param array
+     */
+    public static void abs(int[] array) {
+        for (int i = 0; i < array.length; i++) {
+            array[i] = Math.abs(array[i]);
+        }
     }
     
 }
