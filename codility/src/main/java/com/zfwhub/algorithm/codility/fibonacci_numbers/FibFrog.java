@@ -31,6 +31,11 @@ public class FibFrog {
         return dp[dp.length-1] >= INFINITE ? -1 : dp[dp.length-1];
     }
     
+    // TODO FibFrog优化
+    public static int solution2(int[] A) {
+        return 0;
+    }
+    
     private static Set<Integer> getFibs(int target) {
         List<Integer> result = new ArrayList<>();
         result.add(0);
