@@ -6,6 +6,7 @@ import java.util.HashMap;
 // https://leetcode.com/problems/longest-increasing-subsequence/
 public class LongestIncreasingSubsequence {
     
+    // 动态规划，递归。
     public static int solution1(int[] nums) {
         if (nums.length == 0) {
             return 0;
@@ -15,6 +16,7 @@ public class LongestIncreasingSubsequence {
         return Math.max(dpStatus.increasingCountNotLast, dpStatus.increasingCountWithLast);
     }
     
+    // 动态规划，递归+备忘录。
     public static int solution2(int[] nums) {
         if (nums.length == 0) {
             return 0;
