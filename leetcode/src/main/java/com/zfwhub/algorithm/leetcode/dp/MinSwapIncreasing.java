@@ -44,7 +44,7 @@ public class MinSwapIncreasing {
         return -1;//无解
     }
     
-    // 动态规划
+    // 动态规划，递归。
     public static int solution4(int[] A, int[] B) {
         // DPStatus包括最后一个是否交换的最小交换次数
         DPStatus dpStatus = new DPStatus();
