@@ -46,10 +46,10 @@ public class Pack {
             return false;
         return true;
     }
-    
+
     @Override
     public String toString() {
-        return "[weight="+weight+", value="+value+"]";
+        return "Pack [weight=" + weight + ", value=" + value + ", quantity=" + quantity + "]";
     }
     
 }

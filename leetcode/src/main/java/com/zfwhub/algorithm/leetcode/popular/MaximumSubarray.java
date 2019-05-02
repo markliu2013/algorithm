@@ -34,8 +34,8 @@ public class MaximumSubarray {
             prefixSums[i] = prefixSums[i - 1] + nums[i];
         }
         int max = Integer.MIN_VALUE;
-        for (int i = 0; i < prefixSums.length; i++) {
-            for (int j = i; j < prefixSums.length; j++) {
+        for (int i = 0; i < nums.length; i++) {
+            for (int j = i; j < nums.length; j++) {
                 max = Math.max(prefixSums[j] - (i >= 1 ? prefixSums[i - 1] : 0), max);
             }
         }

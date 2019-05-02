@@ -54,8 +54,8 @@ public class CoinChanging {
     }
 
     public static void main(String[] args) {
-        int[] M = new int[] { 1, 3, 4 };
-        int k = 6;
+        int[] M = new int[] { 1, 5, 10, 20, 50, 100 };
+        int k = 666;
         System.out.println(CoinChanging.solution1(M, k));
         System.out.println(CoinChanging.solution2(M, k));
     }

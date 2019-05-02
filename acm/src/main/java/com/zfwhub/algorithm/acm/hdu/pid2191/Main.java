@@ -1,7 +1,6 @@
 package com.zfwhub.algorithm.acm.hdu.pid2191;
 
 import java.util.*;
-
 // http://acm.hdu.edu.cn/showproblem.php?pid=2191
 // 多重背包
 public class Main {
@@ -21,7 +20,7 @@ public class Main {
                     values[j] = sc.nextInt();
                     quantities[j] = sc.nextInt();
                 }
-                System.out.println(solution2(Pack.arrayToPackList(weighs, values, quantities), weight));
+                System.out.println(solution3(Pack.arrayToPackList(weighs, values, quantities), weight));
             }
         } finally {
             sc.close();
@@ -55,6 +54,35 @@ public class Main {
             for (int j = 0; j < count; j++) {
                 packs2.add(new Pack(p.weight, p.value));
             }
+        }
+        return Pack01.solution(packs2, capacity);
+    }
+    
+    public static int solution3(List<Pack> packs, int capacity) {
+        List<Pack> packs2 = new ArrayList<>();
+        for (int i = 0; i < packs.size(); i++) {
+            Pack p = packs.get(i);
+            int k = 1;
+            int M = p.quantity;
+            while (k < M) {
+                packs2.add(new Pack(p.weight * k, p.value * k));
+                M = M - k;
+                k = 2*k;
+            }
+            packs2.add(new Pack(p.weight * M, p.value * M));
+//            while (p.quantity - 2*q > 0) {
+//                if (q * p.weight <= capacity) {
+//                    packs2.add(new Pack(p.weight * q, p.value * q));
+//                } else {
+//                    break;
+//                }
+//                k++;
+//                q = (int)Math.pow(2, k);
+//            }
+//            q = p.quantity - q + 1;
+//            if (q * p.weight <= capacity) {
+//                packs2.add(new Pack(p.weight * q, p.value * q));
+//            }
         }
         return Pack01.solution(packs2, capacity);
     }

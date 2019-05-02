@@ -101,4 +101,18 @@ public class Pack02 {
         return dp[capacity];
     }
     
+    // 2.4 转化为01背包+二进制思想
+    public static int solution6(List<Pack> packs, int capacity) {
+        List<Pack> packs2 = new ArrayList<>();
+        for (int i = 0; i < packs.size(); i++) {
+            Pack p = packs.get(i);
+            int k = 0;
+            while ((int)Math.pow(2, k) * p.weight <= capacity) {
+                packs2.add(new Pack(p.weight * (int)Math.pow(2, k), p.value * (int)Math.pow(2, k)));
+                k++;
+            }
+        }
+        return Pack01.solution6(packs2, capacity);
+    }
+    
 }

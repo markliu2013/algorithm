@@ -277,8 +277,6 @@ public class ArrayUtil {
         return upperBound(a, 0, a.length, key);
     }
     
-    
-    
     /**
      * int数组求和
      * @param nums
@@ -286,6 +284,15 @@ public class ArrayUtil {
      */
     public static int sum(int[] nums) {
         return sum(nums, 0, nums.length);
+    }
+    
+    /**
+     * int数组找到其中的最大值。
+     * @param nums
+     * @return
+     */
+    public static int max(int[] nums) {
+        return max(nums, 0, nums.length);
     }
     
     /**
@@ -302,6 +309,22 @@ public class ArrayUtil {
             sum += nums[i];
         }
         return sum;
+    }
+    
+    /**
+     * 指定范围的数组，找到其中最大的值。
+     * @param nums
+     * @param fromIndex inclusive
+     * @param toIndex exclusive
+     * @return
+     */
+    public static int max(int[] nums, int fromIndex, int toIndex) {
+        Utilities.indexRangeCheck(fromIndex, toIndex, nums.length);
+        int max = nums[fromIndex];
+        for (int i = fromIndex+1; i < toIndex; i++) {
+            max = Math.max(max, nums[i]);
+        }
+        return max;
     }
     
     /**

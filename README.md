@@ -13,6 +13,8 @@
 * [RegularExpressionMatching](https://leetcode.com/problems/regular-expression-matching/)
 * [MinimumSwapsToMakeSequencesIncreasing](https://leetcode.com/problems/minimum-swaps-to-make-sequences-increasing/)
 * [MinAbsSum](https://app.codility.com/programmers/lessons/17-dynamic_programming/min_abs_sum/)
+* [UncrossedLines](https://leetcode.com/problems/uncrossed-lines/)
+* [LongestIncreasingSubsequence](https://leetcode.com/problems/longest-increasing-subsequence/)
 
 ## Backtracking
 * [NQueens](https://leetcode.com/problems/n-queens/)

@@ -20,7 +20,7 @@ public class Main {
                 for (int j = 0; j < count; j++) {
                     weigh[j] = sc.nextInt();
                 }
-                System.out.println(Pack01.solution5(PackUtil.arrayToPackList(weigh, value), weight));
+                System.out.println(Pack01.solution6(PackUtil.arrayToPackList(weigh, value), weight));
             }
         } finally {
             sc.close();
@@ -29,7 +29,22 @@ public class Main {
 }
 
 class Pack01 {
-    public static int solution5(List<Pack> packs, int capacity) {
+    public static int solution7(List<Pack> packs, int capacity) {
+        int[] dp = new int[capacity + 1];
+        for (int i = 0; i < packs.size(); i++) {
+            Pack p = packs.get(i);
+            int sum = 0;
+            for (int j = i; j < packs.size(); j++) {
+                sum += packs.get(j).value;
+            }
+            int max = Math.max(capacity-sum, p.weight);
+            for (int j = capacity; j >= max; j--) {
+                dp[j] = Math.max(dp[j], dp[j-p.weight] + p.value);
+            }
+        }
+        return dp[capacity];
+    }
+    public static int solution6(List<Pack> packs, int capacity) {
         int[] dp = new int[capacity + 1];
         for (int i = 0; i < packs.size(); i++) {
             Pack p = packs.get(i);

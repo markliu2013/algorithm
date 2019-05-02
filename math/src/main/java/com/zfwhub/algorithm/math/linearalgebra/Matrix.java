@@ -72,6 +72,7 @@ public class Matrix {
      * @return
      */
     public int determinant() {
+        // 只有方阵才能求行列式。
         return 0;
     }
     

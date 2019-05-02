@@ -17,7 +17,7 @@ public class Main {
                 costs[i] = sc.nextInt();
                 values[i] = sc.nextInt();
             }
-            System.out.println(solution5(Pack.arrayToPackList(costs, values), m));
+            System.out.println(solution6(Pack.arrayToPackList(costs, values), m));
         } finally {
             sc.close();
         }
@@ -113,6 +113,20 @@ public class Main {
         }
         return dp[capacity];
     }
+    
+    public static int solution6(List<Pack> packs, int capacity) {
+        List<Pack> packs2 = new ArrayList<>();
+        for (int i = 0; i < packs.size(); i++) {
+            Pack p = packs.get(i);
+            int k = 0;
+            while ((int)Math.pow(2, k) * p.weight <= capacity) {
+                packs2.add(new Pack(p.weight * (int)Math.pow(2, k), p.value * (int)Math.pow(2, k)));
+                k++;
+            }
+        }
+        return Pack01.solution(packs2, capacity);
+    }
+    
 }
 
 //@see com.zfwhub.algorithm.templates.pack_problems.Pack

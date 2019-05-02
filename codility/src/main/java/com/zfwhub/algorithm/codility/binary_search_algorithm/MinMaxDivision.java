@@ -26,7 +26,7 @@ public class MinMaxDivision {
         return minLargeSum;
     }
     
-    // 使用util的方法
+    // 使用util的方法 https://app.codility.com/demo/results/training4U22F2-H6S/
     public static int solution2(int K, int M, int[] A) {
         if (A.length == 0) {
             return 0;
@@ -51,8 +51,54 @@ public class MinMaxDivision {
         return minLargeSum;
     }
     
-    // TODO MinMaxDivision
+    // prefix sum https://app.codility.com/demo/results/trainingC4GA65-ACH/
     public static int solution3(int K, int M, int[] A) {
+        if (A.length == 0) {
+            return 0;
+        }
+        if (K > A.length) {
+            K = A.length;
+        }
+        // 数组A分成K份，总共几种分法
+        List<List<Integer>> combinations = CollectionUtil.combine(CollectionUtil.newIntList(1, A.length+1), K-1);
+        int minLargeSum = Integer.MAX_VALUE;
+        // 计算每个分法的largeSum
+        int[] prefixSums = new int[A.length];
+        prefixSums[0] = A[0];
+        for (int i = 1; i < A.length; i++) {
+            prefixSums[i] = prefixSums[i - 1] + A[i];
+        }
+        for (List<Integer> combination : combinations) {
+            int preIndex = 0;
+            int largeSum = Integer.MIN_VALUE;
+            combination.add(A.length);
+            for (int i = 0; i < combination.size(); i++) {
+                int currentSum = prefixSums[combination.get(i)-1] - (preIndex >= 1 ? prefixSums[preIndex - 1] : 0);
+                largeSum = Math.max(largeSum, currentSum);
+                preIndex = combination.get(i);
+            }
+            minLargeSum = Math.min(minLargeSum, largeSum);
+        }
+        return minLargeSum;
+    }
+    
+    // TODO MinMaxDivision
+    public static int solution4(int K, int M, int[] A) {
+        int sumA = ArrayUtil.sum(A);
+        double target = sumA / (double) K;
+        List<Integer> splitPoints = new ArrayList<>();
+        int subSum = 0;
+        int preSubSum = subSum;
+        for (int i = 0; i < A.length; i++) {
+            subSum += A[i];
+            if (Math.abs(target-subSum) > Math.abs(target-preSubSum)) {
+                splitPoints.add(i-1);
+                preSubSum = subSum = A[i];
+            } else {
+                preSubSum = subSum;
+            }
+        }
+        System.out.println(splitPoints);
         return 0;
     }
 
@@ -138,11 +184,12 @@ public class MinMaxDivision {
     
 
     public static void main(String[] args) {
-        int K = 1;
-        int M = 1;
-        int[] A = ArrayUtil.newIntArray(1, 5);
-        System.out.println(solution1(K, M, A));
+        int K = 3;
+        int M = 5;
+        int[] A = new int[] {2,1,5,1,2,2,2};
+//        System.out.println(solution1(K, M, A));
         System.out.println(solution2(K, M, A));
+        System.out.println(solution3(K, M, A));
     }
 
 }

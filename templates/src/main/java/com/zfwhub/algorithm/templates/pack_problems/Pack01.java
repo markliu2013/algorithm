@@ -109,6 +109,23 @@ public class Pack01 {
         return dp[capacity];
     }
 
+    // 1.5 一个常数优化
+    public static int solution7(List<Pack> packs, int capacity) {
+        int[] dp = new int[capacity + 1];
+        for (int i = 0; i < packs.size(); i++) {
+            Pack p = packs.get(i);
+            int sum = 0;
+            for (int j = i; j < packs.size(); j++) {
+                sum += packs.get(j).value;
+            }
+            int max = Math.max(capacity-sum, p.weight);
+            for (int j = capacity; j >= max; j--) {
+                dp[j] = Math.max(dp[j], dp[j-p.weight] + p.value);
+            }
+        }
+        return dp[capacity];
+    }
+    
     public static void main(String[] args) {
         int[] volumns = new int[] { 2,3,4,10 };
         int[] values = new int[] { 3,4,5,6 };

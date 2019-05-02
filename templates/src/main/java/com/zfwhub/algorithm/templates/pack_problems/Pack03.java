@@ -39,4 +39,32 @@ public class Pack03 {
         return Pack01.solution4(packs2, capacity);
     }
     
+    // 3.3 转化为01背包 + 二进制思想
+    public static int solution3(List<Pack> packs, int capacity) {
+        List<Pack> packs2 = new ArrayList<>();
+        for (int i = 0; i < packs.size(); i++) {
+            Pack p = packs.get(i);
+            int k = 1;
+            int M = p.quantity;
+            while (k < M) {
+                packs2.add(new Pack(p.weight * k, p.value * k));
+                M = M - k;
+                k = 2*k;
+            }
+            packs2.add(new Pack(p.weight * M, p.value * M));
+        }
+        return Pack01.solution6(packs2, capacity);
+    }
+    
+    public static void main(String[] args) {
+        int M = 13;
+        int k = 1;
+        while (k < M) {
+            System.out.println(k);
+            M = M - k;
+            k = 2*k;
+        }
+        System.out.println(M);
+    }
+    
 }

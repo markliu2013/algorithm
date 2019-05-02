@@ -7,7 +7,13 @@ import java.util.*;
 // https://blog.csdn.net/kiwi_coder/article/details/45091773
 public class CoinChange {
     
-    public static int coinChange(int[] coins, int amount) {
+    public static int solution1(int[] coins, int amount) {
+        Arrays.sort(coins);
+        int count = dp(coins, amount);
+        return count == Integer.MAX_VALUE ? -1 : count;
+    }
+    
+    public static int solution2(int[] coins, int amount) {
         Arrays.sort(coins);
         HashMap<List<Integer>, Integer> map = new HashMap<>();
         int count = dp2(coins, amount, map);
@@ -81,7 +87,7 @@ public class CoinChange {
             if (map.containsKey(memoKey)) {
                 return map.get(memoKey);
             } else {
-                int val = dp(subCoins, amount);
+                int val = dp2(subCoins, amount, map);
                 map.put(memoKey, val);
                 return val;
             }
@@ -96,7 +102,7 @@ public class CoinChange {
             if (map.containsKey(memoKey1)) {
                 count1 = map.get(memoKey1);
             } else {
-                int val = dp(subCoins, ((amount % lastCoin) + (lastCoin*(maxHighestCount-i))));
+                int val = dp2(subCoins, ((amount % lastCoin) + (lastCoin*(maxHighestCount-i))), map);
                 map.put(memoKey1, val);
                 count1 = val;
             }
@@ -111,7 +117,7 @@ public class CoinChange {
             if (map.containsKey(memoKey2)) {
                 count2 = map.get(memoKey2);
             } else {
-                int val = dp(subCoins, amount-(lastCoin*(maxHighestCount-i)));
+                int val = dp2(subCoins, amount-(lastCoin*(maxHighestCount-i)), map);
                 map.put(memoKey2, val);
                 count2 = val;
             }
@@ -124,22 +130,48 @@ public class CoinChange {
         return minCount;
     }
     
+    public static int solution3(int[] coins, int amount) {
+        Arrays.sort(coins);
+        int[] dp = new int[amount+1];
+        for (int i = 1; i < dp.length; i++) {
+            int min = Integer.MAX_VALUE-5;
+            for (int j = 0; j < coins.length; j++) {
+                if (i >= coins[j]) {
+                    min = Math.min(min, dp[i-coins[j]]+1);
+                } else {
+                    break;
+                }
+            }
+            dp[i] = min;
+        }
+        return dp[dp.length-1] >= Integer.MAX_VALUE-5 ? -1 : dp[dp.length-1];
+    }
+    
+    
+    
     public static void main(String[] args) {
-        int[] coins1 = new int[] { 1, 2, 5 };
-        int amount1 = 11;
-        System.out.println(coinChange(coins1, amount1));
-        int[] coins2 = new int[] { 2 };
-        int amount2 = 3;
-        System.out.println(coinChange(coins2, amount2));
-        int[] coins3 = new int[] {  2, 5, 10 , 1 };
-        int amount3 = 27;
-        System.out.println(coinChange(coins3, amount3));
-        int[] coins4 = new int[] { 186,419,83,408 };
-        int amount4 = 6249;
-        System.out.println(coinChange(coins4, amount4));
-        int[] coins5 = new int[] { 58,92,387,421,194,208,231 };
-        int amount5 = 7798;
-        System.out.println(coinChange(coins5, amount5));
+//        int[] coins1 = new int[] { 1, 2, 5 };
+//        int amount1 = 11;
+//        System.out.println(solution1(coins1, amount1));
+//        System.out.println(solution3(coins1, amount1));
+//        int[] coins2 = new int[] { 2 };
+//        int amount2 = 3;
+//        System.out.println(solution1(coins2, amount2));
+//        System.out.println(solution3(coins2, amount2));
+//        int[] coins3 = new int[] {  2, 5, 10 , 1 };
+//        int amount3 = 27;
+//        System.out.println(solution1(coins3, amount3));
+//        int[] coins4 = new int[] { 186,419,83,408 };
+//        int amount4 = 6249;
+//        System.out.println(solution1(coins4, amount4));
+//        int[] coins5 = new int[] { 58,92,387,421,194,208,231 };
+//        int amount5 = 7798;
+//        System.out.println(solution1(coins5, amount5));
+//        System.out.println(solution3(coins5, amount5));
+        int[] coins6 = new int[] { 474,83,404,3 };
+        int amount6 = 264;
+//        System.out.println(solution1(coins6, amount6));
+        System.out.println(solution3(coins6, amount6));
     }
     
 }
