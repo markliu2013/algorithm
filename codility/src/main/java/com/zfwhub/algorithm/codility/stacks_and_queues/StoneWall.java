@@ -50,7 +50,7 @@ public class StoneWall {
         return count;
     }
     
-    // TODO StoneWall https://codility.com/media/train/solution-stone-wall.pdf
+    // StoneWall https://codility.com/media/train/solution-stone-wall.pdf
     
     public static void main(String[] args) {
 //        int[] H = new int[] { 8, 8, 5, 7, 9, 8, 7,4,8 };

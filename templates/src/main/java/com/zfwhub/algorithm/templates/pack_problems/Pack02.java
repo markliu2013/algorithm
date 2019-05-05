@@ -84,7 +84,7 @@ public class Pack02 {
         return dp[capacity];
     }
     
-    // 对应Pack01.solution6
+    // 对应Pack01.solution6 4055ms
     public static int solution5(List<Pack> packs, int capacity) {
         int[] dp = new int[capacity + 1];
         for (int i = 0; i < packs.size(); i++) {
@@ -101,7 +101,7 @@ public class Pack02 {
         return dp[capacity];
     }
     
-    // 2.4 转化为01背包+二进制思想
+    // 2.4 转化为01背包+二进制思想  2571ms
     public static int solution6(List<Pack> packs, int capacity) {
         List<Pack> packs2 = new ArrayList<>();
         for (int i = 0; i < packs.size(); i++) {
@@ -113,6 +113,18 @@ public class Pack02 {
             }
         }
         return Pack01.solution6(packs2, capacity);
+    }
+    
+    // 2.5 O(VN)的算法 2512ms
+    public static int solution7(List<Pack> packs, int capacity) {
+        int[] dp = new int[capacity + 1];
+        for (int i = 0; i < packs.size(); i++) {
+            Pack p = packs.get(i);
+            for (int j = p.weight; j <= capacity; j++) {
+                dp[j] = Math.max(dp[j], dp[j-p.weight] + p.value);
+            }
+        }
+        return dp[capacity];
     }
     
 }

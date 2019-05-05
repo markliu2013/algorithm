@@ -4,6 +4,7 @@ import java.util.*;
 /**
  * 多重背包问题
  * 跑代码：@link com.zfwhub.algorithm.acm.hdu.pid2191.Main
+ * https://www.jianshu.com/p/c68589311976
  */
 public class Pack03 {
     // 递归

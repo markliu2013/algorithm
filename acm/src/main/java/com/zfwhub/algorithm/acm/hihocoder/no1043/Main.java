@@ -17,7 +17,7 @@ public class Main {
                 costs[i] = sc.nextInt();
                 values[i] = sc.nextInt();
             }
-            System.out.println(solution6(Pack.arrayToPackList(costs, values), m));
+            System.out.println(solution7(Pack.arrayToPackList(costs, values), m));
         } finally {
             sc.close();
         }
@@ -125,6 +125,17 @@ public class Main {
             }
         }
         return Pack01.solution(packs2, capacity);
+    }
+    
+    public static int solution7(List<Pack> packs, int capacity) {
+        int[] dp = new int[capacity + 1];
+        for (int i = 0; i < packs.size(); i++) {
+            Pack p = packs.get(i);
+            for (int j = p.weight; j <= capacity; j++) {
+                dp[j] = Math.max(dp[j], dp[j-p.weight] + p.value);
+            }
+        }
+        return dp[capacity];
     }
     
 }

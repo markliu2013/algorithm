@@ -380,4 +380,12 @@ public class ArrayUtil {
         }
     }
     
+    public static long[] prefixSums(int[] nums) {
+        long[] prefixSums = new long[nums.length+1];
+        for (int i = 0; i < nums.length; i++) {
+            prefixSums[i+1] = prefixSums[i] + nums[i];
+        }
+        return prefixSums;
+    }
+    
 }
