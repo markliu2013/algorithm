@@ -29,6 +29,18 @@ public class TriangulationTest {
         assertEquals(expected3, Triangulation.solution1(A3));
         assertEquals(expected4, Triangulation.solution1(A4));
         assertEquals(expected5, Triangulation.solution1(A5));
+        
+        assertEquals(expected1, Triangulation.solution2(A1));
+        assertEquals(expected2, Triangulation.solution2(A2));
+        assertEquals(expected3, Triangulation.solution2(A3));
+        assertEquals(expected4, Triangulation.solution2(A4));
+        assertEquals(expected5, Triangulation.solution2(A5));
+
+        assertEquals(expected1, Triangulation.solution4(A1));
+        assertEquals(expected2, Triangulation.solution4(A2));
+        assertEquals(expected3, Triangulation.solution4(A3));
+        assertEquals(expected4, Triangulation.solution4(A4));
+        assertEquals(expected5, Triangulation.solution4(A5));
     }
 
 }

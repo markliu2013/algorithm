@@ -1,11 +1,5 @@
 package com.zfwhub.algorithm.utils;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class ArrayUtil {
     
@@ -386,6 +380,31 @@ public class ArrayUtil {
             prefixSums[i+1] = prefixSums[i] + nums[i];
         }
         return prefixSums;
+    }
+
+    public static int[] removeByIndex(int[] array, int index) {
+        // If the array is empty 
+        // or the index is not in array range 
+        // return the original array 
+        if (array == null || index < 0 || index >= array.length) {
+            return array;
+        }
+        // Create another array of size one less 
+        int[] anotherArray = new int[array.length - 1];
+        // Copy the elements except the index 
+        // from original array to the other array 
+        for (int i = 0, k = 0; i < array.length; i++) {
+            // if the index is 
+            // the removal element index 
+            if (i == index) {
+                continue;
+            }
+            // if the index is not 
+            // the removal element index 
+            anotherArray[k++] = array[i];
+        }
+        // return the resultant array 
+        return anotherArray;
     }
     
 }
