@@ -141,6 +141,18 @@ public class ArrayUtil {
         return result;
     }
     
+    public static List<List<Integer>> toList(int[][] array) {
+        List<List<Integer>> result = new ArrayList<>();
+        for (int i = 0; i < array.length; i++) {
+            List<Integer> row = new ArrayList<>();
+            for (int j = 0; j < array[i].length; j++) {
+                row.add(array[i][j]);
+            }
+            result.add(row);
+        }
+        return result;
+    }
+    
     /**
      * int数组转set
      * @param array

@@ -1,7 +1,9 @@
-package com.zfwhub.algorithm.leetcode.dp;
+package com.zfwhub.algorithm.templates.dp;
 
 import java.util.Arrays;
 import java.util.HashMap;
+
+import com.zfwhub.algorithm.utils.ArrayUtil;
 
 // https://leetcode.com/problems/longest-increasing-subsequence/
 public class LongestIncreasingSubsequence {
@@ -188,10 +190,30 @@ public class LongestIncreasingSubsequence {
         }
     }
     
+    // https://www.zhihu.com/question/23995189/answer/613096905
+    public static int solution3(int[] nums) {
+        if (nums.length == 0) {
+            return 0;
+        }
+        int[] dp = new int[nums.length];
+        for (int i = 0; i < nums.length; i++) {
+            dp[i] = 1;
+            for (int j = i; j >= 0; j--) {
+                if (nums[j] < nums[i]) {
+                    dp[i] = Math.max(dp[i], dp[j]+1);
+                }
+            }
+        }
+        return ArrayUtil.max(dp);
+    }
+    
+    // TODO LIS https://www.jianshu.com/p/409952e9cfd7
+    
+    
     public static void main(String[] args) {
-        int[] nums = new int[] {10,9,2,5,3,7,101,18};
-        System.out.println(LongestIncreasingSubsequence.solution1(nums));
-        System.out.println(LongestIncreasingSubsequence.solution2(nums));
+        int[] nums = new int[] {};
+        System.out.println(solution1(nums));
+        System.out.println(solution3(nums));
     }
     
 }

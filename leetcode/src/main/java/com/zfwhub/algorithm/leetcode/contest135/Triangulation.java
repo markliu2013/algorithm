@@ -248,7 +248,7 @@ public class Triangulation {
     public static int solution5(int[] A) {
         int[][] dp = new int[A.length][A.length];
         for (int i = 2; i < dp.length; i++) {
-            int[] preDp = dp[i-1];
+            
             
         }
         return 0;

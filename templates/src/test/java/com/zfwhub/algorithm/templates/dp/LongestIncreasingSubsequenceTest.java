@@ -1,4 +1,4 @@
-package com.zfwhub.algorithm.leetcode.dp;
+package com.zfwhub.algorithm.templates.dp;
 
 import static org.junit.Assert.*;
 
