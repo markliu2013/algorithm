@@ -1,10 +1,10 @@
-package com.zfwhub.algorithm.leetcode.contest135;
+package com.zfwhub.algorithm.templates.dp;
 
 import java.util.*;
 
 import com.zfwhub.algorithm.utils.ArrayUtil;
 import com.zfwhub.algorithm.utils.CollectionUtil;
-
+// https://leetcode.com/problems/minimum-score-triangulation-of-polygon/
 public class Triangulation {
     
     public static int solution1(int[] A) {
@@ -244,14 +244,62 @@ public class Triangulation {
     }
     
     // 动态规划，递推。
-    // TODO Triangulation
     public static int solution5(int[] A) {
+        // 第一维：A的长度，第二维：以A的每个点为中间顶点。
         int[][] dp = new int[A.length][A.length];
-        for (int i = 2; i < dp.length; i++) {
-            
-            
+        
+        for (int i = 2; i < A.length; i++) {
+            int[] preDp = dp[i-1];
+            // 现在要求i这个长度，j为中间顶点的。
+            for (int j = 0; j < A.length; j++) {
+                int a = j !=0 ? j-1 : A.length-1;
+                int b = j;
+                int c = j != A.length-1 ? j+1 : 0;
+                // 除掉j这个索引，找preDp的最小值
+                int minPreDp = Integer.MAX_VALUE;
+                for (int k = 0; k < j; k++) {
+                    minPreDp = Math.min(minPreDp, preDp[k]);
+                }
+                for (int k = j+1; k < preDp.length; k++) {
+                    minPreDp = Math.min(minPreDp, preDp[k]);
+                }
+                dp[i][j] = minPreDp + A[a] * A[b] * A[c];
+            }
         }
-        return 0;
+        System.out.println(Arrays.deepToString(dp));
+        return ArrayUtil.min(dp[dp.length-1]);
+    }
+    
+    public static int solution6(int[] A) {
+        int[] dp = new int[A.length];
+        List<Integer> preDp = new ArrayList<>();
+        preDp.add(A[0]*A[1]*A[2]);
+        for (int i = 3; i < A.length; i++) {
+            
+            for (int j = 0; j < A.length; j++) {
+                int a = j !=0 ? j-1 : A.length-1;
+                int b = j;
+                int c = j != A.length-1 ? j+1 : 0;
+                int minPreDp = Integer.MAX_VALUE;
+                
+            }
+        }
+        
+        return ArrayUtil.min(dp);
+    }
+    
+    public static int solution11(int[] A) {
+        int n = A.length;
+        int[][] dp = new int[n][n];
+        for (int d = 2; d < n; ++d) {
+            for (int i = 0; i + d < n; ++i) {
+                int j = i + d;
+                dp[i][j] = Integer.MAX_VALUE;
+                for (int k = i + 1; k < j; ++k)
+                    dp[i][j] = Math.min(dp[i][j], dp[i][k] + dp[k][j] + A[i] * A[j] * A[k]);
+            }
+        }
+        return dp[0][n - 1];
     }
     
     public static void main(String[] args) {
@@ -265,11 +313,11 @@ public class Triangulation {
 //        triangle2.add(4);
 //        System.out.println(check(triangle1, triangle2));
 //        
-        int[] A = new int[] {0,1,2,3,4,5};
-//        int[] A = new int[] {3,1,4,5};
+//        int[] A = new int[] {35,73,90,27,71,80,21,33,33,13,48,12,68,70,80,36,66,3,70,58};
+        int[] A = new int[] {1,3,4,1};
 //        int[] A = ArrayUtil.newIntArray(1, 51);
-//        System.out.println(solution1(A));
-        System.out.println(solution4(A));
+        System.out.println(solution11(A));
+        System.out.println(solution5(A));
     }
     
 }

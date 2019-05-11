@@ -8,7 +8,7 @@ import java.util.*;
  */
 public class BacktrackingTemplate1 {
     
-    public static List<List<Integer>> combineAll(int[] nums, int n) {
+    public static List<List<Integer>> combineAll(int[] nums, int k) {
         // 存放所有解的集合
         List<List<Integer>> solutionList = new ArrayList<>();
         // 存放单个解的集合
@@ -19,12 +19,12 @@ public class BacktrackingTemplate1 {
             return solutionList;
         }*/
         
-        dfs(solutionList, solution, nums, n);
+        dfs(solutionList, solution, nums, k);
         return solutionList;
     }
     
-    private static void dfs(List<List<Integer>> solutionList, List<Integer> solution, int[] arr, int n) {
-        if (isASolution(solution, n)) {
+    private static void dfs(List<List<Integer>> solutionList, List<Integer> solution, int[] arr, int k) {
+        if (isASolution(solution, k)) {
             processSolution(solutionList, solution);
             return;
         }
@@ -34,7 +34,7 @@ public class BacktrackingTemplate1 {
             // 2. isValid返回false 或 isASolution返回true肩负着循环退出。
             if (isValid(solution, arr[i])) {
                 makeMove(solution, arr[i]);
-                dfs(solutionList, solution, arr, n);
+                dfs(solutionList, solution, arr, k);
                 // unMakeMove在下面两种情况执行：
                 // 1. isASolution 成功找到一个解
                 // 2. for循环结束
@@ -44,8 +44,8 @@ public class BacktrackingTemplate1 {
         }
     }
     
-    private static boolean isASolution(List<Integer> solution, int n) {
-        return solution.size() == n;
+    private static boolean isASolution(List<Integer> solution, int k) {
+        return solution.size() == k;
     }
 
     private static void processSolution(List<List<Integer>> solutionList, List<Integer> solution) {

@@ -53,6 +53,13 @@ public class MinSwapIncreasingTest {
         assertEquals(expected5, MinSwapIncreasing.solution4(A5, B5));
         assertEquals(expected6, MinSwapIncreasing.solution4(A6, B6));
         assertEquals(expected7, MinSwapIncreasing.solution4(A7, B7));
+        assertEquals(expected1, MinSwapIncreasing.solution5(A1, B1));
+        assertEquals(expected2, MinSwapIncreasing.solution5(A2, B2));
+        assertEquals(expected3, MinSwapIncreasing.solution5(A3, B3));
+        assertEquals(expected4, MinSwapIncreasing.solution5(A4, B4));
+        assertEquals(expected5, MinSwapIncreasing.solution5(A5, B5));
+        assertEquals(expected6, MinSwapIncreasing.solution5(A6, B6));
+        assertEquals(expected7, MinSwapIncreasing.solution5(A7, B7));
     }
 
 }

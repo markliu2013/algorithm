@@ -90,6 +90,35 @@ public class MinSwapIncreasing {
         }
     }
     
+    // TODO MinSwapIncreasing 动态规划 递推
+    public static int solution5(int[] A, int[] B) {
+        int[][] dp = new int[A.length][2]; // 0不交换，1交换
+        dp[0][0] = 0;
+        dp[0][1] = 1;
+        for (int i = 1; i < A.length; i++) {
+            int[] preDp = dp[i-1];
+            if (A[i] > A[i-1] && B[i] > B[i-1]) {
+                if (A[i] > B[i-1] && B[i] > A[i-1]) {
+                    dp[i][0] = Math.min(preDp[0], preDp[1]);
+                } else {
+                    dp[i][0] = preDp[0];
+                }
+            } else {
+                dp[i][0] = preDp[1];
+            }
+            if (A[i] > B[i-1] && B[i] > A[i-1]) {
+                if (A[i] > A[i-1] && B[i] > B[i-1]) {
+                    dp[i][1] = Math.min(preDp[0]+1, preDp[1]+1);
+                } else {
+                    dp[i][1] = preDp[0] + 1;
+                }
+            } else {
+                dp[i][1] = preDp[1] + 1;
+            }
+        }
+        return Math.min(dp[dp.length-1][0], dp[dp.length-1][1]);
+    }
+    
     private static class DPStatus {
         
         public int swap = 0; 
@@ -223,8 +252,9 @@ public class MinSwapIncreasing {
         int[] B = new int[] {1,2,2,7};
 //        int[] A = new int[] {0,7,8,10,10,11};
 //        int[] B = new int[] {4,4,5, 7,11,14};
-        System.out.println(MinSwapIncreasing.solution1(A, B));
-        System.out.println(MinSwapIncreasing.solution4(A, B));
+        System.out.println(solution1(A, B));
+        System.out.println(solution4(A, B));
+        System.out.println(solution5(A, B));
     }
 
 }
