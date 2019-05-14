@@ -7,6 +7,7 @@ import com.zfwhub.algorithm.utils.CollectionUtil;
 // https://leetcode.com/problems/minimum-score-triangulation-of-polygon/
 public class Triangulation {
     
+    // 超时 https://leetcode.com/submissions/detail/226873208/
     public static int solution1(int[] A) {
         List<Integer> list = new ArrayList<>();
         for (int i = 0; i < A.length; i++) {
@@ -123,7 +124,7 @@ public class Triangulation {
         return false;
     }
     
-    // 动态规划，递归。
+    // 动态规划，递归。超时 https://leetcode.com/submissions/detail/228636456/
     public static int solution2(int[] A) {
         if (A.length == 3) {
             return A[0] * A[1] * A[2];
@@ -145,6 +146,7 @@ public class Triangulation {
         return minResult;
     }
     
+    // 动态规划，递归+map。超时 https://leetcode.com/submissions/detail/227503937/
     public static int solution3(int[] A) {
         return solution3DP(A, new HashMap<>());
     }
@@ -194,8 +196,6 @@ public class Triangulation {
         return minResult;
     }
     
-    
-    
     private static class DPMapKey {
         
         public int[] A;
@@ -228,6 +228,17 @@ public class Triangulation {
         
     }
     
+    private static class DPStatus {
+        
+        public List<Integer> list;
+        
+        public DPStatus() {
+            list = new ArrayList<>();
+        }
+        
+    }
+    // https://leetcode.com/submissions/detail/227582800/
+    // 动态规划，递推+map。https://leetcode.com/submissions/detail/227898364/
     public static int solution4(int[] A) {
         if (A.length == 3) {
             return A[0] * A[1] * A[2];
@@ -243,7 +254,7 @@ public class Triangulation {
         return minResult;
     }
     
-    // 动态规划，递推。
+    // 失败
     public static int solution5(int[] A) {
         // 第一维：A的长度，第二维：以A的每个点为中间顶点。
         int[][] dp = new int[A.length][A.length];
@@ -270,36 +281,44 @@ public class Triangulation {
         return ArrayUtil.min(dp[dp.length-1]);
     }
     
+    // 失败
     public static int solution6(int[] A) {
-        int[] dp = new int[A.length];
-        List<Integer> preDp = new ArrayList<>();
-        preDp.add(A[0]*A[1]*A[2]);
-        for (int i = 3; i < A.length; i++) {
-            
-            for (int j = 0; j < A.length; j++) {
-                int a = j !=0 ? j-1 : A.length-1;
+        if (A.length == 3) {
+            return A[0] * A[1] * A[2];
+        }
+        DPStatus[] dp = new DPStatus[A.length];
+        dp[3] = new DPStatus();
+        for (int i = 0; i < 4; i++) {
+            int a = i !=0 ? i-1 : 3;
+            int b = i;
+            int c = i != 3 ? i+1 : 0;
+            int d = c+1 == 4 ? 0 : c+1;
+            dp[3].list.add(A[a]*A[b]*A[c] + A[a]*A[c]*A[d]);
+        }
+        for (int i = 4; i < A.length; i++) {
+            DPStatus preDp = dp[i-1];
+            dp[i] = new DPStatus();
+            for (int j = 0; j < i+1; j++) {
+                int a = j !=0 ? j-1 : i;
                 int b = j;
-                int c = j != A.length-1 ? j+1 : 0;
-                int minPreDp = Integer.MAX_VALUE;
-                
+                int c = j != i ? j+1 : 0;
+                dp[i].list.add(A[a]*A[b]*A[c] + Collections.min(preDp.list));
             }
         }
-        
-        return ArrayUtil.min(dp);
+        return Collections.min(dp[dp.length-1].list);
     }
     
-    public static int solution11(int[] A) {
-        int n = A.length;
-        int[][] dp = new int[n][n];
-        for (int d = 2; d < n; ++d) {
-            for (int i = 0; i + d < n; ++i) {
-                int j = i + d;
-                dp[i][j] = Integer.MAX_VALUE;
-                for (int k = i + 1; k < j; ++k)
-                    dp[i][j] = Math.min(dp[i][j], dp[i][k] + dp[k][j] + A[i] * A[j] * A[k]);
-            }
+    public static int solution7(int[] A) {
+        return solution7DP(A, 0, 0);
+    }
+    
+    public static int solution7DP(int[] A, int i, int j) {
+        if (j == 0) j = A.length - 1;
+        int minResult = 0;
+        for (int k = i+1; k < j; ++k) {
+            minResult = Math.min(minResult==0?Integer.MAX_VALUE:minResult, solution7DP(A, i, k) + A[i] * A[k] * A[j] + solution7DP(A, k, j));
         }
-        return dp[0][n - 1];
+        return minResult;
     }
     
     public static void main(String[] args) {
@@ -314,10 +333,10 @@ public class Triangulation {
 //        System.out.println(check(triangle1, triangle2));
 //        
 //        int[] A = new int[] {35,73,90,27,71,80,21,33,33,13,48,12,68,70,80,36,66,3,70,58};
-        int[] A = new int[] {1,3,4,1};
+        int[] A = new int[] {3,1,4,5,4};
 //        int[] A = ArrayUtil.newIntArray(1, 51);
-        System.out.println(solution11(A));
-        System.out.println(solution5(A));
+        System.out.println(solution1(A));
+        System.out.println(solution7(A));
     }
     
 }

@@ -141,6 +141,14 @@ public class ArrayUtil {
         return result;
     }
     
+    public static <T> List<T> toList(T[] array) {
+        List<T> result = new ArrayList<>();
+        for (T t : array) {
+            result.add(t);
+        }
+        return result;
+    }
+    
     public static List<List<Integer>> toList(int[][] array) {
         List<List<Integer>> result = new ArrayList<>();
         for (int i = 0; i < array.length; i++) {

@@ -59,4 +59,25 @@ public class StringUtil {
         return true;
     }
     
+    /**
+     * 找出所有的Index，如果没有则返回空集。
+     * @param target
+     * @param key
+     * @return
+     */
+    public static List<Integer> findAllIndices(CharSequence target, CharSequence key) {
+        List<Integer> result = new ArrayList<>();
+        String targetStr = target.toString();
+        String keyStr = key.toString();
+        if ("".equals(keyStr)) {
+            throw new IllegalArgumentException("key is empty.");
+        }
+        int index = targetStr.indexOf(keyStr);
+        while (index >= 0) {
+            result.add(index);
+            index = targetStr.indexOf(keyStr, index+1);
+        }
+        return result;
+    }
+    
 }

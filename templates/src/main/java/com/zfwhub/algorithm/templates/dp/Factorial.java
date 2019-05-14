@@ -9,7 +9,7 @@ public class Factorial {
      * recursion, from top to down
      */
     public int fac(int n) {
-        if (n == 1 || n == 0) {
+        if (n == 0) {
             return 1;
         } else {
             return n * fac(n - 1);
@@ -20,7 +20,7 @@ public class Factorial {
      * for loop, from down to top
      */
     public int fac2(int n) {
-        if (n == 1 || n == 0) {
+        if (n == 0) {
             return 1;
         } else {
             int value = 1;
@@ -34,5 +34,6 @@ public class Factorial {
     public static void main(String[] args) {
         Factorial f = new Factorial();
         System.out.println(f.fac2(5));
+        System.out.println(f.fac(5));
     }
 }

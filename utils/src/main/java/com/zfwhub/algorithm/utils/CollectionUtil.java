@@ -103,6 +103,41 @@ public class CollectionUtil {
     }
     
     /**
+     * 全排列
+     * @param list
+     * @return
+     */
+    public static <T> List<List<T>> permutate(List<T> list) {
+        List<List<T>> result = new ArrayList<>();
+        if (list.size() == 0) {
+            result.add(new ArrayList<>());
+            return result;
+        }
+        /*
+        if (list.size() == 1) {
+            List<T> list2 = new ArrayList<>();
+            list2.add(list.get(0));
+            result.add(list2);
+            return result;
+        }
+        */
+        T lastItem = list.get(list.size()-1);
+        List<T> subList = list.subList(0, list.size()-1);
+        List<List<T>> subResult = permutate(subList);
+        for (List<T> list2 : subResult) {
+            for (int i = 0; i < subList.size(); i++) {
+                List<T> list3 = new ArrayList<>(list2);
+                list3.add(i, lastItem);
+                result.add(list3);
+            }
+            List<T> list3 = new ArrayList<>(list2);
+            list3.add(lastItem);
+            result.add(list3);
+        }
+        return result;
+    }
+    
+    /**
      * 不考虑list的顺序，判断set中是包含某个list。
      * @param set
      * @param list
