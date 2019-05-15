@@ -1,10 +1,10 @@
-package com.zfwhub.algorithm.leetcode.tree;
+package com.zfwhub.algorithm.utils;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class TreeUtil {
-
+    
     /**
      * https://www.geeksforgeeks.org/construct-complete-binary-tree-given-array/
      * create binary tree in level order
@@ -68,7 +68,7 @@ public class TreeUtil {
         TreeNode mirrorTree = TreeUtil.mirrorTree(root);
         return TreeUtil.isSameTree(root, mirrorTree);
     }
-
+    
     public static List<Integer> preOrderTraverse(TreeNode t) {
         if (t == null) {
             return null;
@@ -86,10 +86,23 @@ public class TreeUtil {
         preOrderTraverse(t.left, list);
         preOrderTraverse(t.right, list);
     }
-
-    public static void main(String[] args) {
-        TreeNode node = createLevelOrder(new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 });
-        System.out.println(preOrderTraverse(node));
+    
+    public static List<Integer> inOrderTraverse(TreeNode t) {
+        if (t == null) {
+            return null;
+        }
+        List<Integer> list = new ArrayList<>();
+        inOrderTraverse(t, list);
+        return list;
     }
-
+    
+    private static void inOrderTraverse(TreeNode t, List<Integer> list) {
+        if (t== null) {
+            return;
+        }
+        inOrderTraverse(t.left, list);
+        list.add(t.val);
+        inOrderTraverse(t.right, list);
+    }
+    
 }
