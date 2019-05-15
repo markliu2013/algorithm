@@ -1,4 +1,4 @@
-package com.zfwhub.algorithm.utils;
+package com.zfwhub.algorithm.leetcode.utils;
 
 import java.util.ArrayList;
 import java.util.List;

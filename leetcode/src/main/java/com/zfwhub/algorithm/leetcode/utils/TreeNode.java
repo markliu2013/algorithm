@@ -1,4 +1,4 @@
-package com.zfwhub.algorithm.utils;
+package com.zfwhub.algorithm.leetcode.utils;
 
 public class TreeNode {
     

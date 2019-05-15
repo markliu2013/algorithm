@@ -2,8 +2,8 @@ package com.zfwhub.algorithm.leetcode.tree;
 
 import java.util.*;
 
-import com.zfwhub.algorithm.utils.TreeNode;
-import com.zfwhub.algorithm.utils.TreeUtil;
+import com.zfwhub.algorithm.leetcode.utils.TreeNode;
+import com.zfwhub.algorithm.leetcode.utils.TreeUtil;
 
 // https://leetcode.com/problems/binary-tree-level-order-traversal/ 
 public class BinaryTreeLevelOrderTraversal {

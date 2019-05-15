@@ -1,6 +1,6 @@
 package com.zfwhub.algorithm.leetcode.tree;
 
-import com.zfwhub.algorithm.utils.TreeNode;
+import com.zfwhub.algorithm.leetcode.utils.TreeNode;
 
 // https://leetcode.com/problems/maximum-depth-of-binary-tree/
 public class MaximumDepthOfBinaryTree {

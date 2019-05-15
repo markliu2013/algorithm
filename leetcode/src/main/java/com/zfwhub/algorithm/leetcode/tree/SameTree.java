@@ -1,10 +1,8 @@
 package com.zfwhub.algorithm.leetcode.tree;
 
-import com.zfwhub.algorithm.utils.TreeNode;
+import com.zfwhub.algorithm.leetcode.utils.TreeNode;
 
-/**
- * https://leetcode.com/problems/same-tree/
- */
+// https://leetcode.com/problems/same-tree/
 public class SameTree {
     
     public static boolean isSameTree(TreeNode p, TreeNode q) {

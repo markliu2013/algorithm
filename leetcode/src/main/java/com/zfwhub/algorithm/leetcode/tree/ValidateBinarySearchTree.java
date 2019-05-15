@@ -2,9 +2,9 @@ package com.zfwhub.algorithm.leetcode.tree;
 
 import java.util.List;
 
+import com.zfwhub.algorithm.leetcode.utils.TreeNode;
+import com.zfwhub.algorithm.leetcode.utils.TreeUtil;
 import com.zfwhub.algorithm.utils.CollectionUtil;
-import com.zfwhub.algorithm.utils.TreeNode;
-import com.zfwhub.algorithm.utils.TreeUtil;
 
 // https://leetcode.com/problems/validate-binary-search-tree/
 public class ValidateBinarySearchTree {
