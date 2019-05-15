@@ -1,15 +1,13 @@
 package com.zfwhub.algorithm.leetcode.linkedlist;
 
 import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.List;
+
+import com.zfwhub.algorithm.leetcode.utils.ListNode;
 
 // https://leetcode.com/problems/add-two-numbers/description/
 public class AddTwoNumbers {
 
-    /**
-     * convert to number, then add。
-     */
+    // convert to number, then add。超时 https://leetcode.com/submissions/detail/153848192/
     public ListNode solution1(ListNode l1, ListNode l2) {
         BigInteger i1 = parseNodeToInter(l1);
         BigInteger i2 = parseNodeToInter(l2);
@@ -17,7 +15,7 @@ public class AddTwoNumbers {
         return parseIntegerToNode(i3);
     }
 
-    /**
+    /*
      * like how you would sum two numbers on a piece of paper
      * http://www.aaamath.com/add27dx1.htm
      */
@@ -66,31 +64,8 @@ public class AddTwoNumbers {
         return result;
     }
     
-    /**
-     * https://leetcode.com/problems/add-two-numbers/solution/
-     */
-    public ListNode solution3(ListNode l1, ListNode l2) {
-        ListNode dummyHead = new ListNode(0);
-        ListNode p = l1, q = l2, curr = dummyHead;
-        int carry = 0;
-        while (p != null || q != null) {
-            int x = (p != null) ? p.val : 0;
-            int y = (q != null) ? q.val : 0;
-            int sum = carry + x + y;
-            carry = sum / 10;
-            curr.next = new ListNode(sum % 10);
-            curr = curr.next;
-            if (p != null) p = p.next;
-            if (q != null) q = q.next;
-        }
-        if (carry > 0) {
-            curr.next = new ListNode(carry);
-        }
-        return dummyHead.next;
-    }
-
     private BigInteger parseNodeToInter(ListNode node) {
-        String linkedString = parseNodetoLinkedString(node);
+        String linkedString = node.toLinkedString();
         StringBuilder linkedStringBuilder = new StringBuilder(linkedString.replaceAll(",", ""));
         String integerString = linkedStringBuilder.reverse().toString();
         return new BigInteger(integerString);
@@ -107,30 +82,11 @@ public class AddTwoNumbers {
         return node;
     }
 
-    private static String parseNodetoLinkedString(ListNode node) {
-        ListNode current = node;
-        List<String> nodes = new ArrayList<String>();
-        while (current != null) {
-            nodes.add(String.valueOf(current.val));
-            current = current.next;
-        }
-        return String.join(",", nodes);
-    }
-
-    private static class ListNode {
-        int val;
-        ListNode next;
-        ListNode(int x) {
-            val = x;
-        }
-    }
-    
     public static void main(String[] args) {
         AddTwoNumbers addTwoNumbers = new AddTwoNumbers();
         ListNode l1 = addTwoNumbers.parseIntegerToNode(new BigInteger("342"));
         ListNode l2 = addTwoNumbers.parseIntegerToNode(new BigInteger("465"));
-        System.out.println(parseNodetoLinkedString(addTwoNumbers.solution3(l1, l2)));
-        System.out.println(parseNodetoLinkedString(addTwoNumbers.solution2(l1, l2)));
+        System.out.println(addTwoNumbers.solution2(l1, l2).toLinkedString());
     }
 
 }
