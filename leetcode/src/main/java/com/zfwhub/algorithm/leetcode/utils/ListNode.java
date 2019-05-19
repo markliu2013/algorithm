@@ -26,5 +26,21 @@ public class ListNode {
         }
         return String.join(",", nodes);
     }
+    
+    public static ListNode createLinkedList(int[] array) {
+        ListNode head = null;
+        ListNode current = null;
+        for (int i = 0; i < array.length; i++) {
+            if (head == null) {
+                head = new ListNode(array[i]);
+                current = head;
+            } else {
+                ListNode newNode  = new ListNode(array[i]);
+                current.next = newNode;
+                current = current.next;
+            }
+        }
+        return head;
+    }
 
 }
