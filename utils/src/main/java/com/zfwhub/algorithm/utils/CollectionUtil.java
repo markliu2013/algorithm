@@ -386,6 +386,11 @@ public class CollectionUtil {
         return false;
     }
     
+    /**
+     * 是否递增（非严格）
+     * @param list
+     * @return
+     */
     public static <T extends Comparable<? super T>> boolean isIncreasing(List<T> list) {
         for (int i = 1; i < list.size(); i++) {
             if (list.get(i).compareTo(list.get(i-1)) <= 0) {
@@ -394,4 +399,5 @@ public class CollectionUtil {
         }
         return true;
     }
+    
 }

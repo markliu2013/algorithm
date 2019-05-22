@@ -1,5 +1,7 @@
 package com.zfwhub.algorithm.leetcode.string;
 
+import java.util.Arrays;
+
 // https://leetcode.com/problems/longest-common-prefix/
 public class LongestCommonPrefix {
     
@@ -24,10 +26,37 @@ public class LongestCommonPrefix {
         return result;
     }
     
+    // 动态规划
+    public static String solution2(String[] strs) {
+        if (strs.length == 0) {
+            return "";
+        }
+        if (strs.length == 1) {
+            return strs[0];
+        }
+        String lastItem = strs[strs.length-1];
+        String[] subStrs = Arrays.copyOfRange(strs, 0, strs.length-1);
+        String str = solution2(subStrs);
+        // 返回lastItem和str的公共前缀。
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < str.length(); i++) {
+            if (i >= lastItem.length()) {
+                break;
+            }
+            if (str.charAt(i) == lastItem.charAt(i)) {
+                result.append(str.charAt(i));
+            } else {
+                break;
+            }
+        }
+        return result.toString();
+    }
+    
     public static void main(String[] args) {
 //        String[] strs = new String[] {"aa","a"};
         String[] strs = new String[] {"flower","flow","flight"};
-        System.out.println(LongestCommonPrefix.solution1(strs));
+//        System.out.println(solution1(strs));
+        System.out.println(solution2(strs));
     }
 
 }
