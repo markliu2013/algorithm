@@ -26,10 +26,10 @@ public class EditDistanceTest {
         String word24 = "a";
         int expected4 = 1;
         
-        assertEquals(expected1, EditDistance.solution1(word1, word2));
-        assertEquals(expected2, EditDistance.solution1(word12, word22));
-        assertEquals(expected3, EditDistance.solution1(word13, word23));
-        assertEquals(expected4, EditDistance.solution1(word14, word24));
+        assertEquals(expected1, EditDistance.solution2(word1, word2));
+        assertEquals(expected2, EditDistance.solution2(word12, word22));
+        assertEquals(expected3, EditDistance.solution2(word13, word23));
+        assertEquals(expected4, EditDistance.solution2(word14, word24));
     }
 
 }

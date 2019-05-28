@@ -1,11 +1,17 @@
 package com.zfwhub.algorithm.utils;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
+import java.util.Map.Entry;
 
 public class CollectionUtil {
     
@@ -398,6 +404,45 @@ public class CollectionUtil {
             }
         }
         return true;
+    }
+
+    public static int[] toArray(List<Integer> list) {
+        int[] result = new int[list.size()];
+        for (int i = 0; i < list.size(); i++) {
+            result[i] = list.get(i);
+        }
+        return result;
+    }
+    
+    public static Map<Integer, Integer> countToMap(int[] nums) {
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            if (map.containsKey(nums[i])) {
+                map.put(nums[i], map.get(nums[i])+1);
+            } else {
+                map.put(nums[i], 1);
+            }
+        }
+        return map;
+    }
+    
+    public static <K, V extends Comparable<? super V>> Map<K, V> sortByValue(Map<K, V> unsortMap, boolean order) {
+        List<Entry<K, V>> list = new LinkedList<Entry<K, V>>(unsortMap.entrySet());
+        Collections.sort(list, new Comparator<Entry<K,V>>() {
+            @Override
+            public int compare(Entry<K, V> o1, Entry<K, V> o2) {
+                if (order) {
+                    return o1.getValue().compareTo(o2.getValue());
+                } else {
+                    return o2.getValue().compareTo(o1.getValue());
+                }
+            }
+        });
+        Map<K, V> sortedMap = new LinkedHashMap<K, V>();
+        for (Entry<K, V> entry : list) {
+            sortedMap.put(entry.getKey(), entry.getValue());
+        }
+        return sortedMap;
     }
     
 }

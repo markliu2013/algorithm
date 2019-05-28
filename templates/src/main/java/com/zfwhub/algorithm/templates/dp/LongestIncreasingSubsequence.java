@@ -208,7 +208,10 @@ public class LongestIncreasingSubsequence {
     }
     
     // TODO LIS https://www.jianshu.com/p/409952e9cfd7
-    
+    public static int solution4(int[] nums) {
+        
+        return 0;
+    }
     
     public static void main(String[] args) {
         int[] nums = new int[] {};
