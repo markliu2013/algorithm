@@ -1,4 +1,4 @@
-package com.zfwhub.algorithm.templates.dp;
+package com.zfwhub.algorithm.leetcode.dp;
 
 import java.util.*;
 

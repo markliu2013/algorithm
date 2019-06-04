@@ -2,7 +2,7 @@ package com.zfwhub.algorithm.leetcode.contest138;
 
 import java.util.Arrays;
 
-// https://leetcode.com/contest/weekly-contest-138/problems/height-checker/
+// https://leetcode.com/problems/height-checker/
 public class HeightChecker {
     
     public static int solution1(int[] heights) {

@@ -14,6 +14,7 @@ public class Pack01 {
 
     // 递归超时
     public static int solution1(List<Pack> packs, int capacity) {
+        // capacity小于0，返回无穷小，下面我们就不用判断是否capacity足够，直接按方程式写代码。
         if (capacity < 0) {
             return Integer.MIN_VALUE;
         }

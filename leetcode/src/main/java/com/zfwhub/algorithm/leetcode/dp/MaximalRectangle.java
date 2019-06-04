@@ -2,6 +2,8 @@ package com.zfwhub.algorithm.leetcode.dp;
 
 import java.util.*;
 
+import com.zfwhub.algorithm.leetcode.stack.LargestRectangleInHistogram;
+
 // https://leetcode.com/problems/maximal-rectangle/
 public class MaximalRectangle {
     // 失败
@@ -97,13 +99,40 @@ public class MaximalRectangle {
         
     }
     
+    // https://blog.csdn.net/jiyanfeng1/article/details/8068676
+    public static int solution2(char[][] matrix) {
+        int[][] histograms = new int[matrix.length][matrix[0].length];
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                int count = 0;
+                for (int k = i; k < matrix.length; k++) {
+                    if (matrix[k][j] == '1') {
+                        count++;
+                    } else {
+                        break;
+                    }
+                }
+                histograms[i][j] = count;
+            }
+        }
+        int result = Integer.MIN_VALUE;
+        for (int i = 0; i < histograms.length; i++) {
+            int[] histogram = histograms[i];
+            result = Math.max(result, LargestRectangleInHistogram.solution2(histogram));
+        }
+        return result;
+    }
+    
+    
+    
     public static void main(String[] args) {
         char[][] matrix = new char[][] {
-            {'1','0','1'},
-            {'1','0','1'},
-            {'1','1','1'},
+            {'1','0','1','0','0'},
+            {'1','0','1','1','1'},
+            {'1','1','1','1','1'},
+            {'1','0','0','1','0'}
           };
-        solution1(matrix);
+        System.out.println(solution2(matrix));
     }
 
 }
