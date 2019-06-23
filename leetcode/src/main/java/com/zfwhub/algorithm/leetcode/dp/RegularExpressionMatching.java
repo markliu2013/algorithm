@@ -114,11 +114,48 @@ public class RegularExpressionMatching {
         }
         
     }
+    
+    public static boolean solution2(String s, String p) {
+        if (p.length() == 0) {
+            return s.length() == 0;
+        }
+        if (s.length() == 0) {
+            int currentIndex = p.length()-1;
+            while (currentIndex >= 0) {
+                if (p.charAt(currentIndex) == ASTERISK_CHAR) {
+                    currentIndex -= 2;
+                } else {
+                    return false;
+                }
+            }
+            return true;
+        }
+        if (p.charAt(p.length()-1) == ASTERISK_CHAR) {
+            int currentIndex = s.length()-1;
+            if (solution2(s, p.substring(0, p.length()-2))) {
+                return true;
+            }
+            while ( currentIndex >= 0 && (s.charAt(currentIndex) == p.charAt(p.length()-2) || p.charAt(p.length()-2) == POINT_CHAR) ) {
+                if (solution2(s.substring(0, currentIndex), p.substring(0, p.length()-2))) {
+                    return true;
+                } else {
+                    currentIndex--;
+                }
+            }
+            return false;
+        } else {
+            if (s.charAt(s.length()-1) == p.charAt(p.length()-1) || p.charAt(p.length()-1) == POINT_CHAR) {
+                return solution2(s.substring(0, s.length()-1), p.substring(0, p.length()-1));
+            } else {
+                return false;
+            }
+        }
+    }
 
     public static void main(String[] args) {
-        String s = "";
-        String p = "a*a*";
-        System.out.println(solution1(s, p));
+        String s = "mississippi";
+        String p = "mis*is*ip*.";
+        System.out.println(solution2(s, p));
     }
 
 }

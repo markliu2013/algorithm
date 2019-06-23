@@ -51,6 +51,10 @@ public class RegularExpressionMatchingTest {
         String s11 = "";
         String p11 = "a*a*";
         boolean expected11 = true;
+
+        String s12 = "mississippi";
+        String p12 = "mis*is*ip*.";
+        boolean expected12 = true;
         
         assertEquals(expected1, RegularExpressionMatching.solution1(s1, p1));
         assertEquals(expected2, RegularExpressionMatching.solution1(s2, p2));
@@ -63,6 +67,19 @@ public class RegularExpressionMatchingTest {
         assertEquals(expected9, RegularExpressionMatching.solution1(s9, p9));
         assertEquals(expected10, RegularExpressionMatching.solution1(s10, p10));
         assertEquals(expected11, RegularExpressionMatching.solution1(s11, p11));
+        
+        assertEquals(expected1, RegularExpressionMatching.solution2(s1, p1));
+        assertEquals(expected2, RegularExpressionMatching.solution2(s2, p2));
+        assertEquals(expected3, RegularExpressionMatching.solution2(s3, p3));
+        assertEquals(expected4, RegularExpressionMatching.solution2(s4, p4));
+        assertEquals(expected5, RegularExpressionMatching.solution2(s5, p5));
+        assertEquals(expected6, RegularExpressionMatching.solution2(s6, p6));
+        assertEquals(expected7, RegularExpressionMatching.solution2(s7, p7));
+        assertEquals(expected8, RegularExpressionMatching.solution2(s8, p8));
+        assertEquals(expected9, RegularExpressionMatching.solution2(s9, p9));
+        assertEquals(expected10, RegularExpressionMatching.solution2(s10, p10));
+        assertEquals(expected11, RegularExpressionMatching.solution2(s11, p11));
+        assertEquals(expected12, RegularExpressionMatching.solution2(s12, p12));
     }
 
 }

@@ -3,7 +3,7 @@ package com.zfwhub.algorithm.leetcode.popular;
 import java.util.Arrays;
 
 /*
- * https://leetcode.com/problems/maximum-subarray/description/
+ * https://leetcode.com/problems/maximum-subarray/
  * https://blog.csdn.net/liu2012huan/article/details/51296635
  * https://zhuanlan.zhihu.com/p/37570405
  * @link com.zfwhub.algorithm.codility.maximum_slice_problem.MaxSliceSum
