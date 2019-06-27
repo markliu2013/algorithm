@@ -3,7 +3,7 @@ package com.zfwhub.algorithm.math.linearalgebra;
 public class VectorUtil {
     
     /**
-     * 向量a和向量b是否正交
+     * is a and b orthogonal ?
      * @param a
      * @param b
      * @return
@@ -13,23 +13,55 @@ public class VectorUtil {
     }
     
     /**
-     * 点积
+     * dot product
      * @param a
      * @param b
      * @return
      */
-    public static int dotProducts(Vector a, Vector b) {
-        return 0;
+    public static double dotProducts(Vector a, Vector b) {
+        // size must be consistent
+        if (a.getData().length != b.getData().length) {
+            throw new IllegalArgumentException("the length is not consistent");
+        }
+        double result = 0;
+        for (int i = 0; i < a.getData().length; i++) {
+            result += a.getData()[i] * b.getData()[i];
+        }
+        return result;
     }
     
     /**
-     * 叉积
+     * cross product
      * @param a
      * @param b
      * @return
      */
     public static Vector crossProducts(Vector a, Vector b) {
         return null;
+    }
+    
+    /**
+     * a = a - b
+     * @param a
+     * @param b
+     * @return
+     */
+    public static void minus(Vector a, Vector b) {
+        // size must be consistent
+        if (a.getData().length != b.getData().length) {
+            throw new IllegalArgumentException("the length is not consistent");
+        }
+        for (int i = 0; i < a.getData().length; i++) {
+            a.getData()[i] -= b.getData()[i];
+        }
+    }
+    
+    public static Vector scaleMultiply(Vector a, double scale) {
+        Vector v = new Vector(a.getData());
+        for (int i = 0; i < a.getData().length; i++) {
+            a.getData()[i] *= scale;
+        }
+        return v;
     }
 
 }

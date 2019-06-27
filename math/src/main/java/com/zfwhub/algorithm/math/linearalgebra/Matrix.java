@@ -4,9 +4,9 @@ import java.util.Arrays;
 
 public class Matrix {
     
-    private int[][] data;
+    private double[][] data;
 
-    public Matrix(int[][] data) {
+    public Matrix(double[][] data) {
         if (data == null) {
             throw new IllegalArgumentException("data is null");
         }
@@ -71,7 +71,7 @@ public class Matrix {
      * 求行列式
      * @return
      */
-    public int determinant() {
+    public double determinant() {
         // 只有方阵才能求行列式。
         return 0;
     }
