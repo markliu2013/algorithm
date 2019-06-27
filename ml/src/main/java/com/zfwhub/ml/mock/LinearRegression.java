@@ -16,7 +16,7 @@ public class LinearRegression {
     
     public void fit(double[][] X, double[] y) {
         if (X.length != y.length) {
-            throw new IllegalArgumentException("Found input variables with inconsistent numbers of samples: [" + X.length + ", " + y.length+"]");
+            throw new IllegalArgumentException("Found input variables with inconsistent numbers of samples");
         }
         double[][] biasX = Utils.addBias(X);
         double[] thetaArray = new double[biasX[0].length];
