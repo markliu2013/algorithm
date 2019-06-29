@@ -1,4 +1,5 @@
 # 设计模式
+http://c.biancheng.net/view/1343.html
 
 ## 策略模式
 https://www.tutorialspoint.com/design_pattern/strategy_pattern.htm
