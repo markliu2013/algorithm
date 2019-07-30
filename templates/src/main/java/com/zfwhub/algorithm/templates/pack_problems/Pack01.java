@@ -6,9 +6,7 @@ import java.util.*;
  * 跑代码：@link com.zfwhub.algorithm.acm.hdu.pid2602.Main
  * https://zhuanlan.zhihu.com/p/35278858
  * https://zhuanlan.zhihu.com/p/30959069
- * https://www.cnblogs.com/bahcelor/p/6836695.html
  * https://www.cnblogs.com/zlcxbb/p/5820666.html
- * https://blog.csdn.net/luming_xml/article/details/71922365
  */
 public class Pack01 {
 

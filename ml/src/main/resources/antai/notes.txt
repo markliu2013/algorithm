@@ -1,0 +1,101 @@
+1. 验证一下，用户购买的是之前已经买过的比率有多大。
+找出每个用户最后一条的购买记录
+SELECT
+     t.*
+ FROM
+     an_train t
+     JOIN (
+         SELECT
+             MIN(irank) min_irank,
+             buyer_admin_id
+         FROM
+             an_train
+         GROUP BY
+             buyer_admin_id
+     ) m ON ( t.buyer_admin_id = m.buyer_admin_id
+              AND t.irank = m.min_irank )
+              
+
+
+-- 临时表 每个用户最后一条的购买记录
+         
+              
+              CREATE TABLE buyer
+    AS
+        ( 
+        
+        
+        
+        SELECT
+     t.*
+ FROM
+     an_train t
+     JOIN (
+         SELECT
+             MIN(irank) min_irank,
+             buyer_admin_id
+         FROM
+             an_train
+         GROUP BY
+             buyer_admin_id
+     ) m ON ( t.buyer_admin_id = m.buyer_admin_id
+              AND t.irank = m.min_irank )
+        
+        )    
+ 
+ 
+查yy国家销量最高的产品。
+合并yy国家的数据
+create table t3 as (
+select * from an_train where buyer_country_id='yy'
+union
+select * from an_test
+)
+
+
+查询31号销量最高的产品
+
+select item_id, count(item_id) count_item_id
+from an_test 
+
+where to_char(create_order_time, 'YYYY-MM-DD')='2018-08-31'
+
+group by item_id
+order by count_item_id desc
+
+update submit p set p.p1=null;
+update submit p set p.p2=null;
+update submit p set p.p3=null;
+update submit p set p.p4=null;
+update submit p set p.p5=null;
+update submit p set p.p6=null;
+update submit p set p.p7=null;
+update submit p set p.p8=null;
+update submit p set p.p9=null;
+update submit p set p.p10=null;
+update submit p set p.p11=null;
+update submit p set p.p12=null;
+update submit p set p.p13=null;
+update submit p set p.p14=null;
+update submit p set p.p15=null;
+update submit p set p.p16=null;
+update submit p set p.p17=null;
+update submit p set p.p18=null;
+update submit p set p.p19=null;
+update submit p set p.p20=null;
+update submit p set p.p21=null;
+update submit p set p.p22=null;
+update submit p set p.p23=null;
+update submit p set p.p24=null;
+update submit p set p.p25=null;
+update submit p set p.p26=null;
+update submit p set p.p27=null;
+update submit p set p.p28=null;
+update submit p set p.p29=null;
+update submit p set p.p30=null;
+
+
+ 
+ 
+ 
+              

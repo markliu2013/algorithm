@@ -21,5 +21,16 @@ public final class JdbcUtils {
     public static DataSource getDataSource() {
         return dataSource;
     }
+    
+    public static String page(String sql, int offset, int max) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("select * from (select row_.*, rownum rownum_ from (");
+        sb.append(sql);
+        sb.append(") row_ where rownum <= ");
+        sb.append(offset+max);
+        sb.append(") where rownum_ > ");
+        sb.append(offset);
+        return sb.toString();
+    }
 
 }
