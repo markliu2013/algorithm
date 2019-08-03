@@ -15,6 +15,7 @@ public class MajorityElement {
         int[] rightNums = Arrays.copyOfRange(nums, mid, nums.length);
         int majorityLeft = majorityElement(leftNums);
         int majorityRight = majorityElement(rightNums);
+        // 整体的majority肯定是左右两个
         if (majorityLeft == majorityRight) {
             return majorityLeft;
         }
@@ -22,19 +23,19 @@ public class MajorityElement {
         int leftCount2 = 0;//左边等于majorityRight的个数
         int rightCount1 = 0;//右边不等于majorityRight的个数
         int rightCount2 = 0;//右边等于majorityLeft的个数
-        for (int i = 0; i < mid; i++) {
-            if (nums[i] != majorityLeft) {
+        for (int i = 0; i < leftNums.length; i++) {
+            if (leftNums[i] != majorityLeft) {
                 leftCount1++;
             }
-            if (nums[i] == majorityRight) {
+            if (leftNums[i] == majorityRight) {
                 leftCount2++;
             }
         }
-        for (int i = mid; i < nums.length; i++) {
-            if (nums[i] != majorityRight) {
+        for (int i = 0; i < rightNums.length; i++) {
+            if (rightNums[i] != majorityRight) {
                 rightCount1++;
             }
-            if (nums[i] == majorityLeft) {
+            if (rightNums[i] == majorityLeft) {
                 rightCount2++;
             }
         }

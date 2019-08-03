@@ -7,17 +7,17 @@ import java.util.HashSet;
 public class OddOccurrencesInArray {
 
     // use HashSet, set.contains is O(1)
-    public static int solution1(int[] A) {
-        HashSet<Integer> set = new HashSet<Integer>();
-        for (int i = 0; i < A.length; i++) {
-            if (set.contains(A[i])) {
-                set.remove(A[i]);
-            } else {
-                set.add(A[i]);
-            }
+public static int solution1(int[] A) {
+    HashSet<Integer> set = new HashSet<Integer>();
+    for (int i = 0; i < A.length; i++) {
+        if (set.contains(A[i])) {
+            set.remove(A[i]);
+        } else {
+            set.add(A[i]);
         }
-        return set.iterator().next();
     }
+    return set.iterator().next();
+}
 
     // exclusive OR, xor
     // http://blog.sina.com.cn/s/blog_13c6397540102x0c3.html
