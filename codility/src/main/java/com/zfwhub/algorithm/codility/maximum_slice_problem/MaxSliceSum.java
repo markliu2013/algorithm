@@ -26,7 +26,7 @@ public class MaxSliceSum {
     }
 
     public static void main(String[] args) {
-        System.out.println(solution1(new int[] { -4, -3, -2, -1 }));
+        System.out.println(solution1(new int[] {  -1 }));
     }
 
 }

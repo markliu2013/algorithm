@@ -2,6 +2,8 @@ package com.zfwhub.algorithm.leetcode.popular;
 
 import java.util.Arrays;
 
+import com.zfwhub.algorithm.utils.ArrayUtil;
+
 /*
  * https://leetcode.com/problems/maximum-subarray/
  * https://blog.csdn.net/liu2012huan/article/details/51296635
@@ -76,6 +78,63 @@ public class MaximumSubarray {
         }
         return Math.max(max1, max2);
     }
+    
+    public static int solution4_1(int[] nums) {
+        if (nums.length == 1) {
+            return nums[0];
+        }
+        int lastNum = nums[nums.length - 1];
+        int[] subArray = Arrays.copyOfRange(nums, 0, nums.length - 1);
+        int max1 = solution4_1(subArray);
+        int max2 = lastNum;
+        int sum = max2;
+        for (int i = nums.length-2; i >= 0; i--) {
+            sum += nums[i];
+            max2 = Math.max(sum, max2);
+        }
+        return Math.max(max1, max2);
+    }
+    
+    public static int solution4_2(int[] nums) {
+        // dp是最后的结果
+        int[] dp = new int[nums.length];
+        dp[0] = nums[0];
+        for (int i = 1; i < nums.length; i++) {
+            // 计算dp[i]，根据dp[i-1]
+            // 先算选择第i个数
+            int max = nums[i];
+            int sum = nums[i];
+            for (int j = i-1; j >= 0; j--) {
+                sum += nums[j];
+                max = Math.max(sum, max);
+            }
+            dp[i] = Math.max(dp[i-1], max);
+        }
+        return dp[dp.length-1];
+    }
+    
+    // 最后找max，比前面的效率高
+    public static int solution4_3(int[] nums) {
+        // dp是必须选最后一个数
+        int[] dp = new int[nums.length];
+        for (int i = 0; i < nums.length; i++) {
+            int sum = 0;
+            int max = Integer.MIN_VALUE;
+            for (int j = i; j >= 0; j--) {
+                sum += nums[j];
+                max = Math.max(max, sum);
+            }
+            dp[i] = max;
+        }
+        return ArrayUtil.max(dp);
+    }
+    
+    public static int solution4_4(int[] nums) {
+        // dp是必须选最后一个数
+        int[] dp = new int[nums.length];
+        // TODO solution4_4
+        return ArrayUtil.max(dp);
+    }
 
     // divide and conquer
     public static int solution5(int[] nums) {
@@ -115,6 +174,15 @@ public class MaximumSubarray {
             max[i] = Math.max(sum[i], max[i - 1]);
         }
         return max[nums.length - 1];
+    }
+    
+    public static int solution6_1(int[] nums) {
+        int[] sum = new int[nums.length];
+        sum[0] = nums[0];
+        for (int i = 1; i < nums.length; i++) {
+            sum[i] = Math.max(sum[i - 1] + nums[i], nums[i]);
+        }
+        return ArrayUtil.max(sum);
     }
 
     // dynamic programming - down to top - optimize space

@@ -47,6 +47,7 @@ public class XWhat01 {
      * 3. subinterval 子数组xor-sum的结果是一个整数，找到他的二进制数，二进制中1的个数是偶数
      * 4. A有2的N次方个子数组，这些子数组有subinterval
      */
+    // 错误的解法，题目要求是子数组。
     public static int largestXOREvenSubinterval(int[] A) {
         // 所有的子数组
         List<List<Integer>> subArraySet = CollectionUtil.subsets(ArrayUtil.toList(A));
