@@ -7,6 +7,7 @@ import com.zfwhub.algorithm.math.linearalgebra.VectorUtil;
 
 /**
  * mock sklearn.linear_model.LinearRegression
+ * https://zhuanlan.zhihu.com/p/71013362
  */
 public class LinearRegression {
     
@@ -20,13 +21,14 @@ public class LinearRegression {
         }
         double[][] biasX = Utils.addBias(X);
         double[] thetaArray = new double[biasX[0].length];
+        // 参数都初始化为1
         for (int i = 0; i < thetaArray.length; i++) {
             thetaArray[i] = 1;
         }
         theta = new Vector(thetaArray);
         for (int i = 0; i < 10000; i++) {
-            // System.out.println("theta:" + theta);
-            // System.out.println("loss: " + getLoss(X, y));
+//             System.out.println("theta:" + theta);
+//             System.out.println("loss: " + getLoss(X, y));
             bgd(X, y);
         }
     }
